@@ -60,3 +60,25 @@ The Multi-Modal CLIP Fine-Tuning system focuses on fine-tuning CLIP models for d
 2. WHEN inference is performed THEN the system SHALL optimize for real-time image-text similarity computation
 3. WHEN scaling is needed THEN the system SHALL support batch inference for multiple image-text pairs
 4. WHEN monitoring is required THEN the system SHALL provide performance metrics and health checks
+
+### Requirement 6
+
+**User Story:** As a researcher, I want integrated experiment tracking for CLIP fine-tuning, so that I can track multi-modal experiments and compare domain adaptation results across different approaches.
+
+#### Acceptance Criteria
+
+1. WHEN CLIP fine-tuning experiments are run THEN the system SHALL automatically log experiments to the shared MLFlow infrastructure
+2. WHEN models are fine-tuned THEN the system SHALL track domain-specific parameters, contrastive loss metrics, and multi-modal performance
+3. WHEN models are trained THEN they SHALL be automatically registered in the shared model registry with multi-modal metadata
+4. WHEN comparing domains THEN the system SHALL provide cross-experiment comparison using shared analytics utilities
+
+### Requirement 7
+
+**User Story:** As a computer vision engineer, I want automated dataset management and model deployment, so that I can efficiently manage multi-modal datasets and deploy CLIP models while maintaining quality monitoring.
+
+#### Acceptance Criteria
+
+1. WHEN multi-modal datasets are used THEN they SHALL be automatically tracked and versioned using the shared DVC system
+2. WHEN CLIP models are ready THEN they SHALL be automatically deployed to the shared serving infrastructure with MPS optimization
+3. WHEN model performance degrades THEN the shared monitoring system SHALL alert and suggest domain re-adaptation
+4. WHEN complex multi-modal workflows are needed THEN they SHALL be orchestrated using the shared Airflow infrastructure

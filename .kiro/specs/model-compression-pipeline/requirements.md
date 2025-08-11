@@ -60,3 +60,25 @@ The CPU-Optimized Model Compression Pipeline is an intelligent system that speci
 2. WHEN comparisons are made THEN the system SHALL compare against GPU-optimized model baselines
 3. WHEN edge scenarios are tested THEN the system SHALL simulate real-world edge deployment conditions
 4. WHEN results are reported THEN the system SHALL highlight CPU efficiency advantages and use cases
+
+### Requirement 6
+
+**User Story:** As a researcher, I want integrated experiment tracking for model compression, so that I can track compression experiments and compare optimization results across different techniques and architectures.
+
+#### Acceptance Criteria
+
+1. WHEN compression experiments are run THEN the system SHALL automatically log experiments to the shared MLFlow infrastructure
+2. WHEN models are compressed THEN the system SHALL track compression parameters, accuracy retention, and performance improvements
+3. WHEN models are optimized THEN they SHALL be automatically registered in the shared model registry with compression metadata
+4. WHEN comparing techniques THEN the system SHALL provide cross-experiment comparison using shared analytics utilities
+
+### Requirement 7
+
+**User Story:** As a deployment engineer, I want automated model management and edge deployment, so that I can efficiently deploy compressed models while maintaining quality monitoring.
+
+#### Acceptance Criteria
+
+1. WHEN model datasets are used THEN they SHALL be automatically tracked and versioned using the shared DVC system
+2. WHEN compressed models are ready THEN they SHALL be automatically deployed to the shared serving infrastructure with CPU optimization
+3. WHEN model performance degrades THEN the shared monitoring system SHALL alert and suggest re-compression
+4. WHEN complex compression workflows are needed THEN they SHALL be orchestrated using the shared Airflow infrastructure

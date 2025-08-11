@@ -60,3 +60,25 @@ The Federated Learning System for Lightweight Models is designed to coordinate m
 2. WHEN resources are constrained THEN the system SHALL optimize for minimal computational and memory requirements
 3. WHEN training is performed THEN the system SHALL support efficient local training on edge devices
 4. WHEN convergence is monitored THEN the system SHALL provide convergence tracking with minimal overhead
+
+### Requirement 6
+
+**User Story:** As a researcher, I want integrated experiment tracking for federated learning, so that I can track distributed experiments and compare aggregation methods across different federated scenarios.
+
+#### Acceptance Criteria
+
+1. WHEN federated experiments are run THEN the system SHALL automatically log experiments to the shared MLFlow infrastructure
+2. WHEN models are aggregated THEN the system SHALL track federated parameters, convergence metrics, and privacy-preserving statistics
+3. WHEN models are trained THEN they SHALL be automatically registered in the shared model registry with federated learning metadata
+4. WHEN comparing methods THEN the system SHALL provide cross-experiment comparison using shared analytics utilities
+
+### Requirement 7
+
+**User Story:** As a distributed systems engineer, I want automated federated workflow management and deployment, so that I can efficiently orchestrate federated learning while maintaining privacy and performance monitoring.
+
+#### Acceptance Criteria
+
+1. WHEN federated datasets are used THEN they SHALL be automatically tracked and versioned using the shared DVC system with privacy preservation
+2. WHEN federated models are ready THEN they SHALL be automatically deployed to the shared serving infrastructure with edge optimization
+3. WHEN model performance degrades THEN the shared monitoring system SHALL alert and suggest federated re-training
+4. WHEN complex federated workflows are needed THEN they SHALL be orchestrated using the shared Airflow infrastructure
