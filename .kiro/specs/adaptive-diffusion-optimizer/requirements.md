@@ -60,3 +60,25 @@ The Adaptive Diffusion Model Optimizer with MLX Integration is an intelligent sy
 2. WHEN hardware is considered THEN the system SHALL optimize architecture choices for M1/M2 specific capabilities
 3. WHEN attention is optimized THEN the system SHALL implement memory-efficient attention mechanisms
 4. WHEN consistency is improved THEN the system SHALL integrate consistency model capabilities for faster generation
+
+### Requirement 6
+
+**User Story:** As a researcher, I want integrated experiment tracking for diffusion optimization, so that I can track diffusion experiments and compare optimization techniques across different architectures and sampling methods.
+
+#### Acceptance Criteria
+
+1. WHEN diffusion optimization experiments are run THEN the system SHALL automatically log experiments to the shared MLFlow infrastructure
+2. WHEN models are optimized THEN the system SHALL track distillation parameters, sampling efficiency, and generation quality metrics
+3. WHEN models are trained THEN they SHALL be automatically registered in the shared model registry with diffusion optimization metadata
+4. WHEN comparing techniques THEN the system SHALL provide cross-experiment comparison using shared analytics utilities
+
+### Requirement 7
+
+**User Story:** As a generative AI engineer, I want automated model management and deployment, so that I can efficiently deploy optimized diffusion models while maintaining quality monitoring.
+
+#### Acceptance Criteria
+
+1. WHEN diffusion datasets are used THEN they SHALL be automatically tracked and versioned using the shared DVC system
+2. WHEN optimized diffusion models are ready THEN they SHALL be automatically deployed to the shared serving infrastructure with MLX optimization
+3. WHEN generation quality degrades THEN the shared monitoring system SHALL alert and suggest re-optimization
+4. WHEN complex diffusion workflows are needed THEN they SHALL be orchestrated using the shared Airflow infrastructure

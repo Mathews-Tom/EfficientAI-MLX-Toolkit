@@ -60,3 +60,25 @@ The Self-Improving Diffusion Architecture with Evolutionary Search is a system t
 2. WHEN feedback is integrated THEN the system SHALL incorporate human preferences into fitness evaluation
 3. WHEN learning is transferred THEN the system SHALL apply architectural improvements across different domains
 4. WHEN evolution continues THEN the system SHALL maintain long-term evolutionary progress tracking
+
+### Requirement 6
+
+**User Story:** As a researcher, I want integrated experiment tracking for evolutionary architecture search, so that I can track evolutionary experiments and compare architecture search strategies across different generations and fitness criteria.
+
+#### Acceptance Criteria
+
+1. WHEN evolutionary experiments are run THEN the system SHALL automatically log experiments to the shared MLFlow infrastructure
+2. WHEN architectures are evolved THEN the system SHALL track evolutionary parameters, fitness scores, and architectural innovations
+3. WHEN models are evolved THEN they SHALL be automatically registered in the shared model registry with evolutionary metadata
+4. WHEN comparing strategies THEN the system SHALL provide cross-experiment comparison using shared analytics utilities
+
+### Requirement 7
+
+**User Story:** As an AI architect, I want automated evolutionary workflow management and deployment, so that I can efficiently orchestrate evolutionary processes while maintaining architecture performance monitoring.
+
+#### Acceptance Criteria
+
+1. WHEN evolutionary datasets are used THEN they SHALL be automatically tracked and versioned using the shared DVC system
+2. WHEN evolved architectures are ready THEN they SHALL be automatically deployed to the shared serving infrastructure with performance monitoring
+3. WHEN architecture performance degrades THEN the shared monitoring system SHALL alert and trigger evolutionary re-optimization
+4. WHEN complex evolutionary workflows are needed THEN they SHALL be orchestrated using the shared Airflow infrastructure

@@ -60,3 +60,25 @@ The Meta-Learning PEFT System with MLX is a framework that automatically selects
 2. WHEN switching is needed THEN the system SHALL change PEFT methods during training based on performance
 3. WHEN knowledge is preserved THEN the system SHALL avoid catastrophic forgetting when switching methods
 4. WHEN uncertainty is quantified THEN the system SHALL provide confidence estimates for method performance
+
+### Requirement 6
+
+**User Story:** As a researcher, I want integrated experiment tracking for meta-learning PEFT, so that I can track meta-learning experiments and compare method selection strategies across different tasks and domains.
+
+#### Acceptance Criteria
+
+1. WHEN meta-learning experiments are run THEN the system SHALL automatically log experiments to the shared MLFlow infrastructure
+2. WHEN PEFT methods are selected THEN the system SHALL track method selection decisions, task embeddings, and performance outcomes
+3. WHEN models are trained THEN they SHALL be automatically registered in the shared model registry with meta-learning metadata
+4. WHEN comparing strategies THEN the system SHALL provide cross-experiment comparison using shared analytics utilities
+
+### Requirement 7
+
+**User Story:** As a machine learning engineer, I want automated meta-learning workflow management and deployment, so that I can efficiently orchestrate meta-learning processes while maintaining knowledge transfer monitoring.
+
+#### Acceptance Criteria
+
+1. WHEN meta-learning datasets are used THEN they SHALL be automatically tracked and versioned using the shared DVC system
+2. WHEN meta-learned models are ready THEN they SHALL be automatically deployed to the shared serving infrastructure with method selection capabilities
+3. WHEN method selection performance degrades THEN the shared monitoring system SHALL alert and suggest meta-model retraining
+4. WHEN complex meta-learning workflows are needed THEN they SHALL be orchestrated using the shared Airflow infrastructure
