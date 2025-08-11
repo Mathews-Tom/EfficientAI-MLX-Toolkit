@@ -60,3 +60,25 @@ The Core ML Stable Diffusion Style Transfer System is a comprehensive framework 
 2. WHEN optimization is performed THEN the system SHALL compress models for mobile deployment
 3. WHEN Swift integration is needed THEN the system SHALL provide Swift UI application templates
 4. WHEN performance is tested THEN the system SHALL benchmark mobile vs desktop performance
+
+### Requirement 6
+
+**User Story:** As a researcher, I want integrated experiment tracking for style transfer, so that I can track style training experiments and compare artistic quality across different approaches.
+
+#### Acceptance Criteria
+
+1. WHEN training style adapters THEN the system SHALL automatically log experiments to the shared MLFlow infrastructure
+2. WHEN styles are generated THEN the system SHALL track generation parameters and artistic quality metrics
+3. WHEN models are trained THEN they SHALL be automatically registered in the shared model registry with style metadata
+4. WHEN comparing styles THEN the system SHALL provide cross-experiment comparison using shared analytics utilities
+
+### Requirement 7
+
+**User Story:** As an artist, I want automated dataset management and model deployment, so that I can focus on creativity while the system handles technical operations.
+
+#### Acceptance Criteria
+
+1. WHEN artistic datasets are used THEN they SHALL be automatically tracked and versioned using the shared DVC system
+2. WHEN style models are trained THEN they SHALL be automatically deployed to the shared serving infrastructure
+3. WHEN generation quality degrades THEN the shared monitoring system SHALL alert and suggest retraining
+4. WHEN complex workflows are needed THEN they SHALL be orchestrated using the shared Airflow infrastructure

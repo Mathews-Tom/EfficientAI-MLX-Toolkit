@@ -60,3 +60,25 @@ The MLX-Native LoRA Fine-Tuning Framework is a comprehensive system for Paramete
 2. WHEN precision is configured THEN the system SHALL support mixed precision training
 3. WHEN memory is constrained THEN the system SHALL automatically adjust batch sizes and sequence lengths
 4. WHEN unified memory is available THEN the system SHALL optimize for Apple Silicon's memory architecture
+
+### Requirement 6
+
+**User Story:** As a researcher, I want integrated experiment tracking and model management, so that I can track my fine-tuning experiments and compare results across different configurations.
+
+#### Acceptance Criteria
+
+1. WHEN training starts THEN the system SHALL automatically log experiments to the shared MLFlow infrastructure
+2. WHEN hyperparameters are optimized THEN the system SHALL track all optimization attempts and results
+3. WHEN models are trained THEN they SHALL be automatically registered in the shared model registry with Apple Silicon metadata
+4. WHEN comparing methods THEN the system SHALL provide cross-experiment comparison using shared analytics utilities
+
+### Requirement 7
+
+**User Story:** As a data scientist, I want automated data versioning and model deployment, so that I can reproduce experiments and deploy models efficiently.
+
+#### Acceptance Criteria
+
+1. WHEN datasets are used THEN they SHALL be automatically tracked and versioned using the shared DVC system
+2. WHEN models are trained THEN they SHALL be automatically deployed to the shared serving infrastructure
+3. WHEN model performance degrades THEN the shared monitoring system SHALL alert and trigger retraining
+4. WHEN workflows are complex THEN they SHALL be orchestrated using the shared Airflow infrastructure
