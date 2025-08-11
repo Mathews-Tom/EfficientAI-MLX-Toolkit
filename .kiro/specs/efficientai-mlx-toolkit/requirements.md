@@ -71,3 +71,25 @@ The EfficientAI-MLX-Toolkit is a comprehensive AI/ML optimization framework desi
 2. WHEN tasks are automated THEN the system SHALL include hooks for common development workflows
 3. WHEN testing is performed THEN the system SHALL provide automated testing frameworks
 4. WHEN documentation is updated THEN the system SHALL maintain synchronized documentation across all projects
+
+### Requirement 7
+
+**User Story:** As a team lead, I want shared MLOps infrastructure, so that I can manage experiments, deployments, and monitoring across all toolkit projects from a unified platform.
+
+#### Acceptance Criteria
+
+1. WHEN the toolkit is initialized THEN the system SHALL provide shared MLOps infrastructure serving all individual projects
+2. WHEN projects are developed THEN they SHALL automatically connect to centralized experiment tracking, data versioning, and model serving
+3. WHEN experiments are run THEN the system SHALL aggregate results in a unified dashboard for cross-project comparison
+4. WHEN models are deployed THEN they SHALL use shared serving infrastructure with unified monitoring and alerting
+
+### Requirement 8
+
+**User Story:** As a data scientist, I want cross-project analytics and insights, so that I can learn from optimization techniques across different project types and identify the most effective approaches.
+
+#### Acceptance Criteria
+
+1. WHEN analyzing performance THEN the system SHALL provide cross-project comparison of optimization techniques and results
+2. WHEN tracking progress THEN the system SHALL show toolkit-wide trends and improvements over time
+3. WHEN making decisions THEN the system SHALL recommend optimal techniques based on historical performance across projects
+4. WHEN reporting results THEN the system SHALL generate comprehensive toolkit analytics and insights
