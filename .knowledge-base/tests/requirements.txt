@@ -1,0 +1,14 @@
+# Testing dependencies for Knowledge Base system
+# Install with: uv add --group test -r requirements.txt
+
+# Core testing framework
+pytest>=7.0.0
+
+# Test utilities
+pytest-cov>=4.0.0          # Coverage reporting
+pytest-mock>=3.10.0        # Mocking utilities
+pytest-timeout>=2.1.0      # Test timeouts
+pytest-xdist>=3.0.0        # Parallel test execution
+
+# Development dependencies
+pyyaml>=6.0                 # YAML parsing (used by knowledge base)

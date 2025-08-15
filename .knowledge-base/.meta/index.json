@@ -1,0 +1,4473 @@
+{
+  "metadata": {
+    "created_at": "2025-08-14T16:57:24.899275",
+    "kb_path": ".knowledge-base",
+    "total_entries": 7,
+    "categories": [
+      "troubleshooting",
+      "mlx-framework",
+      "development-standards",
+      "apple-silicon"
+    ],
+    "tags": [
+      "mlx",
+      "import-error",
+      "installation",
+      "apple-silicon",
+      "python",
+      "data-loading",
+      "performance",
+      "batching",
+      "streaming",
+      "uv",
+      "environment",
+      "memory",
+      "optimization",
+      "large-models",
+      "typing",
+      "annotations",
+      "migration",
+      "pep8",
+      "style",
+      "quality",
+      "git",
+      "version-control",
+      "branching",
+      "commits"
+    ],
+    "stats": {
+      "total_files_scanned": 7,
+      "entries_indexed": 7,
+      "errors_encountered": 0,
+      "last_index_time": null,
+      "index_build_duration": 0.0
+    }
+  },
+  "entries": [
+    {
+      "title": "Fixing MLX Import and Installation Errors",
+      "category": "troubleshooting",
+      "tags": [
+        "mlx",
+        "import-error",
+        "installation",
+        "apple-silicon",
+        "python"
+      ],
+      "difficulty": "beginner",
+      "last_updated": "2025-08-14T00:00:00",
+      "contributors": [
+        "Tom Mathews"
+      ],
+      "usage_count": 0,
+      "file_path": "categories/troubleshooting/mlx-import-errors.md"
+    },
+    {
+      "title": "Efficient Data Loading Patterns with MLX",
+      "category": "mlx-framework",
+      "tags": [
+        "mlx",
+        "data-loading",
+        "performance",
+        "batching",
+        "streaming"
+      ],
+      "difficulty": "intermediate",
+      "last_updated": "2025-08-14T00:00:00",
+      "contributors": [
+        "Tom Mathews"
+      ],
+      "usage_count": 0,
+      "file_path": "categories/mlx-framework/efficient-data-loading.md"
+    },
+    {
+      "title": "Python Development Environment Setup",
+      "category": "development-standards",
+      "tags": [
+        "python",
+        "uv",
+        "environment"
+      ],
+      "difficulty": "intermediate",
+      "last_updated": "2025-08-14T00:00:00",
+      "contributors": [
+        "Tom Mathews"
+      ],
+      "usage_count": 0,
+      "file_path": "categories/development-standards/python-development-environment-setup.md"
+    },
+    {
+      "title": "MLX Memory Optimization for Large Models",
+      "category": "apple-silicon",
+      "tags": [
+        "mlx",
+        "memory",
+        "optimization",
+        "apple-silicon",
+        "large-models"
+      ],
+      "difficulty": "intermediate",
+      "last_updated": "2025-08-14T00:00:00",
+      "contributors": [
+        "Tom Mathews"
+      ],
+      "usage_count": 0,
+      "file_path": "categories/apple-silicon/mlx-memory-optimization.md"
+    },
+    {
+      "title": "Modern Python Type Annotations Migration Guide",
+      "category": "development-standards",
+      "tags": [
+        "python",
+        "typing",
+        "annotations",
+        "migration"
+      ],
+      "difficulty": "advanced",
+      "last_updated": "2025-08-14T00:00:00",
+      "contributors": [
+        "Tom Mathews"
+      ],
+      "usage_count": 0,
+      "file_path": "categories/development-standards/modern-python-type-annotations-migration-guide.md"
+    },
+    {
+      "title": "Python Code Quality Standards",
+      "category": "development-standards",
+      "tags": [
+        "python",
+        "pep8",
+        "style",
+        "quality"
+      ],
+      "difficulty": "intermediate",
+      "last_updated": "2025-08-14T00:00:00",
+      "contributors": [
+        "Tom Mathews"
+      ],
+      "usage_count": 0,
+      "file_path": "categories/development-standards/python-code-quality-standards.md"
+    },
+    {
+      "title": "Git Version Control Standards",
+      "category": "development-standards",
+      "tags": [
+        "git",
+        "version-control",
+        "branching",
+        "commits"
+      ],
+      "difficulty": "intermediate",
+      "last_updated": "2025-08-14T00:00:00",
+      "contributors": [
+        "Tom Mathews"
+      ],
+      "usage_count": 0,
+      "file_path": "categories/development-standards/git-version-control-standards.md"
+    }
+  ],
+  "indexes": {
+    "categories": {
+      "troubleshooting": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "mlx-framework": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "development-standards": [
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide",
+        "Python Code Quality Standards",
+        "Git Version Control Standards"
+      ],
+      "apple-silicon": [
+        "MLX Memory Optimization for Large Models"
+      ]
+    },
+    "tags": {
+      "mlx": [
+        "Fixing MLX Import and Installation Errors",
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "import-error": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "installation": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "apple-silicon": [
+        "Fixing MLX Import and Installation Errors",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "python": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide",
+        "Python Code Quality Standards"
+      ],
+      "data-loading": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "performance": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "batching": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "streaming": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "uv": [
+        "Python Development Environment Setup"
+      ],
+      "environment": [
+        "Python Development Environment Setup"
+      ],
+      "memory": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "optimization": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "large-models": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "typing": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "annotations": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "migration": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "pep8": [
+        "Python Code Quality Standards"
+      ],
+      "style": [
+        "Python Code Quality Standards"
+      ],
+      "quality": [
+        "Python Code Quality Standards"
+      ],
+      "git": [
+        "Git Version Control Standards"
+      ],
+      "version-control": [
+        "Git Version Control Standards"
+      ],
+      "branching": [
+        "Git Version Control Standards"
+      ],
+      "commits": [
+        "Git Version Control Standards"
+      ]
+    },
+    "full_text": {
+      "dedicated": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "when": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "opt": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "before": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "print": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "com": [
+        "Git Version Control Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "except": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards"
+      ],
+      "tracker": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "fixing": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "else": [
+        "Fixing MLX Import and Installation Errors",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "site": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "test": [
+        "Fixing MLX Import and Installation Errors",
+        "Git Version Control Standards"
+      ],
+      "lib": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "neural": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "compatibility": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "10": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "ml": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "framework": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "311": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "tolist": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "several": [
+        "Git Version Control Standards",
+        "Python Code Quality Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "check": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "confirm": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "github": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "system_profiler": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "toml": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "py": [
+        "Fixing MLX Import and Installation Errors",
+        "Git Version Control Standards"
+      ],
+      "name": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "detected": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "successfully": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards"
+      ],
+      "verification": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "re": [
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "other": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "trying": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "environments": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "crashes": [
+        "Fixing MLX Import and Installation Errors",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "slim": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "encounter": [
+        "Fixing MLX Import and Installation Errors",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "sys": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "named": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "developer": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "org": [
+        "Fixing MLX Import and Installation Errors",
+        "Git Version Control Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "project": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "gpu": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "lm": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "default_device": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "0x0002": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "show": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "__main__": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "architecture": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "requires": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "test_input": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "def": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "future": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "use": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "is_available": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "macs": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "assert": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "that": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "create": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "common": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "recent": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "run": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "mac": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "hardware": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "verify": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "cannot": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "description": [
+        "Git Version Control Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards"
+      ],
+      "bin": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "apple": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "mlx": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "support": [
+        "Python Code Quality Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "__name__": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "return": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "clone": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "avoid": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards"
+      ],
+      "network": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "sphardwaredatatype": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "package": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "note": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "homebrew": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "false": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "errors": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "gpu_array": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "comprehensive": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "m2": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "detailed": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "docker": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "find": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "hosts": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "additional": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "md": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "global": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "acceleration": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "true": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "11": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "workdir": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "versions": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "setting": [
+        "Python Code Quality Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "build": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "container": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "sh": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "cpu": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "installs": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "messages": [
+        "Fixing MLX Import and Installation Errors",
+        "Git Version Control Standards"
+      ],
+      "explore": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "_mtldevice": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "setup": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "cmd": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "modules": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "linux": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "designed": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "intel": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "array": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "alternative": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "_objc_class_": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "deployment": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "custom": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards"
+      ],
+      "device": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "raise": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards"
+      ],
+      "your_script": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "test_mlx_installation": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "mamba": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "machine": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "existing": [
+        "Fixing MLX Import and Installation Errors",
+        "Git Version Control Standards"
+      ],
+      "operation": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards"
+      ],
+      "exception": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards"
+      ],
+      "work": [
+        "Fixing MLX Import and Installation Errors",
+        "Git Version Control Standards"
+      ],
+      "clear": [
+        "Fixing MLX Import and Installation Errors",
+        "Git Version Control Standards"
+      ],
+      "satisfies": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "install": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "only": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "needed": [
+        "Fixing MLX Import and Installation Errors",
+        "Git Version Control Standards"
+      ],
+      "linear": [
+        "Fixing MLX Import and Installation Errors",
+        "Git Version Control Standards"
+      ],
+      "no": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Python Code Quality Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "environment": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "macos": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "uninstall": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "cache": [
+        "Fixing MLX Import and Installation Errors",
+        "Git Version Control Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "normal": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "x86_64": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "language": [
+        "Fixing MLX Import and Installation Errors",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "version": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "random": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "up": [
+        "Python Code Quality Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "not": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "platforms": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "venv": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "txt": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "shape": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "problem": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "add": [
+        "Git Version Control Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "mathews": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "troubleshooting": [
+        "Fixing MLX Import and Installation Errors",
+        "Git Version Control Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "symbol": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "brew": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "source": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "downloads": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "modulenotfounderror": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "step": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "dockerfile": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "python": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "features": [
+        "Fixing MLX Import and Installation Errors",
+        "Git Version Control Standards"
+      ],
+      "app": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "output": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "silicon": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "__version__": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "correctly": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "io": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "running": [
+        "Fixing MLX Import and Installation Errors",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "docs": [
+        "Fixing MLX Import and Installation Errors",
+        "Git Version Control Standards",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "script": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "pyproject": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "basic": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards"
+      ],
+      "you": [
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "result": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "guide": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "must": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards"
+      ],
+      "nn": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "purge": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "resolved": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "works": [
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "root": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "try": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards"
+      ],
+      "check_platform": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "ensure": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "correct": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Python Code Quality Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "reinstall": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "solutions": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "related": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "fix": [
+        "Fixing MLX Import and Installation Errors",
+        "Git Version Control Standards"
+      ],
+      "platform": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "pyenv": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "virtual": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "tom": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "system": [
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "latest": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "so": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "cases": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "arm64": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "https": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "configuration": [
+        "Git Version Control Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "all": [
+        "Fixing MLX Import and Installation Errors",
+        "Git Version Control Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "cause": [
+        "Fixing MLX Import and Installation Errors",
+        "Git Version Control Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "include": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards"
+      ],
+      "m1": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "solution": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "working": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "uv": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "resolves": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "requirement": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "index": [
+        "Fixing MLX Import and Installation Errors",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "from": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "various": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "installation": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "chip": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "any": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "error": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards"
+      ],
+      "python3": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "importerror": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "packages": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "required": [
+        "Git Version Control Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "issues": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "requirements": [
+        "Python Code Quality Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "most": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "grep": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "core": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "python_version": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "development": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "symptoms": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "runtimeerror": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "see": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "operations": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards"
+      ],
+      "fails": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards"
+      ],
+      "darwin": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "this": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "pip": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "remove": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "conda": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "copy": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "found": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards"
+      ],
+      "os": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "always": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "clean": [
+        "Fixing MLX Import and Installation Errors",
+        "Git Version Control Standards"
+      ],
+      "issue": [
+        "Fixing MLX Import and Installation Errors",
+        "Git Version Control Standards"
+      ],
+      "as": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "import": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "availability": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "check_apple_silicon": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "imported": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "prevention": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "faster": [
+        "Python Code Quality Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "successful": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "if": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "m3": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "recommended": [
+        "Fixing MLX Import and Installation Errors",
+        "Git Version Control Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "documentation": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "we": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "official": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "installing": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "default": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "cd": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "resources": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "your": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "passed": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "cpython": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "tests": [
+        "Git Version Control Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "specifically": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "module": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "activate": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "metal": [
+        "Fixing MLX Import and Installation Errors",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "dlopen": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "processor": [
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "fresh": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "mx": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "git": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "forge": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "using": [
+        "Python Code Quality Standards",
+        "Python Development Environment Setup",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "failed": [
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards"
+      ],
+      "html": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "quick": [
+        "Fixing MLX Import and Installation Errors"
+      ],
+      "available": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "www": [
+        "Fixing MLX Import and Installation Errors",
+        "Git Version Control Standards"
+      ],
+      "bash": [
+        "Git Version Control Standards",
+        "Fixing MLX Import and Installation Errors",
+        "Python Development Environment Setup"
+      ],
+      "model": [
+        "Efficient Data Loading Patterns with MLX",
+        "Fixing MLX Import and Installation Errors",
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "float32": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "loss": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "interface": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards"
+      ],
+      "adapt": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "producer_future": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "60": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "slower": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "blocking": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "batch_data": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "buffer": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "transfers": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "completed": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "monitor": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "can": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "while": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "batch_size": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "poor": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "start": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "size": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "inefficient": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "batches": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "proper": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "loaders": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "get": [
+        "Efficient Data Loading Patterns with MLX",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "finish": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "data_loader": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "none": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "instead": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "key": [
+        "Efficient Data Loading Patterns with MLX",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "patterns": [
+        "Efficient Data Loading Patterns with MLX",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "current": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "improvements": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Development Environment Setup"
+      ],
+      "between": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "returns": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "end": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "than": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "benchmark": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "40": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "sustained": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "args": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "bottleneck": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "datasets": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "threadpoolexecutor": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "compared": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "per": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "_batch_producer": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "threading": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "label": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "30": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "forward": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "prefetching": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "_preprocess_cpu": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "num_workers": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "items": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "imagenet": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "pitfalls": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "unnecessary": [
+        "Efficient Data Loading Patterns with MLX",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "loop": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "open": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "training": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "improvement": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "stream": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "stack": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "signal": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "64gb": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "npy": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "ndarray": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "how": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "safe": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "very": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "based": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "data_files": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "production": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "individual": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "tuple": [
+        "Efficient Data Loading Patterns with MLX",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "producer": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "data_path": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "actual": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards"
+      ],
+      "better": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "leverages": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "labels": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "2000": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "processing": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards"
+      ],
+      "file_list": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "preprocessed": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "thread": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "load": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "background": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "range": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "more": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "data": [
+        "Efficient Data Loading Patterns with MLX",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "especially": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "np": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "file_path": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "allows": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "hdf5": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "due": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "throughput": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "dummy": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "loss_fn": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "gotchas": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "limits": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "25": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "dataset": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "performance": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "submit": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "increased": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "self": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "1e": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "bool": [
+        "Efficient Data Loading Patterns with MLX",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "iterator": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "continue": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "batching": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "peak": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "keep": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards"
+      ],
+      "optimization": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "80": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "total": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "directly": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Development Environment Setup"
+      ],
+      "numpy": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "len": [
+        "Efficient Data Loading Patterns with MLX",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "single": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards"
+      ],
+      "prefetch_batches": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "memory": [
+        "Efficient Data Loading Patterns with MLX",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "tuples": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "pipeline": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "needs": [
+        "Efficient Data Loading Patterns with MLX",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "1m": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "__init__": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "traditional": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Development Environment Setup"
+      ],
+      "initialize": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards"
+      ],
+      "careful": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "list": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "batch_labels": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "already": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Development Environment Setup"
+      ],
+      "raw": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "samples": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "multi": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "8gb": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "pipelines": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Development Environment Setup"
+      ],
+      "text": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "leverage": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "arrays": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "explicit": [
+        "Efficient Data Loading Patterns with MLX",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "optimized": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "path": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "executor": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "too": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "example_training_loop": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "many": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "strategies": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "copies": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "management": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "futures": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "code": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "optional": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "streamingmlxdataloader": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "_stream_from_file": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "efficient": [
+        "Efficient Data Loading Patterns with MLX",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "12s": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "shuffle": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "normalize": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "enumerate": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "excessive": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "native": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Python Development Environment Setup"
+      ],
+      "queue": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "convert": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "style": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "1000": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "large": [
+        "Efficient Data Loading Patterns with MLX",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "glob": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "h5py": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "batch": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "state": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "function": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards"
+      ],
+      "generally": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "creates": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "prefetch": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "astype": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "spikes": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "file": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Python Development Environment Setup"
+      ],
+      "100": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "format": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "append": [
+        "Efficient Data Loading Patterns with MLX",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "naive": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "loading": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "__iter__": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "time": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "example": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "buffer_size": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "sharing": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "timeout": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "utilization": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "4x": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "often": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "impact": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "class": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "sample": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "safety": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "32": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "std": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "batched": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "preprocessing": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "bound": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "batch_idx": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "become": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "remaining": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "mean": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "principles": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "wait": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "reduced": [
+        "Efficient Data Loading Patterns with MLX",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "usage": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "entire": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "computation": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "yield": [
+        "Efficient Data Loading Patterns with MLX",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "unified": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "handle": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "threaded": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "tuning": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "processed": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "streaming": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "over": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Development Environment Setup"
+      ],
+      "process": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "conversions": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "break": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "concurrent": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards"
+      ],
+      "100gb": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "warning": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "fit": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "efficiency": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Python Code Quality Standards"
+      ],
+      "max_workers": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "yields": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "mlx_data": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "preprocess": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "consume": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "shared": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "epoch": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "int": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "max": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "showing": [
+        "Efficient Data Loading Patterns with MLX",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "setups": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "overflow": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "replace": [
+        "Efficient Data Loading Patterns with MLX",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "don": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "into": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "put": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "pass": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "85": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards"
+      ],
+      "pattern": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "context": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "loader": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "data_queue": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "multiple": [
+        "Efficient Data Loading Patterns with MLX",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "mlxdataloader": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "empty": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "fallback": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "results": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "files": [
+        "Efficient Data Loading Patterns with MLX",
+        "Git Version Control Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "they": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "_load_and_preprocess": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "_create_batch": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "transfer": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "reduction": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "full": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "need": [
+        "Efficient Data Loading Patterns with MLX",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "second": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "general": [
+        "Efficient Data Loading Patterns with MLX",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "45s": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "typing": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "maxsize": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "pathlib": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "once": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "everything": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "current_batch": [
+        "Efficient Data Loading Patterns with MLX"
+      ],
+      "knowledge": [
+        "Efficient Data Loading Patterns with MLX",
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "best": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "members": [
+        "Git Version Control Standards",
+        "Python Development Environment Setup"
+      ],
+      "rich": [
+        "Python Development Environment Setup"
+      ],
+      "universal": [
+        "Python Development Environment Setup"
+      ],
+      "provides": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "steps": [
+        "Python Development Environment Setup"
+      ],
+      "workflow": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup"
+      ],
+      "generation": [
+        "Git Version Control Standards",
+        "Python Development Environment Setup"
+      ],
+      "pytest": [
+        "Python Development Environment Setup"
+      ],
+      "mode": [
+        "Git Version Control Standards",
+        "Python Development Environment Setup"
+      ],
+      "automatically": [
+        "Python Development Environment Setup"
+      ],
+      "echo": [
+        "Python Development Environment Setup"
+      ],
+      "manual": [
+        "Git Version Control Standards",
+        "Python Development Environment Setup"
+      ],
+      "first": [
+        "Python Development Environment Setup"
+      ],
+      "activated": [
+        "Python Development Environment Setup"
+      ],
+      "shell": [
+        "Python Development Environment Setup"
+      ],
+      "reliable": [
+        "Python Development Environment Setup"
+      ],
+      "directory": [
+        "Python Development Environment Setup"
+      ],
+      "typer": [
+        "Git Version Control Standards",
+        "Python Development Environment Setup"
+      ],
+      "onboarding": [
+        "Python Code Quality Standards",
+        "Python Development Environment Setup"
+      ],
+      "speed": [
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "installed": [
+        "Python Development Environment Setup"
+      ],
+      "creation": [
+        "Git Version Control Standards",
+        "Python Development Environment Setup"
+      ],
+      "command": [
+        "Git Version Control Standards",
+        "Python Development Environment Setup"
+      ],
+      "ci": [
+        "Python Development Environment Setup"
+      ],
+      "null": [
+        "Python Development Environment Setup"
+      ],
+      "kb": [
+        "Git Version Control Standards",
+        "Python Development Environment Setup"
+      ],
+      "systems": [
+        "Python Development Environment Setup"
+      ],
+      "type": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "dependencies": [
+        "Python Development Environment Setup"
+      ],
+      "knowledge_base": [
+        "Git Version Control Standards",
+        "Python Development Environment Setup"
+      ],
+      "daily": [
+        "Python Development Environment Setup"
+      ],
+      "hatchling": [
+        "Python Development Environment Setup"
+      ],
+      "make": [
+        "Git Version Control Standards",
+        "Python Development Environment Setup"
+      ],
+      "backend": [
+        "Python Development Environment Setup"
+      ],
+      "migration": [
+        "Python Code Quality Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "annotations": [
+        "Python Code Quality Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "require": [
+        "Python Development Environment Setup"
+      ],
+      "managers": [
+        "Python Development Environment Setup"
+      ],
+      "main": [
+        "Git Version Control Standards",
+        "Python Development Environment Setup"
+      ],
+      "pyyaml": [
+        "Python Development Environment Setup"
+      ],
+      "dependency": [
+        "Python Development Environment Setup"
+      ],
+      "it": [
+        "Python Development Environment Setup"
+      ],
+      "specific": [
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "manages": [
+        "Python Development Environment Setup"
+      ],
+      "formatting": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "one": [
+        "Git Version Control Standards",
+        "Python Development Environment Setup"
+      ],
+      "then": [
+        "Python Development Environment Setup"
+      ],
+      "standards": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "applies": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "instantaneous": [
+        "Python Development Environment Setup"
+      ],
+      "100x": [
+        "Python Development Environment Setup"
+      ],
+      "reproducible": [
+        "Python Development Environment Setup"
+      ],
+      "new": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "optimizations": [
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "quality": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "repository": [
+        "Git Version Control Standards",
+        "Python Development Environment Setup"
+      ],
+      "crucial": [
+        "Python Development Environment Setup"
+      ],
+      "lock": [
+        "Python Development Environment Setup"
+      ],
+      "14": [
+        "Python Development Environment Setup"
+      ],
+      "cli": [
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "consistent": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "sync": [
+        "Python Development Environment Setup"
+      ],
+      "team": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup"
+      ],
+      "starting": [
+        "Python Code Quality Standards",
+        "Python Development Environment Setup",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "10x": [
+        "Python Development Environment Setup"
+      ],
+      "hints": [
+        "Python Code Quality Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "significant": [
+        "Python Development Environment Setup"
+      ],
+      "modern": [
+        "Python Code Quality Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "efficientai": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup"
+      ],
+      "navigate": [
+        "Python Development Environment Setup"
+      ],
+      "mandated": [
+        "Python Development Environment Setup"
+      ],
+      "improved": [
+        "Python Development Environment Setup"
+      ],
+      "across": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup"
+      ],
+      "dev": [
+        "Python Development Environment Setup"
+      ],
+      "chips": [
+        "Python Development Environment Setup"
+      ],
+      "fi": [
+        "Python Development Environment Setup"
+      ],
+      "16": [
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "resolve": [
+        "Git Version Control Standards",
+        "Python Development Environment Setup"
+      ],
+      "tools": [
+        "Python Code Quality Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "resolution": [
+        "Python Development Environment Setup"
+      ],
+      "control": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup"
+      ],
+      "sure": [
+        "Python Development Environment Setup"
+      ],
+      "versioning": [
+        "Git Version Control Standards",
+        "Python Development Environment Setup"
+      ],
+      "near": [
+        "Python Development Environment Setup"
+      ],
+      "practices": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "help": [
+        "Python Development Environment Setup"
+      ],
+      "complete": [
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "manager": [
+        "Python Development Environment Setup"
+      ],
+      "builds": [
+        "Python Development Environment Setup"
+      ],
+      "confusion": [
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "guidelines": [
+        "Git Version Control Standards",
+        "Python Development Environment Setup",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "ensuring": [
+        "Python Code Quality Standards",
+        "Python Development Environment Setup"
+      ],
+      "scripts": [
+        "Python Development Environment Setup"
+      ],
+      "toolkit": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup"
+      ],
+      "conflicts": [
+        "Git Version Control Standards",
+        "Python Development Environment Setup"
+      ],
+      "optimal": [
+        "Python Development Environment Setup",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "commands": [
+        "Python Development Environment Setup"
+      ],
+      "never": [
+        "Python Code Quality Standards",
+        "Git Version Control Standards",
+        "Python Development Environment Setup"
+      ],
+      "model_path": [
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "optimal_batch_size": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "standard": [
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "may": [
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "vs": [
+        "Git Version Control Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "gradient": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "configure": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "aggressive": [
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "mlx_memory_limit": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "available_memory_gb": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "room": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "eliminates": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "set": [
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "bytes": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "1f": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "long": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "adjust": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "enable": [
+        "Git Version Control Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "set_memory_limit": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "inference": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "capabilities": [
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "oom": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "force": [
+        "Git Version Control Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "estimation": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "affect": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "lazy": [
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "runs": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "total_memory": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "eval": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "exceed": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "heuristic": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "float": [
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "devices": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "float16": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "16gb": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "estimate": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "approximate": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "usable_memory_gb": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "out": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "parameters": [
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "stability": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "implement": [
+        "Git Version Control Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "precision": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "lead": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "scaling": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "allocate": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "llama": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "memory_fraction": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "free": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "particularly": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "evaluation": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "min": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "max_batch_size": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "28gb": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "3x": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "models": [
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "optimized_batch_size": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "leave": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "safetensors": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "use_mmap": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "dynamically": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "during": [
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "fraction": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "model_size_gb": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "rough": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "mapping": [
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "prevent": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "setup_mlx_memory_optimization": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "24": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "halve": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "sizes": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "allocation": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "base_batch_size": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "limit": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "processes": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "pool": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "small": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "strategically": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "15": [
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "7b": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "str": [
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "hour": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "10243": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "load_model_with_memory_mapping": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "fragmentation": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "reserve": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "without": [
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "virtual_memory": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "immediate": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "whether": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "suffix": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "stable": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "profiling": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "debugging": [
+        "Git Version Control Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "least": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "settings": [
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "checkpointing": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "weights": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "optimize_batch_size_for_memory": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "psutil": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "scale": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "loaded": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "75": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "item": [
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "locality": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "set_cache_limit": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "optimize": [
+        "Python Code Quality Standards",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "gb": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "intermediate": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "exists": [
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide",
+        "MLX Memory Optimization for Large Models"
+      ],
+      "memory_per_item_gb": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "2gb": [
+        "MLX Memory Optimization for Large Models"
+      ],
+      "callable": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "deque": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "read_text": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "benchmarks": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "abstract": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "deprecation": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "aliases": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "processors": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "migrating": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "dict": [
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "sheet": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "overhead": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "missing": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "collection": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "subscriptable": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "classes": [
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "startup": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "content": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "ins": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "important": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "codebases": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "ordereddict": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "tags": [
+        "Git Version Control Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "bad_mix": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "user": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "peps": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "complex": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "12": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "transition": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "get_user_data": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "chainmap": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "compatible": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "execution": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "0585": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "introduced": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "reducing": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "hinting": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "eventually": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "through": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "good_style": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "provide": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "became": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "strategy": [
+        "Git Version Control Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "what": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "config": [
+        "Git Version Control Standards",
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "iterable": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "file_paths": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "writing": [
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "unions": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "id": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "0604": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "cleaner": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "improving": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "significantly": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "process_files": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "callback": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "cheat": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "604": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "about": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "some": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "supports": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "options": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "syntax": [
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "pep": [
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "annotation": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "moved": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "benefits": [
+        "Git Version Control Standards",
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "built": [
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "process_data": [
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "implementation": [
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "checking": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "mixing": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "uses": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "inconsistent": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "imports": [
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "avoiding": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "allow": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "wrappers": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "mistakes": [
+        "Git Version Control Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "20": [
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "evolved": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "move": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "duplication": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "585": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "updating": [
+        "Git Version Control Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "update": [
+        "Git Version Control Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "inconsistently": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "ide": [
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "defaultdict": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "goals": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "union": [
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "runtime": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "counter": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "asyncgenerator": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "just": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "dataprocessor": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "myclass": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "resolving": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "warnings": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "removed": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "sequence": [
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "mypy": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "deprecationwarning": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "frozenset": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "generics": [
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "legacy": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "abc": [
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "wrong": [
+        "Git Version Control Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "operator": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "pre": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "might": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "library": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "mix": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "complain": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "asynchronously": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "base": [
+        "Git Version Control Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "deprecated": [
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "old": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "user_id": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "within": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "gradual": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "checkers": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "changes": [
+        "Git Version Control Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "types": [
+        "Git Version Control Standards",
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "async": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "checker": [
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "here": [
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "collections": [
+        "Python Code Quality Standards",
+        "Modern Python Type Annotations Migration Guide"
+      ],
+      "traceback": [
+        "Python Code Quality Standards"
+      ],
+      "modeloptimizer": [
+        "Python Code Quality Standards"
+      ],
+      "join": [
+        "Python Code Quality Standards"
+      ],
+      "bug": [
+        "Git Version Control Standards",
+        "Python Code Quality Standards"
+      ],
+      "metrics": [
+        "Python Code Quality Standards"
+      ],
+      "88": [
+        "Python Code Quality Standards"
+      ],
+      "linters": [
+        "Python Code Quality Standards"
+      ],
+      "success": [
+        "Python Code Quality Standards"
+      ],
+      "count": [
+        "Python Code Quality Standards"
+      ],
+      "methods": [
+        "Python Code Quality Standards"
+      ],
+      "optimization_level": [
+        "Python Code Quality Standards"
+      ],
+      "inheritance": [
+        "Python Code Quality Standards"
+      ],
+      "config_path": [
+        "Python Code Quality Standards"
+      ],
+      "method": [
+        "Python Code Quality Standards"
+      ],
+      "review": [
+        "Git Version Control Standards",
+        "Python Code Quality Standards"
+      ],
+      "automated": [
+        "Git Version Control Standards",
+        "Python Code Quality Standards"
+      ],
+      "purpose": [
+        "Python Code Quality Standards"
+      ],
+      "formatter": [
+        "Python Code Quality Standards"
+      ],
+      "length": [
+        "Python Code Quality Standards"
+      ],
+      "calls": [
+        "Python Code Quality Standards"
+      ],
+      "chaining": [
+        "Python Code Quality Standards"
+      ],
+      "variables": [
+        "Python Code Quality Standards"
+      ],
+      "upper_snake_case": [
+        "Python Code Quality Standards"
+      ],
+      "level": [
+        "Python Code Quality Standards"
+      ],
+      "parameter": [
+        "Python Code Quality Standards"
+      ],
+      "valueerror": [
+        "Python Code Quality Standards"
+      ],
+      "snake_case": [
+        "Python Code Quality Standards"
+      ],
+      "super": [
+        "Python Code Quality Standards"
+      ],
+      "reviewing": [
+        "Python Code Quality Standards"
+      ],
+      "docstrings": [
+        "Python Code Quality Standards"
+      ],
+      "json": [
+        "Python Code Quality Standards"
+      ],
+      "raises": [
+        "Python Code Quality Standards"
+      ],
+      "expected": [
+        "Git Version Control Standards",
+        "Python Code Quality Standards"
+      ],
+      "readability": [
+        "Python Code Quality Standards"
+      ],
+      "conventions": [
+        "Python Code Quality Standards"
+      ],
+      "raised": [
+        "Python Code Quality Standards"
+      ],
+      "requests": [
+        "Git Version Control Standards",
+        "Python Code Quality Standards"
+      ],
+      "getlogger": [
+        "Python Code Quality Standards"
+      ],
+      "miprov2": [
+        "Python Code Quality Standards"
+      ],
+      "optimizer_type": [
+        "Python Code Quality Standards"
+      ],
+      "maintainable": [
+        "Python Code Quality Standards"
+      ],
+      "leading": [
+        "Python Code Quality Standards"
+      ],
+      "customerror": [
+        "Python Code Quality Standards"
+      ],
+      "dictionary": [
+        "Python Code Quality Standards"
+      ],
+      "_perform_optimization": [
+        "Python Code Quality Standards"
+      ],
+      "responsibility": [
+        "Python Code Quality Standards"
+      ],
+      "pull": [
+        "Git Version Control Standards",
+        "Python Code Quality Standards"
+      ],
+      "indentation": [
+        "Python Code Quality Standards"
+      ],
+      "refactoring": [
+        "Git Version Control Standards",
+        "Python Code Quality Standards"
+      ],
+      "attributes": [
+        "Python Code Quality Standards"
+      ],
+      "optimizes": [
+        "Python Code Quality Standards"
+      ],
+      "reduces": [
+        "Python Code Quality Standards"
+      ],
+      "essential": [
+        "Git Version Control Standards",
+        "Python Code Quality Standards"
+      ],
+      "private": [
+        "Python Code Quality Standards"
+      ],
+      "catch": [
+        "Python Code Quality Standards"
+      ],
+      "incorrect": [
+        "Python Code Quality Standards"
+      ],
+      "compliance": [
+        "Python Code Quality Standards"
+      ],
+      "info": [
+        "Python Code Quality Standards"
+      ],
+      "describe": [
+        "Python Code Quality Standards"
+      ],
+      "optimizer": [
+        "Python Code Quality Standards"
+      ],
+      "maintenance": [
+        "Git Version Control Standards",
+        "Python Code Quality Standards"
+      ],
+      "constants": [
+        "Python Code Quality Standards"
+      ],
+      "mkdir": [
+        "Python Code Quality Standards"
+      ],
+      "logger": [
+        "Python Code Quality Standards"
+      ],
+      "value": [
+        "Python Code Quality Standards"
+      ],
+      "optimizationfailureerror": [
+        "Python Code Quality Standards"
+      ],
+      "preserve": [
+        "Python Code Quality Standards"
+      ],
+      "perform": [
+        "Python Code Quality Standards"
+      ],
+      "optimize_for_domain": [
+        "Python Code Quality Standards"
+      ],
+      "mandatory": [
+        "Python Code Quality Standards"
+      ],
+      "details": [
+        "Python Code Quality Standards"
+      ],
+      "line": [
+        "Git Version Control Standards",
+        "Python Code Quality Standards"
+      ],
+      "leveraging": [
+        "Python Code Quality Standards"
+      ],
+      "tool": [
+        "Python Code Quality Standards"
+      ],
+      "logging": [
+        "Python Code Quality Standards"
+      ],
+      "domain": [
+        "Python Code Quality Standards"
+      ],
+      "pascalcase": [
+        "Python Code Quality Standards"
+      ],
+      "functions": [
+        "Python Code Quality Standards"
+      ],
+      "applicable": [
+        "Python Code Quality Standards"
+      ],
+      "tabs": [
+        "Python Code Quality Standards"
+      ],
+      "enables": [
+        "Python Code Quality Standards"
+      ],
+      "characters": [
+        "Python Code Quality Standards"
+      ],
+      "filenotfounderror": [
+        "Python Code Quality Standards"
+      ],
+      "following": [
+        "Git Version Control Standards",
+        "Python Code Quality Standards"
+      ],
+      "exceptions": [
+        "Python Code Quality Standards"
+      ],
+      "status": [
+        "Python Code Quality Standards"
+      ],
+      "parents": [
+        "Python Code Quality Standards"
+      ],
+      "bugs": [
+        "Python Code Quality Standards"
+      ],
+      "originalerror": [
+        "Python Code Quality Standards"
+      ],
+      "maintaining": [
+        "Git Version Control Standards",
+        "Python Code Quality Standards"
+      ],
+      "black": [
+        "Python Code Quality Standards"
+      ],
+      "containing": [
+        "Python Code Quality Standards"
+      ],
+      "message": [
+        "Git Version Control Standards",
+        "Python Code Quality Standards"
+      ],
+      "strings": [
+        "Python Code Quality Standards"
+      ],
+      "dirname": [
+        "Python Code Quality Standards"
+      ],
+      "naming": [
+        "Git Version Control Standards",
+        "Python Code Quality Standards"
+      ],
+      "spaces": [
+        "Python Code Quality Standards"
+      ],
+      "logic": [
+        "Python Code Quality Standards"
+      ],
+      "underscore": [
+        "Python Code Quality Standards"
+      ],
+      "readable": [
+        "Git Version Control Standards",
+        "Python Code Quality Standards"
+      ],
+      "integration": [
+        "Git Version Control Standards",
+        "Python Code Quality Standards"
+      ],
+      "makedirs": [
+        "Python Code Quality Standards"
+      ],
+      "pep8": [
+        "Python Code Quality Standards"
+      ],
+      "these": [
+        "Git Version Control Standards",
+        "Python Code Quality Standards"
+      ],
+      "exist": [
+        "Python Code Quality Standards"
+      ],
+      "error_msg": [
+        "Python Code Quality Standards"
+      ],
+      "exist_ok": [
+        "Python Code Quality Standards"
+      ],
+      "50": [
+        "Python Code Quality Standards"
+      ],
+      "quality_requirements": [
+        "Python Code Quality Standards"
+      ],
+      "functionality": [
+        "Git Version Control Standards",
+        "Python Code Quality Standards"
+      ],
+      "domain_module": [
+        "Python Code Quality Standards"
+      ],
+      "parent": [
+        "Python Code Quality Standards"
+      ],
+      "contributors": [
+        "Python Code Quality Standards"
+      ],
+      "concerns": [
+        "Git Version Control Standards"
+      ],
+      "indexer": [
+        "Git Version Control Standards"
+      ],
+      "invalidation": [
+        "Git Version Control Standards"
+      ],
+      "markdown": [
+        "Git Version Control Standards"
+      ],
+      "stuff": [
+        "Git Version Control Standards"
+      ],
+      "feature": [
+        "Git Version Control Standards"
+      ],
+      "wip": [
+        "Git Version Control Standards"
+      ],
+      "branch": [
+        "Git Version Control Standards"
+      ],
+      "carefully": [
+        "Git Version Control Standards"
+      ],
+      "focused": [
+        "Git Version Control Standards"
+      ],
+      "prevents": [
+        "Git Version Control Standards"
+      ],
+      "convention": [
+        "Git Version Control Standards"
+      ],
+      "adding": [
+        "Git Version Control Standards"
+      ],
+      "scopes": [
+        "Git Version Control Standards"
+      ],
+      "typeerror": [
+        "Git Version Control Standards"
+      ],
+      "component_name": [
+        "Git Version Control Standards"
+      ],
+      "each": [
+        "Git Version Control Standards"
+      ],
+      "updates": [
+        "Git Version Control Standards"
+      ],
+      "conventional": [
+        "Git Version Control Standards"
+      ],
+      "v0": [
+        "Git Version Control Standards"
+      ],
+      "brief": [
+        "Git Version Control Standards"
+      ],
+      "change": [
+        "Git Version Control Standards"
+      ],
+      "reduce": [
+        "Git Version Control Standards"
+      ],
+      "follows": [
+        "Git Version Control Standards"
+      ],
+      "suggestions": [
+        "Git Version Control Standards"
+      ],
+      "separate": [
+        "Git Version Control Standards"
+      ],
+      "request": [
+        "Git Version Control Standards"
+      ],
+      "push": [
+        "Git Version Control Standards"
+      ],
+      "mixed": [
+        "Git Version Control Standards"
+      ],
+      "tasks": [
+        "Git Version Control Standards"
+      ],
+      "prompts": [
+        "Git Version Control Standards"
+      ],
+      "scm": [
+        "Git Version Control Standards"
+      ],
+      "validation": [
+        "Git Version Control Standards"
+      ],
+      "consistency": [
+        "Git Version Control Standards"
+      ],
+      "tracking": [
+        "Git Version Control Standards"
+      ],
+      "testing": [
+        "Git Version Control Standards"
+      ],
+      "indexing": [
+        "Git Version Control Standards"
+      ],
+      "entry": [
+        "Git Version Control Standards"
+      ],
+      "fixes": [
+        "Git Version Control Standards"
+      ],
+      "interactive": [
+        "Git Version Control Standards"
+      ],
+      "unit": [
+        "Git Version Control Standards"
+      ],
+      "users": [
+        "Git Version Control Standards"
+      ],
+      "non": [
+        "Git Version Control Standards"
+      ],
+      "origin": [
+        "Git Version Control Standards"
+      ],
+      "commits": [
+        "Git Version Control Standards"
+      ],
+      "release": [
+        "Git Version Control Standards"
+      ],
+      "scoring": [
+        "Git Version Control Standards"
+      ],
+      "motivation": [
+        "Git Version Control Standards"
+      ],
+      "which": [
+        "Git Version Control Standards"
+      ],
+      "via": [
+        "Git Version Control Standards"
+      ],
+      "coordination": [
+        "Git Version Control Standards"
+      ],
+      "archaeology": [
+        "Git Version Control Standards"
+      ],
+      "branching": [
+        "Git Version Control Standards"
+      ],
+      "colon": [
+        "Git Version Control Standards"
+      ],
+      "follow": [
+        "Git Version Control Standards"
+      ],
+      "clarity": [
+        "Git Version Control Standards"
+      ],
+      "preparing": [
+        "Git Version Control Standards"
+      ],
+      "merge": [
+        "Git Version Control Standards"
+      ],
+      "triggers": [
+        "Git Version Control Standards"
+      ],
+      "template": [
+        "Git Version Control Standards"
+      ],
+      "extract": [
+        "Git Version Control Standards"
+      ],
+      "phase": [
+        "Git Version Control Standards"
+      ],
+      "feat": [
+        "Git Version Control Standards"
+      ],
+      "deps": [
+        "Git Version Control Standards"
+      ],
+      "major": [
+        "Git Version Control Standards"
+      ],
+      "similarity": [
+        "Git Version Control Standards"
+      ],
+      "own": [
+        "Git Version Control Standards"
+      ],
+      "refactor": [
+        "Git Version Control Standards"
+      ],
+      "engine": [
+        "Git Version Control Standards"
+      ],
+      "creating": [
+        "Git Version Control Standards"
+      ],
+      "forget": [
+        "Git Version Control Standards"
+      ],
+      "vague": [
+        "Git Version Control Standards"
+      ],
+      "conventionalcommits": [
+        "Git Version Control Standards"
+      ],
+      "en": [
+        "Git Version Control Standards"
+      ],
+      "good": [
+        "Git Version Control Standards"
+      ],
+      "added": [
+        "Git Version Control Standards"
+      ],
+      "collaborating": [
+        "Git Version Control Standards"
+      ],
+      "history": [
+        "Git Version Control Standards"
+      ],
+      "fields": [
+        "Git Version Control Standards"
+      ],
+      "changelog": [
+        "Git Version Control Standards"
+      ],
+      "provided": [
+        "Git Version Control Standards"
+      ],
+      "guided": [
+        "Git Version Control Standards"
+      ],
+      "v2": [
+        "Git Version Control Standards"
+      ],
+      "enhancement": [
+        "Git Version Control Standards"
+      ],
+      "bad": [
+        "Git Version Control Standards"
+      ],
+      "category": [
+        "Git Version Control Standards"
+      ],
+      "locally": [
+        "Git Version Control Standards"
+      ],
+      "fuzzy": [
+        "Git Version Control Standards"
+      ],
+      "meaningful": [
+        "Git Version Control Standards"
+      ],
+      "improves": [
+        "Git Version Control Standards"
+      ],
+      "component": [
+        "Git Version Control Standards"
+      ],
+      "after": [
+        "Git Version Control Standards"
+      ],
+      "search": [
+        "Git Version Control Standards"
+      ],
+      "typo": [
+        "Git Version Control Standards"
+      ],
+      "gitlab": [
+        "Git Version Control Standards"
+      ],
+      "making": [
+        "Git Version Control Standards"
+      ],
+      "etc": [
+        "Git Version Control Standards"
+      ],
+      "chore": [
+        "Git Version Control Standards"
+      ],
+      "branches": [
+        "Git Version Control Standards"
+      ],
+      "test_cli": [
+        "Git Version Control Standards"
+      ],
+      "breaking": [
+        "Git Version Control Standards"
+      ],
+      "adds": [
+        "Git Version Control Standards"
+      ],
+      "commit": [
+        "Git Version Control Standards"
+      ],
+      "semantic": [
+        "Git Version Control Standards"
+      ],
+      "scope": [
+        "Git Version Control Standards"
+      ],
+      "phase_number": [
+        "Git Version Control Standards"
+      ],
+      "book": [
+        "Git Version Control Standards"
+      ],
+      "matching": [
+        "Git Version Control Standards"
+      ],
+      "checkout": [
+        "Git Version Control Standards"
+      ],
+      "examples": [
+        "Git Version Control Standards"
+      ],
+      "fetch": [
+        "Git Version Control Standards"
+      ],
+      "specification": [
+        "Git Version Control Standards"
+      ],
+      "updated": [
+        "Git Version Control Standards"
+      ],
+      "logical": [
+        "Git Version Control Standards"
+      ],
+      "tag": [
+        "Git Version Control Standards"
+      ],
+      "rebase": [
+        "Git Version Control Standards"
+      ],
+      "descriptive": [
+        "Git Version Control Standards"
+      ],
+      "checklist": [
+        "Git Version Control Standards"
+      ]
+    }
+  },
+  "file_hashes": {}
+}
