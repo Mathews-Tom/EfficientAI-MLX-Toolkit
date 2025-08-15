@@ -1,0 +1,66 @@
+# Configuration Template for EfficientAI-MLX-Toolkit
+# Created: 2025-08-14
+# Author: Tom Mathews
+
+# Project Configuration
+project:
+  name: "EfficientAI-MLX-Toolkit"
+  version: "0.1.0"
+  description: "Optimizing AI for the edge — fine-tuning, accelerating, and deploying on Apple Silicon."
+
+# Apple Silicon / MLX Configuration
+hardware:
+  use_mlx: true
+  memory_limit: 16
+  device: "auto"
+  unified_memory: true
+
+# Model Configuration
+model:
+  architecture: "transformer"
+  hidden_size: 768
+  num_layers: 12
+  num_heads: 12
+  vocab_size: 50257
+  max_sequence_length: 2048
+  dropout: 0.1
+  layer_norm_eps: 1e-5
+
+# Training Configuration
+training:
+  batch_size: 32
+  learning_rate: 5e-4
+  num_epochs: 10
+  optimizer: "adamw"
+  weight_decay: 0.01
+  warmup_steps: 1000
+  gradient_clipping: 1.0
+  gradient_accumulation_steps: 1
+  use_mixed_precision: true
+  save_every_n_steps: 1000
+  checkpoint_dir: "./checkpoints"
+  eval_every_n_steps: 500
+  eval_batch_size: 64
+
+# Data Configuration
+data:
+  train_data_path: "./data/train"
+  val_data_path: "./data/validation"
+  test_data_path: "./data/test"
+  tokenizer: "gpt2"
+  max_length: 512
+  padding: true
+  truncation: true
+  num_workers: 4
+  prefetch_factor: 2
+  pin_memory: true
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  log_to_file: true
+  log_file: "./logs/training.log"
+  use_wandb: false
+  wandb_project: "efficientai-mlx-toolkit"
+  wandb_entity: "mathews-tom"
