@@ -123,6 +123,67 @@ class DataProcessor:
         }
 ```
 
+### 🔄 Migration Cheat Sheet
+
+| **Old `typing` form**         | **Modern replacement**                 | **Notes**                |
+| ----------------------------- | -------------------------------------- | ------------------------ |
+| `typing.List[T]`              | `list[T]`                              | Use built-in `list`      |
+| `typing.Dict[K, V]`           | `dict[K, V]`                           | Use built-in `dict`      |
+| `typing.Tuple[T1, T2]`        | `tuple[T1, T2]`                        | Use built-in `tuple`     |
+| `typing.Set[T]`               | `set[T]`                               | Use built-in `set`       |
+| `typing.FrozenSet[T]`         | `frozenset[T]`                         | Use built-in `frozenset` |
+| `typing.Type[T]`              | `type[T]`                              | Use built-in `type`      |
+| `typing.Optional[T]`          | `T \| None`                            | PEP 604 union syntax     |
+| `typing.Union[T1, T2]`        | `T1 \| T2`                             | PEP 604 union syntax     |
+| `typing.Deque[T]`             | `collections.deque[T]`                 | From `collections`       |
+| `typing.DefaultDict[K, V]`    | `collections.defaultdict[K, V]`        | From `collections`       |
+| `typing.OrderedDict[K, V]`    | `collections.OrderedDict[K, V]`        | From `collections`       |
+| `typing.Counter[T]`           | `collections.Counter[T]`               | From `collections`       |
+| `typing.ChainMap[K, V]`       | `collections.ChainMap[K, V]`           | From `collections`       |
+| `typing.AsyncGenerator[T, R]` | `collections.abc.AsyncGenerator[T, R]` | From `collections.abc`   |
+| `typing.AsyncIterable[T]`     | `collections.abc.AsyncIterable[T]`     | From `collections.abc`   |
+| `typing.AsyncIterator[T]`     | `collections.abc.AsyncIterator[T]`     | From `collections.abc`   |
+| `typing.Awaitable[T]`         | `collections.abc.Awaitable[T]`         | From `collections.abc`   |
+| `typing.ByteString`           | `collections.abc.ByteString`           | From `collections.abc`   |
+| `typing.Callable[..., R]`     | `collections.abc.Callable[..., R]`     | From `collections.abc`   |
+| `typing.Container[T]`         | `collections.abc.Container[T]`         | From `collections.abc`   |
+| `typing.Coroutine[T, U, V]`   | `collections.abc.Coroutine[T, U, V]`   | From `collections.abc`   |
+| `typing.Generator[T, S, R]`   | `collections.abc.Generator[T, S, R]`   | From `collections.abc`   |
+| `typing.Hashable`             | `collections.abc.Hashable`             | From `collections.abc`   |
+| `typing.ItemsView[K, V]`      | `collections.abc.ItemsView[K, V]`      | From `collections.abc`   |
+| `typing.Iterable[T]`          | `collections.abc.Iterable[T]`          | From `collections.abc`   |
+| `typing.Iterator[T]`          | `collections.abc.Iterator[T]`          | From `collections.abc`   |
+| `typing.KeysView[K]`          | `collections.abc.KeysView[K]`          | From `collections.abc`   |
+| `typing.Mapping[K, V]`        | `collections.abc.Mapping[K, V]`        | From `collections.abc`   |
+| `typing.MappingView`          | `collections.abc.MappingView`          | From `collections.abc`   |
+| `typing.MutableMapping[K, V]` | `collections.abc.MutableMapping[K, V]` | From `collections.abc`   |
+| `typing.MutableSequence[T]`   | `collections.abc.MutableSequence[T]`   | From `collections.abc`   |
+| `typing.MutableSet[T]`        | `collections.abc.MutableSet[T]`        | From `collections.abc`   |
+| `typing.Reversible[T]`        | `collections.abc.Reversible[T]`        | From `collections.abc`   |
+| `typing.Sequence[T]`          | `collections.abc.Sequence[T]`          | From `collections.abc`   |
+| `typing.Sized`                | `collections.abc.Sized`                | From `collections.abc`   |
+| `typing.ValuesView[V]`        | `collections.abc.ValuesView[V]`        | From `collections.abc`   |
+
+---
+
+### 🛠 Practical Examples
+
+**Old (pre–Python 3.9/3.10)**
+
+```python
+from typing import List, Dict, Optional
+
+def get_user(id: int) -> Optional[Dict[str, str]]:
+    ...
+```
+
+**New (Python 3.9+ and 3.10+ syntax)**
+
+```python
+def get_user(id: int) -> dict[str, str] | None:
+    ...
+```
+
 ### Complete Migration Cheat Sheet
 
 ```python

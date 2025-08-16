@@ -1,7 +1,7 @@
 [project]
 name = "efficientai-mlx-toolkit"
 version = "0.1.0"
-description = "Add your description here"
+description = "Apple Silicon optimized AI toolkit with intelligent DSPy-powered automation"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
@@ -10,14 +10,143 @@ dependencies = [
     "typer>=0.16.0",
     "rich>=14.1.0",
     "pytest>=8.4.1",
+    # DSPy Integration Framework dependencies
+    "dspy>=3.0.0",
+    "litellm>=1.40.0",
+    # Apple Silicon ML dependencies
+    "mlx>=0.15.0",
+    "mlx-lm>=0.15.0",
+    # FastAPI for production deployment
+    "fastapi>=0.100.0",
+    "uvicorn>=0.24.0",
+    # MLflow for experiment tracking
+    "mlflow>=2.8.0",
+    # Additional ML dependencies
+    "transformers>=4.30.0",
+    "datasets>=2.12.0",
+    "torch>=2.0.0",
+    "scikit-learn>=1.3.0",
+    "numpy>=1.24.0",
+    "pandas>=2.0.0",
+    "pydantic>=2.11.7",
+    "sse-starlette>=3.0.2",
 ]
-
-[project.scripts]
-kb = "knowledge_base.cli:main"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
+[project.optional-dependencies]
+dev = [
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "mypy>=1.4.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+    "pytest-benchmark>=4.0.0",
+]
+apple-silicon = [
+    "coremltools>=7.0.0",
+    "torch>=2.0.0; sys_platform == 'darwin' and platform_machine == 'arm64'",
+]
+
+[project.scripts]
+kb = "knowledge_base.cli:main"
+dspy-toolkit = "dspy_toolkit.cli:main"
+
 [tool.hatch.build.targets.wheel]
-packages = ["knowledge_base"]
+packages = ["knowledge_base", "dspy_toolkit"]
+
+[tool.black]
+line-length = 100
+target-version = ['py312']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 100
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--verbose",
+    "--cov=dspy_toolkit",
+    "--cov=knowledge_base",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "benchmark: marks tests as benchmarks",
+    "memory: marks tests as memory profiling tests",
+    "apple_silicon: marks tests that require Apple Silicon hardware",
+]
+
+[tool.coverage.run]
+source = ["dspy_toolkit", "knowledge_base"]
+omit = [
+    "*/tests/*",
+    "*/test_*",
+    "*/__pycache__/*",
+    "*/.*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
+
+[dependency-groups]
+dev = [
+    "pytest-asyncio>=1.1.0",
+    "pytest-benchmark>=5.1.0",
+    "pytest-cov>=6.2.1",
+]
