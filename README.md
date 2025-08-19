@@ -128,11 +128,13 @@ uv run black . && uv run isort . && uv run ruff check . && uv run mypy .
 ## 🎯 Planned Features
 
 ### 🔄 In Development
+
 - **LoRA Fine-tuning MLX**: Apple Silicon optimized LoRA implementation
 - **Quantized Model Benchmarks**: 4-bit/8-bit quantization with MLX
 - **Model Compression Pipeline**: Pruning and distillation for CPU deployment
 
 ### 📅 Roadmap
+
 - **Multimodal CLIP Fine-tuning**: Vision-language model optimization
 - **Core ML Diffusion**: Stable Diffusion for Apple Neural Engine
 - **Federated Learning System**: Distributed training across Apple devices
@@ -164,12 +166,14 @@ uv run black . && uv run isort . && uv run ruff check . && uv run mypy .
 ## 🔧 System Requirements
 
 ### Recommended (Apple Silicon)
+
 - **macOS 12.0+** with Apple Silicon (M1/M2/M3)
-- **Python 3.12+** 
+- **Python 3.12+**
 - **MLX framework** for optimal performance
 - **16GB+ RAM** for model training/inference
 
 ### Supported
+
 - **macOS/Linux/Windows** with fallback implementations
 - **Intel/AMD processors** with CPU optimizations
 - **CUDA GPUs** with PyTorch backend

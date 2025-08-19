@@ -1,3 +1,1 @@
-"""
-Tests for DSPy Integration Framework.
-"""
+"""Tests for the EfficientAI-MLX-Toolkit."""
