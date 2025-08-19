@@ -7,9 +7,12 @@
 
 # Python
 __pycache__/
+.pytest_cache
 *.py[cod]
 *$py.class
-*.so
+*.pyc
+*.pyo
+*.pyd
 .Python
 build/
 develop-eggs/
@@ -26,6 +29,8 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+.coverage
+htmlcov/
 
 # Virtual environments
 .env
@@ -51,3 +56,11 @@ venv.bak/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Local & Cached files
+.benchmarks
+.dspy
+.dspy_cache
+.dspy_config
+.dspy_programs
+PR_MESSAGE.md
