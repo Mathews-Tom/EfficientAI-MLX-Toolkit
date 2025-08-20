@@ -1,0 +1,191 @@
+# Default configuration for LoRA Fine-tuning Framework
+# Optimized for Apple Silicon (M1/M2/M3) with MLX acceleration
+
+# LoRA Configuration
+lora:
+  rank: 16                          # LoRA rank (lower = faster, higher = better quality)
+  alpha: 32.0                       # LoRA scaling factor (typically 2x rank)
+  dropout: 0.1                      # LoRA dropout rate
+  target_modules:                   # Modules to apply LoRA adaptation
+    - "q_proj"                      # Query projection
+    - "k_proj"                      # Key projection  
+    - "v_proj"                      # Value projection
+    - "o_proj"                      # Output projection
+    - "gate_proj"                   # Gate projection (for Llama-style models)
+    - "up_proj"                     # Up projection
+    - "down_proj"                   # Down projection
+  fan_in_fan_out: false            # For certain model architectures
+  bias: "none"                     # "none", "all", "lora_only"
+  modules_to_save: []              # Additional modules to save
+  use_mlx_quantization: true       # Enable MLX quantization
+  mlx_precision: "float16"         # MLX precision: "float16", "bfloat16", "float32"
+
+# Training Configuration
+training:
+  # Model and Data
+  model_name: "mlx-community/Llama-3.2-1B-Instruct-4bit"    # Base model name or path (MLX-compatible)
+  dataset_path: "data/samples/"              # Path to training dataset
+  output_dir: "outputs/"                     # Output directory for models and logs
+  
+  # Training Hyperparameters
+  batch_size: 2                              # Batch size (start small for Apple Silicon)
+  learning_rate: 2e-4                        # Learning rate
+  num_epochs: 3                              # Number of training epochs
+  warmup_steps: 100                          # Warmup steps for learning rate
+  weight_decay: 0.01                         # Weight decay for regularization
+  gradient_clipping: 1.0                     # Gradient clipping threshold
+  
+  # Optimization Settings
+  optimizer: "adamw"                         # Optimizer: "adamw", "sgd", "adafactor"
+  scheduler: "linear"                        # LR scheduler: "linear", "cosine", "polynomial"
+  
+  # MLX-Specific Settings
+  use_mlx: true                              # Enable MLX acceleration
+  mlx_memory_limit: null                     # Memory limit in MB (null for auto)
+  gradient_accumulation_steps: 1             # Gradient accumulation steps
+  
+  # Evaluation and Checkpointing
+  eval_steps: 500                            # Steps between evaluations
+  save_steps: 1000                           # Steps between checkpoints
+  logging_steps: 100                         # Steps between logging
+  max_checkpoints: 3                         # Maximum checkpoints to keep
+  
+  # Early Stopping
+  early_stopping_patience: 5                 # Epochs to wait for improvement
+  early_stopping_threshold: 0.001            # Minimum improvement threshold
+  
+  # Data Processing
+  max_sequence_length: 512                   # Maximum sequence length
+  data_preprocessing_num_workers: 4          # Data preprocessing workers
+
+# Inference Configuration
+inference:
+  # Model Loading
+  model_path: "outputs/best_model/"          # Path to trained model
+  device: "mps"                              # Device: "mps", "cpu", "mlx"
+  precision: "float16"                       # Inference precision
+  
+  # Generation Parameters
+  max_length: 100                            # Maximum tokens to generate
+  temperature: 0.7                           # Sampling temperature
+  top_p: 0.9                                # Nucleus sampling parameter
+  top_k: 50                                  # Top-k sampling parameter
+  repetition_penalty: 1.1                   # Repetition penalty
+  pad_token_id: null                         # Padding token ID
+  eos_token_id: null                         # End-of-sequence token ID
+  
+  # Batching and Performance
+  batch_size: 1                              # Inference batch size
+  num_beams: 1                               # Number of beams for beam search
+  use_cache: true                            # Use key-value cache
+  
+  # MLX-Specific Settings
+  mlx_memory_efficient: true                 # Enable memory-efficient mode
+  mlx_compile: true                          # Compile model for optimization
+
+# Hyperparameter Optimization Configuration
+optimization:
+  # Search Space Ranges
+  rank_range: [8, 64]                        # LoRA rank range
+  alpha_range: [8.0, 64.0]                   # Alpha range
+  learning_rate_range: [1e-5, 5e-4]          # Learning rate range
+  dropout_range: [0.0, 0.3]                 # Dropout range
+  
+  # Optimization Settings
+  n_trials: 20                               # Number of optimization trials
+  metric: "perplexity"                       # Optimization metric
+  direction: "minimize"                      # "minimize" or "maximize"
+  
+  # Search Strategy
+  sampler: "tpe"                             # Sampler: "tpe", "random", "grid"
+  pruner: "median"                           # Pruner: "median", "hyperband", "none"
+  
+  # Early Stopping for Trials
+  min_trials: 5                              # Minimum trials before early stopping
+  patience: 3                                # Patience for optimization early stopping
+
+# Apple Silicon Specific Settings
+hardware:
+  # Memory Management
+  unified_memory_optimization: true          # Optimize for unified memory architecture
+  memory_mapping_strategy: "auto"            # "auto", "aggressive", "conservative"
+  
+  # Performance Settings
+  prefer_mlx: true                           # Prefer MLX over other frameworks
+  fallback_to_mps: true                      # Fallback to MPS if MLX unavailable
+  enable_metal_performance_shaders: true    # Use Metal Performance Shaders
+  
+  # Monitoring
+  memory_monitoring: true                    # Enable memory usage monitoring
+  performance_profiling: false              # Enable detailed performance profiling
+
+# Logging and Monitoring
+logging:
+  level: "INFO"                              # Logging level
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/training.log"                  # Log file path
+  console: true                              # Enable console logging
+  
+  # Weights & Biases Integration
+  wandb:
+    enabled: false                           # Enable W&B logging
+    project: "lora-finetuning"               # W&B project name
+    entity: null                             # W&B entity (organization)
+    name: null                               # Run name (auto-generated if null)
+    log_frequency: 100                       # Log frequency in steps
+    log_gradients: false                     # Log gradient histograms
+  
+  # MLflow Integration
+  mlflow:
+    enabled: false                           # Enable MLflow logging
+    tracking_uri: null                       # MLflow tracking URI
+    experiment_name: "lora-experiments"      # Experiment name
+    
+# Data Processing
+data:
+  # Dataset Settings
+  train_split: 0.8                           # Training split ratio
+  val_split: 0.1                             # Validation split ratio
+  test_split: 0.1                            # Test split ratio
+  
+  # Preprocessing
+  tokenizer_truncation: true                 # Enable tokenizer truncation
+  tokenizer_padding: true                    # Enable tokenizer padding
+  remove_columns: []                         # Columns to remove from dataset
+  
+  # Data Loading
+  streaming: false                           # Use streaming datasets
+  shuffle: true                              # Shuffle training data
+  seed: 42                                   # Random seed for reproducibility
+
+# Deployment Settings
+deployment:
+  # FastAPI Server
+  host: "0.0.0.0"                            # Server host
+  port: 8000                                 # Server port
+  workers: 1                                 # Number of worker processes
+  reload: false                              # Enable auto-reload for development
+  
+  # Request Limits
+  max_concurrent_requests: 10                # Maximum concurrent requests
+  request_timeout: 60.0                     # Request timeout in seconds
+  max_prompt_length: 2048                    # Maximum prompt length
+  
+  # Model Serving
+  model_cache_size: 1                        # Number of models to cache
+  enable_streaming: false                    # Enable streaming responses
+  
+# Development Settings
+development:
+  # Debugging
+  debug_mode: false                          # Enable debug mode
+  profile_memory: false                      # Enable memory profiling
+  profile_compute: false                     # Enable compute profiling
+  
+  # Testing
+  run_quick_test: false                      # Run quick validation test
+  test_data_size: 100                        # Size of test dataset
+  
+  # Reproducibility
+  set_deterministic: true                    # Set deterministic behavior
+  seed: 42                                   # Global random seed

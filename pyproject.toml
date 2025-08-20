@@ -64,7 +64,7 @@ monitoring = [
 efficientai-toolkit = "efficientai_mlx_toolkit.cli:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["utils", "environment", "benchmarks", "projects"]
+packages = ["efficientai_mlx_toolkit", "utils", "environment", "benchmarks", "projects"]
 
 [tool.black]
 line-length = 100
