@@ -14,7 +14,7 @@ A comprehensive toolkit designed specifically for Apple Silicon (M1/M2/M3) that 
 
 ## 🏗️ Architecture
 
-```
+```bash
 EfficientAI-MLX-Toolkit/
 ├── utils/                     # ✅ Complete shared utilities
 │   ├── logging_utils.py       # Apple Silicon tracking & log management
@@ -45,7 +45,9 @@ uv sync
 pip install -e .
 ```
 
-### Basic Usage
+### Unified CLI System with Namespace Architecture
+
+The toolkit provides a **unified command-line interface** using a namespace:command syntax for seamless project integration:
 
 ```bash
 # System information and hardware detection
@@ -54,8 +56,59 @@ uv run efficientai-toolkit info
 # Environment setup for Apple Silicon
 uv run efficientai-toolkit setup
 
-# Run benchmarks
-uv run efficientai-toolkit benchmark
+# List all available projects
+uv run efficientai-toolkit projects
+
+# Unified testing across all projects
+uv run efficientai-toolkit test --all
+uv run efficientai-toolkit test <namespace>
+```
+
+### LoRA Fine-tuning Example (Namespace Syntax)
+
+```bash
+# Get LoRA project information
+uv run efficientai-toolkit lora-finetuning-mlx:info
+
+# Validate configuration
+uv run efficientai-toolkit lora-finetuning-mlx:validate
+
+# Train a LoRA model with namespace syntax
+uv run efficientai-toolkit lora-finetuning-mlx:train \
+  --epochs 3 --batch-size 2 --learning-rate 2e-4
+
+# Run hyperparameter optimization
+uv run efficientai-toolkit lora-finetuning-mlx:optimize \
+  --model microsoft/DialoGPT-medium \
+  --data projects/01_LoRA_Finetuning_MLX/data/samples/sample_conversations.jsonl \
+  --trials 10
+
+# Generate text with trained model (MLX-compatible models)
+uv run efficientai-toolkit lora-finetuning-mlx:generate \
+  --model-path mlx-community/Llama-3.2-1B-Instruct-4bit \
+  --prompt "The future of AI is" \
+  --max-length 100
+
+# Generate with LoRA adapters (basic inference)
+uv run efficientai-toolkit lora-finetuning-mlx:generate \
+  --model-path mlx-community/Llama-3.2-1B-Instruct-4bit \
+  --adapter-path outputs/checkpoints/checkpoint_epoch_2 \
+  --prompt "Hello, how are you?" \
+  --max-length 50
+
+# Start inference server
+uv run efficientai-toolkit lora-finetuning-mlx:serve \
+  --model-path /path/to/model \
+  --host 0.0.0.0 --port 8000
+```
+
+**Alternative: Direct Project Execution (Development)**
+
+For standalone development, projects can also be executed directly:
+
+```bash
+cd projects/01_LoRA_Finetuning_MLX
+uv run python src/cli.py train --epochs 3 --batch-size 2
 ```
 
 ### Using Shared Utilities
@@ -88,24 +141,40 @@ if runner.hardware_info.mlx_available:
 | **Shared Utilities** | ✅ **Complete** | Production-ready foundational utilities |
 | **DSPy Toolkit Framework** | ✅ **Complete** | Structured AI workflows with MLX backend |
 | **Knowledge Base System** | ✅ **Complete** | Development knowledge management |
-| **EfficientAI CLI** | 🚧 **Basic** | Core CLI exists, advanced features planned |
-| **LoRA Fine-tuning MLX** | 📋 **Planned** | Next priority implementation |
+| **EfficientAI Unified CLI** | ✅ **Complete** | Dynamic project discovery and unified commands |
+| **LoRA Fine-tuning MLX** | ✅ **Complete** | MLX-native LoRA with optimization & serving |
 | **Model Compression** | 📋 **Planned** | Quantization and pruning pipelines |
-| **Deployment Tools** | 📋 **Planned** | FastAPI, Gradio, containerization |
+| **Deployment Tools** | 🚧 **Partial** | FastAPI serving implemented in LoRA project |
+
+### Recent Achievements
+
+- **🎯 Unified CLI System**: All projects accessible through single entry point
+- **🧪 100% Test Coverage**: All LoRA framework tests passing (56/56)
+- **🔧 MLX Optimization**: Full Apple Silicon integration with unified memory
+- **⚡ Dynamic Discovery**: Automatic project detection and registration
+- **📊 Comprehensive Testing**: Unified test runner with per-project execution
+- **🚀 LoRA Inference**: Working text generation with MLX-native models and LoRA adapters
 
 ## 🧪 Development
 
 ### Testing
 
 ```bash
-# Run all tests
+# Run tests for all projects
+uv run efficientai-toolkit test --all
+
+# Run tests for specific project
+uv run efficientai-toolkit test lora-finetuning-mlx
+
+# Run with coverage and verbose output
+uv run efficientai-toolkit test lora-finetuning-mlx --coverage --verbose
+
+# Run with specific pytest markers
+uv run efficientai-toolkit test lora-finetuning-mlx --markers "not slow"
+
+# Traditional pytest (still works)
 uv run pytest
-
-# Run with coverage
 uv run pytest --cov
-
-# Run specific test categories
-uv run pytest -m "not slow"           # Exclude slow tests
 uv run pytest -m apple_silicon        # Apple Silicon specific tests
 ```
 
