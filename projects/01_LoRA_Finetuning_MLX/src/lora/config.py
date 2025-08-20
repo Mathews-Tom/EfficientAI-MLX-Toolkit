@@ -112,6 +112,18 @@ class TrainingConfig:
         self.dataset_path = Path(self.dataset_path)
         self.output_dir = Path(self.output_dir)
         
+        # Handle null values that might come as strings
+        if self.mlx_memory_limit == "null" or self.mlx_memory_limit == "None":
+            self.mlx_memory_limit = None
+        
+        # Ensure numeric types are correct
+        self.batch_size = int(self.batch_size)
+        self.learning_rate = float(self.learning_rate)
+        self.num_epochs = int(self.num_epochs)
+        self.warmup_steps = int(self.warmup_steps)
+        self.weight_decay = float(self.weight_decay)
+        self.gradient_clipping = float(self.gradient_clipping)
+        
         # Validation
         if self.batch_size <= 0:
             raise ValueError("Batch size must be positive")
@@ -225,6 +237,16 @@ class OptimizationConfig:
     
     def __post_init__(self):
         """Validate configuration."""
+        # Convert lists to tuples and ensure proper types
+        if isinstance(self.rank_range, list):
+            self.rank_range = tuple(int(x) for x in self.rank_range)
+        if isinstance(self.alpha_range, list):
+            self.alpha_range = tuple(float(x) for x in self.alpha_range)
+        if isinstance(self.learning_rate_range, list):
+            self.learning_rate_range = tuple(float(x) for x in self.learning_rate_range)
+        if isinstance(self.dropout_range, list):
+            self.dropout_range = tuple(float(x) for x in self.dropout_range)
+            
         if self.rank_range[0] >= self.rank_range[1]:
             raise ValueError("Invalid rank range")
         if self.alpha_range[0] >= self.alpha_range[1]:

@@ -14,10 +14,10 @@ import random
 from datetime import datetime
 import numpy as np
 
-from ..lora import LoRAConfig, TrainingConfig, ModelAdapter
-from ..training import LoRATrainer
-from .search import SearchStrategy, BayesianOptimization
-from .objectives import OptimizationObjective, PerplexityObjective
+from lora import LoRAConfig, TrainingConfig, ModelAdapter
+from training import LoRATrainer
+from optimization.search import SearchStrategy, BayesianOptimization
+from optimization.objectives import OptimizationObjective, PerplexityObjective
 
 
 @dataclass

@@ -54,14 +54,15 @@ class LoRALinear(nn.Module):
             else:
                 self.dropout = None
         
-        # Freeze original parameters
-        for param in self.linear.parameters():
-            param.requires_grad = False
+        # MLX parameters are frozen by default, so no need to explicitly freeze
     
-    def __call__(self, x: mx.array) -> mx.array:
+    def __call__(self, x: mx.array, original_layer=None) -> mx.array:
         """Forward pass with LoRA adaptation."""
-        # Original linear transformation (frozen)
-        result = self.linear(x)
+        # Use original layer if provided, otherwise use our linear layer
+        if original_layer is not None:
+            result = original_layer(x)
+        else:
+            result = self.linear(x)
         
         if self.rank > 0:
             # LoRA path: x -> A -> dropout -> B -> scale
@@ -102,8 +103,24 @@ class LoRALinear(nn.Module):
             self.rank = 0
     
     def unmerge_weights(self) -> None:
-        """Unmerge LoRA weights from the original linear layer (not implemented)."""
-        raise NotImplementedError("Weight unmerging not supported in current implementation")
+        """Unmerge LoRA weights from the original linear layer."""
+        if self.rank == 0:
+            print("Warning: LoRA weights already unmerged or not initialized")
+            return
+            
+        if self.lora_A is None or self.lora_B is None:
+            raise ValueError("Cannot unmerge weights: LoRA matrices are None")
+        
+        # Compute LoRA weight update: scaling * B @ A
+        weight_update = self.scaling * mx.matmul(self.lora_B, self.lora_A)
+        
+        # Subtract from original weights (reverse of merge operation)
+        if self.fan_in_fan_out:
+            self.linear.weight = self.linear.weight - weight_update.T
+        else:
+            self.linear.weight = self.linear.weight - weight_update
+        
+        print("LoRA weights successfully unmerged from base layer")
 
 
 class LoRAAttention(nn.Module):
@@ -141,10 +158,7 @@ class LoRAAttention(nn.Module):
         self.v_proj = nn.Linear(hidden_size, hidden_size, bias=False)
         self.o_proj = nn.Linear(hidden_size, hidden_size, bias=False)
         
-        # Freeze original parameters
-        for proj in [self.q_proj, self.k_proj, self.v_proj, self.o_proj]:
-            for param in proj.parameters():
-                param.requires_grad = False
+        # MLX parameters are frozen by default
         
         # LoRA adaptations for selected projections
         self.lora_adapters = {}
@@ -245,11 +259,9 @@ class LoRAEmbedding(nn.Module):
         self.padding_idx = padding_idx
         
         # Original embedding (frozen)
-        self.embedding = nn.Embedding(num_embeddings, embedding_dim, padding_idx)
+        self.embedding = nn.Embedding(num_embeddings, embedding_dim)
         
-        # Freeze original parameters
-        for param in self.embedding.parameters():
-            param.requires_grad = False
+        # MLX parameters are frozen by default
         
         # LoRA matrices for embedding
         if rank > 0:
@@ -305,9 +317,7 @@ class LoRAConv1D(nn.Module):
         # Original conv1d (frozen) - implemented as linear for simplicity
         self.conv1d = nn.Linear(in_features, out_features, bias=True)
         
-        # Freeze original parameters
-        for param in self.conv1d.parameters():
-            param.requires_grad = False
+        # MLX parameters are frozen by default
         
         # LoRA matrices
         if rank > 0:

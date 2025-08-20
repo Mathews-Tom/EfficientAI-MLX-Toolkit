@@ -86,12 +86,16 @@ class LinearScheduler:
         
     def get_lr(self) -> float:
         """Get current learning rate."""
-        if self.last_epoch < self.num_warmup_steps:
+        # When last_epoch = -1 (initial state), we want step 1
+        # When last_epoch = 0 (after first step), we want step 1  
+        # When last_epoch = 1 (after second step), we want step 2
+        current_step = max(1, self.last_epoch + 1)
+        if current_step <= self.num_warmup_steps:
             # Warmup phase: linear increase
-            return self.base_lr * (self.last_epoch + 1) / self.num_warmup_steps
+            return self.base_lr * current_step / self.num_warmup_steps
         else:
             # Decay phase: linear decrease
-            progress = (self.last_epoch - self.num_warmup_steps) / (
+            progress = (current_step - self.num_warmup_steps) / (
                 self.num_training_steps - self.num_warmup_steps
             )
             return self.base_lr * (1.0 - progress)
@@ -127,12 +131,13 @@ class CosineAnnealingScheduler:
     
     def get_lr(self) -> float:
         """Get current learning rate."""
-        if self.last_epoch < self.num_warmup_steps:
+        current_step = max(1, self.last_epoch + 1)
+        if current_step <= self.num_warmup_steps:
             # Warmup phase: linear increase
-            return self.base_lr * (self.last_epoch + 1) / self.num_warmup_steps
+            return self.base_lr * current_step / self.num_warmup_steps
         else:
             # Cosine annealing phase
-            progress = (self.last_epoch - self.num_warmup_steps) / (
+            progress = (current_step - self.num_warmup_steps) / (
                 self.num_training_steps - self.num_warmup_steps
             )
             return self.eta_min + (self.base_lr - self.eta_min) * (
