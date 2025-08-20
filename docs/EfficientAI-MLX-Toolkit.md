@@ -417,134 +417,114 @@ Instead of apologizing for hardware limitations, position yourself as an expert 
 
 This approach transforms your M1 MacBook Pro from a constraint into a competitive advantage, making you an expert in the optimization techniques that production AI systems actually need.
 
-## Uber Folder Structure
+## Current Implementation Architecture
+
+The EfficientAI-MLX-Toolkit has evolved into a comprehensive, production-ready system with the following structure:
 
 ```bash
-EfficientAI-AppleSilicon-Toolkit/
+EfficientAI-MLX-Toolkit/
 │
-├── README.md                       # Overview of the entire repo + project list
+├── README.md                        # Main documentation with namespace CLI examples
+├── CLAUDE.md                        # Developer guidance and commands
+├── pyproject.toml                   # Unified package configuration
 ├── LICENSE
 │
-├── environment/                    # Shared environment/setup
-│   ├── conda.yml                    # Conda env for Apple Silicon
-│   ├── requirements.txt             # PIP requirements
-│   └── setup_scripts.sh             # Optional setup/install script
+├── efficientai_mlx_toolkit/         # ✅ Unified CLI with namespace:command architecture
+│   ├── cli.py                       # Main CLI entry point
+│   ├── project_registry.py          # Dynamic project discovery
+│   └── namespace_dispatcher.py      # Command routing system
 │
-├── docs/                            # Documentation + guides
-│   ├── repo_overview.md
-│   ├── optimization_strategies.md
-│   ├── benchmarking_methodology.md
-│   └── hardware_tips_m1.md
+├── utils/                           # ✅ Production-ready shared utilities
+│   ├── logging_utils.py             # Apple Silicon tracking & log management
+│   ├── config_manager.py            # Multi-format config with profiles
+│   ├── file_operations.py           # Safe file ops with backup support
+│   ├── benchmark_runner.py          # Hardware-aware benchmarking
+│   └── plotting_utils.py            # Visualization and reporting
 │
-├── utils/                           # **Only** truly global utilities
-│   ├── logging_utils.py             # Global logger setup
-│   ├── config_manager.py             # Global config loader
-│   ├── global_plotting.py            # Common chart/plot helpers
-│   └── benchmark_runner.py           # Standard benchmark runner for all projects
+├── dspy_toolkit/                    # ✅ Complete DSPy integration framework
+│   ├── providers/                   # MLX-optimized LLM providers
+│   ├── signatures/                  # Reusable DSPy signatures
+│   ├── monitoring/                  # Performance tracking
+│   └── deployment/                  # FastAPI integration
 │
-├── benchmarks/                      # Shared benchmark scripts + results
-│   ├── performance_reports/
-│   ├── memory_usage/
-│   └── hardware_comparisons/
+├── knowledge_base/                  # ✅ Complete development knowledge system
+│   ├── categories/                  # Organized knowledge by topic
+│   ├── cli.py                      # Knowledge base CLI
+│   └── search/                     # Full-text search capabilities
 │
-├── deployment/                      # Shared deployment configs
-│   ├── docker/
-│   ├── fastapi_configs/
-│   └── coreml_models/
+├── environment/                     # ✅ Environment setup utilities
+│   ├── setup.py                    # Automated Apple Silicon setup
+│   └── hardware_detection.py       # M1/M2/M3 capability detection
 │
-├── demos/                           # Shared demos & API servers
-│   ├── gradio_apps/
-│   ├── streamlit_apps/
-│   └── api_servers/
+├── docs/                           # ✅ Comprehensive documentation
+│   ├── CLI_REFERENCE.md            # Complete CLI command reference
+│   ├── CONFIGURATION.md            # Configuration management guide
+│   ├── QUICKSTART.md              # Getting started guide
+│   ├── TESTING.md                 # Testing framework documentation
+│   └── TROUBLESHOOTING.md         # Common issues and solutions
 │
-└── projects/                        # **ALL individual projects**
+└── projects/                       # ✅ Individual ML project implementations
     │
-    ├── 01_LoRA_Finetuning_MLX/
-    │   ├── README.md
-    │   ├── data/
-    │   ├── notebooks/
-    │   ├── src/
-    │   │   ├── train.pyzo
-    
-    │   │   ├── inference.py
-    │   │   ├── utils.py OR utils/       # Project-specific utilities
-    │   │   └── evaluation.py
-    │   └── requirements.txt
-    │
-    ├── 02_CoreML_StableDiffusion/
-    │   ├── README.md
-    │   ├── data/
-    │   ├── notebooks/
-    │   ├── src/
-    │   │   ├── coreml_pipeline.py
-    │   │   ├── lora_training.py
-    │   │   ├── utils.py OR utils/       # Project-specific utilities
-    │   │   └── style_transfer.py
-    │   └── requirements.txt
-    │
-    ├── 03_Quantized_Model_Benchmarks/
-    │   ├── README.md
-    │   ├── data/
-    │   ├── notebooks/
-    │   ├── src/
-    │   │   ├── quantize.py
-    │   │   ├── benchmark.py
-    │   │   └── utils.py OR utils/       # Project-specific utilities
-    │   └── requirements.txt
-    │
-    ├── 04_CPU_Model_Compression/
-    │   ├── README.md
-    │   ├── data/
-    │   ├── notebooks/
-    │   ├── src/
-    │   │   ├── prune.py
-    │   │   ├── distill.py
-    │   │   └── utils.py OR utils/       # Project-specific utilities
-    │   └── requirements.txt
-    │
-    ├── 05_MultiModal_CLIP_Finetuning/
-    │   ├── README.md
-    │   ├── data/
-    │   ├── notebooks/
-    │   ├── src/
-    │   │   ├── train_clip.py
-    │   │   ├── evaluate_clip.py
-    │   │   └── utils.py OR utils/       # Project-specific utilities
-    │   └── requirements.txt
-    │
-    ├── 06_Federated_Learning_LightModels/
-    │   ├── README.md
-    │   ├── notebooks/
-    │   ├── src/
-    │   │   ├── federated_server.py
-    │   │   ├── client_simulator.py
-    │   │   └── utils.py OR utils/       # Project-specific utilities
-    │   └── requirements.txt
-    │
-    ├── 07_Adaptive_Diffusion_Optimizer/
-    │   ├── README.md
-    │   ├── notebooks/
-    │   ├── src/
-    │   │   ├── optimizer.py
-    │   │   ├── distillation.py
-    │   │   └── utils.py OR utils/       # Project-specific utilities
-    │   └── requirements.txt
-    │
-    ├── 08_MetaLearning_PEFT_System/
-    │   ├── README.md
-    │   ├── notebooks/
-    │   ├── src/
-    │   │   ├── meta_peft.py
-    │   │   ├── selector.py
-    │   │   └── utils.py OR utils/       # Project-specific utilities
-    │   └── requirements.txt
-    │
-    └── 09_SelfImproving_Diffusion_Architecture/
-        ├── README.md
-        ├── notebooks/
-        ├── src/
-        │   ├── evolution.py
-        │   ├── search.py
-        │   └── utils.py OR utils/       # Project-specific utilities
-        └── requirements.txt
+    └── 01_LoRA_Finetuning_MLX/     # ✅ Complete MLX-native LoRA framework
+        ├── README.md               # Project-specific documentation
+        ├── configs/                # Configuration files
+        │   └── default.yaml        # Default training configuration
+        ├── data/                   # Training datasets
+        │   └── samples/            # Sample conversation data
+        ├── src/                    # Core implementation
+        │   ├── cli.py              # Project CLI (namespace: lora-finetuning-mlx)
+        │   ├── lora/               # LoRA implementation modules
+        │   │   ├── config.py       # Configuration classes
+        │   │   ├── layers.py       # LoRA layer implementations
+        │   │   └── adapters.py     # Model adaptation logic
+        │   ├── training/           # Training pipeline
+        │   │   ├── trainer.py      # MLX-optimized trainer
+        │   │   ├── optimizer.py    # Optimizers and schedulers
+        │   │   └── data_loader.py  # Data loading and processing
+        │   ├── inference/          # Inference and serving
+        │   │   ├── engine.py       # Inference engine
+        │   │   └── serving.py      # FastAPI server
+        │   └── optimization/       # Hyperparameter optimization
+        │       ├── tuner.py        # Optuna-based tuning
+        │       └── objectives.py   # Optimization objectives
+        ├── tests/                  # ✅ Comprehensive test suite (100% passing)
+        │   ├── test_lora.py        # LoRA functionality tests
+        │   ├── test_training.py    # Training pipeline tests
+        │   ├── test_inference.py   # Inference engine tests
+        │   └── conftest.py         # Test configuration
+        └── pyproject.toml          # Project-specific dependencies
 ```
+
+## CLI Namespace Architecture
+
+The toolkit implements a **hybrid CLI approach** that supports both unified access and standalone execution:
+
+### Unified Access (Production)
+```bash
+# Format: efficientai-toolkit namespace:command [options]
+uv run efficientai-toolkit lora-finetuning-mlx:train --epochs 3 --batch-size 2
+uv run efficientai-toolkit lora-finetuning-mlx:optimize --trials 10
+uv run efficientai-toolkit lora-finetuning-mlx:serve --port 8000
+```
+
+### Standalone Execution (Development)
+```bash
+cd projects/01_LoRA_Finetuning_MLX
+uv run python src/cli.py train --epochs 3 --batch-size 2
+```
+
+### Dynamic Project Discovery
+The CLI system automatically discovers and registers projects, making it easy to add new implementations without modifying core CLI code.
+
+## Implementation Status
+
+| Component | Status | Namespace | Description |
+|-----------|--------|-----------|-------------|
+| **Shared Utilities** | ✅ Complete | N/A | Production-ready foundational utilities |
+| **Unified CLI System** | ✅ Complete | N/A | Namespace:command architecture with discovery |
+| **DSPy Toolkit** | ✅ Complete | N/A | Structured AI workflows with MLX backend |
+| **Knowledge Base** | ✅ Complete | N/A | Development knowledge management |
+| **LoRA Fine-tuning** | ✅ Complete | `lora-finetuning-mlx` | MLX-native LoRA with optimization & serving |
+| **Model Compression** | 📋 Planned | `model-compression` | Quantization and pruning pipelines |
+| **CLIP Fine-tuning** | 📋 Planned | `clip-finetuning` | Multimodal vision-language models |
+| **Diffusion Optimization** | 📋 Planned | `diffusion-optimizer` | Adaptive diffusion model optimization |

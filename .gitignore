@@ -64,3 +64,20 @@ Thumbs.db
 .dspy_config
 .dspy_programs
 PR_MESSAGE.md
+
+# Training and optimization outputs
+optimization_results/
+outputs/
+*/optimization_results/
+*/outputs/
+projects/*/optimization_results/
+projects/*/outputs/
+
+# Model checkpoints and artifacts
+*.safetensors
+*.bin
+checkpoints/
+*/checkpoints/
+*.ckpt
+*.pth
+*.pt

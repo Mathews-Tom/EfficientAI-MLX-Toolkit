@@ -17,8 +17,8 @@ from pathlib import Path
 import json
 from datetime import datetime
 
-from .engine import LoRAInferenceEngine, InferenceResult
-from ..lora import InferenceConfig
+from inference.engine import LoRAInferenceEngine, InferenceResult
+from lora import InferenceConfig
 
 
 class GenerationRequest(BaseModel):
@@ -165,14 +165,13 @@ class LoRAServer:
             print(f"Loading model from {self.model_path}")
             
             # This would load the actual model in a real implementation
-            # self.inference_engine = LoRAInferenceEngine.from_pretrained(
-            #     model_path=self.model_path,
-            #     adapter_path=self.adapter_path,
-            #     config=self.config,
-            # )
+            self.inference_engine = LoRAInferenceEngine.from_pretrained(
+                model_path=self.model_path,
+                adapter_path=self.adapter_path,
+                config=self.config,
+            )
             
-            # For demo purposes, create a placeholder
-            print("Model loading completed (placeholder)")
+            print("Model loading completed successfully")
             self.model_loaded = True
             
         except Exception as e:
