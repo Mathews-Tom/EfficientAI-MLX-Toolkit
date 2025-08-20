@@ -5,6 +5,9 @@
 *.tmp
 *.log
 
+# Project-specific dependency locks (use main project uv.lock)
+projects/*/uv.lock
+
 # Python
 __pycache__/
 .pytest_cache
