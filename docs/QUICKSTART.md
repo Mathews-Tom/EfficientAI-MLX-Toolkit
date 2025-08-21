@@ -53,77 +53,87 @@ uv run efficientai-toolkit setup
 
 ## Your First LoRA Fine-tuning
 
-### 1. Check Project Status
+### 1. Check Available Projects
 
 ```bash
-# List available projects
-uv run efficientai-toolkit projects-list
-
-# Get LoRA project information
-uv run efficientai-toolkit projects lora-finetuning-mlx info
-```
-
-### 2. Validate Configuration
-
-```bash
-# Validate default configuration
-uv run efficientai-toolkit projects lora-finetuning-mlx validate
+# List all available projects with namespaces
+uv run efficientai-toolkit projects
 
 # Expected output:
-# ✅ Configuration validation passed
-# ✅ LoRA parameters valid
-# ✅ Training settings valid
-# ✅ Dependencies available
+# Available Projects:
+# ┌─────────────────┬─────────────────┬─────────────────┬─────────────────┐
+# │ Project         │ Namespace       │ CLI Available   │ Usage Example   │
+# ├─────────────────┼─────────────────┼─────────────────┼─────────────────┤
+# │ LoRA Finetuning │ lora-finetuning │ ✅              │ uv run          │
+# │                 │ -mlx            │                 │ efficientai...  │
+# │ Model           │ model-compres.. │ ✅              │ uv run          │
+# │ Compression     │ mlx             │                 │ efficientai...  │
+# └─────────────────┴─────────────────┴─────────────────┴─────────────────┘
 ```
 
-### 3. Quick Training Run
+### 2. LoRA Fine-tuning Quick Start
 
 ```bash
-# Train with default settings (fast test)
-uv run efficientai-toolkit projects lora-finetuning-mlx train \
+# Get LoRA project information
+uv run efficientai-toolkit lora-finetuning-mlx:info
+
+# Validate configuration
+uv run efficientai-toolkit lora-finetuning-mlx:validate
+
+# Quick training run
+uv run efficientai-toolkit lora-finetuning-mlx:train \
   --epochs 1 \
   --batch-size 1 \
   --learning-rate 2e-4
 
-# Expected output:
-# 🚀 Starting LoRA fine-tuning...
-# 📊 Model: microsoft/DialoGPT-medium
-# 🔧 LoRA rank: 16, alpha: 32
-# ⏱️  Epoch 1/1: 100%|████████| 10/10 [00:45<00:00, 4.5s/it]
-# ✅ Training completed successfully
-# 💾 Model saved to: outputs/lora-finetuned-model
-```
-
-### 4. Test Text Generation
-
-```bash
-# Generate text with trained model
-uv run efficientai-toolkit projects lora-finetuning-mlx generate \
-  --model-path outputs/lora-finetuned-model \
+# Test text generation
+uv run efficientai-toolkit lora-finetuning-mlx:generate \
+  --model-path mlx-community/Llama-3.2-1B-Instruct-4bit \
   --prompt "Hello, how are you today?" \
   --max-length 50
+```
 
-# Expected output:
-# 🤖 Generated text:
-# Hello, how are you today? I'm doing well, thank you for asking. 
-# How about you? Are you having a good day so far?
+### 3. Model Compression Quick Start
+
+```bash
+# Get Model Compression project information
+uv run efficientai-toolkit model-compression-mlx:info
+
+# Validate configuration
+uv run efficientai-toolkit model-compression-mlx:validate
+
+# Quick quantization (reduce model to 8-bit)
+uv run efficientai-toolkit model-compression-mlx:quantize \
+  --model-path mlx-community/Llama-3.2-1B-Instruct-4bit \
+  --bits 8 \
+  --method post_training
+
+# Quick pruning (remove 50% of weights)
+uv run efficientai-toolkit model-compression-mlx:prune \
+  --model-path mlx-community/Llama-3.2-1B-Instruct-4bit \
+  --sparsity 0.5 \
+  --method magnitude
+
+# Comprehensive compression benchmark
+uv run efficientai-toolkit model-compression-mlx:benchmark \
+  --model-path mlx-community/Llama-3.2-1B-Instruct-4bit
 ```
 
 ## Comprehensive Example Workflows
 
-### Workflow 1: Basic Training Pipeline
+### Workflow 1: LoRA Training Pipeline
 
 ```bash
 # Step 1: Validate everything is ready
-uv run efficientai-toolkit projects lora-finetuning-mlx validate
+uv run efficientai-toolkit lora-finetuning-mlx:validate
 
 # Step 2: Quick training test
-uv run efficientai-toolkit projects lora-finetuning-mlx train \
+uv run efficientai-toolkit lora-finetuning-mlx:train \
   --epochs 2 --batch-size 2 --learning-rate 3e-4
 
 # Step 3: Test generation
-uv run efficientai-toolkit projects lora-finetuning-mlx generate \
-  --model-path outputs/lora-finetuned-model \
+uv run efficientai-toolkit lora-finetuning-mlx:generate \
+  --model-path mlx-community/Llama-3.2-1B-Instruct-4bit \
   --prompt "The future of AI is" \
   --max-length 30
 
@@ -131,24 +141,54 @@ uv run efficientai-toolkit projects lora-finetuning-mlx generate \
 uv run efficientai-toolkit test lora-finetuning-mlx
 ```
 
-### Workflow 2: Hyperparameter Optimization
+### Workflow 2: Model Compression Pipeline
+
+```bash
+# Step 1: Validate compression configuration
+uv run efficientai-toolkit model-compression-mlx:validate
+
+# Step 2: Apply quantization
+uv run efficientai-toolkit model-compression-mlx:quantize \
+  --model-path mlx-community/Llama-3.2-1B-Instruct-4bit \
+  --bits 8 --method post_training
+
+# Step 3: Apply pruning
+uv run efficientai-toolkit model-compression-mlx:prune \
+  --model-path mlx-community/Llama-3.2-1B-Instruct-4bit \
+  --sparsity 0.5 --method magnitude
+
+# Step 4: Comprehensive compression
+uv run efficientai-toolkit model-compression-mlx:compress \
+  --model-path mlx-community/Llama-3.2-1B-Instruct-4bit \
+  --methods quantization,pruning
+
+# Step 5: Benchmark all methods
+uv run efficientai-toolkit model-compression-mlx:benchmark \
+  --model-path mlx-community/Llama-3.2-1B-Instruct-4bit \
+  --output benchmark_results/
+
+# Step 6: Run tests to verify everything works
+uv run efficientai-toolkit test model-compression-mlx
+```
+
+### Workflow 3: Hyperparameter Optimization
 
 ```bash
 # Step 1: Quick optimization run (5 trials)
-uv run efficientai-toolkit projects lora-finetuning-mlx optimize \
+uv run efficientai-toolkit lora-finetuning-mlx:optimize \
   --model microsoft/DialoGPT-medium \
   --data projects/01_LoRA_Finetuning_MLX/data/samples/sample_conversations.jsonl \
   --trials 5
 
 # Step 2: Train with best parameters
 # (Use the best hyperparameters from optimization output)
-uv run efficientai-toolkit projects lora-finetuning-mlx train \
+uv run efficientai-toolkit lora-finetuning-mlx:train \
   --rank 32 --alpha 64 --learning-rate 1.5e-4 \
   --epochs 5 --batch-size 2
 
 # Step 3: Start inference server
-uv run efficientai-toolkit projects lora-finetuning-mlx serve \
-  --model-path outputs/lora-finetuned-model \
+uv run efficientai-toolkit lora-finetuning-mlx:serve \
+  --model-path mlx-community/Llama-3.2-1B-Instruct-4bit \
   --host 127.0.0.1 --port 8000
 ```
 

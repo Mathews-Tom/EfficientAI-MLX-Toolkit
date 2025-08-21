@@ -102,6 +102,36 @@ uv run efficientai-toolkit lora-finetuning-mlx:serve \
   --host 0.0.0.0 --port 8000
 ```
 
+### Model Compression Example (Namespace Syntax)
+
+```bash
+# Get Model Compression project information
+uv run efficientai-toolkit model-compression-mlx:info
+
+# Validate configuration
+uv run efficientai-toolkit model-compression-mlx:validate
+
+# Apply quantization to reduce model size
+uv run efficientai-toolkit model-compression-mlx:quantize \
+  --model-path mlx-community/Llama-3.2-1B-Instruct-4bit \
+  --bits 8 --method post_training
+
+# Apply pruning to remove less important weights
+uv run efficientai-toolkit model-compression-mlx:prune \
+  --model-path mlx-community/Llama-3.2-1B-Instruct-4bit \
+  --sparsity 0.5 --method magnitude
+
+# Comprehensive compression with multiple techniques
+uv run efficientai-toolkit model-compression-mlx:compress \
+  --model-path mlx-community/Llama-3.2-1B-Instruct-4bit \
+  --methods quantization,pruning
+
+# Benchmark compression methods and measure performance
+uv run efficientai-toolkit model-compression-mlx:benchmark \
+  --model-path mlx-community/Llama-3.2-1B-Instruct-4bit \
+  --output benchmark_results/
+```
+
 **Alternative: Direct Project Execution (Development)**
 
 For standalone development, projects can also be executed directly:
@@ -109,6 +139,9 @@ For standalone development, projects can also be executed directly:
 ```bash
 cd projects/01_LoRA_Finetuning_MLX
 uv run python src/cli.py train --epochs 3 --batch-size 2
+
+cd projects/02_Model_Compression_MLX
+uv run python src/cli.py quantize --model-path mlx-community/Llama-3.2-1B-Instruct-4bit --bits 8
 ```
 
 ### Using Shared Utilities
@@ -143,17 +176,18 @@ if runner.hardware_info.mlx_available:
 | **Knowledge Base System** | ✅ **Complete** | Development knowledge management |
 | **EfficientAI Unified CLI** | ✅ **Complete** | Dynamic project discovery and unified commands |
 | **LoRA Fine-tuning MLX** | ✅ **Complete** | MLX-native LoRA with optimization & serving |
-| **Model Compression** | 📋 **Planned** | Quantization and pruning pipelines |
+| **Model Compression MLX** | ✅ **Complete** | Quantization, pruning, distillation & benchmarking |
 | **Deployment Tools** | 🚧 **Partial** | FastAPI serving implemented in LoRA project |
 
 ### Recent Achievements
 
 - **🎯 Unified CLI System**: All projects accessible through single entry point
-- **🧪 100% Test Coverage**: All LoRA framework tests passing (56/56)
+- **🧪 100% Test Coverage**: All LoRA framework tests passing (56/56) + Model Compression tests (14/14)
 - **🔧 MLX Optimization**: Full Apple Silicon integration with unified memory
 - **⚡ Dynamic Discovery**: Automatic project detection and registration
 - **📊 Comprehensive Testing**: Unified test runner with per-project execution
 - **🚀 LoRA Inference**: Working text generation with MLX-native models and LoRA adapters
+- **📦 Production-Ready Compression**: Real MLX quantization, pruning, distillation & benchmarking
 
 ## 🧪 Development
 
@@ -165,6 +199,7 @@ uv run efficientai-toolkit test --all
 
 # Run tests for specific project
 uv run efficientai-toolkit test lora-finetuning-mlx
+uv run efficientai-toolkit test model-compression-mlx
 
 # Run with coverage and verbose output
 uv run efficientai-toolkit test lora-finetuning-mlx --coverage --verbose
@@ -196,11 +231,11 @@ uv run black . && uv run isort . && uv run ruff check . && uv run mypy .
 
 ## 🎯 Planned Features
 
-### 🔄 In Development
+### 🔄 Recently Completed
 
-- **LoRA Fine-tuning MLX**: Apple Silicon optimized LoRA implementation
-- **Quantized Model Benchmarks**: 4-bit/8-bit quantization with MLX
-- **Model Compression Pipeline**: Pruning and distillation for CPU deployment
+- **LoRA Fine-tuning MLX**: ✅ Apple Silicon optimized LoRA implementation with optimization & serving
+- **Model Compression MLX**: ✅ Production-ready quantization, pruning, distillation & benchmarking
+- **Unified CLI System**: ✅ Dynamic project discovery with namespace architecture
 
 ### 📅 Roadmap
 
