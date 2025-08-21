@@ -33,6 +33,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### CLI Tools
 
 **Main CLI (Unified Interface):**
+
 - Main CLI: `uv run efficientai-toolkit`
 - Environment setup: `uv run efficientai-toolkit setup`
 - System info: `uv run efficientai-toolkit info`
@@ -41,6 +42,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Run tests: `uv run efficientai-toolkit test <namespace>` or `uv run efficientai-toolkit test --all`
 
 **Project Commands (Namespace Syntax):**
+
 - Format: `uv run efficientai-toolkit namespace:command [args...]`
 - Example: `uv run efficientai-toolkit lora-finetuning-mlx:train --epochs 5`
 - Example: `uv run efficientai-toolkit lora-finetuning-mlx:info`
@@ -49,11 +51,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Example: `uv run efficientai-toolkit lora-finetuning-mlx:generate --model-path mlx-community/Llama-3.2-1B-Instruct-4bit --adapter-path outputs/checkpoints/checkpoint_epoch_2 --prompt "AI is"`
 
 **Standalone Project Execution (for Developers):**
+
 - Change to project directory: `cd projects/01_LoRA_Finetuning_MLX`
 - Run directly: `uv run python src/cli.py train --epochs 5`
 - Run tests: `uv run pytest`
 
 **Additional Tools:**
+
 - Knowledge base CLI: `uv run python -m kb <command>`
 
 ## High-Level Architecture
