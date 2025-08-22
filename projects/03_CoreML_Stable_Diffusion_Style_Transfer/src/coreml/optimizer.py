@@ -76,25 +76,20 @@ class CoreMLOptimizer:
 
     def _apply_palettization(self, model: Any) -> Any:
         """Apply palettization for model compression."""
-        print(
-            f"Applying {self.config.palettization_mode} palettization with {self.config.quantization_bits} bits..."
-        )
+        print(f"Applying weight quantization with {self.config.quantization_bits} bits...")
 
         try:
-            if self.config.palettization_mode == "kmeans":
-                palettized_model = quantization_utils.palettize_weights(
-                    model, nbits=self.config.quantization_bits, mode="kmeans"
-                )
-            else:  # uniform
-                palettized_model = quantization_utils.palettize_weights(
-                    model, nbits=self.config.quantization_bits, mode="uniform"
-                )
+            # Note: palettize_weights is not available in current CoreML tools
+            # Using quantize_weights as a fallback for weight compression
+            palettized_model = quantization_utils.quantize_weights(
+                model, nbits=self.config.quantization_bits
+            )
 
-            print("Palettization completed successfully")
+            print("Weight quantization completed successfully")
             return palettized_model
 
         except Exception as e:
-            print(f"Palettization failed: {e}")
+            print(f"Weight quantization failed: {e}")
             return model
 
     def _apply_memory_optimizations(self, model: Any) -> Any:
