@@ -8,11 +8,11 @@ from .config import TrainingConfig
 
 class StyleTrainer:
     """Trainer for style transfer models."""
-    
+
     def __init__(self, config: TrainingConfig):
         self.config = config
         self.config.validate()
-    
+
     def train(self, style_images_dir: Path) -> dict[str, Any]:
         """Train the style transfer model."""
         # Placeholder implementation

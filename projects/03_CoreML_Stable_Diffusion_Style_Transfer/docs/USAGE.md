@@ -30,11 +30,13 @@ uv sync
 ### Basic Usage
 
 1. **Validate your setup:**
+
    ```bash
    uv run python src/cli.py validate
    ```
 
 2. **Get system information:**
+
    ```bash
    uv run python src/cli.py info
    ```
@@ -59,6 +61,7 @@ uv run python src/cli.py transfer \
 ```
 
 **Parameters:**
+
 - `--style-strength`: How much style to apply (0.0-1.0)
 - `--content-strength`: How much content to preserve (0.0-1.0)
 - `--steps`: Number of diffusion steps (more steps = better quality, slower)
@@ -111,6 +114,7 @@ uv run python src/cli.py convert \
 ```
 
 **Compute Units Options:**
+
 - `all`: Use all available compute units (CPU, GPU, Neural Engine)
 - `cpu_only`: CPU only
 - `cpu_and_gpu`: CPU and GPU, but not Neural Engine
@@ -118,6 +122,7 @@ uv run python src/cli.py convert \
 ### Serving Models
 
 The serving functionality is under development and will provide:
+
 - REST API for style transfer
 - Real-time processing endpoints
 - Batch processing capabilities
@@ -183,6 +188,7 @@ export COREML_COMPUTE_UNITS="cpu_and_gpu"
 ### Apple Silicon Optimization
 
 1. **Enable MLX Framework:**
+
    ```yaml
    hardware:
      prefer_mlx: true
@@ -195,11 +201,12 @@ export COREML_COMPUTE_UNITS="cpu_and_gpu"
    - Use `float16` precision for better performance
 
 3. **Optimize Memory Usage:**
+
    ```yaml
    diffusion:
      use_attention_slicing: true
      attention_slice_size: "auto"
-   
+
    inference:
      use_cpu_offload: true
      memory_optimization: true
@@ -218,6 +225,7 @@ uv run python src/cli.py benchmark \
 ```
 
 The benchmark will provide:
+
 - Average processing time per image
 - Throughput (images per second)
 - Memory usage statistics
@@ -261,16 +269,19 @@ uv run python src/cli.py transfer --content-image content.jpg --style-image styl
 ### Getting Help
 
 1. **Check Configuration:**
+
    ```bash
    uv run python src/cli.py validate
    ```
 
 2. **System Information:**
+
    ```bash
    uv run python src/cli.py info
    ```
 
 3. **Run Tests:**
+
    ```bash
    uv run pytest -v
    ```
@@ -318,11 +329,11 @@ For large images or limited memory:
 ```yaml
 style_transfer:
   output_resolution: [256, 256]  # Smaller output size
-  
+
 diffusion:
   use_attention_slicing: true
   attention_slice_size: 1  # Smaller slice size
-  
+
 inference:
   use_cpu_offload: true
   batch_size: 1  # Process one at a time
