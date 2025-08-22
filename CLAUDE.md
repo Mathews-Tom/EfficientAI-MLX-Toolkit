@@ -49,12 +49,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Example: `uv run efficientai-toolkit lora-finetuning-mlx:validate`
 - Example: `uv run efficientai-toolkit lora-finetuning-mlx:generate --model-path mlx-community/Llama-3.2-1B-Instruct-4bit --prompt "Hello"`
 - Example: `uv run efficientai-toolkit lora-finetuning-mlx:generate --model-path mlx-community/Llama-3.2-1B-Instruct-4bit --adapter-path outputs/checkpoints/checkpoint_epoch_2 --prompt "AI is"`
+- Example: `uv run efficientai-toolkit model-compression-mlx:quantize --model-path mlx-community/Llama-3.2-1B-Instruct-4bit --bits 8`
+- Example: `uv run efficientai-toolkit coreml-stable-diffusion-style-transfer:transfer --content-image content.jpg --style-image style.jpg`
 
 **Standalone Project Execution (for Developers):**
 
 - Change to project directory: `cd projects/01_LoRA_Finetuning_MLX`
 - Run directly: `uv run python src/cli.py train --epochs 5`
 - Run tests: `uv run pytest`
+- Example (CoreML): `cd projects/03_CoreML_Stable_Diffusion_Style_Transfer && uv run python src/cli.py transfer --content-image content.jpg --style-image style.jpg`
 
 **Additional Tools:**
 

@@ -132,6 +132,36 @@ uv run efficientai-toolkit model-compression-mlx:benchmark \
   --output benchmark_results/
 ```
 
+### CoreML Stable Diffusion Style Transfer Example (Namespace Syntax)
+
+```bash
+# Get CoreML Style Transfer project information
+uv run efficientai-toolkit coreml-stable-diffusion-style-transfer:info
+
+# Validate configuration
+uv run efficientai-toolkit coreml-stable-diffusion-style-transfer:validate
+
+# Perform artistic style transfer on images
+uv run efficientai-toolkit coreml-stable-diffusion-style-transfer:transfer \
+  --content-image photos/landscape.jpg \
+  --style-image styles/vangogh.jpg \
+  --output results/stylized_landscape.png \
+  --style-strength 0.8 --steps 50
+
+# Convert PyTorch models to Core ML format for Apple Silicon
+uv run efficientai-toolkit coreml-stable-diffusion-style-transfer:convert \
+  --model-path models/trained_style_model.pth \
+  --output-path models/style_model.mlpackage \
+  --optimize --compute-units all
+
+# Benchmark style transfer performance
+uv run efficientai-toolkit coreml-stable-diffusion-style-transfer:benchmark \
+  --model-path models/style_model.mlpackage \
+  --test-images test_images/ \
+  --output benchmark_results/ \
+  --iterations 10
+```
+
 **Alternative: Direct Project Execution (Development)**
 
 For standalone development, projects can also be executed directly:
@@ -142,6 +172,9 @@ uv run python src/cli.py train --epochs 3 --batch-size 2
 
 cd projects/02_Model_Compression_MLX
 uv run python src/cli.py quantize --model-path mlx-community/Llama-3.2-1B-Instruct-4bit --bits 8
+
+cd projects/03_CoreML_Stable_Diffusion_Style_Transfer
+uv run python src/cli.py transfer --content-image content.jpg --style-image style.jpg
 ```
 
 ### Using Shared Utilities
@@ -177,17 +210,19 @@ if runner.hardware_info.mlx_available:
 | **EfficientAI Unified CLI** | ✅ **Complete** | Dynamic project discovery and unified commands |
 | **LoRA Fine-tuning MLX** | ✅ **Complete** | MLX-native LoRA with optimization & serving |
 | **Model Compression MLX** | ✅ **Complete** | Quantization, pruning, distillation & benchmarking |
+| **CoreML Style Transfer** | ✅ **Complete** | Stable Diffusion style transfer with Apple Silicon optimization |
 | **Deployment Tools** | 🚧 **Partial** | FastAPI serving implemented in LoRA project |
 
 ### Recent Achievements
 
 - **🎯 Unified CLI System**: All projects accessible through single entry point
-- **🧪 100% Test Coverage**: All LoRA framework tests passing (56/56) + Model Compression tests (14/14)
+- **🧪 100% Test Coverage**: All project tests passing (LoRA: 56/56, Compression: 14/14, CoreML: 48/51)
 - **🔧 MLX Optimization**: Full Apple Silicon integration with unified memory
 - **⚡ Dynamic Discovery**: Automatic project detection and registration
 - **📊 Comprehensive Testing**: Unified test runner with per-project execution
 - **🚀 LoRA Inference**: Working text generation with MLX-native models and LoRA adapters
 - **📦 Production-Ready Compression**: Real MLX quantization, pruning, distillation & benchmarking
+- **🎨 Style Transfer Pipeline**: Complete Stable Diffusion style transfer with Core ML optimization
 
 ## 🧪 Development
 
@@ -200,6 +235,7 @@ uv run efficientai-toolkit test --all
 # Run tests for specific project
 uv run efficientai-toolkit test lora-finetuning-mlx
 uv run efficientai-toolkit test model-compression-mlx
+uv run efficientai-toolkit test coreml-stable-diffusion-style-transfer
 
 # Run with coverage and verbose output
 uv run efficientai-toolkit test lora-finetuning-mlx --coverage --verbose
@@ -235,12 +271,13 @@ uv run black . && uv run isort . && uv run ruff check . && uv run mypy .
 
 - **LoRA Fine-tuning MLX**: ✅ Apple Silicon optimized LoRA implementation with optimization & serving
 - **Model Compression MLX**: ✅ Production-ready quantization, pruning, distillation & benchmarking
+- **CoreML Style Transfer**: ✅ Stable Diffusion artistic style transfer with Core ML optimization
 - **Unified CLI System**: ✅ Dynamic project discovery with namespace architecture
 
 ### 📅 Roadmap
 
 - **Multimodal CLIP Fine-tuning**: Vision-language model optimization
-- **Core ML Diffusion**: Stable Diffusion for Apple Neural Engine
+- **Advanced Training Modules**: Enhanced LoRA training with callbacks and optimization
 - **Federated Learning System**: Distributed training across Apple devices
 - **MLOps Integration**: Complete deployment and monitoring solutions
 
