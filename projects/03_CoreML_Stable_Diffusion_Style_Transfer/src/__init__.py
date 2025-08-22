@@ -14,7 +14,6 @@ from .coreml import CoreMLConverter, CoreMLOptimizer
 from .diffusion import DiffusionConfig, StableDiffusionMLX
 from .inference import InferenceConfig, InferenceEngine
 from .style_transfer import StyleTransferConfig, StyleTransferPipeline
-from .training import StyleTrainer, TrainingConfig
 
 __all__ = [
     "StableDiffusionMLX",
@@ -23,8 +22,6 @@ __all__ = [
     "StyleTransferConfig",
     "CoreMLConverter",
     "CoreMLOptimizer",
-    "StyleTrainer",
-    "TrainingConfig",
     "InferenceEngine",
     "InferenceConfig",
 ]

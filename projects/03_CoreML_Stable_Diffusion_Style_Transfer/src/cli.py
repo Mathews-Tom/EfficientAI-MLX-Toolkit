@@ -10,7 +10,6 @@ import sys
 import os
 import typer
 from pathlib import Path
-from typing import Optional, List
 import yaml
 from PIL import Image
 
@@ -40,7 +39,6 @@ except ImportError:
 from diffusion import DiffusionConfig, StableDiffusionMLX
 from style_transfer import StyleTransferConfig, StyleTransferPipeline
 from coreml import CoreMLConverter, CoreMLConfig
-from training import TrainingConfig, StyleTrainer
 from inference import InferenceConfig, InferenceEngine
 
 app = typer.Typer(
@@ -180,10 +178,10 @@ def transfer(
     style_image: Path = typer.Option(..., help="Path to style image"),
     output: Path = typer.Option("output.png", help="Output image path"),
     config: Path = typer.Option("configs/default.yaml", help="Configuration file path"),
-    style_strength: Optional[float] = typer.Option(None, help="Style strength (0.0-1.0)"),
-    content_strength: Optional[float] = typer.Option(None, help="Content strength (0.0-1.0)"),
-    steps: Optional[int] = typer.Option(None, help="Number of inference steps"),
-    guidance_scale: Optional[float] = typer.Option(None, help="Guidance scale"),
+    style_strength: float | None = typer.Option(None, help="Style strength (0.0-1.0)"),
+    content_strength: float | None = typer.Option(None, help="Content strength (0.0-1.0)"),
+    steps: int | None = typer.Option(None, help="Number of inference steps"),
+    guidance_scale: float | None = typer.Option(None, help="Guidance scale"),
 ):
     """Perform style transfer on an image."""
 
@@ -251,63 +249,12 @@ def transfer(
         raise typer.Exit(1)
 
 
-@app.command()
-def train(
-    style_images: Path = typer.Option(..., help="Directory containing style images"),
-    config: Path = typer.Option("configs/default.yaml", help="Configuration file path"),
-    output_dir: Optional[Path] = typer.Option(None, help="Override output directory"),
-    epochs: Optional[int] = typer.Option(None, help="Number of training epochs"),
-    learning_rate: Optional[float] = typer.Option(None, help="Learning rate"),
-    batch_size: Optional[int] = typer.Option(None, help="Training batch size"),
-):
-    """Train a custom style transfer model."""
-
-    project_dir = Path(__file__).parent.parent
-    if not config.is_absolute():
-        config = project_dir / config
-
-    typer.echo(f"🎓 Starting Style Transfer Training")
-    typer.echo(f"🎭 Style Images: {style_images}")
-    typer.echo(f"📁 Config: {config}")
-
-    if not style_images.exists():
-        typer.echo(f"❌ Style images directory not found: {style_images}", err=True)
-        raise typer.Exit(1)
-
-    try:
-        # Load configuration
-        with open(config) as f:
-            config_data = yaml.safe_load(f)
-
-        # Create training config with overrides
-        training_config = TrainingConfig.from_dict(config_data.get("training", {}))
-
-        if epochs is not None:
-            training_config.epochs = epochs
-        if learning_rate is not None:
-            training_config.learning_rate = learning_rate
-        if batch_size is not None:
-            training_config.batch_size = batch_size
-        if output_dir is not None:
-            training_config.output_dir = output_dir
-
-        typer.echo(f"⚙️  Training: {training_config.epochs} epochs, "
-                  f"lr={training_config.learning_rate}, "
-                  f"batch_size={training_config.batch_size}")
-
-        # Create trainer
-        trainer = StyleTrainer(training_config)
-
-        # Start training
-        results = trainer.train(style_images_dir=style_images)
-
-        typer.echo(f"✅ Training completed!")
-        typer.echo(f"📊 Final Loss: {results.get('final_loss', 'N/A')}")
-        typer.echo(f"💾 Model saved to: {training_config.output_dir}")
-
-    except Exception as e:
-        typer.echo(f"❌ Training failed: {e}", err=True)
-        raise typer.Exit(1)
+# Training functionality is under development
+# @app.command()
+# def train(...):
+#     """Train a custom style transfer model."""
+#     typer.echo("🚧 Training functionality is under development")
+#     raise typer.Exit(1)
 
 
 @app.command()
@@ -316,7 +263,7 @@ def convert(
     output_path: Path = typer.Option(..., help="Output Core ML model path"),
     config: Path = typer.Option("configs/default.yaml", help="Configuration file path"),
     optimize: bool = typer.Option(True, help="Optimize for Apple Silicon"),
-    compute_units: Optional[str] = typer.Option(None, help="Core ML compute units (all, cpu_only, cpu_and_gpu)"),
+    compute_units: str | None = typer.Option(None, help="Core ML compute units (all, cpu_only, cpu_and_gpu)"),
 ):
     """Convert trained model to Core ML format."""
 
@@ -365,50 +312,12 @@ def convert(
         raise typer.Exit(1)
 
 
-@app.command()
-def serve(
-    model_path: Path = typer.Option(..., help="Path to model (PyTorch or Core ML)"),
-    host: str = typer.Option("127.0.0.1", help="Server host"),
-    port: int = typer.Option(8000, help="Server port"),
-    config: Path = typer.Option("configs/default.yaml", help="Configuration file path"),
-    workers: Optional[int] = typer.Option(None, help="Number of worker processes"),
-):
-    """Start inference server for style transfer."""
-
-    project_dir = Path(__file__).parent.parent
-    if not config.is_absolute():
-        config = project_dir / config
-
-    typer.echo(f"🚀 Starting Style Transfer Server")
-    typer.echo(f"🤖 Model: {model_path}")
-    typer.echo(f"🌐 Server: http://{host}:{port}")
-
-    if not model_path.exists():
-        typer.echo(f"❌ Model not found: {model_path}", err=True)
-        raise typer.Exit(1)
-
-    try:
-        # Load configuration
-        with open(config) as f:
-            config_data = yaml.safe_load(f)
-
-        # Create inference config
-        inference_config = InferenceConfig.from_dict(config_data.get("inference", {}))
-        inference_config.model_path = model_path
-
-        if workers is not None:
-            inference_config.workers = workers
-
-        # Create and start server
-        from inference import InferenceServer
-        server = InferenceServer(inference_config)
-
-        typer.echo("🎯 Server starting...")
-        server.start(host=host, port=port)
-
-    except Exception as e:
-        typer.echo(f"❌ Server failed to start: {e}", err=True)
-        raise typer.Exit(1)
+# Serving functionality is under development
+# @app.command()
+# def serve(...):
+#     """Start inference server for style transfer."""
+#     typer.echo("🚧 Serving functionality is under development")
+#     raise typer.Exit(1)
 
 
 @app.command()
@@ -416,7 +325,7 @@ def benchmark(
     model_path: Path = typer.Option(..., help="Path to model to benchmark"),
     test_images: Path = typer.Option(..., help="Directory with test images"),
     config: Path = typer.Option("configs/default.yaml", help="Configuration file path"),
-    output: Optional[Path] = typer.Option(None, help="Output directory for results"),
+    output: Path | None = typer.Option(None, help="Output directory for results"),
     iterations: int = typer.Option(10, help="Number of benchmark iterations"),
 ):
     """Benchmark style transfer performance."""
