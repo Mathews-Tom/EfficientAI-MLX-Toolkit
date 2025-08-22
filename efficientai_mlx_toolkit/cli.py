@@ -431,13 +431,21 @@ def projects() -> None:
     table.add_column("CLI Available", style="magenta")
     table.add_column("Usage Example", style="dim")
 
-    for project_name, project_path in sorted(discovered_projects.items()):
+    # Sort by directory name (which includes ordering numbers like 01_, 02_, etc.)
+    for project_name, project_path in sorted(discovered_projects.items(), key=lambda x: x[1].name):
         cli_available = "✅" if (project_path / "src" / "cli.py").exists() else "❌"
-        usage_example = (
-            f"uv run efficientai-toolkit {project_name}:train"
-            if cli_available == "✅"
-            else "N/A"
-        )
+        # Provide more appropriate usage examples based on project type
+        if cli_available == "✅":
+            if "lora" in project_name:
+                usage_example = f"uv run efficientai-toolkit {project_name}:train"
+            elif "compression" in project_name:
+                usage_example = f"uv run efficientai-toolkit {project_name}:quantize"
+            elif "coreml" in project_name:
+                usage_example = f"uv run efficientai-toolkit {project_name}:transfer"
+            else:
+                usage_example = f"uv run efficientai-toolkit {project_name}:info"
+        else:
+            usage_example = "N/A"
         project_display_name = project_path.name
         table.add_row(
             project_display_name,
