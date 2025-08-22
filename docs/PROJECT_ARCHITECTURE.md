@@ -4,7 +4,7 @@ This document provides a comprehensive overview of the toolkit's architecture, p
 
 ## High-Level Architecture
 
-```
+```text
 EfficientAI-MLX-Toolkit/
 ├── 🎯 Core Framework
 │   ├── efficientai_mlx_toolkit/     # Unified CLI system
@@ -36,7 +36,7 @@ EfficientAI-MLX-Toolkit/
 
 **Purpose**: Apple Silicon optimized LoRA fine-tuning with production deployment
 
-```
+```text
 src/
 ├── lora/                   # LoRA implementation
 │   ├── config.py          # LoRA configuration
@@ -56,6 +56,7 @@ src/
 ```
 
 **Key Features**:
+
 - MLX-native LoRA layers for Apple Silicon
 - Hyperparameter optimization with Optuna
 - Production-ready FastAPI serving
@@ -63,6 +64,7 @@ src/
 - Comprehensive benchmarking and monitoring
 
 **CLI Commands**:
+
 ```bash
 uv run efficientai-toolkit lora-finetuning-mlx:train --epochs 3
 uv run efficientai-toolkit lora-finetuning-mlx:optimize --trials 10
@@ -74,7 +76,7 @@ uv run efficientai-toolkit lora-finetuning-mlx:serve --host 0.0.0.0
 
 **Purpose**: Production-ready model compression with quantization, pruning, and distillation
 
-```
+```text
 src/
 ├── compression/            # Core compression algorithms
 │   ├── config.py          # Compression configuration
@@ -92,6 +94,7 @@ src/
 ```
 
 **Key Features**:
+
 - Real MLX quantization with multiple bit precisions
 - Advanced pruning algorithms (magnitude, gradual)
 - Knowledge distillation for model efficiency
@@ -99,6 +102,7 @@ src/
 - Apple Silicon optimized implementations
 
 **CLI Commands**:
+
 ```bash
 uv run efficientai-toolkit model-compression-mlx:quantize --bits 8
 uv run efficientai-toolkit model-compression-mlx:prune --sparsity 0.5
@@ -110,7 +114,7 @@ uv run efficientai-toolkit model-compression-mlx:benchmark --output results/
 
 **Purpose**: Artistic style transfer using Stable Diffusion with Core ML optimization
 
-```
+```text
 src/
 ├── diffusion/              # Stable Diffusion implementation
 │   ├── config.py          # Diffusion configuration
@@ -135,6 +139,7 @@ src/
 ```
 
 **Key Features**:
+
 - Dual-method style transfer (diffusion and neural)
 - MLX-accelerated Stable Diffusion models
 - PyTorch to Core ML conversion pipeline
@@ -143,6 +148,7 @@ src/
 - Comprehensive benchmarking tools
 
 **CLI Commands**:
+
 ```bash
 uv run efficientai-toolkit coreml-stable-diffusion-style-transfer:transfer \
   --content-image content.jpg --style-image style.jpg
@@ -164,7 +170,7 @@ class ProjectDiscovery:
     def discover_projects(self) -> Dict[str, ProjectInfo]:
         """Dynamically discover and register project namespaces."""
         projects = {}
-        
+
         for project_dir in self.projects_root.iterdir():
             if self._is_valid_project(project_dir):
                 namespace = self._extract_namespace(project_dir.name)
@@ -175,7 +181,7 @@ class ProjectDiscovery:
                     cli_module=cli_module,
                     path=project_dir
                 )
-        
+
         return projects
 ```
 
@@ -246,7 +252,7 @@ else:
 
 Each project follows a consistent testing structure:
 
-```
+```text
 tests/
 ├── test_cli.py            # CLI command testing
 ├── test_config.py         # Configuration validation
