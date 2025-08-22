@@ -3,7 +3,7 @@ Core compression module for orchestrating different compression techniques.
 
 Provides unified interface for:
 - Quantization
-- Pruning  
+- Pruning
 - Knowledge Distillation
 - Combined compression strategies
 """
@@ -14,7 +14,7 @@ from .strategies import CompressionStrategy, SequentialStrategy, ParallelStrateg
 
 __all__ = [
     "CompressionConfig",
-    "ModelCompressor", 
+    "ModelCompressor",
     "CompressionStrategy",
     "SequentialStrategy",
     "ParallelStrategy",

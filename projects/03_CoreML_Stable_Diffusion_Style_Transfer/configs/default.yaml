@@ -1,0 +1,187 @@
+# Core ML Stable Diffusion Style Transfer Configuration
+# Optimized for Apple Silicon (M1/M2/M3) hardware
+
+# Diffusion model configuration
+diffusion:
+  model_name: "runwayml/stable-diffusion-v1-5"
+  variant: "fp16"  # Use half precision for Apple Silicon
+  num_inference_steps: 50
+  guidance_scale: 7.5
+  scheduler: "DPMSolverMultistepScheduler"
+  safety_checker: false  # Disable for performance
+  requires_safety_checker: false
+  torch_dtype: "float16"
+
+# Style transfer configuration
+style_transfer:
+  style_strength: 0.8          # How much style to apply (0.0-1.0)
+  content_strength: 0.6        # How much content to preserve (0.0-1.0)
+  output_resolution: [512, 512] # Output image resolution
+  preserve_aspect_ratio: true
+  upscale_factor: 1.0          # Post-processing upscaling
+
+  # Style transfer method
+  method: "diffusion"          # "diffusion" or "neural_style"
+
+  # ControlNet settings (if using)
+  use_controlnet: false
+  controlnet_model: "lllyasviel/sd-controlnet-canny"
+  control_strength: 1.0
+
+# Core ML optimization settings
+coreml:
+  optimize_for_apple_silicon: true
+  compute_units: "all"         # "all", "cpu_only", "cpu_and_gpu"
+  precision: "float16"         # "float16", "float32"
+
+  # Model conversion settings
+  attention_implementation: "original"  # "original", "split_einsum"
+  convert_unet: true
+  convert_vae: true
+  convert_text_encoder: true
+
+  # Optimization flags
+  use_chunked_inference: true
+  chunk_size: 2
+  use_memory_efficient_attention: true
+
+# Training configuration
+training:
+  # Basic training settings
+  epochs: 10
+  batch_size: 1               # Small batch for Apple Silicon memory
+  learning_rate: 1e-4
+  weight_decay: 1e-5
+
+  # Data settings
+  image_size: [512, 512]
+  style_dataset_size: 1000    # Number of style examples
+  content_dataset_size: 5000  # Number of content examples
+
+  # LoRA fine-tuning settings
+  use_lora: true
+  lora_rank: 16
+  lora_alpha: 32
+  lora_dropout: 0.1
+  target_modules: ["to_k", "to_q", "to_v", "to_out.0"]
+
+  # Optimization settings
+  gradient_accumulation_steps: 4
+  gradient_checkpointing: true
+  mixed_precision: "fp16"
+
+  # Checkpointing
+  save_steps: 500
+  checkpoint_dir: "checkpoints"
+  save_total_limit: 3
+
+  # Validation
+  validation_steps: 100
+  validation_images: 5
+
+# Inference configuration
+inference:
+  model_path: null            # Path to trained model
+  device: "auto"              # "auto", "cpu", "mps", "coreml"
+  batch_size: 1
+  max_batch_size: 4
+
+  # Performance settings
+  use_attention_slicing: true
+  attention_slice_size: "auto"
+  use_cpu_offload: false
+
+  # Server settings (for serving command)
+  workers: 1
+  max_requests_per_worker: 100
+  timeout: 30
+
+  # Output settings
+  output_format: "PNG"
+  quality: 95
+
+# Hardware optimization
+hardware:
+  prefer_mlx: true            # Use MLX when available
+  use_mps: true              # Use Metal Performance Shaders
+  memory_optimization: true   # Enable memory optimizations
+
+  # Apple Silicon specific
+  unified_memory_optimization: true
+  neural_engine_usage: "auto"  # "auto", "enabled", "disabled"
+
+  # Memory management
+  memory_fraction: 0.8        # Fraction of memory to use
+  memory_growth: true         # Allow memory growth
+  clear_cache_frequency: 100  # Clear cache every N iterations
+
+# Monitoring and logging
+monitoring:
+  enable_logging: true
+  log_level: "INFO"
+  log_file: "style_transfer.log"
+
+  # Performance monitoring
+  enable_profiling: false
+  profile_memory: true
+  profile_compute: false
+
+  # Metrics
+  track_inference_time: true
+  track_memory_usage: true
+  track_energy_usage: false   # Requires special tools
+
+# Model paths and caching
+paths:
+  models_dir: "models"
+  cache_dir: "cache"
+  output_dir: "outputs"
+  temp_dir: "temp"
+
+  # Hugging Face cache
+  hf_cache_dir: null         # Use default if null
+  hf_offline: false
+
+# Data augmentation (for training)
+augmentation:
+  horizontal_flip: true
+  vertical_flip: false
+  rotation_range: 10         # degrees
+  zoom_range: 0.1
+  brightness_range: 0.1
+  contrast_range: 0.1
+  saturation_range: 0.1
+
+  # Style-specific augmentations
+  color_jitter: true
+  gaussian_blur: false
+  random_crop: true
+  center_crop: false
+
+# Evaluation settings
+evaluation:
+  metrics: ["lpips", "ssim", "psnr", "fid"]
+  reference_dataset: null    # Path to reference dataset
+  num_eval_samples: 100
+  eval_batch_size: 1
+
+  # Qualitative evaluation
+  save_comparison_grid: true
+  grid_size: [3, 3]
+  save_individual_results: true
+
+# Advanced settings
+advanced:
+  # Experimental features
+  use_xformers: false         # Memory efficient attention
+  use_torch_compile: false    # PyTorch 2.0 compilation
+  use_trt: false             # TensorRT optimization
+
+  # Debug settings
+  debug_mode: false
+  verbose_logging: false
+  save_intermediate_results: false
+
+  # Reproducibility
+  seed: 42
+  deterministic: false

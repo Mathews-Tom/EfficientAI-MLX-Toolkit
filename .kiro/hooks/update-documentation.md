@@ -17,7 +17,7 @@ File save events for source code files
 name: "Update Documentation"
 trigger:
   event: "file_save"
-  pattern: 
+  pattern:
     - "**/src/**/*.py"
     - "**/utils/**/*.py"
     - "**/__init__.py"

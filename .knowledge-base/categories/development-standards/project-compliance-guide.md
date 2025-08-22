@@ -133,33 +133,33 @@ logger = logging.getLogger(__name__)
 class DSPyModuleManager:
     """
     Manages DSPy modules with modern type annotations.
-    
+
     This class demonstrates compliant code structure with proper
     type hints, error handling, and documentation.
     """
-    
+
     def __init__(
-        self, 
+        self,
         config: DSPyConfig,
         cache_dir: Path | None = None
     ) -> None:
         """
         Initialize the module manager.
-        
+
         Args:
             config: DSPy configuration object
             cache_dir: Optional cache directory path
-            
+
         Raises:
             DSPyIntegrationError: If configuration is invalid
         """
         self.config = config
         self.cache_dir = cache_dir or Path(".dspy_cache")
         self.cache_dir.mkdir(parents=True, exist_ok=True)
-        
+
         self._modules: dict[str, dspy.Module] = {}
         self._metadata: dict[str, dict[str, str | int | float]] = {}
-    
+
     def register_module(
         self,
         name: str,
@@ -168,30 +168,30 @@ class DSPyModuleManager:
     ) -> None:
         """
         Register a DSPy module with metadata.
-        
+
         Args:
             name: Unique module name
             module: DSPy module instance
             metadata: Optional metadata dictionary
-            
+
         Raises:
             DSPyIntegrationError: If module registration fails
         """
         try:
             self._modules[name] = module
             self._metadata[name] = dict(metadata or {})
-            
+
             logger.info("Registered module %s successfully", name)
-            
+
         except Exception as e:
             raise DSPyIntegrationError(
                 f"Failed to register module {name}"
             ) from e
-    
+
     def get_modules(self) -> dict[str, dspy.Module]:
         """Get all registered modules."""
         return self._modules.copy()
-    
+
     def optimize_module(
         self,
         name: str,
@@ -200,50 +200,50 @@ class DSPyModuleManager:
     ) -> dict[str, float]:
         """
         Optimize a registered module.
-        
+
         Args:
             name: Module name to optimize
             dataset: Training dataset
             metrics: Evaluation metrics
-            
+
         Returns:
             Optimization results with performance metrics
-            
+
         Raises:
             DSPyIntegrationError: If optimization fails
         """
         if name not in self._modules:
             raise DSPyIntegrationError(f"Module {name} not found")
-        
+
         try:
             module = self._modules[name]
-            
+
             # Convert dataset to DSPy examples
             examples = [dspy.Example(**item) for item in dataset]
-            
+
             # Perform optimization
             optimizer = dspy.MIPROv2(metric=self._create_metric(metrics))
             optimized_module = optimizer.compile(module, trainset=examples)
-            
+
             # Update registered module
             self._modules[name] = optimized_module
-            
+
             # Return performance metrics
             return self._evaluate_performance(optimized_module, examples, metrics)
-            
+
         except Exception as e:
             raise DSPyIntegrationError(
                 f"Optimization failed for module {name}"
             ) from e
-    
+
     def _create_metric(self, metric_names: Sequence[str]) -> Callable:
         """Create composite metric function."""
         def composite_metric(example, prediction, trace=None):
             # Implementation here
             return 0.85
-        
+
         return composite_metric
-    
+
     def _evaluate_performance(
         self,
         module: dspy.Module,
@@ -260,7 +260,7 @@ def enable_mlx_optimization() -> bool:
     if not MLX_AVAILABLE:
         logger.warning("MLX not available, using CPU fallback")
         return False
-    
+
     try:
         mx.metal.set_memory_limit(16 * 1024**3)  # 16GB
         logger.info("MLX optimization enabled")

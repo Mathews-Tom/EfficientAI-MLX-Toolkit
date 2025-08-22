@@ -27,7 +27,7 @@ from .utils import (
 __all__ = [
     "PruningConfig",
     "PruningMethod",
-    "PruningSchedule", 
+    "PruningSchedule",
     "MLXPruner",
     "MagnitudePruner",
     "GradientPruner",

@@ -14,24 +14,24 @@ graph TB
     A --> C[MLX LLM Provider]
     A --> D[Project-Specific Modules]
     A --> E[Production Deployment]
-    
+
     B --> F[Signature Registry]
     B --> G[Optimizer Engine]
     B --> H[Module Manager]
-    
+
     C --> I[Custom MLX Handler]
     C --> J[LiteLLM Integration]
     C --> K[Hardware Detection]
-    
+
     D --> L[LoRA Signatures]
     D --> M[Diffusion Signatures]
     D --> N[CLIP Signatures]
     D --> O[Federated Signatures]
-    
+
     E --> P[FastAPI Integration]
     E --> Q[MLflow Tracking]
     E --> R[Monitoring & Observability]
-    
+
     S[Shared Infrastructure] --> T[Model Registry]
     S --> U[Experiment Tracking]
     S --> V[Deployment Pipeline]
@@ -95,25 +95,25 @@ class DSPyConfig:
 
 class DSPyFramework:
     """Central DSPy framework manager."""
-    
+
     def __init__(self, config: DSPyConfig):
         self.config = config
         self.signature_registry = SignatureRegistry()
         self.optimizer_engine = OptimizerEngine()
         self.module_manager = ModuleManager()
         self._setup_llm_provider()
-        
+
     def _setup_llm_provider(self):
         """Configure MLX LLM provider for Apple Silicon."""
         if self.config.model_provider == "mlx":
             self.llm_provider = MLXLLMProvider(self.config)
         else:
             self.llm_provider = DefaultLLMProvider(self.config)
-            
+
     def register_project_signatures(self, project_name: str, signatures: Dict[str, dspy.Signature]):
         """Register project-specific signatures."""
         self.signature_registry.register_project(project_name, signatures)
-        
+
     def optimize_module(self, module: dspy.Module, dataset: List[Dict], metrics: List[str]) -> dspy.Module:
         """Optimize a DSPy module using appropriate optimizer."""
         return self.optimizer_engine.optimize(module, dataset, metrics)
@@ -130,18 +130,18 @@ from litellm import CustomLLM
 
 class MLXLLMProvider(CustomLLM):
     """Custom LiteLLM provider for MLX models."""
-    
+
     def __init__(self, config: DSPyConfig):
         super().__init__()
         self.config = config
         self.model, self.tokenizer = self._load_mlx_model()
         self.hardware_info = self._detect_hardware()
-        
+
     def _load_mlx_model(self):
         """Load MLX model with Apple Silicon optimizations."""
         model_path = self.config.model_name.replace("mlx/", "")
         return load(model_path)
-        
+
     def _detect_hardware(self) -> Dict[str, Any]:
         """Detect Apple Silicon capabilities."""
         return {
@@ -149,27 +149,27 @@ class MLXLLMProvider(CustomLLM):
             "memory_limit": mx.metal.get_memory_limit() if mx.metal.is_available() else 0,
             "device_type": "apple_silicon" if mx.metal.is_available() else "cpu"
         }
-        
+
     def completion(self, *args, **kwargs):
         """Generate completion using MLX model."""
         prompt = kwargs.get("messages", [])[-1]["content"]
-        
+
         # MLX-optimized generation
         with mx.stream(generate(
-            self.model, 
-            self.tokenizer, 
+            self.model,
+            self.tokenizer,
             prompt=prompt,
             max_tokens=kwargs.get("max_tokens", 512),
             temp=kwargs.get("temperature", 0.7)
         )) as stream:
             response = "".join(stream)
-            
+
         return self._format_response(response)
-        
+
     def _format_response(self, response: str):
         """Format response for LiteLLM compatibility."""
         from litellm import ModelResponse, Choices, Message
-        
+
         return ModelResponse(
             id="mlx-completion",
             choices=[Choices(
@@ -240,7 +240,7 @@ from sklearn.metrics import accuracy_score, f1_score
 
 class OptimizerEngine:
     """Intelligent optimizer selection and configuration."""
-    
+
     def __init__(self):
         self.optimizers = {
             "bootstrap": dspy.BootstrapFewShot,
@@ -248,7 +248,7 @@ class OptimizerEngine:
             "gepa": dspy.GEPA
         }
         self.optimization_history = []
-        
+
     def select_optimizer(self, task_type: str, dataset_size: int, complexity: str) -> str:
         """Intelligently select optimizer based on task characteristics."""
         if dataset_size < 100:
@@ -257,35 +257,35 @@ class OptimizerEngine:
             return "mipro"
         else:
             return "gepa"
-            
-    def optimize(self, 
-                module: dspy.Module, 
-                dataset: List[Dict], 
+
+    def optimize(self,
+                module: dspy.Module,
+                dataset: List[Dict],
                 metrics: List[str],
                 task_type: str = "general") -> dspy.Module:
         """Optimize module with best optimizer for task."""
-        
+
         optimizer_name = self.select_optimizer(
-            task_type, 
-            len(dataset), 
+            task_type,
+            len(dataset),
             self._assess_complexity(dataset)
         )
-        
+
         optimizer_class = self.optimizers[optimizer_name]
         optimizer = optimizer_class(
             metric=self._create_metric_function(metrics),
             max_bootstrapped_demos=min(8, len(dataset) // 4),
             max_labeled_demos=min(16, len(dataset) // 2)
         )
-        
+
         # Perform optimization
         optimized_module = optimizer.compile(module, trainset=dataset)
-        
+
         # Track optimization results
         self._track_optimization(optimizer_name, module, optimized_module, dataset, metrics)
-        
+
         return optimized_module
-        
+
     def _create_metric_function(self, metrics: List[str]):
         """Create composite metric function."""
         def composite_metric(gold, pred, trace=None):
@@ -322,7 +322,7 @@ class ProjectSignatureConfig:
     signature_classes: Dict[str, type]
     default_optimizer: OptimizerType
     optimization_metrics: List[str]
-    
+
 @dataclass
 class OptimizationResult:
     """Results from DSPy optimization."""
@@ -331,7 +331,7 @@ class OptimizationResult:
     optimized_performance: Dict[str, float]
     optimization_time: float
     num_examples_used: int
-    
+
 @dataclass
 class ModuleRegistry:
     """Registry of optimized DSPy modules."""
@@ -353,7 +353,7 @@ class AppleSiliconConfig:
     mps_available: bool
     unified_memory: bool
     optimization_level: int
-    
+
 @dataclass
 class LLMProviderConfig:
     """LLM provider configuration."""
@@ -407,13 +407,13 @@ def handle_dspy_errors(func):
 ```python
 class ProductionDSPyHandler:
     """Production-ready DSPy module handler with error recovery."""
-    
+
     def __init__(self, module: dspy.Module, fallback_module: Optional[dspy.Module] = None):
         self.primary_module = module
         self.fallback_module = fallback_module
         self.error_count = 0
         self.max_errors = 5
-        
+
     async def execute_with_fallback(self, **kwargs):
         """Execute DSPy module with automatic fallback."""
         try:
@@ -423,7 +423,7 @@ class ProductionDSPyHandler:
         except Exception as e:
             self.error_count += 1
             logger.warning(f"Primary module failed: {e}")
-            
+
             if self.fallback_module and self.error_count < self.max_errors:
                 logger.info("Using fallback module")
                 return await self.fallback_module(**kwargs)
@@ -450,7 +450,7 @@ class TestDSPyFramework:
             mock_tokenizer = Mock()
             mock_load.return_value = (mock_model, mock_tokenizer)
             yield mock_model, mock_tokenizer
-            
+
     @pytest.fixture
     def dspy_config(self, tmp_path):
         """Test DSPy configuration."""
@@ -459,27 +459,27 @@ class TestDSPyFramework:
             model_name="test-model",
             cache_dir=tmp_path / "cache"
         )
-        
+
     def test_framework_initialization(self, dspy_config, mock_mlx_model):
         """Test DSPy framework initialization."""
         framework = DSPyFramework(dspy_config)
         assert framework.config == dspy_config
         assert framework.signature_registry is not None
         assert framework.optimizer_engine is not None
-        
+
     @patch('mlx.metal.is_available', return_value=True)
     def test_mlx_provider_setup(self, mock_metal, dspy_config):
         """Test MLX LLM provider setup."""
         provider = MLXLLMProvider(dspy_config)
         assert provider.hardware_info["metal_available"] == True
-        
+
     def test_signature_registration(self, dspy_config, mock_mlx_model):
         """Test project signature registration."""
         framework = DSPyFramework(dspy_config)
         signatures = {"lora_opt": LoRAOptimizationSignature}
-        
+
         framework.register_project_signatures("lora-project", signatures)
-        
+
         registered = framework.signature_registry.get_project_signatures("lora-project")
         assert "lora_opt" in registered
 ```
@@ -492,38 +492,38 @@ class TestDSPyIntegration:
     async def test_end_to_end_optimization(self, sample_dataset, dspy_config):
         """Test complete DSPy optimization pipeline."""
         framework = DSPyFramework(dspy_config)
-        
+
         # Create test module
         class TestModule(dspy.Module):
             def __init__(self):
                 super().__init__()
                 self.generate = dspy.ChainOfThought("question -> answer")
-                
+
             def forward(self, question):
                 return self.generate(question=question)
-        
+
         module = TestModule()
         optimized = framework.optimize_module(
-            module, 
-            sample_dataset, 
+            module,
+            sample_dataset,
             ["accuracy"],
             task_type="qa"
         )
-        
+
         assert optimized is not None
         assert hasattr(optimized, 'generate')
-        
+
     def test_cross_project_signature_sharing(self, dspy_config):
         """Test sharing signatures across projects."""
         framework = DSPyFramework(dspy_config)
-        
+
         # Register signatures for multiple projects
         lora_sigs = {"optimization": LoRAOptimizationSignature}
         clip_sigs = {"adaptation": CLIPDomainAdaptationSignature}
-        
+
         framework.register_project_signatures("lora", lora_sigs)
         framework.register_project_signatures("clip", clip_sigs)
-        
+
         # Verify cross-project access
         all_sigs = framework.signature_registry.get_all_signatures()
         assert "lora" in all_sigs
@@ -538,25 +538,25 @@ class TestDSPyPerformance:
     def test_optimization_speed(self, benchmark, sample_module, sample_dataset):
         """Benchmark DSPy optimization speed."""
         framework = DSPyFramework(DSPyConfig())
-        
+
         def optimize_module():
             return framework.optimize_module(
-                sample_module, 
+                sample_module,
                 sample_dataset[:10],  # Small dataset for speed
                 ["accuracy"]
             )
-            
+
         result = benchmark(optimize_module)
         assert result is not None
-        
+
     @pytest.mark.memory
     def test_memory_usage_during_optimization(self, sample_module, sample_dataset):
         """Test memory usage during DSPy optimization."""
         framework = DSPyFramework(DSPyConfig())
-        
+
         with MemoryProfiler() as profiler:
             framework.optimize_module(sample_module, sample_dataset, ["accuracy"])
-            
+
         profile = profiler.get_profile()
         # Ensure reasonable memory usage
         assert profile.peak_memory < 8 * 1024**3  # Under 8GB

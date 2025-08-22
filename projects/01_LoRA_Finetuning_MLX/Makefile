@@ -133,7 +133,7 @@ profile-memory: ## Run memory profiling
 	@echo "🧠 Profiling memory usage..."
 	uv run python -m memory_profiler src/cli.py info
 
-profile-performance: ## Run performance profiling  
+profile-performance: ## Run performance profiling
 	@echo "⚡ Profiling performance..."
 	uv run python -m cProfile -o profile_output.prof src/cli.py info
 	@echo "📊 Profile saved to profile_output.prof"
@@ -178,7 +178,7 @@ publish: package ## Publish to PyPI (test)
 	@echo "🚀 Publishing to TestPyPI..."
 	uv run twine upload --repository testpypi dist/*
 
-# Environment Management  
+# Environment Management
 check-env: ## Check development environment
 	@echo "🔍 Checking environment..."
 	@echo "Python: $$(python --version)"

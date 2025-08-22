@@ -1,0 +1,209 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "coreml-stable-diffusion-style-transfer"
+version = "0.1.0"
+description = "Core ML optimized Stable Diffusion Style Transfer framework for Apple Silicon"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    {name = "EfficientAI-MLX-Toolkit", email = "dev@efficientai-mlx.com"},
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+dependencies = [
+    # Core dependencies
+    "mlx>=0.19.0",
+    "numpy>=1.24.0",
+    "torch>=2.0.0",
+    "torchvision>=0.15.0",
+    "Pillow>=10.0.0",
+
+    # Core ML and Apple optimizations
+    "coremltools>=7.0",
+    "diffusers>=0.21.0",
+    "transformers>=4.30.0",
+
+    # CLI and utilities
+    "typer>=0.9.0",
+    "rich>=13.0.0",
+    "click>=8.1.0",
+    "pydantic>=2.0.0",
+
+    # Configuration and serialization
+    "pyyaml>=6.0",
+    "toml>=0.10.2",
+
+    # Image processing and style transfer
+    "opencv-python>=4.8.0",
+    "scipy>=1.11.0",
+    "scikit-image>=0.21.0",
+
+    # Progress and logging
+    "tqdm>=4.65.0",
+    "loguru>=0.7.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+    "pytest-xdist>=3.3.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "ruff>=0.0.280",
+    "mypy>=1.5.0",
+]
+
+apple-silicon = [
+    "mlx-lm>=0.1.0",
+    "mlx[vision]>=0.19.0",
+]
+
+benchmarking = [
+    "psutil>=5.9.0",
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+    "pandas>=2.0.0",
+]
+
+all = [
+    "coreml-stable-diffusion-style-transfer[dev,apple-silicon,benchmarking]"
+]
+
+[project.urls]
+Homepage = "https://github.com/Mathews-Tom/EfficientAI-MLX-Toolkit"
+Repository = "https://github.com/Mathews-Tom/EfficientAI-MLX-Toolkit"
+Documentation = "https://github.com/Mathews-Tom/EfficientAI-MLX-Toolkit/tree/main/projects/03_CoreML_Stable_Diffusion_Style_Transfer"
+Issues = "https://github.com/Mathews-Tom/EfficientAI-MLX-Toolkit/issues"
+
+[project.scripts]
+style-transfer-mlx = "cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+# Testing configuration
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "-v",
+    "--strict-markers",
+    "--strict-config",
+    "--tb=short",
+    "--cov=src",
+    "--cov-report=term-missing",
+    "--cov-report=html:htmlcov",
+    "--cov-fail-under=80",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "benchmark: marks tests as benchmark tests",
+    "apple_silicon: marks tests requiring Apple Silicon hardware",
+    "requires_coreml: marks tests requiring Core ML",
+    "requires_gpu: marks tests requiring GPU acceleration",
+    "style_transfer: marks tests related to style transfer",
+    "diffusion: marks tests related to diffusion models",
+]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning",
+]
+
+# Code formatting
+[tool.black]
+line-length = 88
+target-version = ['py310', 'py311', 'py312']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+# Import sorting
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+known_first_party = ["src"]
+known_third_party = [
+    "mlx", "torch", "numpy", "PIL", "coremltools", "diffusers",
+    "transformers", "typer", "rich", "pydantic", "yaml", "cv2"
+]
+
+# Linting
+[tool.ruff]
+target-version = "py310"
+line-length = 88
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4", # flake8-comprehensions
+    "UP", # pyupgrade
+]
+ignore = [
+    "E501",  # line too long, handled by black
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+]
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/*" = ["B011", "B018"]
+
+# Type checking
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[[tool.mypy.overrides]]
+module = [
+    "mlx.*",
+    "coremltools.*",
+    "diffusers.*",
+    "cv2.*",
+    "skimage.*",
+]
+ignore_missing_imports = true

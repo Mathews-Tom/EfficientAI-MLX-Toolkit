@@ -163,7 +163,7 @@ This codebase is specifically optimized for Apple Silicon (M1/M2/M3) hardware:
 ## Key Dependencies
 
 - **MLX**: Apple's machine learning framework for Apple Silicon
-- **DSPy**: Structured programming framework for language models  
+- **DSPy**: Structured programming framework for language models
 - **FastAPI**: Web framework for API deployment
 - **Rich/Typer**: Modern CLI interfaces
 - **PyTorch**: ML framework with MPS backend support

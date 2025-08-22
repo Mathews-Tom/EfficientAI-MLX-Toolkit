@@ -333,7 +333,7 @@ class KnowledgeBaseAnalytics:
                     """
                     SELECT entry_title, COUNT(*) as view_count
                     FROM events
-                    WHERE event_type = 'view' 
+                    WHERE event_type = 'view'
                     AND entry_title IS NOT NULL
                     AND timestamp >= ?
                     GROUP BY entry_title
@@ -498,7 +498,7 @@ class KnowledgeBaseAnalytics:
                 cursor = conn.cursor()
                 cursor.execute(
                     """
-                    SELECT json_extract(metadata, '$.query') as query, 
+                    SELECT json_extract(metadata, '$.query') as query,
                             AVG(json_extract(metadata, '$.results_count')) as avg_results
                     FROM events
                     WHERE event_type = 'search'
@@ -560,7 +560,7 @@ class KnowledgeBaseAnalytics:
                 cursor = conn.cursor()
                 cursor.execute(
                     """
-                    SELECT COUNT(*) FROM events 
+                    SELECT COUNT(*) FROM events
                     WHERE timestamp >= ? AND timestamp <= ?
                 """,
                     (start_date.isoformat(), end_date.isoformat()),

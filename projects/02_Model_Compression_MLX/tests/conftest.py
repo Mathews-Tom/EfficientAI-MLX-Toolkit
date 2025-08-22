@@ -18,7 +18,7 @@ def temp_dir():
         yield Path(tmp_dir)
 
 
-@pytest.fixture  
+@pytest.fixture
 def sample_config():
     """Sample configuration for testing."""
     return {
@@ -57,13 +57,13 @@ def mock_model():
     class MockModel:
         def __init__(self):
             self.parameters_count = 1000000
-            
+
         def parameters(self):
             return []
-            
+
         def save_weights(self, path):
             pass
-    
+
     return MockModel()
 
 

@@ -19,10 +19,10 @@ logger = get_logger(__name__)
 
 class CompressionStrategy:
     """Base compression strategy."""
-    
+
     def __init__(self, config):
         self.config = config
-    
+
     def compress(self, model: Any) -> Any:
         """Apply compression to model."""
         return model
@@ -30,7 +30,7 @@ class CompressionStrategy:
 
 class SequentialStrategy(CompressionStrategy):
     """Sequential compression strategy."""
-    
+
     def compress(self, model: Any) -> Any:
         """Apply compression methods sequentially."""
         logger.info("Applying sequential compression")
@@ -39,8 +39,8 @@ class SequentialStrategy(CompressionStrategy):
 
 class ParallelStrategy(CompressionStrategy):
     """Parallel compression strategy."""
-    
+
     def compress(self, model: Any) -> Any:
-        """Apply compression methods in parallel.""" 
+        """Apply compression methods in parallel."""
         logger.info("Applying parallel compression")
         return model

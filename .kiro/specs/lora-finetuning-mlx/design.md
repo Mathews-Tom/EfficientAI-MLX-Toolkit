@@ -14,17 +14,17 @@ graph TB
     B --> C[MLX Training Engine]
     B --> D[Hyperparameter Optimizer]
     B --> E[Method Comparator]
-    
+
     C --> F[LoRA Implementation]
     C --> G[QLoRA Implementation]
     C --> H[Full Fine-tuning]
-    
+
     D --> I[Bayesian Optimizer]
     D --> J[Dynamic Rank Selection]
-    
+
     E --> K[Performance Metrics]
     E --> L[Memory Profiler]
-    
+
     M[Model Storage] --> C
     N[Dataset Manager] --> C
     O[Benchmark Results] --> E
@@ -89,16 +89,16 @@ class TrainingConfig:
 
 class MLXTrainingController:
     """Main controller for MLX-optimized fine-tuning."""
-    
+
     def __init__(self, config: TrainingConfig):
         self.config = config
         self.device_info = self._detect_hardware()
         self.memory_manager = MemoryManager(self.device_info)
-        
+
     def train(self) -> Dict[str, float]:
         """Execute training with Apple Silicon optimizations."""
         pass
-        
+
     def compare_methods(self, methods: List[str]) -> Dict[str, Dict[str, float]]:
         """Compare multiple PEFT methods."""
         pass
@@ -113,22 +113,22 @@ from mlx_lm import load, generate
 
 class MLXLoRATrainer:
     """MLX-native LoRA implementation."""
-    
+
     def __init__(self, model_path: str, lora_config: Dict):
         self.model, self.tokenizer = load(model_path)
         self.lora_config = lora_config
         self._setup_lora_layers()
-        
+
     def _setup_lora_layers(self):
         """Initialize LoRA layers with MLX operations."""
         for name, module in self.model.named_modules():
             if isinstance(module, nn.Linear) and self._should_adapt(name):
                 self._add_lora_layer(name, module)
-                
+
     def forward_with_lora(self, x: mx.array) -> mx.array:
         """Forward pass with LoRA adaptations."""
         pass
-        
+
     def train_step(self, batch: Dict[str, mx.array]) -> Dict[str, float]:
         """Single training step with MLX optimizations."""
         pass
@@ -142,20 +142,20 @@ from sklearn.gaussian_process.kernels import Matern
 
 class BayesianHyperparameterOptimizer:
     """Bayesian optimization for hyperparameter tuning."""
-    
+
     def __init__(self, search_space: Dict[str, tuple]):
         self.search_space = search_space
         self.gp = GaussianProcessRegressor(kernel=Matern(nu=2.5))
         self.history = []
-        
+
     def suggest_parameters(self) -> Dict[str, Union[int, float]]:
         """Suggest next hyperparameter configuration."""
         pass
-        
+
     def update_results(self, params: Dict, performance: float):
         """Update optimizer with training results."""
         pass
-        
+
     def optimize_lora_rank(self, dataset_complexity: float) -> int:
         """Automatically determine optimal LoRA rank."""
         pass
@@ -176,7 +176,7 @@ class LoRAConfig:
     alpha: float = 16.0
     dropout: float = 0.1
     target_modules: List[str] = None
-    
+
 @dataclass
 class TrainingMetrics:
     loss: float
@@ -184,7 +184,7 @@ class TrainingMetrics:
     training_time: float
     memory_usage: float
     tokens_per_second: float
-    
+
 @dataclass
 class ModelCheckpoint:
     path: Path
@@ -205,7 +205,7 @@ class HardwareInfo:
     metal_available: bool
     mps_available: bool
     optimization_level: int
-    
+
 @dataclass
 class MemoryProfile:
     peak_memory: float
@@ -248,7 +248,7 @@ class TrainingPipeline:
     def __init__(self, config: TrainingConfig):
         self.config = config
         self.checkpoint_manager = CheckpointManager(config.output_path)
-        
+
     def train_with_recovery(self):
         """Training with automatic error recovery."""
         try:
@@ -280,7 +280,7 @@ class TestMLXLoRATrainer:
             mock_tokenizer = Mock()
             mock_load.return_value = (mock_model, mock_tokenizer)
             yield mock_model, mock_tokenizer
-            
+
     @pytest.fixture
     def temp_config(self, tmp_path):
         """Temporary configuration for testing."""
@@ -290,12 +290,12 @@ class TestMLXLoRATrainer:
             output_path=tmp_path / "output",
             method="lora"
         )
-        
+
     def test_lora_layer_initialization(self, mock_mlx_model, temp_config):
         """Test LoRA layer setup."""
         trainer = MLXLoRATrainer("test-model", {"rank": 8})
         assert trainer.lora_config["rank"] == 8
-        
+
     @patch('mlx.metal.is_available', return_value=True)
     def test_apple_silicon_optimization(self, mock_metal, temp_config):
         """Test Apple Silicon optimization detection."""
@@ -316,14 +316,14 @@ class TestTrainingIntegration:
             method="lora",
             max_iters=10  # Short training for testing
         )
-        
+
         controller = MLXTrainingController(config)
         results = controller.train()
-        
+
         assert "loss" in results
         assert "training_time" in results
         assert results["loss"] > 0
-        
+
     def test_method_comparison(self, sample_dataset, temp_output_dir):
         """Test PEFT method comparison."""
         config = TrainingConfig(
@@ -333,10 +333,10 @@ class TestTrainingIntegration:
             method="lora",
             max_iters=5
         )
-        
+
         controller = MLXTrainingController(config)
         results = controller.compare_methods(["lora", "qlora"])
-        
+
         assert "lora" in results
         assert "qlora" in results
         assert all("loss" in method_results for method_results in results.values())
@@ -350,23 +350,23 @@ class TestPerformanceBenchmarks:
     def test_training_speed_benchmark(self, benchmark, sample_config):
         """Benchmark training speed on Apple Silicon."""
         controller = MLXTrainingController(sample_config)
-        
+
         def train_single_epoch():
             return controller.train_single_epoch()
-            
+
         result = benchmark(train_single_epoch)
-        
+
         # Assert performance targets
         assert result["tokens_per_second"] > 100  # Minimum performance
-        
+
     @pytest.mark.memory
     def test_memory_usage_profiling(self, sample_config):
         """Profile memory usage during training."""
         controller = MLXTrainingController(sample_config)
-        
+
         with MemoryProfiler() as profiler:
             controller.train()
-            
+
         profile = profiler.get_profile()
         assert profile.peak_memory < 14 * 1024**3  # Under 14GB for 7B model
 ```

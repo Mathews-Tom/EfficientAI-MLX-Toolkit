@@ -45,8 +45,8 @@ class MLXDataLoader:
     """
     Efficient data loader optimized for MLX and Apple Silicon.
     """
-    
-    def __init__(self, 
+
+    def __init__(self,
                  data_path: Path,
                  batch_size: int = 32,
                  prefetch_batches: int = 2,
@@ -57,39 +57,39 @@ class MLXDataLoader:
         self.prefetch_batches = prefetch_batches
         self.num_workers = num_workers
         self.shuffle = shuffle
-        
+
         # Initialize data queue for prefetching
         self.data_queue = queue.Queue(maxsize=prefetch_batches)
         self.executor = ThreadPoolExecutor(max_workers=num_workers)
-        
+
     def _load_and_preprocess(self, file_path: Path) -> mx.array:
         """
         Load and preprocess a single data file.
-        
+
         Args:
             file_path: Path to data file
-            
+
         Returns:
             Preprocessed MLX array
         """
         # Load data (example with numpy, adapt to your format)
         data = np.load(file_path)
-        
+
         # Preprocess on CPU
         data = self._preprocess_cpu(data)
-        
+
         # Convert directly to MLX array (leverages unified memory)
         mlx_data = mx.array(data)
-        
+
         return mlx_data
-    
+
     def _preprocess_cpu(self, data: np.ndarray) -> np.ndarray:
         """
         CPU-based preprocessing operations.
-        
+
         Args:
             data: Raw numpy data
-            
+
         Returns:
             Preprocessed numpy data
         """
@@ -97,97 +97,97 @@ class MLXDataLoader:
         data = data.astype(np.float32)
         data = (data - data.mean()) / (data.std() + 1e-8)  # Normalize
         return data
-    
+
     def _create_batch(self, items: list) -> Tuple[mx.array, mx.array]:
         """
         Create a batch from individual items.
-        
+
         Args:
             items: List of (data, label) tuples
-            
+
         Returns:
             Batched data and labels as MLX arrays
         """
         batch_data = []
         batch_labels = []
-        
+
         for data, label in items:
             batch_data.append(data)
             batch_labels.append(label)
-        
+
         # Stack into batches (MLX operation)
         batch_data = mx.stack(batch_data)
         batch_labels = mx.stack(batch_labels)
-        
+
         return batch_data, batch_labels
-    
+
     def _batch_producer(self, file_list: list):
         """
         Producer function that creates batches in background thread.
-        
+
         Args:
             file_list: List of data files to process
         """
         current_batch = []
-        
+
         for file_path in file_list:
             try:
                 # Load data in background
                 data = self._load_and_preprocess(file_path)
-                
+
                 # Create dummy label (adapt to your data format)
                 label = mx.array([0])  # Replace with actual label loading
-                
+
                 current_batch.append((data, label))
-                
+
                 # Create batch when full
                 if len(current_batch) >= self.batch_size:
                     batch = self._create_batch(current_batch)
                     self.data_queue.put(batch)
                     current_batch = []
-                    
+
             except Exception as e:
                 print(f"Error processing {file_path}: {e}")
                 continue
-        
+
         # Handle remaining items
         if current_batch:
             batch = self._create_batch(current_batch)
             self.data_queue.put(batch)
-        
+
         # Signal end of data
         self.data_queue.put(None)
-    
+
     def __iter__(self) -> Iterator[Tuple[mx.array, mx.array]]:
         """
         Iterator interface for the data loader.
-        
+
         Yields:
             Batches of (data, labels) as MLX arrays
         """
         # Get list of data files
         file_list = list(self.data_path.glob("*.npy"))  # Adapt to your format
-        
+
         if self.shuffle:
             np.random.shuffle(file_list)
-        
+
         # Start background batch production
         producer_future = self.executor.submit(self._batch_producer, file_list)
-        
+
         # Yield batches as they become available
         while True:
             try:
                 batch = self.data_queue.get(timeout=30)  # 30 second timeout
-                
+
                 if batch is None:  # End of data signal
                     break
-                    
+
                 yield batch
-                
+
             except queue.Empty:
                 print("Warning: Data loading timeout")
                 break
-        
+
         # Wait for producer to finish
         producer_future.result()
 
@@ -196,22 +196,22 @@ class StreamingMLXDataLoader:
     """
     Memory-efficient streaming data loader for datasets that don't fit in memory.
     """
-    
-    def __init__(self, 
+
+    def __init__(self,
                  data_files: list,
                  batch_size: int = 32,
                  buffer_size: int = 1000):
         self.data_files = data_files
         self.batch_size = batch_size
         self.buffer_size = buffer_size
-    
+
     def _stream_from_file(self, file_path: Path) -> Iterator[mx.array]:
         """
         Stream data from a single file.
-        
+
         Args:
             file_path: Path to data file
-            
+
         Yields:
             Individual data samples as MLX arrays
         """
@@ -220,37 +220,37 @@ class StreamingMLXDataLoader:
             import h5py
             with h5py.File(file_path, 'r') as f:
                 dataset = f['data']
-                
+
                 for i in range(len(dataset)):
                     sample = dataset[i]
                     # Convert to MLX array
                     yield mx.array(sample)
-                    
+
         except ImportError:
             # Fallback for numpy files
             data = np.load(file_path)
             for sample in data:
                 yield mx.array(sample)
-    
+
     def __iter__(self) -> Iterator[mx.array]:
         """
         Stream batches from multiple files.
-        
+
         Yields:
             Batches as MLX arrays
         """
         buffer = []
-        
+
         for file_path in self.data_files:
             for sample in self._stream_from_file(file_path):
                 buffer.append(sample)
-                
+
                 # Yield batch when buffer is full
                 if len(buffer) >= self.batch_size:
                     batch = mx.stack(buffer[:self.batch_size])
                     buffer = buffer[self.batch_size:]
                     yield batch
-        
+
         # Yield remaining samples
         if buffer:
             batch = mx.stack(buffer)
@@ -262,7 +262,7 @@ def example_training_loop():
     Example showing how to use the efficient data loaders.
     """
     data_path = Path("./data/training")
-    
+
     # Create data loader
     data_loader = MLXDataLoader(
         data_path=data_path,
@@ -271,22 +271,22 @@ def example_training_loop():
         num_workers=2,
         shuffle=True
     )
-    
+
     # Training loop
     for epoch in range(10):
         print(f"Epoch {epoch + 1}")
-        
+
         for batch_idx, (data, labels) in enumerate(data_loader):
             # Data is already on the correct device (unified memory)
             # No need for explicit device transfers
-            
+
             # Forward pass (example)
             # output = model(data)
             # loss = loss_fn(output, labels)
-            
+
             if batch_idx % 100 == 0:
                 print(f"  Batch {batch_idx}, Data shape: {data.shape}")
-        
+
         print(f"Epoch {epoch + 1} completed")
 
 if __name__ == "__main__":

@@ -7,17 +7,17 @@ quantization:
   target_bits: 4                         # Target bit width (4, 8, 16)
   weight_bits: 4                         # Weight quantization bits
   activation_bits: 8                     # Activation quantization bits
-  
+
   # Quantization Strategy
   method: "post_training"                # "post_training", "quantization_aware", "dynamic"
   calibration_method: "minmax"           # "minmax", "entropy", "percentile"
   calibration_samples: 512               # Number of calibration samples
-  
+
   # MLX-Specific Settings
   use_mlx_quantization: true             # Use MLX native quantization
   mlx_group_size: 64                     # Group size for MLX quantization
   mlx_precision: "float16"               # Base precision before quantization
-  
+
   # Advanced Options
   symmetric: false                       # Symmetric vs asymmetric quantization
   per_channel: true                      # Per-channel vs per-tensor quantization
@@ -29,21 +29,21 @@ pruning:
   target_sparsity: 0.5                   # Target sparsity (0.0 to 1.0)
   structured: false                      # Structured vs unstructured pruning
   block_size: [2, 4]                     # Block size for structured pruning
-  
+
   # Pruning Strategy
   method: "magnitude"                    # "magnitude", "gradient", "fisher", "random"
   criterion: "l1"                        # "l1", "l2", "fisher_information"
   schedule: "gradual"                    # "gradual", "oneshot", "lottery_ticket"
-  
+
   # Gradual Pruning Settings
   start_epoch: 5                         # Epoch to start pruning
   end_epoch: 15                          # Epoch to finish pruning
   frequency: 2                           # Pruning frequency (every N epochs)
-  
+
   # Fine-tuning After Pruning
   recovery_epochs: 10                    # Epochs for recovery training
   recovery_lr: 1e-4                      # Learning rate for recovery
-  
+
   # Layer-specific Settings
   exclude_layers: ["embedding", "lm_head"]  # Layers to exclude from pruning
   layer_wise_sparsity: {}                # Custom sparsity per layer
@@ -55,17 +55,17 @@ distillation:
   temperature: 4.0                       # Distillation temperature
   alpha: 0.7                            # Weight for distillation loss
   beta: 0.3                             # Weight for task loss
-  
+
   # Loss Functions
   distillation_loss: "kl_div"            # "kl_div", "mse", "cosine"
   feature_matching: false                # Enable intermediate feature matching
   feature_layers: []                     # Layers for feature matching
-  
+
   # Training Settings
   epochs: 20                             # Distillation training epochs
   learning_rate: 1e-4                    # Learning rate for student
   batch_size: 8                          # Batch size for distillation
-  
+
   # MLX Optimization
   use_mlx_distillation: true             # Use MLX-optimized distillation
   compile_student: true                  # Compile student model for efficiency
@@ -76,12 +76,12 @@ model:
   model_name: "mlx-community/Llama-3.2-1B-Instruct-4bit"  # Base model to compress
   model_path: null                       # Path to local model (overrides model_name)
   output_dir: "outputs/"                 # Output directory for compressed models
-  
+
   # Model Loading
   trust_remote_code: false               # Trust remote code in model
   revision: "main"                       # Model revision/branch
   torch_dtype: "auto"                    # PyTorch dtype for fallback models
-  
+
   # MLX Settings
   use_mlx: true                          # Use MLX for model operations
   mlx_memory_limit: null                 # Memory limit in MB (null for auto)
@@ -91,11 +91,11 @@ data:
   # Calibration Data
   calibration_dataset: "data/samples/"   # Path to calibration dataset
   validation_dataset: "data/samples/"    # Path to validation dataset
-  
+
   # Data Processing
   max_sequence_length: 512               # Maximum sequence length
   preprocessing_workers: 4               # Number of preprocessing workers
-  
+
   # Dataset Settings
   shuffle: true                          # Shuffle calibration data
   seed: 42                              # Random seed for reproducibility
@@ -107,15 +107,15 @@ training:
   learning_rate: 1e-4                    # Learning rate
   num_epochs: 10                         # Number of training epochs
   warmup_steps: 100                      # Warmup steps
-  
+
   # Optimization
   optimizer: "adamw"                     # Optimizer type
   weight_decay: 0.01                     # Weight decay
   gradient_clipping: 1.0                 # Gradient clipping threshold
-  
+
   # Scheduling
   scheduler: "cosine"                    # Learning rate scheduler
-  
+
   # Checkpointing
   save_steps: 1000                       # Save checkpoint every N steps
   eval_steps: 500                        # Evaluate every N steps
@@ -128,16 +128,16 @@ evaluation:
   perplexity: true                       # Calculate perplexity
   bleu: false                           # Calculate BLEU score (for generation tasks)
   rouge: false                          # Calculate ROUGE score (for summarization)
-  
+
   # Model Size Metrics
   calculate_model_size: true             # Calculate compressed model size
   calculate_flops: true                  # Calculate FLOPs reduction
   calculate_memory_usage: true           # Calculate memory usage
-  
+
   # Performance Benchmarking
   benchmark_inference: true              # Benchmark inference speed
   benchmark_samples: 100                 # Number of samples for benchmarking
-  
+
   # Accuracy Evaluation
   eval_dataset: "data/samples/"          # Evaluation dataset path
   eval_batch_size: 1                     # Evaluation batch size
@@ -147,7 +147,7 @@ benchmarking:
   # Hardware Benchmarking
   enable_hardware_profiling: true        # Profile hardware usage
   benchmark_variants: ["original", "compressed"]  # Model variants to benchmark
-  
+
   # Metrics to Collect
   metrics:
     - "inference_time"                   # Inference latency
@@ -155,7 +155,7 @@ benchmarking:
     - "model_size"                       # Model size on disk
     - "throughput"                       # Tokens per second
     - "accuracy"                         # Task accuracy
-  
+
   # Benchmark Settings
   warmup_runs: 10                        # Warmup iterations
   benchmark_runs: 100                    # Benchmark iterations
@@ -167,12 +167,12 @@ hardware:
   # Memory Management
   unified_memory_optimization: true      # Optimize for unified memory
   memory_mapping_strategy: "auto"        # Memory mapping strategy
-  
+
   # Performance Settings
   prefer_mlx: true                       # Prefer MLX over other frameworks
   fallback_to_mps: true                  # Fallback to MPS if MLX unavailable
   enable_metal_performance_shaders: true # Use Metal Performance Shaders
-  
+
   # Monitoring
   memory_monitoring: true                # Enable memory monitoring
   performance_profiling: false          # Enable performance profiling
@@ -183,13 +183,13 @@ logging:
   format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
   file: "logs/compression.log"           # Log file path
   console: true                          # Enable console logging
-  
+
   # Experiment Tracking
   wandb:
     enabled: false                       # Enable Weights & Biases
     project: "model-compression"         # W&B project name
     entity: null                         # W&B entity
-  
+
   mlflow:
     enabled: false                       # Enable MLflow
     tracking_uri: null                   # MLflow tracking URI
@@ -200,10 +200,10 @@ advanced:
   # Optimization Strategy
   auto_mixed_precision: true             # Use automatic mixed precision
   gradient_checkpointing: false          # Enable gradient checkpointing
-  
+
   # Experimental Features
   experimental_optimizations: false      # Enable experimental optimizations
-  
+
   # Reproducibility
   deterministic: true                    # Set deterministic behavior
   seed: 42                              # Global random seed

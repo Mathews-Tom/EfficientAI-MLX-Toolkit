@@ -144,7 +144,7 @@ def configure_memory_optimization():
     available_memory = mx.metal.get_available_memory()
     memory_limit = int(available_memory * 0.8)
     mx.metal.set_memory_limit(memory_limit)
-    
+
     print(f"Memory limit set to: {memory_limit / (1024**3):.2f} GB")
 
 def create_memory_efficient_model(input_size, hidden_size, output_size):
@@ -158,7 +158,7 @@ def create_memory_efficient_model(input_size, hidden_size, output_size):
                 nn.ReLU(),
                 nn.Linear(hidden_size // 2, output_size)
             ]
-        
+
         def __call__(self, x):
             # Use gradient checkpointing for memory efficiency
             for layer in self.layers:
@@ -166,7 +166,7 @@ def create_memory_efficient_model(input_size, hidden_size, output_size):
                 # Clear intermediate activations when possible
                 mx.eval(x)
             return x
-    
+
     return MemoryEfficientModel()
 
 # Usage example
@@ -223,64 +223,64 @@ import mlx.optimizers as optim
 
 def create_training_loop(model, train_data, val_data, epochs=10):
     optimizer = optim.Adam(learning_rate=0.001)
-    
+
     def loss_fn(model, x, y):
         return nn.losses.cross_entropy(model(x), y)
-    
+
     def train_step(model, x, y):
         loss_and_grad_fn = nn.value_and_grad(model, loss_fn)
         loss, grads = loss_and_grad_fn(model, x, y)
         optimizer.update(model, grads)
         return loss
-    
+
     def validate(model, val_data):
         total_loss = 0
         total_samples = 0
-        
+
         for batch in val_data:
             x, y = batch
             loss = loss_fn(model, x, y)
             total_loss += loss * x.shape[0]
             total_samples += x.shape[0]
-        
+
         return total_loss / total_samples
-    
+
     # Training loop
     for epoch in range(epochs):
         epoch_loss = 0
         num_batches = 0
-        
+
         for batch in train_data:
             x, y = batch
             loss = train_step(model, x, y)
             epoch_loss += loss
             num_batches += 1
-            
+
             # Evaluate periodically to avoid memory buildup
             mx.eval(model.parameters())
-        
+
         # Validation
         val_loss = validate(model, val_data)
         avg_train_loss = epoch_loss / num_batches
-        
+
         print(f"Epoch {epoch+1}: Train Loss: {avg_train_loss:.4f}, Val Loss: {val_loss:.4f}")
 
 # Advanced pattern with learning rate scheduling
 def create_advanced_training_loop(model, train_data, val_data, epochs=10):
     optimizer = optim.Adam(learning_rate=0.001)
     scheduler = optim.cosine_decay(0.001, epochs * len(train_data))
-    
+
     step = 0
     for epoch in range(epochs):
         for batch in train_data:
             # Update learning rate
             optimizer.learning_rate = scheduler(step)
-            
+
             x, y = batch
             loss = train_step(model, x, y)
-            
+
             step += 1
-            
+
             # Log progress
             if step % 100 == 0:
                 print(f"Step {step}: Loss: {loss:.4f}, LR: {optimizer.learning_rate:.6f}")
@@ -355,10 +355,10 @@ mx.metal.clear_cache()
 # Always check shapes before operations
 def safe_matmul(a, b):
     print(f"Shape A: {a.shape}, Shape B: {b.shape}")
-    
+
     if a.shape[-1] != b.shape[0]:
         raise ValueError(f"Cannot multiply {a.shape} and {b.shape}")
-    
+
     return mx.matmul(a, b)
 
 # Use reshape or transpose as needed

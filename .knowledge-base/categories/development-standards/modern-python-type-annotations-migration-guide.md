@@ -50,7 +50,7 @@ def process_data(
     """Process data using old typing syntax."""
     if callback is None:
         return None
-    
+
     result: List[str] = []
     for item in items:
         if callback(item):
@@ -68,7 +68,7 @@ def process_data(
     """Process data using modern typing syntax."""
     if callback is None:
         return None
-    
+
     result: list[str] = []
     for item in items:
         if callback(item):
@@ -81,38 +81,38 @@ from pathlib import Path
 
 class DataProcessor:
     """Example class showing modern type annotations."""
-    
+
     def __init__(
-        self, 
+        self,
         config: dict[str, str | int | bool],
         processors: Sequence[Callable[[str], str]]
     ) -> None:
         self.config = config
         self.processors = processors
-    
+
     async def process_files(
-        self, 
+        self,
         file_paths: Sequence[Path],
         options: Mapping[str, str | int] | None = None
     ) -> AsyncGenerator[dict[str, str | int], None]:
         """Process files asynchronously with modern type hints."""
         options = options or {}
-        
+
         for path in file_paths:
             if path.exists():
                 content = path.read_text()
-                
+
                 # Process through all processors
                 for processor in self.processors:
                     content = processor(content)
-                
+
                 yield {
                     "path": str(path),
                     "content": content,
                     "size": len(content),
                     **options
                 }
-    
+
     def get_user_data(self, user_id: int) -> dict[str, str | int | list[str]] | None:
         """Get user data with union return type."""
         # Implementation here

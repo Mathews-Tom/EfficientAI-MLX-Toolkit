@@ -36,11 +36,13 @@ class FileOperationError(Exception):
 class SafeFileHandler:
     """
     Safe file operation handler with pathlib support.
-    
+
     Provides atomic operations, backup capabilities, and comprehensive validation.
     """
 
-    def __init__(self, enable_backups: bool = True, backup_dir: Path | None = None) -> None:
+    def __init__(
+        self, enable_backups: bool = True, backup_dir: Path | None = None
+    ) -> None:
         """
         Initialize safe file handler.
 
@@ -74,7 +76,9 @@ class SafeFileHandler:
         Raises:
             FileOperationError: If write operation fails
         """
-        create_backup = create_backup if create_backup is not None else self.enable_backups
+        create_backup = (
+            create_backup if create_backup is not None else self.enable_backups
+        )
 
         try:
             # Ensure parent directory exists
@@ -107,7 +111,7 @@ class SafeFileHandler:
                 f"Failed to write file: {file_path}",
                 file_path=file_path,
                 operation="write",
-                details={"encoding": encoding, "content_type": type(content).__name__}
+                details={"encoding": encoding, "content_type": type(content).__name__},
             ) from e
 
     def safe_read(
@@ -135,14 +139,14 @@ class SafeFileHandler:
                 raise FileOperationError(
                     f"File not found: {file_path}",
                     file_path=file_path,
-                    operation="read"
+                    operation="read",
                 )
 
             if not file_path.is_file():
                 raise FileOperationError(
                     f"Path is not a regular file: {file_path}",
                     file_path=file_path,
-                    operation="read"
+                    operation="read",
                 )
 
             if binary_mode:
@@ -160,7 +164,7 @@ class SafeFileHandler:
                 f"Failed to read file: {file_path}",
                 file_path=file_path,
                 operation="read",
-                details={"encoding": encoding, "binary_mode": binary_mode}
+                details={"encoding": encoding, "binary_mode": binary_mode},
             ) from e
 
     def safe_copy(
@@ -188,7 +192,7 @@ class SafeFileHandler:
                 raise FileOperationError(
                     f"Source file not found: {source_path}",
                     file_path=source_path,
-                    operation="copy"
+                    operation="copy",
                 )
 
             # Ensure destination directory exists
@@ -199,14 +203,16 @@ class SafeFileHandler:
             else:
                 shutil.copy(source_path, destination_path)
 
-            self.logger.info("Successfully copied: %s -> %s", source_path, destination_path)
+            self.logger.info(
+                "Successfully copied: %s -> %s", source_path, destination_path
+            )
             return destination_path
 
         except Exception as e:
             raise FileOperationError(
                 f"Failed to copy file: {source_path} -> {destination_path}",
                 file_path=source_path,
-                operation="copy"
+                operation="copy",
             ) from e
 
     def safe_move(self, source_path: Path, destination_path: Path) -> Path:
@@ -228,7 +234,7 @@ class SafeFileHandler:
                 raise FileOperationError(
                     f"Source file not found: {source_path}",
                     file_path=source_path,
-                    operation="move"
+                    operation="move",
                 )
 
             # Ensure destination directory exists
@@ -236,14 +242,16 @@ class SafeFileHandler:
 
             source_path.rename(destination_path)
 
-            self.logger.info("Successfully moved: %s -> %s", source_path, destination_path)
+            self.logger.info(
+                "Successfully moved: %s -> %s", source_path, destination_path
+            )
             return destination_path
 
         except Exception as e:
             raise FileOperationError(
                 f"Failed to move file: {source_path} -> {destination_path}",
                 file_path=source_path,
-                operation="move"
+                operation="move",
             ) from e
 
     def safe_delete(self, file_path: Path, create_backup: bool | None = None) -> bool:
@@ -260,7 +268,9 @@ class SafeFileHandler:
         Raises:
             FileOperationError: If delete operation fails
         """
-        create_backup = create_backup if create_backup is not None else self.enable_backups
+        create_backup = (
+            create_backup if create_backup is not None else self.enable_backups
+        )
 
         try:
             if not file_path.exists():
@@ -280,7 +290,7 @@ class SafeFileHandler:
             raise FileOperationError(
                 f"Failed to delete file: {file_path}",
                 file_path=file_path,
-                operation="delete"
+                operation="delete",
             ) from e
 
     def _create_backup(self, file_path: Path) -> Path:
@@ -330,7 +340,7 @@ class FileValidator:
                 raise FileOperationError(
                     f"Path does not exist: {file_path}",
                     file_path=file_path,
-                    operation="validate"
+                    operation="validate",
                 )
 
             # Check if it's a file (not directory)
@@ -338,7 +348,7 @@ class FileValidator:
                 raise FileOperationError(
                     f"Path is not a regular file: {file_path}",
                     file_path=file_path,
-                    operation="validate"
+                    operation="validate",
                 )
 
             return True
@@ -349,11 +359,13 @@ class FileValidator:
             raise FileOperationError(
                 f"Path validation failed: {file_path}",
                 file_path=file_path,
-                operation="validate"
+                operation="validate",
             ) from e
 
     @staticmethod
-    def check_file_integrity(file_path: Path, expected_hash: str | None = None) -> dict[str, str]:
+    def check_file_integrity(
+        file_path: Path, expected_hash: str | None = None
+    ) -> dict[str, str]:
         """
         Check file integrity using checksums.
 
@@ -372,7 +384,7 @@ class FileValidator:
                 raise FileOperationError(
                     f"File not found: {file_path}",
                     file_path=file_path,
-                    operation="integrity_check"
+                    operation="integrity_check",
                 )
 
             # Calculate SHA256 hash
@@ -398,7 +410,10 @@ class FileValidator:
                         f"File integrity check failed: {file_path}",
                         file_path=file_path,
                         operation="integrity_check",
-                        details={"expected": expected_hash, "calculated": calculated_hash}
+                        details={
+                            "expected": expected_hash,
+                            "calculated": calculated_hash,
+                        },
                     )
             else:
                 result["integrity_status"] = "calculated"
@@ -411,7 +426,7 @@ class FileValidator:
             raise FileOperationError(
                 f"Integrity check failed: {file_path}",
                 file_path=file_path,
-                operation="integrity_check"
+                operation="integrity_check",
             ) from e
 
     @staticmethod
@@ -436,7 +451,7 @@ class FileValidator:
                 f"Invalid file format: {suffix}",
                 file_path=file_path,
                 operation="format_validation",
-                details={"expected_formats": expected_formats, "actual_format": suffix}
+                details={"expected_formats": expected_formats, "actual_format": suffix},
             )
 
         return True
@@ -544,7 +559,7 @@ def read_json_file(file_path: Path) -> dict[str, Any]:
         raise FileOperationError(
             f"Invalid JSON format: {file_path}",
             file_path=file_path,
-            operation="json_read"
+            operation="json_read",
         ) from e
 
 

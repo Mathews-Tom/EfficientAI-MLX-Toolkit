@@ -315,7 +315,7 @@ uv run efficientai-toolkit projects lora-finetuning-mlx train \
    ```bash
    # Check MLX installation
    python -c "import mlx.core as mx; print('MLX available:', mx.metal.is_available())"
-   
+
    # Reinstall if needed
    uv add mlx
    ```
@@ -324,7 +324,7 @@ uv run efficientai-toolkit projects lora-finetuning-mlx train \
    ```bash
    # Reduce batch size
    uv run efficientai-toolkit projects lora-finetuning-mlx train --batch-size 1
-   
+
    # Set memory limit
    export MLX_MEMORY_LIMIT=8192
    ```
@@ -333,7 +333,7 @@ uv run efficientai-toolkit projects lora-finetuning-mlx train \
    ```bash
    # Validate configuration
    uv run efficientai-toolkit projects lora-finetuning-mlx validate
-   
+
    # Use default configuration
    uv run efficientai-toolkit projects lora-finetuning-mlx train --config configs/default.yaml
    ```

@@ -13,18 +13,18 @@ graph TB
     A[Federated Server] --> B[Client Manager]
     A --> C[Aggregation Engine]
     A --> D[Privacy Manager]
-    
+
     B --> E[Client Selection]
     B --> F[Communication Handler]
     B --> G[Client Monitoring]
-    
+
     C --> H[Federated Averaging]
     C --> I[Weighted Aggregation]
     C --> J[Byzantine Fault Tolerance]
-    
+
     D --> K[Differential Privacy]
     D --> L[Secure Aggregation]
-    
+
     M[Edge Clients] --> N[Local Training]
     M --> O[Model Updates]
     M --> P[Communication Compression]
@@ -53,18 +53,18 @@ class FederatedConfig:
 
 class FederatedServer:
     """Main federated learning server."""
-    
+
     def __init__(self, config: FederatedConfig, model_factory: callable):
         self.config = config
         self.global_model = model_factory()
         self.client_manager = ClientManager(config)
         self.aggregator = FederatedAggregator()
         self.privacy_manager = PrivacyManager(config.privacy_budget)
-        
+
     def train_federated(self) -> Dict[str, Any]:
         """Execute federated training rounds."""
         pass
-        
+
     def aggregate_updates(self, client_updates: List[Dict]) -> Dict[str, torch.Tensor]:
         """Aggregate client model updates."""
         pass
@@ -79,11 +79,11 @@ from typing import Dict, List, Tuple
 
 class PrivacyManager:
     """Differential privacy and secure aggregation."""
-    
+
     def __init__(self, privacy_budget: float = 1.0):
         self.privacy_budget = privacy_budget
         self.noise_multiplier = self._calculate_noise_multiplier()
-        
+
     def add_noise_to_gradients(
         self,
         gradients: Dict[str, torch.Tensor],
@@ -100,7 +100,7 @@ class PrivacyManager:
             )
             noisy_gradients[name] = grad + noise
         return noisy_gradients
-        
+
     def secure_aggregation(
         self,
         client_updates: List[Dict[str, torch.Tensor]]
@@ -119,7 +119,7 @@ class ClientUpdate:
     num_samples: int
     training_loss: float
     training_time: float
-    
+
 @dataclass
 class FederatedMetrics:
     round_number: int
@@ -136,11 +136,11 @@ class TestFederatedLearning:
     def test_federated_averaging(self):
         """Test federated averaging algorithm."""
         pass
-        
+
     def test_privacy_preservation(self):
         """Test differential privacy mechanisms."""
         pass
-        
+
     def test_byzantine_robustness(self):
         """Test robustness against malicious clients."""
         pass

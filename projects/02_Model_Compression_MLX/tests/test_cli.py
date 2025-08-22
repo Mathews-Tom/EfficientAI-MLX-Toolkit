@@ -41,7 +41,7 @@ def test_quantize_command_help():
     assert "Quantize a model" in result.stdout
 
 
-@pytest.mark.slow  
+@pytest.mark.slow
 def test_prune_command_help():
     """Test prune command help."""
     result = runner.invoke(app, ["prune", "--help"])
@@ -52,13 +52,13 @@ def test_prune_command_help():
 def test_cli_app_exists():
     """Test that CLI app is properly defined."""
     assert app is not None
-    
+
     # Basic test that app can be invoked
     assert callable(app)
-    
+
     # Test that app has expected attributes of a Typer app
     assert hasattr(app, '__call__')
-    
+
     # Test that the app name is set correctly
     if hasattr(app, 'info') and hasattr(app.info, 'name'):
         assert app.info.name == "model-compression-framework"

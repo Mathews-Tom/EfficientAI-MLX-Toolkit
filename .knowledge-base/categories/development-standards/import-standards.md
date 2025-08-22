@@ -179,10 +179,10 @@ logger = logging.getLogger(__name__)
 
 class ExampleService:
     """Example service demonstrating proper import usage."""
-    
+
     def __init__(self, config: DSPyConfig):
         self.config = config
-        
+
     def require_mlx_optimization(self) -> bool:
         """Check if MLX optimization is available."""
         if not MLX_AVAILABLE:

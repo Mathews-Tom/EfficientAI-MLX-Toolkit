@@ -32,10 +32,10 @@ bash: uv: command not found
    ```bash
    # macOS with Homebrew
    brew install uv
-   
+
    # Or using pip
    pip install uv
-   
+
    # Or using the installer
    curl -LsSf https://astral.sh/uv/install.sh | sh
    ```
@@ -67,7 +67,7 @@ error: No interpreter found for Python >=3.12
    ```bash
    # macOS with Homebrew
    brew install python@3.12
-   
+
    # Or use pyenv
    pyenv install 3.12.0
    pyenv global 3.12.0
@@ -510,7 +510,7 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
    ```bash
    # Create backup
    cp .knowledge-base/.meta/index.json .knowledge-base/.meta/index.json.backup
-   
+
    # Restore from backup
    cp .knowledge-base/.meta/index.json.backup .knowledge-base/.meta/index.json
    ```
@@ -578,7 +578,7 @@ ValidationError: Missing required field: title
    ```yaml
    # Wrong: difficulty: easy
    # Right: difficulty: "beginner"
-   
+
    # Wrong: tags: tag1, tag2
    # Right: tags: ["tag1", "tag2"]
    ```

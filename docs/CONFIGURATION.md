@@ -24,7 +24,7 @@ lora:
   dropout: 0.1                # Dropout rate (0.0-0.3)
   target_modules:             # Modules to adapt
     - "q_proj"
-    - "v_proj" 
+    - "v_proj"
     - "o_proj"
 
 # Training Configuration
@@ -41,7 +41,7 @@ training:
   save_steps: 500
   eval_steps: 100
 
-# Dataset Configuration  
+# Dataset Configuration
 data:
   dataset_path: "data/samples/"
   validation_split: 0.1
@@ -100,7 +100,7 @@ default:
     rank: 16
     alpha: 32
 
-# Development profile  
+# Development profile
 development:
   lora:
     rank: 8        # Faster training
@@ -150,7 +150,7 @@ Environment variables can override configuration values using dot notation:
 # Override LoRA rank
 export LORA_RANK=32
 
-# Override training batch size  
+# Override training batch size
 export TRAINING_BATCH_SIZE=4
 
 # Override learning rate

@@ -2,7 +2,7 @@
 """
 Simple test runner for isolated tests only.
 
-This script runs only the isolated tests that don't depend on 
+This script runs only the isolated tests that don't depend on
 existing knowledge base content, making it perfect for CI/CD
 and development workflows.
 """

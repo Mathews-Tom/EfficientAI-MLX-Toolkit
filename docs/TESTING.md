@@ -171,7 +171,7 @@ Create a `pytest.ini` file in your project:
 testpaths = tests
 python_files = test_*.py
 python_functions = test_*
-addopts = 
+addopts =
     -v
     --tb=short
     --strict-markers
@@ -199,13 +199,13 @@ from src.training.trainer import LoRATrainer
 
 class TestLoRATrainer:
     """Test suite for LoRA trainer functionality."""
-    
+
     def test_trainer_initialization(self, sample_config):
         """Test trainer can be initialized with valid config."""
         trainer = LoRATrainer(sample_config)
         assert trainer.config == sample_config
         assert trainer.model is None  # Not loaded yet
-    
+
     @pytest.mark.requires_mlx
     def test_model_loading(self, sample_config):
         """Test model loading with MLX backend."""
@@ -213,24 +213,24 @@ class TestLoRATrainer:
         trainer.load_model()
         assert trainer.model is not None
         assert hasattr(trainer.model, 'parameters')
-    
+
     @pytest.mark.slow
     @pytest.mark.integration
     def test_full_training_pipeline(self, sample_config, temp_dir):
         """Test complete training pipeline."""
         trainer = LoRATrainer(sample_config)
         trainer.train()
-        
+
         # Check outputs
         assert (temp_dir / "model").exists()
         assert (temp_dir / "adapters").exists()
-    
+
     @pytest.mark.apple_silicon
     def test_apple_silicon_optimization(self, sample_config):
         """Test Apple Silicon specific optimizations."""
         if not mx.metal.is_available():
             pytest.skip("Apple Silicon not available")
-            
+
         trainer = LoRATrainer(sample_config)
         trainer.enable_apple_silicon_optimizations()
         assert trainer.use_unified_memory is True
@@ -295,15 +295,15 @@ async def test_async_generation():
     """Test asynchronous text generation."""
     server = InferenceServer(model_path="/path/to/model")
     await server.start()
-    
+
     result = await server.generate_async(
         prompt="Hello",
         max_length=10
     )
-    
+
     assert isinstance(result, str)
     assert len(result) > 0
-    
+
     await server.shutdown()
 ```
 
@@ -317,11 +317,11 @@ def test_mlx_memory_optimization():
     """Test MLX memory optimization on Apple Silicon."""
     if not mx.metal.is_available():
         pytest.skip("Apple Silicon required")
-    
+
     # Test unified memory usage
     model = load_model_with_mlx()
     memory_usage = mx.metal.get_active_memory()
-    
+
     assert memory_usage < 1024 * 1024 * 1024  # Less than 1GB
 ```
 
@@ -333,7 +333,7 @@ def test_cpu_fallback():
     with mock.patch('mlx.core.metal.is_available', return_value=False):
         trainer = LoRATrainer(config)
         trainer.load_model()
-        
+
         assert trainer.device == "cpu"
         assert trainer.model.device == "cpu"
 ```
@@ -348,9 +348,9 @@ def test_training_performance(benchmark):
     """Benchmark training performance."""
     config = LoRAConfig(rank=16, alpha=32)
     trainer = LoRATrainer(config)
-    
+
     result = benchmark(trainer.train_one_epoch)
-    
+
     # Assert performance requirements
     assert result.stats.mean < 30.0  # Less than 30 seconds per epoch
 ```
@@ -362,15 +362,15 @@ def test_training_performance(benchmark):
 def test_memory_usage():
     """Test memory usage during training."""
     import tracemalloc
-    
+
     tracemalloc.start()
-    
+
     trainer = LoRATrainer(config)
     trainer.train()
-    
+
     current, peak = tracemalloc.get_traced_memory()
     tracemalloc.stop()
-    
+
     # Assert memory requirements
     assert peak < 16 * 1024 * 1024 * 1024  # Less than 16GB
 ```
@@ -439,23 +439,23 @@ jobs:
     strategy:
       matrix:
         python-version: [3.12, 3.13]
-    
+
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
-    
+
     - name: Install uv
       run: pip install uv
-    
+
     - name: Install dependencies
       run: uv sync
-    
+
     - name: Run tests
       run: uv run efficientai-toolkit test --all --coverage
-    
+
     - name: Upload coverage
       uses: codecov/codecov-action@v3
       with:
@@ -472,19 +472,19 @@ on: [push, pull_request]
 jobs:
   test-macos:
     runs-on: macos-14  # Apple Silicon runner
-    
+
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: 3.12
-    
+
     - name: Install dependencies
       run: |
         pip install uv
         uv sync
-    
+
     - name: Run Apple Silicon tests
       run: |
         uv run efficientai-toolkit test lora-finetuning-mlx \

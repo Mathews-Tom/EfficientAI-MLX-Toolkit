@@ -29,14 +29,14 @@ How does this pattern solve the problem? What's the core approach?
 # Core pattern implementation
 class PatternExample:
     """Example implementation of the pattern."""
-    
+
     def __init__(self):
         self.setup()
-    
+
     def setup(self):
         """Initialize pattern components."""
         pass
-    
+
     def execute(self):
         """Execute the pattern."""
         pass
@@ -48,11 +48,11 @@ class PatternExample:
 # More sophisticated example
 class AdvancedPatternExample(PatternExample):
     """Advanced pattern with additional features."""
-    
+
     def __init__(self, config):
         self.config = config
         super().__init__()
-    
+
     def setup(self):
         """Advanced setup with configuration."""
         # Implementation details

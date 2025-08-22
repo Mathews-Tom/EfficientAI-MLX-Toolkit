@@ -70,15 +70,15 @@ logger = logging.getLogger(__name__)
 
 class ModelTrainer:
     """Apple Silicon-optimized model trainer.
-    
+
     This class provides efficient training capabilities optimized for
     Apple Silicon hardware using MLX framework.
-    
+
     Args:
         model_path: Path to model configuration file
         data_path: Path to training data directory
         optimization_level: Level of Apple Silicon optimization (1-3)
-    
+
     Example:
         >>> trainer = ModelTrainer(
         ...     model_path=Path("models/config.yaml"),
@@ -87,7 +87,7 @@ class ModelTrainer:
         ... )
         >>> trainer.train()
     """
-    
+
     def __init__(
         self,
         model_path: Path,
@@ -97,10 +97,10 @@ class ModelTrainer:
         self.model_path = model_path
         self.data_path = data_path
         self.optimization_level = optimization_level
-        
+
     def train(self) -> Dict[str, float]:
         """Train the model with Apple Silicon optimizations.
-        
+
         Returns:
             Dictionary containing training metrics including loss,
             accuracy, and performance statistics.
