@@ -1,7 +1,7 @@
 # Project configuration for Model Compression Framework
 [project]
 name = "model-compression-mlx"
-version = "0.1.0" 
+version = "0.1.0"
 description = "MLX-Native Model Compression Framework for Apple Silicon"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -30,7 +30,7 @@ dependencies = [
 dev = [
     "pytest>=8.4.1",
     "pytest-asyncio>=0.21.0",
-    "pytest-cov>=6.2.1", 
+    "pytest-cov>=6.2.1",
     "pytest-benchmark>=5.1.0",
     "black>=23.0.0",
     "isort>=5.12.0",
@@ -68,7 +68,7 @@ python_classes = ["Test*"]
 python_functions = ["test_*"]
 addopts = [
     "--strict-markers",
-    "--strict-config", 
+    "--strict-config",
     "--verbose",
     "--tb=short",
 ]

@@ -221,7 +221,7 @@ class TestLogManager:
         with tempfile.TemporaryDirectory() as temp_dir:
             log_dir = Path(temp_dir) / "logs"
             manager = LogManager(log_dir)
-            
+
             assert log_dir.exists()
             assert manager.log_dir == log_dir
 
@@ -230,13 +230,13 @@ class TestLogManager:
         with tempfile.TemporaryDirectory() as temp_dir:
             log_dir = Path(temp_dir) / "logs"
             manager = LogManager(log_dir)
-            
+
             # Create test log files
             (log_dir / "test1.log").write_text("Log content 1")
             (log_dir / "test2.log").write_text("Log content 2")
-            
+
             stats = manager.get_log_statistics()
-            
+
             assert stats["total_files"] == 2
             assert stats["total_size_mb"] > 0
 
@@ -245,17 +245,17 @@ class TestLogManager:
         with tempfile.TemporaryDirectory() as temp_dir:
             log_dir = Path(temp_dir) / "logs"
             manager = LogManager(log_dir)
-            
+
             # Create test log file with searchable content
             (log_dir / "search_test.log").write_text(
                 "ERROR: Test error message\n"
                 "INFO: Normal operation\n"
                 "ERROR: Another error\n"
             )
-            
+
             results = manager.search_logs("ERROR")
             assert len(results) == 2
-            
+
             # Test case insensitive search
             results = manager.search_logs("error", case_sensitive=False)
             assert len(results) == 2
@@ -270,13 +270,13 @@ class TestConfigManagerEnhanced:
             config_path = Path(temp_dir) / "config.json"
             config_data = {"key1": "original", "nested": {"key2": "original"}}
             config_path.write_text(json.dumps(config_data))
-            
+
             with patch.dict(os.environ, {
                 "TESTAPP_KEY1": "overridden",
                 "TESTAPP_NESTED__KEY2": "nested_override"
             }):
                 config = ConfigManager(config_path, environment_prefix="TESTAPP")
-                
+
                 assert config.get("key1") == "overridden"
                 # Note: nested overrides require specific implementation
 
@@ -298,10 +298,10 @@ class TestConfigManagerEnhanced:
                 }
             }
             config_path.write_text(json.dumps(config_data))
-            
+
             config = ConfigManager(config_path, profile="development")
             profile_config = config.get_profile_config()
-            
+
             assert profile_config["debug"] is True
             assert profile_config["base_setting"] == "dev_override"
 
@@ -311,12 +311,12 @@ class TestConfigManagerEnhanced:
             config_path = Path(temp_dir) / "config.json"
             config_data = {"existing_key": "value"}
             config_path.write_text(json.dumps(config_data))
-            
+
             config = ConfigManager(config_path)
-            
+
             # Should pass for existing key
             assert config.validate_required_keys(["existing_key"]) is True
-            
+
             # Should fail for missing key
             with pytest.raises(ConfigurationError):
                 config.validate_required_keys(["missing_key"])
@@ -332,14 +332,14 @@ class TestConfigManagerEnhanced:
                 "float_val": 3.14
             }
             config_path.write_text(json.dumps(config_data))
-            
+
             config = ConfigManager(config_path)
-            
+
             assert config.get_with_type("string_val", str) == "test"
             assert config.get_with_type("int_val", int) == 42
             assert config.get_with_type("bool_val", bool) is True
             assert config.get_with_type("float_val", float) == 3.14
-            
+
             # Test type conversion error
             with pytest.raises(ConfigurationError):
                 config.get_with_type("string_val", int)
@@ -354,12 +354,12 @@ class TestFileOperations:
             handler = SafeFileHandler()
             test_file = Path(temp_dir) / "test.txt"
             content = "Test content"
-            
+
             # Test write
             result_path = handler.safe_write(test_file, content)
             assert result_path == test_file
             assert test_file.exists()
-            
+
             # Test read
             read_content = handler.safe_read(test_file)
             assert read_content == content
@@ -369,13 +369,13 @@ class TestFileOperations:
         with tempfile.TemporaryDirectory() as temp_dir:
             handler = SafeFileHandler(enable_backups=True)
             test_file = Path(temp_dir) / "backup_test.txt"
-            
+
             # Create initial file
             test_file.write_text("Original content")
-            
+
             # Overwrite with backup enabled
             handler.safe_write(test_file, "New content")
-            
+
             # Check backup was created
             backup_files = list(Path(temp_dir).glob("backup_test_*_backup.txt"))
             assert len(backup_files) == 1
@@ -388,20 +388,20 @@ class TestFileOperations:
             source_file = Path(temp_dir) / "source.txt"
             copy_file = Path(temp_dir) / "copy.txt"
             move_file = Path(temp_dir) / "moved.txt"
-            
+
             # Create source file
             source_file.write_text("Test content")
-            
+
             # Test copy
             handler.safe_copy(source_file, copy_file)
             assert copy_file.exists()
             assert copy_file.read_text() == "Test content"
-            
+
             # Test move
             handler.safe_move(copy_file, move_file)
             assert not copy_file.exists()
             assert move_file.exists()
-            
+
             # Test delete
             handler.safe_delete(move_file, create_backup=False)
             assert not move_file.exists()
@@ -411,13 +411,13 @@ class TestFileOperations:
         with tempfile.TemporaryDirectory() as temp_dir:
             test_file = Path(temp_dir) / "test.json"
             test_file.write_text('{"test": "data"}')
-            
+
             # Test path validation
             assert FileValidator.validate_path(test_file) is True
-            
+
             # Test format validation
             assert FileValidator.validate_file_format(test_file, [".json"]) is True
-            
+
             with pytest.raises(FileOperationError):
                 FileValidator.validate_file_format(test_file, [".xml"])
 
@@ -427,9 +427,9 @@ class TestFileOperations:
             test_file = Path(temp_dir) / "integrity_test.txt"
             test_content = "Test content"
             test_file.write_text(test_content)
-            
+
             result = FileValidator.check_file_integrity(test_file)
-            
+
             assert "sha256" in result
             assert "file_size" in result
             assert "integrity_status" in result
@@ -439,12 +439,12 @@ class TestFileOperations:
         # Test safe filename creation
         unsafe_name = "file<>:name|with?invalid*chars"
         safe_name = CrossPlatformUtils.safe_filename(unsafe_name)
-        
+
         # Should not contain any invalid characters
         invalid_chars = '<>:"/\\|?*'
         for char in invalid_chars:
             assert char not in safe_name
-        
+
         # Test path normalization
         test_path = Path("./test/../normalized")
         normalized = CrossPlatformUtils.normalize_path(test_path)
@@ -455,11 +455,11 @@ class TestFileOperations:
         with tempfile.TemporaryDirectory() as temp_dir:
             test_file = Path(temp_dir) / "test.json"
             test_data = {"key": "value", "number": 42}
-            
+
             # Test write
             write_json_file(test_file, test_data)
             assert test_file.exists()
-            
+
             # Test read
             read_data = read_json_file(test_file)
             assert read_data == test_data
@@ -468,25 +468,25 @@ class TestFileOperations:
         """Test file finding functionality."""
         with tempfile.TemporaryDirectory() as temp_dir:
             base_dir = Path(temp_dir)
-            
+
             # Create test files
             (base_dir / "test1.py").write_text("# Python file")
             (base_dir / "test2.py").write_text("# Another Python file")
             (base_dir / "readme.txt").write_text("Text file")
-            
+
             # Create subdirectory with files
             sub_dir = base_dir / "subdir"
             sub_dir.mkdir()
             (sub_dir / "test3.py").write_text("# Nested Python file")
-            
+
             # Test finding all files
             all_files = find_files(base_dir)
             assert len(all_files) == 4
-            
+
             # Test filtering by file type
             py_files = find_files(base_dir, file_types=[".py"])
             assert len(py_files) == 3
-            
+
             # Test non-recursive search
             root_files = find_files(base_dir, recursive=False)
             assert len(root_files) == 3  # Only files in root
@@ -499,16 +499,16 @@ class TestPlottingUtilities:
     def test_create_performance_plot(self) -> None:
         """Test performance plot creation."""
         pytest.importorskip("matplotlib")
-        
+
         with tempfile.TemporaryDirectory() as temp_dir:
             benchmark_results = [
                 {"name": "baseline", "execution_time": 1.5},
                 {"name": "optimized", "execution_time": 0.8}
             ]
-            
+
             output_path = Path(temp_dir) / "performance.png"
             result_path = create_performance_plot(benchmark_results, output_path)
-            
+
             assert result_path == output_path
             assert output_path.exists()
 
@@ -527,20 +527,20 @@ class TestIntegration:
                 }
             }
             config_file.write_text(json.dumps(config_data))
-            
+
             config = ConfigManager(config_file)
             log_file = Path(temp_dir) / config.get("logging.file")
-            
+
             setup_logging(
                 log_level=config.get("logging.level"),
                 log_file=log_file
             )
-            
+
             # Test that logging works
             from utils.logging_utils import get_logger
             logger = get_logger("integration_test")
             logger.info("Integration test message")
-            
+
             assert log_file.exists()
 
     def test_file_operations_with_config(self) -> None:
@@ -555,16 +555,16 @@ class TestIntegration:
                 }
             }
             config_file.write_text(json.dumps(config_data))
-            
+
             config = ConfigManager(config_file)
-            
+
             # Use config in file operations
             handler = SafeFileHandler(
                 enable_backups=config.get("file_operations.enable_backups")
             )
-            
+
             test_file = Path(temp_dir) / "configured_test.txt"
             handler.safe_write(test_file, "Test with config")
-            
+
             assert test_file.exists()
             assert test_file.read_text() == "Test with config"

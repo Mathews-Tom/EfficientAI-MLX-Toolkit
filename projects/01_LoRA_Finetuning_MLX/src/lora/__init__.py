@@ -5,13 +5,13 @@ This module provides Apple Silicon optimized LoRA layers, adapters, and configur
 for efficient fine-tuning of large language models using the MLX framework.
 """
 
-from .config import LoRAConfig, TrainingConfig, InferenceConfig, load_config
-from .layers import LoRALinear, LoRAAttention, LoRAEmbedding
-from .adapters import LoRAAdapter, AdapterManager, ModelAdapter
+from .adapters import AdapterManager, LoRAAdapter, ModelAdapter
+from .config import InferenceConfig, LoRAConfig, TrainingConfig, load_config
+from .layers import LoRAAttention, LoRAEmbedding, LoRALinear
 
 __all__ = [
     "LoRAConfig",
-    "TrainingConfig", 
+    "TrainingConfig",
     "InferenceConfig",
     "load_config",
     "LoRALinear",

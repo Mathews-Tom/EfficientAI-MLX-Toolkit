@@ -101,13 +101,13 @@ class KnowledgeBaseEntry:
     contributors: List[str]
     file_path: Path
     usage_count: int = 0
-    
+
     def get_content(self) -> str:
         """Get the full content of the entry."""
-        
+
     def update_usage(self) -> None:
         """Increment usage counter."""
-        
+
     def is_stale(self, days: int = 180) -> bool:
         """Check if entry is stale."""
 ```
@@ -121,13 +121,13 @@ class KnowledgeBaseIndex:
     categories: Dict[str, List[KnowledgeBaseEntry]]
     tags: Dict[str, List[KnowledgeBaseEntry]]
     full_text_index: Dict[str, Set[int]]
-    
+
     def search(self, query: str, filters: SearchFilter = None) -> SearchResults:
         """Search entries with optional filtering."""
-        
+
     def add_entry(self, entry: KnowledgeBaseEntry) -> None:
         """Add entry to index."""
-        
+
     def remove_entry(self, entry_path: Path) -> None:
         """Remove entry from index."""
 ```
@@ -142,16 +142,16 @@ class KnowledgeBaseIndex:
 class KnowledgeBaseIndexer:
     def __init__(self, kb_path: Path, enable_parallel: bool = True):
         """Initialize indexer with knowledge base path."""
-        
+
     def build_index(self) -> KnowledgeBaseIndex:
         """Build complete index from scratch."""
-        
+
     def incremental_update(self) -> Optional[KnowledgeBaseIndex]:
         """Update index with only changed files."""
-        
+
     def save_index(self, index: KnowledgeBaseIndex) -> None:
         """Save index to disk."""
-        
+
     def load_index(self) -> Optional[KnowledgeBaseIndex]:
         """Load index from disk."""
 ```
@@ -162,15 +162,15 @@ class KnowledgeBaseIndexer:
 class KnowledgeBaseSearcher:
     def __init__(self, index: KnowledgeBaseIndex):
         """Initialize searcher with index."""
-        
-    def search(self, query: str, filters: SearchFilter = None, 
+
+    def search(self, query: str, filters: SearchFilter = None,
                sort_by: str = "relevance", limit: int = 10) -> SearchResults:
         """Search knowledge base with filtering and sorting."""
-        
-    def suggest_similar_entries(self, entry: KnowledgeBaseEntry, 
+
+    def suggest_similar_entries(self, entry: KnowledgeBaseEntry,
                                limit: int = 5) -> List[KnowledgeBaseEntry]:
         """Find similar entries based on content."""
-        
+
     def get_search_stats(self) -> Dict[str, Any]:
         """Get search usage statistics."""
 ```
@@ -181,15 +181,15 @@ class KnowledgeBaseSearcher:
 class KnowledgeBaseContributor:
     def __init__(self, kb_path: Path):
         """Initialize contributor with knowledge base path."""
-        
-    def create_entry_from_template(self, title: str, category: str, 
+
+    def create_entry_from_template(self, title: str, category: str,
                                   tags: List[str], difficulty: str,
                                   contributor: str, entry_type: str = "standard") -> Path:
         """Create new entry from template."""
-        
+
     def validate_entry(self, entry_path: Path) -> List[ValidationError]:
         """Validate entry format and content."""
-        
+
     def update_entry_metadata(self, entry_path: Path, **kwargs) -> None:
         """Update entry frontmatter."""
 ```
@@ -275,7 +275,7 @@ Example:
 class KnowledgeBaseAnalytics:
     def get_language_usage_stats(self) -> Dict[str, int]:
         """Get statistics by programming language."""
-        
+
     def get_contributor_activity(self) -> Dict[str, Dict[str, int]]:
         """Get contributor activity metrics."""
 ```

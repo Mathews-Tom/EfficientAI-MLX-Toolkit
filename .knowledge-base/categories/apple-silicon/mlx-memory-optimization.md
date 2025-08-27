@@ -40,27 +40,27 @@ import psutil
 def setup_mlx_memory_optimization(memory_fraction: float = 0.8):
     """
     Configure MLX for optimal memory usage on Apple Silicon.
-    
+
     Args:
         memory_fraction: Fraction of total memory to allocate to MLX (0.0-1.0)
     """
     # Get total system memory
     total_memory = psutil.virtual_memory().total
     mlx_memory_limit = int(total_memory * memory_fraction)
-    
+
     # Set MLX memory limit (in bytes)
     mx.metal.set_memory_limit(mlx_memory_limit)
-    
+
     # Enable memory pool for efficient allocation
     mx.metal.set_cache_limit(mlx_memory_limit // 4)  # 25% for cache
-    
+
     print(f"MLX memory limit set to: {mlx_memory_limit / (1024**3):.1f} GB")
     print(f"Cache limit set to: {mlx_memory_limit // 4 / (1024**3):.1f} GB")
 
 def load_model_with_memory_mapping(model_path: Path, use_mmap: bool = True):
     """
     Load a large model with memory optimization.
-    
+
     Args:
         model_path: Path to the model weights
         use_mmap: Whether to use memory mapping for weights
@@ -73,51 +73,51 @@ def load_model_with_memory_mapping(model_path: Path, use_mmap: bool = True):
         # Standard loading
         weights = mx.load(str(model_path))
         print("Model loaded into memory")
-    
+
     return weights
 
-def optimize_batch_size_for_memory(base_batch_size: int = 32, 
+def optimize_batch_size_for_memory(base_batch_size: int = 32,
                                  model_size_gb: float = 7.0) -> int:
     """
     Dynamically adjust batch size based on available memory.
-    
+
     Args:
         base_batch_size: Starting batch size
         model_size_gb: Approximate model size in GB
-        
+
     Returns:
         Optimized batch size
     """
     # Get available memory
     available_memory_gb = psutil.virtual_memory().available / (1024**3)
-    
+
     # Reserve memory for model and system (rough estimation)
     usable_memory_gb = available_memory_gb - model_size_gb - 2.0  # 2GB system reserve
-    
+
     # Estimate memory per batch item (rough heuristic)
     memory_per_item_gb = 0.1  # Adjust based on your model
-    
+
     max_batch_size = int(usable_memory_gb / memory_per_item_gb)
     optimized_batch_size = min(base_batch_size, max_batch_size)
-    
+
     print(f"Available memory: {available_memory_gb:.1f} GB")
     print(f"Optimized batch size: {optimized_batch_size}")
-    
+
     return max(1, optimized_batch_size)  # Ensure at least batch size of 1
 
 # Example usage
 if __name__ == "__main__":
     # Setup memory optimization
     setup_mlx_memory_optimization(memory_fraction=0.75)
-    
+
     # Load model with memory mapping
     model_path = Path("models/llama-7b.safetensors")
     if model_path.exists():
         weights = load_model_with_memory_mapping(model_path)
-    
+
     # Optimize batch size
     optimal_batch_size = optimize_batch_size_for_memory(
-        base_batch_size=16, 
+        base_batch_size=16,
         model_size_gb=7.0
     )
 ```

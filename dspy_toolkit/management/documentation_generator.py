@@ -602,7 +602,7 @@ print(result["outputs"])
 
 {api_docs['description']}
 
-**Version:** {api_docs['version']}  
+**Version:** {api_docs['version']}
 **Generated:** {api_docs['created_at']}
 
 ## Endpoints

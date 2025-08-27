@@ -8,14 +8,10 @@ Provides quantization capabilities including:
 - MLX-optimized quantization methods
 """
 
-from .config import QuantizationConfig
-from .quantizer import MLXQuantizer
-from .methods import (
-    PostTrainingQuantizer,
-    DynamicQuantizer,
-    QuantizationAwareTrainer,
-)
 from .calibration import CalibrationDataLoader, CalibrationStrategy
+from .config import QuantizationConfig
+from .methods import DynamicQuantizer, PostTrainingQuantizer, QuantizationAwareTrainer
+from .quantizer import MLXQuantizer
 from .utils import (
     calculate_quantization_error,
     estimate_compression_ratio,
@@ -26,11 +22,11 @@ __all__ = [
     "QuantizationConfig",
     "MLXQuantizer",
     "PostTrainingQuantizer",
-    "DynamicQuantizer", 
+    "DynamicQuantizer",
     "QuantizationAwareTrainer",
     "CalibrationDataLoader",
     "CalibrationStrategy",
     "calculate_quantization_error",
-    "estimate_compression_ratio", 
+    "estimate_compression_ratio",
     "validate_quantization_config",
 ]

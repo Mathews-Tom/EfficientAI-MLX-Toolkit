@@ -169,7 +169,7 @@ quantization:
   use_mlx_quantization: true
   calibration_samples: 512
 
-# Pruning settings  
+# Pruning settings
 pruning:
   target_sparsity: 0.5
   method: "magnitude"
@@ -343,7 +343,7 @@ compressed_model = compressor.compress("model-path")
 ### Model-Specific Recommendations
 
 - **Small models (<1B params)**: Focus on quantization
-- **Medium models (1-7B params)**: Combined quantization + pruning  
+- **Medium models (1-7B params)**: Combined quantization + pruning
 - **Large models (>7B params)**: Aggressive pruning + distillation
 
 ---

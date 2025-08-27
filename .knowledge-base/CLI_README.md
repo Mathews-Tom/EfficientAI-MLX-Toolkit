@@ -19,7 +19,7 @@ A modern, beautiful command-line interface for managing the EfficientAI-MLX-Tool
    ```bash
    # Using pip
    pip install uv
-   
+
    # Or using homebrew on macOS
    brew install uv
    ```
@@ -28,7 +28,7 @@ A modern, beautiful command-line interface for managing the EfficientAI-MLX-Tool
    ```bash
    # Install dependencies
    uv sync
-   
+
    # Install the package in development mode
    uv pip install -e .
    ```

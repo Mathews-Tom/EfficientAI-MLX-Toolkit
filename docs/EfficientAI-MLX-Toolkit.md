@@ -193,12 +193,12 @@ class FederatedTrainer:
     def __init__(self, model_factory, clients):
         self.global_model = model_factory()
         self.clients = clients
-        
+
     def federated_averaging(self, client_updates):
         # Weighted averaging based on data size
         global_update = {}
         total_samples = sum(update['samples'] for update in client_updates)
-        
+
         for key in client_updates['parameters']:
             weighted_sum = sum(
                 update['parameters'][key] * update['samples'] / total_samples
@@ -236,7 +236,7 @@ class AdaptiveDiffusionOptimizer:
         self.base_model = base_model
         self.sampling_scheduler = AdaptiveScheduler()
         self.distillation_manager = ProgressiveDistillation()
-    
+
     def optimize_sampling_schedule(self, validation_data):
         # Learn optimal noise scheduling
         best_schedule = self.sampling_scheduler.optimize(
@@ -279,7 +279,7 @@ class MetaPEFTSystem:
         }
         self.meta_model = TaskEmbeddingNetwork()
         self.method_selector = MethodSelectionNetwork()
-    
+
     def predict_optimal_method(self, task_data):
         task_embedding = self.meta_model(task_data)
         method_scores = self.method_selector(task_embedding)
@@ -311,20 +311,20 @@ class EvolutionaryDiffusionSearch:
     def __init__(self, base_architecture):
         self.population = self.initialize_population(base_architecture)
         self.fitness_evaluator = PerformanceEvaluator()
-        
+
     def evolve_generation(self):
         # Evaluate fitness of current population
         fitness_scores = [
-            self.fitness_evaluator.evaluate(arch) 
+            self.fitness_evaluator.evaluate(arch)
             for arch in self.population
         ]
-        
+
         # Selection, crossover, and mutation
         parents = self.selection(self.population, fitness_scores)
         offspring = self.crossover_and_mutation(parents)
-        
+
         self.population = self.survival_selection(
-            self.population + offspring, 
+            self.population + offspring,
             fitness_scores
         )
 ```
@@ -348,7 +348,7 @@ class EvolutionaryDiffusionSearch:
 ### **Development Roadmap**
 
 1. **Weeks 1-4**: Start with MLX LoRA Fine-tuning Framework (Project #1)
-2. **Weeks 5-8**: Build Core ML Diffusion System (Project #2)  
+2. **Weeks 5-8**: Build Core ML Diffusion System (Project #2)
 3. **Weeks 9-16**: CPU Optimization Pipeline (Project #4) - Your competitive advantage
 4. **Weeks 17-28**: Advanced Meta-Learning System (Project #8)
 

@@ -34,44 +34,44 @@ print_error() {
 
 check_requirements() {
     print_header "Checking Requirements"
-    
+
     # Check Python
     if ! command -v python3 &> /dev/null; then
         print_error "Python 3 is required but not installed"
         exit 1
     fi
-    
+
     python_version=$(python3 --version | cut -d' ' -f2)
     print_success "Python $python_version found"
-    
+
     # Check uv
     if ! command -v uv &> /dev/null; then
         print_warning "uv package manager not found"
         echo "Installing uv..."
         curl -LsSf https://astral.sh/uv/install.sh | sh
         source ~/.bashrc 2>/dev/null || source ~/.zshrc 2>/dev/null || true
-        
+
         if ! command -v uv &> /dev/null; then
             print_error "Failed to install uv. Please install manually: https://docs.astral.sh/uv/"
             exit 1
         fi
     fi
-    
+
     print_success "uv package manager found"
 }
 
 init_knowledge_base() {
     print_header "Initializing Knowledge Base"
-    
+
     cd "$KB_ROOT"
-    
+
     if [ -d ".meta" ] && [ "$1" != "--force" ]; then
         print_warning "Knowledge base already exists. Use --force to reinitialize"
         return 0
     fi
-    
+
     uv run python "$SCRIPT_DIR/init_knowledge_base.py" . "$@"
-    
+
     if [ $? -eq 0 ]; then
         print_success "Knowledge base initialized successfully"
     else
@@ -82,55 +82,55 @@ init_knowledge_base() {
 
 run_maintenance() {
     print_header "Running Maintenance"
-    
+
     cd "$KB_ROOT"
-    
+
     if [ ! -d ".meta" ]; then
         print_error "No knowledge base found. Run 'init' first"
         exit 1
     fi
-    
+
     uv run python "$SCRIPT_DIR/maintenance.py" --kb-path . "$@"
 }
 
 configure_kb() {
     print_header "Configuring Knowledge Base"
-    
+
     cd "$KB_ROOT"
-    
+
     if [ ! -d ".meta" ]; then
         print_error "No knowledge base found. Run 'init' first"
         exit 1
     fi
-    
+
     uv run python "$SCRIPT_DIR/configure_knowledge_base.py" --kb-path . "$@"
 }
 
 migrate_docs() {
     print_header "Migrating Documentation"
-    
+
     cd "$KB_ROOT"
-    
+
     if [ ! -d ".meta" ]; then
         print_error "No knowledge base found. Run 'init' first"
         exit 1
     fi
-    
+
     uv run python "$SCRIPT_DIR/migrate_documentation.py" --kb-path . "$@"
 }
 
 run_tests() {
     print_header "Running Tests"
-    
+
     cd "$KB_ROOT"
-    
+
     if [ ! -d "tests" ]; then
         print_warning "No tests directory found"
         return 0
     fi
-    
+
     uv run python -m pytest tests/ -v
-    
+
     if [ $? -eq 0 ]; then
         print_success "All tests passed"
     else
@@ -141,19 +141,19 @@ run_tests() {
 
 show_status() {
     print_header "Knowledge Base Status"
-    
+
     cd "$KB_ROOT"
-    
+
     if [ ! -d ".meta" ]; then
         print_error "No knowledge base found. Run 'init' first"
         exit 1
     fi
-    
+
     # Show basic info
     echo "📍 Location: $KB_ROOT"
     echo "📊 Statistics:"
     uv run python -m kb stats 2>/dev/null || echo "   Unable to get statistics"
-    
+
     echo ""
     echo "🔧 Maintenance Status:"
     uv run python "$SCRIPT_DIR/maintenance.py" --kb-path . status

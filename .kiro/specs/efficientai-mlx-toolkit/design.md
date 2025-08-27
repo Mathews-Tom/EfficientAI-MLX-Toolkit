@@ -13,12 +13,12 @@ graph TB
     A[EfficientAI-MLX-Toolkit] --> B[Shared Infrastructure]
     A --> C[Individual Projects]
     A --> D[Deployment Layer]
-    
+
     B --> B1[Utils]
     B --> B2[Benchmarks]
     B --> B3[Documentation]
     B --> B4[Environment]
-    
+
     C --> C1[LoRA Fine-tuning]
     C --> C2[Core ML Diffusion]
     C --> C3[Model Compression]
@@ -26,7 +26,7 @@ graph TB
     C --> C5[CLIP Fine-tuning]
     C --> C6[Federated Learning]
     C --> C7[Advanced Projects]
-    
+
     D --> D1[FastAPI Servers]
     D --> D2[Gradio Demos]
     D --> D3[Core ML Models]
@@ -226,7 +226,7 @@ class ModelLoadingError(ToolkitError):
 def handle_error(error: Exception, context: str) -> Optional[str]:
     """Centralized error handling with logging"""
     logger = logging.getLogger(__name__)
-    
+
     if isinstance(error, HardwareCompatibilityError):
         logger.error(f"Hardware compatibility issue in {context}: {error}")
         return "fallback_cpu_mode"
@@ -286,7 +286,7 @@ class TestInfrastructure:
         (project_dir / "src").mkdir()
         (project_dir / "tests").mkdir()
         return project_dir
-    
+
     @pytest.fixture
     def mock_apple_silicon(self):
         """Mock Apple Silicon hardware detection"""

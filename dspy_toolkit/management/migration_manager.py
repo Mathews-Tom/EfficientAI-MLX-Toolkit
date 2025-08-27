@@ -223,38 +223,38 @@ DESCRIPTION = "{description}"
 def migrate(context):
     """
     Perform the migration.
-    
+
     Args:
         context: Migration context containing framework components
-    
+
     Returns:
         bool: True if migration successful, False otherwise
     """
     # TODO: Implement migration logic
     print(f"Running migration {{MIGRATION_ID}}")
-    
+
     # Example migration operations:
     # - Update configuration files
     # - Migrate data structures
     # - Update component interfaces
     # - Transform stored programs
-    
+
     return True
 
 
 def rollback(context):
     """
     Rollback the migration (optional).
-    
+
     Args:
         context: Migration context containing framework components
-    
+
     Returns:
         bool: True if rollback successful, False otherwise
     """
     # TODO: Implement rollback logic
     print(f"Rolling back migration {{MIGRATION_ID}}")
-    
+
     return True
 '''
 

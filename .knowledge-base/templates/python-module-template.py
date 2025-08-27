@@ -6,7 +6,7 @@ It includes [key features] and is optimized for Apple Silicon hardware.
 
 Example:
     Basic usage example:
-    
+
     >>> from module_name import MainClass
     >>> instance = MainClass(config)
     >>> result = instance.process(data)

@@ -24,23 +24,23 @@ __all__ = [
     # Core compression classes
     "CompressionConfig",
     "ModelCompressor",
-    
+
     # Quantization
-    "QuantizationConfig", 
+    "QuantizationConfig",
     "MLXQuantizer",
-    
+
     # Pruning
     "PruningConfig",
     "MLXPruner",
-    
+
     # Distillation
     "DistillationConfig",
     "KnowledgeDistiller",
-    
+
     # Evaluation
     "CompressionEvaluator",
     "CompressionMetrics",
-    
+
     # Benchmarking
     "CompressionBenchmark",
 ]

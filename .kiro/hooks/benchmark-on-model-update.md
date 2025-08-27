@@ -17,7 +17,7 @@ File save events for model-related files
 name: "Benchmark on Model Update"
 trigger:
   event: "file_save"
-  pattern: 
+  pattern:
     - "**/models/*.py"
     - "**/training/*.py"
     - "**/src/train.py"

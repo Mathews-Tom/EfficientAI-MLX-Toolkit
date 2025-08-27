@@ -1,8 +1,8 @@
 # LoRA MLX Implementation Development Plan
 
-**Status:** Converting from Demo Mode to Full Implementation  
-**Created:** 2025-08-19  
-**Framework:** MLX-Native LoRA Fine-Tuning for Apple Silicon  
+**Status:** Converting from Demo Mode to Full Implementation
+**Created:** 2025-08-19
+**Framework:** MLX-Native LoRA Fine-Tuning for Apple Silicon
 
 ## 🎯 Project Goal
 
@@ -13,7 +13,7 @@ Transform the LoRA framework from "demo mode" (parameter validation only) to ful
 ### ✅ **Completed Components (80% of framework)**
 
 - [x] **Architecture & Configuration**: Complete YAML config system with validation
-- [x] **CLI Interface**: Full command structure with typer integration  
+- [x] **CLI Interface**: Full command structure with typer integration
 - [x] **Project Structure**: Modular design with proper imports and dependencies
 - [x] **MLX Dependencies**: Core MLX framework integration (`mlx>=0.15.0`, `mlx-lm>=0.15.0`)
 - [x] **Training Framework**: `LoRATrainer` class structure and callback system
@@ -35,7 +35,7 @@ Transform the LoRA framework from "demo mode" (parameter validation only) to ful
 
 ### **Phase 1: Dependencies & Model Loading**
 
-**Estimated Time:** 6-8 hours  
+**Estimated Time:** 6-8 hours
 **Priority:** Critical
 
 #### 1.1 Add Missing Dependencies
@@ -45,7 +45,7 @@ Transform the LoRA framework from "demo mode" (parameter validation only) to ful
 # Note: mlx-lm already includes tokenizer functionality
 # Only add transformers if mlx-lm tokenizers prove insufficient
 uv add transformers>=4.35.0  # Only if needed for specific tokenizer features
-uv add datasets>=2.14.0  
+uv add datasets>=2.14.0
 # Avoid torch dependency - mlx-lm provides compatible tokenizers
 # uv add torch>=2.0.0  # Heavy dependency - use only if absolutely required
 ```
@@ -72,7 +72,7 @@ uv add datasets>=2.14.0
 
 ### **Phase 2: Training Implementation**
 
-**Estimated Time:** 8-10 hours  
+**Estimated Time:** 8-10 hours
 **Priority:** Critical
 
 #### 2.1 Complete Training Loop (`src/training/trainer.py`)
@@ -117,7 +117,7 @@ uv add datasets>=2.14.0
 
 #### 3.3 CLI Generation Command (`src/cli.py`)
 
-- [ ] Replace demo message at line 171: `"⚠️ Text generation not implemented in this demo"`  
+- [ ] Replace demo message at line 171: `"⚠️ Text generation not implemented in this demo"`
 - [ ] Add actual model loading and text generation
 - [ ] Implement output formatting and error handling
 
@@ -182,7 +182,7 @@ uv run efficientai-toolkit projects lora-finetuning-mlx validate
 # Test training pipeline (to be implemented)
 uv run efficientai-toolkit projects lora-finetuning-mlx train --epochs 1 --batch-size 1
 
-# Test text generation (to be implemented)  
+# Test text generation (to be implemented)
 uv run efficientai-toolkit projects lora-finetuning-mlx generate --prompt "Hello" --model-path ./output
 
 # Test serving (to be implemented)
@@ -216,7 +216,7 @@ git checkout -b feature/implement-core-ml-operations
 
 # Implement in phases
 git add -A && git commit -m "Phase 1: Add dependencies and model loading"
-git add -A && git commit -m "Phase 2: Implement training loop" 
+git add -A && git commit -m "Phase 2: Implement training loop"
 git add -A && git commit -m "Phase 3: Add inference and generation"
 git add -A && git commit -m "Phase 4: Integration testing and cleanup"
 ```
@@ -237,7 +237,7 @@ git add -A && git commit -m "Phase 4: Integration testing and cleanup"
 - [ ] Dataset loader created
 - [ ] Unit tests passing
 
-### **Phase 2 Progress** ⏳  
+### **Phase 2 Progress** ⏳
 
 - [ ] Training loop completed
 - [ ] LoRA layers functional
@@ -247,7 +247,7 @@ git add -A && git commit -m "Phase 4: Integration testing and cleanup"
 ### **Phase 3 Progress** ⏳
 
 - [ ] Text generation implemented
-- [ ] CLI generate command working  
+- [ ] CLI generate command working
 - [ ] FastAPI serving functional
 - [ ] Inference tests passing
 

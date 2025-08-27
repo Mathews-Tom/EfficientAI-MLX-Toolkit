@@ -590,7 +590,7 @@ class TemplateGenerator:
 
             ## Configuration
 
-            The project uses the DSPy Integration Framework's centralized configuration system. 
+            The project uses the DSPy Integration Framework's centralized configuration system.
             Configuration can be customized through the config manager.
 
             ## Testing
@@ -699,32 +699,32 @@ class TemplateGenerator:
                 """
                 {module_name} for {project_type} optimization.
                 """
-                
+
                 def __init__(self, framework: DSPyFramework):
                     """Initialize {module_name}."""
                     self.framework = framework
                     logger.info(f"Initialized {module_name}")
-                
+
                 def process(self, inputs: dict[str, str | int | float | bool]) -> dict[str, str | int | float | bool]:
                     """
                     Process inputs using DSPy optimization.
-                    
+
                     Args:
                         inputs: Input parameters
-                        
+
                     Returns:
                         Processed results
                     """
                     try:
                         # TODO: Implement {module_name} logic
                         logger.info(f"Processing with {module_name}")
-                        
+
                         # Example DSPy module usage
                         # module = self.framework.get_project_module("project", "module")
                         # result = module(**inputs)
-                        
+
                         return {{"result": "processed", "module": "{module_name}"}}
-                        
+
                     except Exception as e:
                         logger.error(f"{module_name} processing failed: {{e}}")
                         raise DSPyIntegrationError(f"{module_name} failed: {{e}}")
@@ -742,23 +742,23 @@ class TemplateGenerator:
 
             def main():
                 """Basic LoRA optimization example."""
-                
+
                 # Initialize framework
                 from lora_finetuning.config import get_config
                 config = get_config()
                 framework = DSPyFramework(config)
-                
+
                 # Register LoRA signatures
                 signatures = {"lora_optimization": LoRAOptimizationSignature}
                 framework.register_project_signatures("lora_project", signatures)
-                
+
                 # Create optimization module
                 optimizer = framework.create_project_module(
-                    "lora_project", 
-                    "lora_optimizer", 
+                    "lora_project",
+                    "lora_optimizer",
                     "lora_optimization"
                 )
-                
+
                 # Example optimization
                 result = optimizer(
                     model_name="microsoft/DialoGPT-small",
@@ -766,7 +766,7 @@ class TemplateGenerator:
                     hardware_constraints={"memory": "16GB", "device": "M2"},
                     performance_targets={"accuracy": 0.9, "speed": "fast"}
                 )
-                
+
                 print("Optimization result:", result.optimal_lora_rank)
                 print("Expected performance:", result.expected_performance)
             '''
@@ -782,23 +782,23 @@ class TemplateGenerator:
 
             def main():
                 """Adaptive sampling schedule example."""
-                
+
                 # Initialize framework
                 from diffusion_optimization.config import get_config
                 config = get_config()
                 framework = DSPyFramework(config)
-                
+
                 # Register diffusion signatures
                 signatures = {"sampling_schedule": SamplingScheduleSignature}
                 framework.register_project_signatures("diffusion_project", signatures)
-                
+
                 # Create sampling scheduler
                 scheduler = framework.create_project_module(
                     "diffusion_project",
                     "sampling_scheduler",
                     "sampling_schedule"
                 )
-                
+
                 # Generate adaptive schedule
                 result = scheduler(
                     model_complexity={"layers": 32, "parameters": "1B"},
@@ -806,7 +806,7 @@ class TemplateGenerator:
                     quality_speed_tradeoff={"quality": 0.9, "speed": 0.7},
                     hardware_capabilities={"device": "M2", "memory": "16GB"}
                 )
-                
+
                 print("Sampling schedule:", result.sampling_schedule)
                 print("Performance estimates:", result.performance_estimates)
             '''
@@ -822,23 +822,23 @@ class TemplateGenerator:
 
             def main():
                 """CLIP domain adaptation example."""
-                
+
                 # Initialize framework
                 from clip_finetuning.config import get_config
                 config = get_config()
                 framework = DSPyFramework(config)
-                
+
                 # Register CLIP signatures
                 signatures = {"domain_adaptation": CLIPDomainAdaptationSignature}
                 framework.register_project_signatures("clip_project", signatures)
-                
+
                 # Create domain adapter
                 adapter = framework.create_project_module(
                     "clip_project",
                     "domain_adapter",
                     "domain_adaptation"
                 )
-                
+
                 # Perform domain adaptation
                 result = adapter(
                     source_domain="general_images",
@@ -846,7 +846,7 @@ class TemplateGenerator:
                     available_data={"size": 5000, "quality": "high"},
                     adaptation_objectives={"accuracy": 0.95, "generalization": "good"}
                 )
-                
+
                 print("Adaptation strategy:", result.adaptation_strategy)
                 print("Expected performance:", result.expected_performance)
             '''
@@ -862,23 +862,23 @@ class TemplateGenerator:
 
             def main():
                 """Federated learning optimization example."""
-                
+
                 # Initialize framework
                 from federated_learning.config import get_config
                 config = get_config()
                 framework = DSPyFramework(config)
-                
+
                 # Register federated signatures
                 signatures = {"federated_optimization": FederatedLearningSignature}
                 framework.register_project_signatures("federated_project", signatures)
-                
+
                 # Create federated coordinator
                 coordinator = framework.create_project_module(
                     "federated_project",
                     "federated_coordinator",
                     "federated_optimization"
                 )
-                
+
                 # Optimize federated strategy
                 result = coordinator(
                     client_characteristics={"num_clients": 10, "heterogeneity": "high"},
@@ -886,7 +886,7 @@ class TemplateGenerator:
                     communication_constraints={"bandwidth": "limited", "latency": "high"},
                     privacy_requirements={"differential_privacy": True, "epsilon": 1.0}
                 )
-                
+
                 print("Federated strategy:", result.federated_strategy)
                 print("Privacy preservation:", result.privacy_preservation)
             '''

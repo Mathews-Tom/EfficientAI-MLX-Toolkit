@@ -14,23 +14,23 @@ graph TB
     A --> C[QAT Engine]
     A --> D[Mixed Precision Engine]
     A --> E[Dynamic Quantization Engine]
-    
+
     B --> F[8-bit Quantization]
     B --> G[4-bit Quantization]
-    
+
     C --> H[Training-time Quantization]
     C --> I[Quantization-aware Fine-tuning]
-    
+
     D --> J[Strategic Precision Selection]
     D --> K[Layer-wise Optimization]
-    
+
     E --> L[Runtime Quantization]
     E --> M[Adaptive Precision]
-    
+
     N[Hardware Optimizer] --> O[CPU Optimization]
     N --> P[MPS GPU Optimization]
     N --> Q[ANE Optimization]
-    
+
     R[Benchmark Suite] --> S[Performance Analysis]
     R --> T[Accuracy Analysis]
     R --> U[Trade-off Visualization]
@@ -107,7 +107,7 @@ class QuantizationConfig:
 
 class QuantizationController:
     """Main controller for quantization benchmarking."""
-    
+
     def __init__(self, config: QuantizationConfig):
         self.config = config
         self.quantization_engines = {
@@ -119,7 +119,7 @@ class QuantizationController:
         }
         self.hardware_optimizer = HardwareSpecificOptimizer()
         self.benchmarker = QuantizationBenchmarkSuite()
-        
+
     def quantize_model(
         self,
         model: nn.Module,
@@ -128,7 +128,7 @@ class QuantizationController:
     ) -> Dict[str, Any]:
         """Apply quantization with specified method and hardware target."""
         pass
-        
+
     def benchmark_quantization_methods(
         self,
         model: nn.Module,
@@ -137,7 +137,7 @@ class QuantizationController:
     ) -> Dict[str, Dict[str, float]]:
         """Benchmark multiple quantization methods."""
         pass
-        
+
     def recommend_quantization_strategy(
         self,
         model: nn.Module,
@@ -158,7 +158,7 @@ from onnxruntime.quantization import quantize_dynamic, QuantType
 
 class PTQEngine:
     """Post-Training Quantization implementation."""
-    
+
     def __init__(self, bits: int = 8):
         self.bits = bits
         self.quantization_configs = {
@@ -166,7 +166,7 @@ class PTQEngine:
             "onnx": self._setup_onnx_config(),
             "pytorch": self._setup_pytorch_config()
         }
-        
+
     def _setup_bnb_config(self) -> BitsAndBytesConfig:
         """Setup BitsAndBytes configuration."""
         if self.bits == 8:
@@ -180,7 +180,7 @@ class PTQEngine:
             )
         else:
             raise ValueError(f"Unsupported bit width: {self.bits}")
-            
+
     def quantize_model(
         self,
         model: nn.Module,
@@ -196,7 +196,7 @@ class PTQEngine:
             return self._huggingface_quantization(model, calibration_data)
         else:
             raise ValueError(f"Unsupported framework: {framework}")
-            
+
     def _pytorch_quantization(
         self,
         model: nn.Module,
@@ -207,29 +207,29 @@ class PTQEngine:
         model.eval()
         model.qconfig = quant.get_default_qconfig('fbgemm')
         model_prepared = quant.prepare(model)
-        
+
         # Calibration
         with torch.no_grad():
             for batch_idx, (data, _) in enumerate(calibration_data):
                 if batch_idx >= 100:  # Limit calibration samples
                     break
                 model_prepared(data)
-                
+
         # Convert to quantized model
         quantized_model = quant.convert(model_prepared)
-        
+
         # Calculate quantization statistics
         original_size = sum(p.numel() * p.element_size() for p in model.parameters())
         quantized_size = sum(p.numel() * p.element_size() for p in quantized_model.parameters())
-        
+
         stats = {
             "compression_ratio": quantized_size / original_size,
             "size_reduction": 1 - (quantized_size / original_size),
             "quantization_method": f"pytorch_{self.bits}bit"
         }
-        
+
         return quantized_model, stats
-        
+
     def _onnx_quantization(
         self,
         model: nn.Module,
@@ -237,7 +237,7 @@ class PTQEngine:
     ) -> Tuple[Any, Dict[str, float]]:
         """ONNX quantization for cross-platform deployment."""
         pass
-        
+
     def _huggingface_quantization(
         self,
         model: nn.Module,
@@ -256,7 +256,7 @@ from typing import Dict, Any, Optional
 
 class HardwareSpecificOptimizer:
     """Apple Silicon hardware-specific quantization optimization."""
-    
+
     def __init__(self):
         self.hardware_info = self._detect_hardware()
         self.optimization_strategies = {
@@ -265,7 +265,7 @@ class HardwareSpecificOptimizer:
             HardwareTarget.ANE: self._ane_optimization,
             HardwareTarget.ALL: self._unified_optimization
         }
-        
+
     def _detect_hardware(self) -> Dict[str, Any]:
         """Detect Apple Silicon hardware capabilities."""
         hardware_info = {
@@ -274,15 +274,15 @@ class HardwareSpecificOptimizer:
             "mps_available": torch.backends.mps.is_available(),
             "memory_gb": self._get_memory_info()
         }
-        
+
         # Detect ANE availability (approximation)
         if hardware_info["is_apple_silicon"]:
             hardware_info["ane_available"] = True  # Most Apple Silicon has ANE
         else:
             hardware_info["ane_available"] = False
-            
+
         return hardware_info
-        
+
     def optimize_for_hardware(
         self,
         quantized_model: nn.Module,
@@ -291,36 +291,36 @@ class HardwareSpecificOptimizer:
         """Apply hardware-specific optimizations."""
         if target not in self.optimization_strategies:
             raise ValueError(f"Unsupported hardware target: {target}")
-            
+
         return self.optimization_strategies[target](quantized_model)
-        
+
     def _cpu_optimization(self, model: nn.Module) -> Tuple[nn.Module, Dict[str, float]]:
         """CPU-specific quantization optimizations."""
         # Enable CPU-specific optimizations
         if hasattr(torch.backends, 'mkldnn') and torch.backends.mkldnn.is_available():
             model = torch.jit.optimize_for_inference(torch.jit.script(model))
-            
+
         optimization_stats = {
             "cpu_optimized": True,
             "mkldnn_enabled": torch.backends.mkldnn.is_available(),
             "vectorization": "enabled"
         }
-        
+
         return model, optimization_stats
-        
+
     def _mps_optimization(self, model: nn.Module) -> Tuple[nn.Module, Dict[str, float]]:
         """MPS GPU-specific optimizations."""
         if self.hardware_info["mps_available"]:
             model = model.to("mps")
-            
+
         optimization_stats = {
             "mps_optimized": True,
             "unified_memory": True,
             "gpu_acceleration": self.hardware_info["mps_available"]
         }
-        
+
         return model, optimization_stats
-        
+
     def _ane_optimization(self, model: nn.Module) -> Tuple[nn.Module, Dict[str, float]]:
         """Apple Neural Engine optimizations."""
         # ANE optimization typically requires Core ML conversion
@@ -329,24 +329,24 @@ class HardwareSpecificOptimizer:
             "coreml_conversion_required": True,
             "neural_engine_optimized": False  # Would be True after Core ML conversion
         }
-        
+
         return model, optimization_stats
-        
+
     def _unified_optimization(self, model: nn.Module) -> Tuple[nn.Module, Dict[str, float]]:
         """Unified optimization across all Apple Silicon components."""
         # Apply optimizations for all available hardware
         optimized_model = model
         combined_stats = {}
-        
+
         # Apply CPU optimizations
         optimized_model, cpu_stats = self._cpu_optimization(optimized_model)
         combined_stats.update({"cpu_" + k: v for k, v in cpu_stats.items()})
-        
+
         # Apply MPS optimizations if available
         if self.hardware_info["mps_available"]:
             optimized_model, mps_stats = self._mps_optimization(optimized_model)
             combined_stats.update({"mps_" + k: v for k, v in mps_stats.items()})
-            
+
         return optimized_model, combined_stats
 ```
 
@@ -368,7 +368,7 @@ class QuantizationMetrics:
     model_size: float
     compression_ratio: float
     hardware_utilization: Dict[str, float]
-    
+
 @dataclass
 class BenchmarkResults:
     method: str
@@ -378,7 +378,7 @@ class BenchmarkResults:
     accuracy_retention: float
     speedup_factor: float
     memory_reduction: float
-    
+
 @dataclass
 class ModelArchitectureInfo:
     name: str
@@ -442,7 +442,7 @@ class TestQuantizationEngine:
             nn.Linear(50, 10),
             nn.Softmax(dim=1)
         )
-        
+
     @pytest.fixture
     def calibration_data(self):
         """Create sample calibration data."""
@@ -451,7 +451,7 @@ class TestQuantizationEngine:
             torch.randint(0, 10, (1000,))
         )
         return torch.utils.data.DataLoader(dataset, batch_size=32)
-        
+
     def test_ptq_8bit_quantization(self, sample_model, calibration_data):
         """Test 8-bit post-training quantization."""
         ptq_engine = PTQEngine(bits=8)
@@ -460,21 +460,21 @@ class TestQuantizationEngine:
             calibration_data,
             framework="pytorch"
         )
-        
+
         assert "compression_ratio" in stats
         assert stats["compression_ratio"] < 1.0  # Should be compressed
         assert isinstance(quantized_model, nn.Module)
-        
+
     def test_hardware_optimization(self, sample_model):
         """Test hardware-specific optimization."""
         optimizer = HardwareSpecificOptimizer()
-        
+
         # Test CPU optimization
         cpu_model, cpu_stats = optimizer.optimize_for_hardware(
             sample_model,
             HardwareTarget.CPU
         )
-        
+
         assert "cpu_optimized" in cpu_stats
         assert cpu_stats["cpu_optimized"] == True
 ```
@@ -487,28 +487,28 @@ class TestQuantizationBenchmarks:
     def test_quantization_speed_benchmark(self, benchmark, sample_model, calibration_data):
         """Benchmark quantization process speed."""
         ptq_engine = PTQEngine(bits=8)
-        
+
         def quantize_model():
             return ptq_engine.quantize_model(sample_model, calibration_data)
-            
+
         result = benchmark(quantize_model)
-        
+
         # Assert reasonable quantization time
         assert result.stats.mean < 60.0  # Under 1 minute
-        
+
     @pytest.mark.accuracy
     def test_accuracy_retention(self, sample_model, test_dataset):
         """Test accuracy retention after quantization."""
         # Get baseline accuracy
         baseline_accuracy = evaluate_model(sample_model, test_dataset)
-        
+
         # Quantize model
         ptq_engine = PTQEngine(bits=8)
         quantized_model, _ = ptq_engine.quantize_model(sample_model, test_dataset)
-        
+
         # Get quantized accuracy
         quantized_accuracy = evaluate_model(quantized_model, test_dataset)
-        
+
         # Assert acceptable accuracy retention
         accuracy_retention = quantized_accuracy / baseline_accuracy
         assert accuracy_retention > 0.95  # At least 95% accuracy retention

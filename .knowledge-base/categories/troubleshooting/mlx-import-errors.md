@@ -25,7 +25,7 @@ ModuleNotFoundError: No module named 'mlx'
 ```
 
 ```bash
-ImportError: dlopen(/opt/homebrew/lib/python3.11/site-packages/mlx/core.cpython-311-darwin.so, 0x0002): 
+ImportError: dlopen(/opt/homebrew/lib/python3.11/site-packages/mlx/core.cpython-311-darwin.so, 0x0002):
 Symbol not found: _OBJC_CLASS_$_MTLDevice
 ```
 
@@ -182,10 +182,10 @@ def check_apple_silicon():
     """Verify we're running on Apple Silicon."""
     if platform.system() != 'Darwin':
         raise RuntimeError("MLX requires macOS")
-    
+
     if platform.machine() != 'arm64':
         raise RuntimeError("MLX requires Apple Silicon (arm64), found: " + platform.machine())
-    
+
     print("✅ Platform check passed: Apple Silicon detected")
 
 if __name__ == "__main__":
@@ -253,29 +253,29 @@ def test_mlx_installation():
     try:
         import mlx.core as mx
         import mlx.nn as nn
-        
+
         # Test 1: Basic array operations
         x = mx.array([1, 2, 3])
         y = x * 2
         assert y.tolist() == [2, 4, 6], "Basic operations failed"
         print("✅ Basic operations work")
-        
+
         # Test 2: Neural network modules
         linear = nn.Linear(3, 2)
         output = linear(mx.array([[1, 2, 3]]))
         assert output.shape == (1, 2), "Neural network test failed"
         print("✅ Neural network modules work")
-        
+
         # Test 3: GPU operations (if available)
         if mx.metal.is_available():
             gpu_array = mx.array([1, 2, 3], device=mx.gpu)
             print("✅ GPU operations work")
         else:
             print("⚠️  GPU not available, using CPU")
-        
+
         print("🎉 All tests passed!")
         return True
-        
+
     except Exception as e:
         print(f"❌ Test failed: {e}")
         return False

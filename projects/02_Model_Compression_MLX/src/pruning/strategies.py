@@ -3,7 +3,7 @@ Pruning strategy implementations (placeholder).
 """
 
 import logging
-from typing import Dict, Any, Optional
+from typing import Any
 
 # Import shared utilities with fallback
 try:
@@ -19,11 +19,11 @@ logger = get_logger(__name__)
 
 class MagnitudePruner:
     """Magnitude-based pruning strategy."""
-    
+
     def __init__(self, config):
         self.config = config
-    
-    def create_masks(self, model: Any, target_sparsity: float, **kwargs) -> Dict[str, Any]:
+
+    def create_masks(self, model: Any, target_sparsity: float, **kwargs) -> dict[str, Any]:
         """Create pruning masks based on magnitude."""
         logger.info("Creating magnitude-based pruning masks")
         return {}
@@ -31,11 +31,11 @@ class MagnitudePruner:
 
 class GradientPruner:
     """Gradient-based pruning strategy."""
-    
+
     def __init__(self, config):
         self.config = config
-    
-    def create_masks(self, model: Any, target_sparsity: float, **kwargs) -> Dict[str, Any]:
+
+    def create_masks(self, model: Any, target_sparsity: float, **kwargs) -> dict[str, Any]:
         """Create pruning masks based on gradients."""
         logger.info("Creating gradient-based pruning masks")
         return {}
@@ -43,11 +43,11 @@ class GradientPruner:
 
 class StructuredPruner:
     """Structured pruning strategy."""
-    
+
     def __init__(self, config):
         self.config = config
-    
-    def create_masks(self, model: Any, target_sparsity: float, **kwargs) -> Dict[str, Any]:
+
+    def create_masks(self, model: Any, target_sparsity: float, **kwargs) -> dict[str, Any]:
         """Create structured pruning masks."""
         logger.info("Creating structured pruning masks")
         return {}
@@ -55,11 +55,11 @@ class StructuredPruner:
 
 class UnstructuredPruner:
     """Unstructured pruning strategy."""
-    
+
     def __init__(self, config):
         self.config = config
-    
-    def create_masks(self, model: Any, target_sparsity: float, **kwargs) -> Dict[str, Any]:
+
+    def create_masks(self, model: Any, target_sparsity: float, **kwargs) -> dict[str, Any]:
         """Create unstructured pruning masks."""
         logger.info("Creating unstructured pruning masks")
         return {}

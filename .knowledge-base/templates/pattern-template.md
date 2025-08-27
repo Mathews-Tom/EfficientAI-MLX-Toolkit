@@ -58,7 +58,7 @@ from typing import Any, List, Optional
 
 class AbstractComponent(ABC):
     """Abstract base for pattern components."""
-    
+
     @abstractmethod
     def operation(self) -> Any:
         """Core operation that must be implemented."""
@@ -66,10 +66,10 @@ class AbstractComponent(ABC):
 
 class ConcreteComponent(AbstractComponent):
     """Concrete implementation of the pattern."""
-    
+
     def __init__(self, config: dict):
         self.config = config
-    
+
     def operation(self) -> Any:
         """Implement the core operation."""
         # Implementation details
@@ -88,26 +88,26 @@ Enhanced version with additional features.
 """
 class EnhancedComponent(ConcreteComponent):
     """Enhanced implementation with extra capabilities."""
-    
+
     def __init__(self, config: dict, options: Optional[dict] = None):
         super().__init__(config)
         self.options = options or {}
-    
+
     def operation(self) -> Any:
         """Enhanced operation with additional features."""
         # Pre-processing
         self._prepare()
-        
+
         # Core operation
         result = super().operation()
-        
+
         # Post-processing
         return self._finalize(result)
-    
+
     def _prepare(self) -> None:
         """Preparation steps."""
         pass
-    
+
     def _finalize(self, result: Any) -> Any:
         """Finalization steps."""
         return result
@@ -162,7 +162,7 @@ import mlx.nn as nn
 
 class MLXComponent(ConcreteComponent):
     """MLX-optimized version of the pattern."""
-    
+
     def operation(self) -> mx.array:
         """MLX-specific implementation."""
         # Use MLX operations
@@ -227,22 +227,22 @@ import unittest
 from pattern_module import ConcreteComponent
 
 class TestPatternImplementation(unittest.TestCase):
-    
+
     def setUp(self):
         self.config = {"test": "value"}
         self.component = ConcreteComponent(self.config)
-    
+
     def test_basic_operation(self):
         """Test basic functionality."""
         result = self.component.operation()
         self.assertIsNotNone(result)
-    
+
     def test_edge_cases(self):
         """Test edge cases and error conditions."""
         # Test with empty config
         empty_component = ConcreteComponent({})
         # Should handle gracefully
-        
+
     def tearDown(self):
         """Cleanup after tests."""
         pass
@@ -279,7 +279,7 @@ if __name__ == "__main__":
 ## Pattern Categories
 
 - **Creational**: Object creation patterns
-- **Structural**: Object composition patterns  
+- **Structural**: Object composition patterns
 - **Behavioral**: Object interaction patterns
 - **Concurrency**: Multi-threading patterns
 - **MLX-Specific**: Apple Silicon optimization patterns

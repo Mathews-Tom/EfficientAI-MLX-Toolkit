@@ -63,63 +63,63 @@ logger = logging.getLogger(__name__)
 class ModelOptimizer:
     """
     Optimizes ML models for Apple Silicon using MLX framework.
-    
+
     This class provides optimization capabilities specifically designed
     for Apple Silicon hardware, leveraging MLX's native operations.
-    
+
     Attributes:
         model_path: Path to the model file
         optimization_level: Level of optimization (1-3)
     """
-    
+
     def __init__(self, model_path: Path, optimization_level: int = 2) -> None:
         """
         Initialize the model optimizer.
-        
+
         Args:
             model_path: Path to the model file to optimize
             optimization_level: Optimization level from 1 (basic) to 3 (aggressive)
-            
+
         Raises:
             ValueError: If optimization_level is not between 1 and 3
             FileNotFoundError: If model_path does not exist
         """
         if not 1 <= optimization_level <= 3:
             raise ValueError("Optimization level must be between 1 and 3")
-        
+
         if not model_path.exists():
             raise FileNotFoundError(f"Model file not found: {model_path}")
-        
+
         self.model_path = model_path
         self.optimization_level = optimization_level
-    
+
     def optimize_for_domain(
-        self, 
-        domain_module: str, 
+        self,
+        domain_module: str,
         quality_requirements: dict[str, float]
     ) -> dict[str, str | float]:
         """
         Optimize a domain module using MIPROv2.
-        
+
         Args:
             domain_module: The domain module to optimize
             quality_requirements: Quality requirements for optimization
-            
+
         Returns:
             Dictionary containing optimization results with metrics
-            
+
         Raises:
             OptimizationFailureError: If optimization fails
         """
         try:
             logger.info("Starting optimization for domain %s", domain_module)
-            
+
             # Optimization logic here
             result = self._perform_optimization(domain_module, quality_requirements)
-            
+
             logger.info("Optimization completed successfully")
             return result
-            
+
         except Exception as e:
             error_msg = "Optimization failed for domain %s" % domain_module
             raise OptimizationFailureError(
@@ -131,10 +131,10 @@ class ModelOptimizer:
                     'optimization_level': self.optimization_level
                 }
             ) from e
-    
+
     def _perform_optimization(
-        self, 
-        domain: str, 
+        self,
+        domain: str,
         requirements: dict[str, float]
     ) -> dict[str, str | float]:
         """Private method to perform the actual optimization."""
@@ -144,10 +144,10 @@ class ModelOptimizer:
 # Custom exception with proper inheritance
 class OptimizationFailureError(Exception):
     """Raised when model optimization fails."""
-    
+
     def __init__(
-        self, 
-        message: str, 
+        self,
+        message: str,
         optimizer_type: str | None = None,
         details: dict[str, str | float] | None = None
     ) -> None:
@@ -163,7 +163,7 @@ class OptimizationFailureError(Exception):
   ```python
   # ✅ CORRECT
   logger.info("Processing domain %s with %d items", domain, count)
-  
+
   # ❌ INCORRECT
   logger.info(f"Processing domain {domain} with {count} items")
   ```
@@ -174,7 +174,7 @@ class OptimizationFailureError(Exception):
   # ✅ CORRECT
   except OriginalError as e:
       raise CustomError("Operation failed") from e
-  
+
   # ❌ INCORRECT
   except OriginalError as e:
       raise CustomError("Operation failed")
@@ -186,7 +186,7 @@ class OptimizationFailureError(Exception):
   # ✅ CORRECT
   config_path = Path("config") / "settings.json"
   config_path.parent.mkdir(parents=True, exist_ok=True)
-  
+
   # ❌ INCORRECT
   config_path = os.path.join("config", "settings.json")
   os.makedirs(os.path.dirname(config_path), exist_ok=True)
@@ -198,7 +198,7 @@ class OptimizationFailureError(Exception):
   # ✅ CORRECT (Python 3.9+)
   def process_data(items: list[str]) -> dict[str, int] | None:
       pass
-  
+
   # ❌ INCORRECT (deprecated)
   from typing import List, Dict, Optional
   def process_data(items: List[str]) -> Optional[Dict[str, int]]:

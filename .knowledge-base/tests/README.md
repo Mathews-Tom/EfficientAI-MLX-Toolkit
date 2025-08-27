@@ -150,11 +150,11 @@ def test_isolated_search_functionality(self):
     with tempfile.TemporaryDirectory() as temp_dir:
         # Create known test entries
         kb_path, test_entries = self.create_minimal_test_kb(Path(temp_dir))
-        
+
         # Test with predictable results
         indexer = KnowledgeBaseIndexer(kb_path)
         index = indexer.build_index()
-        
+
         # Assertions based on known test data
         assert len(index.entries) == len(test_entries)
 ```
@@ -232,7 +232,7 @@ def test_search_functionality(self):
 ```python
 class TestKnowledgeBaseEntry:
     """Test cases for KnowledgeBaseEntry class."""
-    
+
     def test_entry_creation_valid(self):
         """Test creating a valid knowledge base entry."""
         # Arrange - Create test data
@@ -245,14 +245,14 @@ class TestKnowledgeBaseEntry:
             "last_updated": datetime.now(),
             "contributors": ["test-user"],
         }
-        
+
         # Act
         entry = KnowledgeBaseEntry(**entry_data)
-        
+
         # Assert
         assert entry.title == "Test Entry"
         assert entry.category == "test-category"
-    
+
     def test_entry_validation_invalid_difficulty(self):
         """Test validation fails for invalid difficulty."""
         with pytest.raises(ValueError, match="Invalid difficulty"):
@@ -289,9 +289,9 @@ def test_search_returns_relevant_results(self):
     test_entries = self.create_test_entries_with_mlx_tag()
     index = KnowledgeBaseIndex(entries=test_entries)
     searcher = KnowledgeBaseSearcher(index)
-    
+
     results = searcher.search("mlx")
-    
+
     # Test behavior, not exact counts
     assert len(results.results) > 0
     assert all("mlx" in result.entry.tags for result in results.results)
@@ -465,7 +465,7 @@ python run_tests.py --suite e2e
 As the knowledge base grows with real content, tests that depend on specific entries will break. The isolated tests:
 
 - ✅ **Always pass** regardless of knowledge base content
-- ✅ **Test core functionality** with controlled data  
+- ✅ **Test core functionality** with controlled data
 - ✅ **Run fast** and are reliable for CI/CD
 - ✅ **Provide clear feedback** when functionality breaks
 - ✅ **Scale with the project** without maintenance overhead
@@ -502,7 +502,7 @@ def test_new_feature_with_controlled_data(self):
         self.create_test_entry("Known Title", ["known", "tags"]),
         self.create_test_entry("Another Title", ["other", "tags"]),
     ]
-    
+
     # Test with known inputs and expected outputs
     result = new_feature(test_entries)
     assert len(result) == 2

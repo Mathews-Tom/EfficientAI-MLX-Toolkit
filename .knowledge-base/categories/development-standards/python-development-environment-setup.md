@@ -42,7 +42,7 @@ UV is the mandated package manager for this project. It provides:
    ```bash
    # Using pip (one-time only)
    pip install uv
-   
+
    # Or using homebrew on macOS
    brew install uv
    ```
@@ -53,10 +53,10 @@ UV is the mandated package manager for this project. It provides:
    # Clone the repository
    git clone https://github.com/Mathews-Tom/EfficientAI-MLX-Toolkit
    cd EfficientAI-MLX-Toolkit
-   
+
    # Install dependencies
    uv sync
-   
+
    # Install in development mode
    uv pip install -e .
    ```
@@ -66,13 +66,13 @@ UV is the mandated package manager for this project. It provides:
    ```bash
    # Add new packages
    uv add <package-name>
-   
+
    # Run Python modules
    uv run <module>
-   
+
    # Run tests
    uv run pytest
-   
+
    # Run CLI tools
    uv run kb --help
    ```

@@ -440,7 +440,7 @@ The solution involves following best practices for knowledge base entries:
 def high_quality_example():
     \"\"\"
     A well-documented function that demonstrates best practices.
-    
+
     Returns:
         str: A success message indicating proper implementation.
     \"\"\"

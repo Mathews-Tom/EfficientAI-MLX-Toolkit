@@ -34,7 +34,7 @@ Designing effective DSPy signatures for Apple Silicon optimization requires unde
 
 For model and hyperparameter optimization tasks.
 
-#### 2. Training Signatures  
+#### 2. Training Signatures
 
 For training strategy and curriculum design.
 
@@ -61,14 +61,14 @@ import dspy
 # Base signature with Apple Silicon optimizations
 class AppleSiliconOptimizedSignature(dspy.Signature):
     """Base signature with Apple Silicon-specific optimizations."""
-    
+
     hardware_context = dspy.InputField(
         desc="Apple Silicon hardware configuration (M1/M2/M3, memory, etc.)"
     )
     performance_target = dspy.InputField(
         desc="Target performance metrics (latency, throughput, memory usage)"
     )
-    
+
     optimization_strategy = dspy.OutputField(
         desc="Hardware-optimized strategy leveraging unified memory and Metal GPU"
     )
@@ -79,7 +79,7 @@ class AppleSiliconOptimizedSignature(dspy.Signature):
 # Domain-specific signatures
 class LoRAOptimizationSignature(AppleSiliconOptimizedSignature):
     """Signature for LoRA fine-tuning optimization on Apple Silicon."""
-    
+
     # Input fields
     base_model_info = dspy.InputField(
         desc="Base model architecture, size, and requirements"
@@ -93,7 +93,7 @@ class LoRAOptimizationSignature(AppleSiliconOptimizedSignature):
     quality_requirements = dspy.InputField(
         desc="Quality thresholds and evaluation criteria"
     )
-    
+
     # Output fields
     lora_config = dspy.OutputField(
         desc="Optimal LoRA configuration (rank, alpha, target modules)"
@@ -110,7 +110,7 @@ class LoRAOptimizationSignature(AppleSiliconOptimizedSignature):
 
 class DiffusionOptimizationSignature(AppleSiliconOptimizedSignature):
     """Signature for diffusion model optimization."""
-    
+
     # Input fields
     model_architecture = dspy.InputField(
         desc="Diffusion model architecture (UNet, VAE, text encoder details)"
@@ -121,7 +121,7 @@ class DiffusionOptimizationSignature(AppleSiliconOptimizedSignature):
     inference_constraints = dspy.InputField(
         desc="Latency requirements and memory constraints"
     )
-    
+
     # Output fields
     sampling_strategy = dspy.OutputField(
         desc="Optimal sampling schedule and steps for Apple Silicon"
@@ -135,7 +135,7 @@ class DiffusionOptimizationSignature(AppleSiliconOptimizedSignature):
 
 class FederatedLearningSignature(AppleSiliconOptimizedSignature):
     """Signature for federated learning on Apple Silicon devices."""
-    
+
     # Input fields
     client_capabilities = dspy.InputField(
         desc="Apple Silicon device capabilities across federated clients"
@@ -149,7 +149,7 @@ class FederatedLearningSignature(AppleSiliconOptimizedSignature):
     aggregation_strategy = dspy.InputField(
         desc="Model aggregation approach and frequency"
     )
-    
+
     # Output fields
     client_optimization = dspy.OutputField(
         desc="Per-client optimization strategy based on hardware capabilities"
@@ -164,7 +164,7 @@ class FederatedLearningSignature(AppleSiliconOptimizedSignature):
 # Composite signature for complex workflows
 class MLPipelineOptimizationSignature(dspy.Signature):
     """End-to-end ML pipeline optimization for Apple Silicon."""
-    
+
     # Input fields
     pipeline_description = dspy.InputField(
         desc="Complete ML pipeline from data loading to deployment"
@@ -178,7 +178,7 @@ class MLPipelineOptimizationSignature(dspy.Signature):
     cost_constraints = dspy.InputField(
         desc="Resource and cost constraints for the pipeline"
     )
-    
+
     # Output fields
     pipeline_architecture = dspy.OutputField(
         desc="Optimized pipeline architecture leveraging Apple Silicon strengths"
@@ -196,7 +196,7 @@ class MLPipelineOptimizationSignature(dspy.Signature):
 # Signature factory for dynamic signature creation
 class SignatureFactory:
     """Factory for creating domain-specific signatures."""
-    
+
     @staticmethod
     def create_optimization_signature(
         domain: str,
@@ -205,17 +205,17 @@ class SignatureFactory:
     ) -> type[dspy.Signature]:
         """
         Create a custom optimization signature for a specific domain.
-        
+
         Args:
             domain: Domain name (e.g., "computer_vision", "nlp", "audio")
             hardware_config: Apple Silicon hardware configuration
             custom_fields: Additional custom fields for the signature
-            
+
         Returns:
             Dynamically created signature class
         """
         custom_fields = custom_fields or {}
-        
+
         # Base fields for all optimization signatures
         base_fields = {
             "domain_context": dspy.InputField(
@@ -237,12 +237,12 @@ class SignatureFactory:
                 desc="Expected performance improvements and metrics"
             )
         }
-        
+
         # Add custom fields
         all_fields = {**base_fields}
         for field_name, field_desc in custom_fields.items():
             all_fields[field_name] = dspy.OutputField(desc=field_desc)
-        
+
         # Create dynamic signature class
         signature_name = f"{domain.title()}OptimizationSignature"
         signature_class = type(
@@ -253,22 +253,22 @@ class SignatureFactory:
                 **all_fields
             }
         )
-        
+
         return signature_class
 
 # Example usage of signature patterns
 def example_signature_usage():
     """Demonstrate signature pattern usage."""
-    
+
     # Create a LoRA optimization module
     class LoRAOptimizer(dspy.Module):
         def __init__(self):
             super().__init__()
             self.optimize = dspy.ChainOfThought(LoRAOptimizationSignature)
-        
+
         def forward(self, **kwargs):
             return self.optimize(**kwargs)
-    
+
     # Create a dynamic signature for computer vision
     cv_signature = SignatureFactory.create_optimization_signature(
         domain="computer_vision",
@@ -278,16 +278,16 @@ def example_signature_usage():
             "inference_optimization": "Real-time inference optimizations"
         }
     )
-    
+
     # Use the dynamic signature
     class CVOptimizer(dspy.Module):
         def __init__(self):
             super().__init__()
             self.optimize = dspy.ChainOfThought(cv_signature)
-        
+
         def forward(self, **kwargs):
             return self.optimize(**kwargs)
-    
+
     return LoRAOptimizer(), CVOptimizer()
 
 if __name__ == "__main__":

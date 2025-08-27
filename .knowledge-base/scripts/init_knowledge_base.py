@@ -431,14 +431,14 @@ def create_templates(kb_path: Path) -> None:
         # Core pattern implementation
         class PatternExample:
             \"\"\"Example implementation of the pattern.\"\"\"
-            
+
             def __init__(self):
                 self.setup()
-            
+
             def setup(self):
                 \"\"\"Initialize pattern components.\"\"\"
                 pass
-            
+
             def execute(self):
                 \"\"\"Execute the pattern.\"\"\"
                 pass
@@ -450,11 +450,11 @@ def create_templates(kb_path: Path) -> None:
         # More sophisticated example
         class AdvancedPatternExample(PatternExample):
             \"\"\"Advanced pattern with additional features.\"\"\"
-            
+
             def __init__(self, config):
                 self.config = config
                 super().__init__()
-            
+
             def setup(self):
                 \"\"\"Advanced setup with configuration.\"\"\"
                 # Implementation details
@@ -746,7 +746,7 @@ def create_example_entries(kb_path: Path) -> None:
             available_memory = mx.metal.get_available_memory()
             memory_limit = int(available_memory * 0.8)
             mx.metal.set_memory_limit(memory_limit)
-            
+
             print(f"Memory limit set to: {memory_limit / (1024**3):.2f} GB")
             return memory_limit
 

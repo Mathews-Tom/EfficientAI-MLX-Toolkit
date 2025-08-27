@@ -101,7 +101,7 @@ uv run efficientai-toolkit lora-finetuning-mlx:validate
 # Quick training with default settings
 uv run efficientai-toolkit lora-finetuning-mlx:train
 
-# Training with custom parameters  
+# Training with custom parameters
 uv run efficientai-toolkit lora-finetuning-mlx:train \
   --epochs 5 \
   --batch-size 4 \
@@ -276,7 +276,7 @@ from src.training import ModelComparator
 
 comparator = ModelComparator([
     "microsoft/DialoGPT-medium",
-    "microsoft/DialoGPT-large", 
+    "microsoft/DialoGPT-large",
     "facebook/blenderbot-400M-distill"
 ])
 

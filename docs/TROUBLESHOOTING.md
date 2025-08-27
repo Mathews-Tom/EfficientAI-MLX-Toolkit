@@ -67,10 +67,10 @@ uv sync failed with exit code 1
    ```bash
    # Install Xcode command line tools
    xcode-select --install
-   
+
    # Install Homebrew if needed
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-   
+
    # Install required packages
    brew install cmake pkg-config
    ```
@@ -157,7 +157,7 @@ Error: Invalid YAML syntax
    lora:
      rank: 16
      alpha: 32
-   
+
    # Incorrect (tabs)
    lora:
    	rank: 16
@@ -169,7 +169,7 @@ Error: Invalid YAML syntax
    # Correct
    training:
      model_name: "microsoft/DialoGPT-medium"
-   
+
    # Incorrect (unmatched quotes)
    training:
      model_name: "microsoft/DialoGPT-medium
@@ -181,7 +181,7 @@ Error: Invalid YAML syntax
    target_modules:
      - "q_proj"
      - "v_proj"
-   
+
    # Incorrect
    target_modules: ["q_proj", "v_proj"  # Missing closing bracket
    ```
@@ -206,7 +206,7 @@ ValueError: learning_rate must be positive
      rank: 16        # Must be 1-128
      alpha: 32.0     # Must be positive float
      dropout: 0.1    # Must be 0.0-1.0
-   
+
    training:
      learning_rate: 2e-4  # Must be 1e-6 to 1e-1
      batch_size: 2        # Must be positive integer
@@ -267,7 +267,7 @@ MemoryError: Unable to allocate array
    ```bash
    # macOS
    sudo powermetrics --samplers smc -n 1 | grep -i memory
-   
+
    # Or use Activity Monitor
    # Or install htop: brew install htop
    ```
@@ -381,7 +381,7 @@ Error: Unable to load model
    ```bash
    # Check CPU usage
    top -pid $(pgrep -f python)
-   
+
    # Check MLX utilization
    uv run python -c "
    import mlx.core as mx
@@ -506,7 +506,7 @@ Internal server error 500
    ```bash
    # Test health endpoint
    curl http://localhost:8000/health
-   
+
    # Test generation
    curl -X POST http://localhost:8000/generate \
      -H "Content-Type: application/json" \

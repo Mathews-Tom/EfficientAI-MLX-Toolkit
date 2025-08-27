@@ -138,11 +138,11 @@ class KnowledgeBaseEntry:
     contributors: List[str]
     # Note: Removed related_specs and steering_rules as knowledge base is project-wide
     usage_count: int = 0
-    
+
     def get_content(self) -> str:
         """Load and return the markdown content"""
         return self.content_path.read_text()
-    
+
     def update_usage(self) -> None:
         """Increment usage counter for analytics"""
         self.usage_count += 1
@@ -156,15 +156,15 @@ class KnowledgeBaseIndex:
     entries: List[KnowledgeBaseEntry]
     categories: Dict[str, List[str]]  # category -> entry titles
     tags: Dict[str, List[str]]       # tag -> entry titles
-    
+
     def search(self, query: str, category: Optional[str] = None) -> List[KnowledgeBaseEntry]:
         """Search entries by title, tags, or content"""
         pass
-    
+
     def get_by_category(self, category: str) -> List[KnowledgeBaseEntry]:
         """Get all entries in a category"""
         pass
-    
+
     def get_by_tags(self, tags: List[str]) -> List[KnowledgeBaseEntry]:
         """Get entries matching any of the specified tags"""
         pass
@@ -245,7 +245,7 @@ class LLMEnhancedKnowledgeBase:
     """Optional LLM-enhanced knowledge base with fallback to core functionality"""
     base_kb: KnowledgeBaseIndex
     llm_client: Optional[LLMClient] = None
-    
+
     def semantic_search(self, query: str) -> List[KnowledgeBaseEntry]:
         """LLM-powered semantic search with fallback to keyword search"""
         if self.llm_client:
@@ -254,19 +254,19 @@ class LLMEnhancedKnowledgeBase:
         else:
             # Fallback to core search functionality
             return self.base_kb.search(query)
-    
+
     def suggest_entry_from_code(self, code_snippet: str) -> Optional[KnowledgeBaseEntry]:
         """Generate knowledge base entry suggestions from code patterns"""
         if self.llm_client:
             return self._generate_entry_from_code(code_snippet)
         return None
-    
+
     def auto_categorize(self, content: str) -> Tuple[Optional[str], List[str]]:
         """Suggest category and tags using LLM analysis"""
         if self.llm_client:
             return self._llm_categorize(content)
         return None, []
-    
+
     def detect_knowledge_gaps(self, codebase_path: Path) -> List[str]:
         """Analyze codebase to identify missing knowledge base topics"""
         if self.llm_client:
