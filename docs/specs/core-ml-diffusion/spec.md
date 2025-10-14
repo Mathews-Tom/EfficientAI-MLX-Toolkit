@@ -262,8 +262,6 @@ class CoreMLStableDiffusionPipeline:
 
 - To be identified during implementation planning
 
----
-
 ## Traceability
 
 - **Feature Request:** docs/features/core-ml-diffusion.md

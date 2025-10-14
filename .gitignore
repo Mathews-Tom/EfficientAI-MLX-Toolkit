@@ -34,6 +34,7 @@ wheels/
 *.egg
 .coverage
 htmlcov/
+.ruff_cache/
 
 # Virtual environments
 .env
