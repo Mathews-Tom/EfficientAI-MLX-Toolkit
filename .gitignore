@@ -84,3 +84,11 @@ checkpoints/
 *.ckpt
 *.pth
 *.pt
+
+# Agentic Systems
+.claude/
+.opencode/
+
+# Developer workspace (Sage-Dev generated files)"
+.sage/
+.docs/
