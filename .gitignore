@@ -90,5 +90,6 @@ checkpoints/
 .claude/
 .opencode/
 
-# Developer workspace (Sage-Dev progress reports - regenerate on demand)
-.docs/PROGRESS_REPORT.md
+# Developer workspace (Sage-Dev generated files)"
+.sage/
+.docs/
