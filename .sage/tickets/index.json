@@ -1,0 +1,1874 @@
+{
+  "version": "1.0",
+  "tickets": [
+    {
+      "id": "ADAP-001",
+      "type": "Epic",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "adaptive-diffusion-optimizer",
+      "spec": "docs/specs/adaptive-diffusion-optimizer/spec.md",
+      "feature": "docs/features/adaptive-diffusion-optimizer.md",
+      "status": "Future",
+      "created": "2025-10-14",
+      "dependencies": [
+        "SHAR-001",
+        "EFFI-001",
+        "CORE-001",
+        "MLOP-001"
+      ],
+      "plan": "docs/specs/adaptive-diffusion-optimizer/plan.md",
+      "children": [
+        "ADAP-002",
+        "ADAP-003",
+        "ADAP-004",
+        "ADAP-005",
+        "ADAP-006",
+        "ADAP-007"
+      ]
+    },
+    {
+      "id": "ADAP-002",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "adaptive-diffusion-optimizer",
+      "parent": "ADAP-001",
+      "dependencies": [
+        "ADAP-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "ADAP-003",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "adaptive-diffusion-optimizer",
+      "parent": "ADAP-001",
+      "dependencies": [
+        "ADAP-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "ADAP-004",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "adaptive-diffusion-optimizer",
+      "parent": "ADAP-001",
+      "dependencies": [
+        "ADAP-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "ADAP-005",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "adaptive-diffusion-optimizer",
+      "parent": "ADAP-001",
+      "dependencies": [
+        "ADAP-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "ADAP-006",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "adaptive-diffusion-optimizer",
+      "parent": "ADAP-001",
+      "dependencies": [
+        "ADAP-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "ADAP-007",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "adaptive-diffusion-optimizer",
+      "parent": "ADAP-001",
+      "dependencies": [
+        "ADAP-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "CORE-001",
+      "type": "Epic",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "core-ml-diffusion",
+      "spec": "docs/specs/core-ml-diffusion/spec.md",
+      "feature": "docs/features/core-ml-diffusion.md",
+      "status": "Implemented",
+      "created": "2025-10-14",
+      "completed": "2025-10-14",
+      "dependencies": [
+        "SHAR-001",
+        "EFFI-001"
+      ],
+      "plan": "docs/specs/core-ml-diffusion/plan.md",
+      "children": [
+        "CORE-002",
+        "CORE-003",
+        "CORE-004",
+        "CORE-005",
+        "CORE-006",
+        "CORE-007",
+        "CORE-008",
+        "CORE-009"
+      ]
+    },
+    {
+      "id": "CORE-002",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "core-ml-diffusion",
+      "parent": "CORE-001",
+      "dependencies": [
+        "CORE-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "CORE-003",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "core-ml-diffusion",
+      "parent": "CORE-001",
+      "dependencies": [
+        "CORE-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "CORE-004",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "core-ml-diffusion",
+      "parent": "CORE-001",
+      "dependencies": [
+        "CORE-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "CORE-005",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "core-ml-diffusion",
+      "parent": "CORE-001",
+      "dependencies": [
+        "CORE-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "CORE-006",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "core-ml-diffusion",
+      "parent": "CORE-001",
+      "dependencies": [
+        "CORE-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "CORE-007",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "core-ml-diffusion",
+      "parent": "CORE-001",
+      "dependencies": [
+        "CORE-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "CORE-008",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "core-ml-diffusion",
+      "parent": "CORE-001",
+      "dependencies": [
+        "CORE-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "CORE-009",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "core-ml-diffusion",
+      "parent": "CORE-001",
+      "dependencies": [
+        "CORE-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "DEVE-001",
+      "type": "Epic",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "development-knowledge-base",
+      "spec": "docs/specs/development-knowledge-base/spec.md",
+      "feature": "docs/features/development-knowledge-base.md",
+      "status": "Implemented",
+      "created": "2025-10-14",
+      "completed": "2025-10-14",
+      "dependencies": [
+        "SHAR-001",
+        "EFFI-001"
+      ],
+      "plan": "docs/specs/development-knowledge-base/plan.md",
+      "children": [
+        "DEVE-002",
+        "DEVE-003",
+        "DEVE-004",
+        "DEVE-005",
+        "DEVE-006",
+        "DEVE-007",
+        "DEVE-008"
+      ]
+    },
+    {
+      "id": "DEVE-002",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "development-knowledge-base",
+      "parent": "DEVE-001",
+      "dependencies": [
+        "DEVE-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "DEVE-003",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "development-knowledge-base",
+      "parent": "DEVE-001",
+      "dependencies": [
+        "DEVE-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "DEVE-004",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "development-knowledge-base",
+      "parent": "DEVE-001",
+      "dependencies": [
+        "DEVE-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "DEVE-005",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "development-knowledge-base",
+      "parent": "DEVE-001",
+      "dependencies": [
+        "DEVE-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "DEVE-006",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "development-knowledge-base",
+      "parent": "DEVE-001",
+      "dependencies": [
+        "DEVE-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "DEVE-007",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "development-knowledge-base",
+      "parent": "DEVE-001",
+      "dependencies": [
+        "DEVE-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "DEVE-008",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "development-knowledge-base",
+      "parent": "DEVE-001",
+      "dependencies": [
+        "DEVE-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "DSPY-001",
+      "type": "Epic",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "dspy-toolkit-framework",
+      "spec": "docs/specs/dspy-toolkit-framework/spec.md",
+      "feature": "docs/features/dspy-toolkit-framework.md",
+      "status": "Implemented",
+      "created": "2025-10-14",
+      "completed": "2025-10-14",
+      "dependencies": [
+        "SHAR-001",
+        "EFFI-001"
+      ],
+      "plan": "docs/specs/dspy-toolkit-framework/plan.md",
+      "children": [
+        "DSPY-002",
+        "DSPY-003",
+        "DSPY-004",
+        "DSPY-005",
+        "DSPY-006",
+        "DSPY-007",
+        "DSPY-008",
+        "DSPY-009",
+        "DSPY-010"
+      ]
+    },
+    {
+      "id": "DSPY-002",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "dspy-toolkit-framework",
+      "parent": "DSPY-001",
+      "dependencies": [
+        "DSPY-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "DSPY-003",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "dspy-toolkit-framework",
+      "parent": "DSPY-001",
+      "dependencies": [
+        "DSPY-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "DSPY-004",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "dspy-toolkit-framework",
+      "parent": "DSPY-001",
+      "dependencies": [
+        "DSPY-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "DSPY-005",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "dspy-toolkit-framework",
+      "parent": "DSPY-001",
+      "dependencies": [
+        "DSPY-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "DSPY-006",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "dspy-toolkit-framework",
+      "parent": "DSPY-001",
+      "dependencies": [
+        "DSPY-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "DSPY-007",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "dspy-toolkit-framework",
+      "parent": "DSPY-001",
+      "dependencies": [
+        "DSPY-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "DSPY-008",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "dspy-toolkit-framework",
+      "parent": "DSPY-001",
+      "dependencies": [
+        "DSPY-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "DSPY-009",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "dspy-toolkit-framework",
+      "parent": "DSPY-001",
+      "dependencies": [
+        "DSPY-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "DSPY-010",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "dspy-toolkit-framework",
+      "parent": "DSPY-001",
+      "dependencies": [
+        "DSPY-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "EFFI-001",
+      "type": "Epic",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "efficientai-mlx-toolkit",
+      "spec": "docs/specs/efficientai-mlx-toolkit/spec.md",
+      "feature": "docs/features/efficientai-mlx-toolkit.md",
+      "status": "Implemented",
+      "created": "2025-10-14",
+      "completed": "2025-10-14",
+      "dependencies": [
+        "SHAR-001"
+      ],
+      "plan": "docs/specs/efficientai-mlx-toolkit/plan.md",
+      "children": [
+        "EFFI-002",
+        "EFFI-003",
+        "EFFI-004",
+        "EFFI-005",
+        "EFFI-006",
+        "EFFI-007",
+        "EFFI-008",
+        "EFFI-009",
+        "EFFI-010"
+      ]
+    },
+    {
+      "id": "EFFI-002",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "efficientai-mlx-toolkit",
+      "parent": "EFFI-001",
+      "dependencies": [
+        "EFFI-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "EFFI-003",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "efficientai-mlx-toolkit",
+      "parent": "EFFI-001",
+      "dependencies": [
+        "EFFI-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "EFFI-004",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "efficientai-mlx-toolkit",
+      "parent": "EFFI-001",
+      "dependencies": [
+        "EFFI-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "EFFI-005",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "efficientai-mlx-toolkit",
+      "parent": "EFFI-001",
+      "dependencies": [
+        "EFFI-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "EFFI-006",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "efficientai-mlx-toolkit",
+      "parent": "EFFI-001",
+      "dependencies": [
+        "EFFI-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "EFFI-007",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "efficientai-mlx-toolkit",
+      "parent": "EFFI-001",
+      "dependencies": [
+        "EFFI-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "EFFI-008",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "efficientai-mlx-toolkit",
+      "parent": "EFFI-001",
+      "dependencies": [
+        "EFFI-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "EFFI-009",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "efficientai-mlx-toolkit",
+      "parent": "EFFI-001",
+      "dependencies": [
+        "EFFI-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "EFFI-010",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "efficientai-mlx-toolkit",
+      "parent": "EFFI-001",
+      "dependencies": [
+        "EFFI-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "EVOL-001",
+      "type": "Epic",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "evolutionary-diffusion-search",
+      "spec": "docs/specs/evolutionary-diffusion-search/spec.md",
+      "feature": "docs/features/evolutionary-diffusion-search.md",
+      "status": "Future",
+      "created": "2025-10-14",
+      "dependencies": [
+        "SHAR-001",
+        "EFFI-001",
+        "ADAP-001",
+        "MLOP-001"
+      ],
+      "plan": "docs/specs/evolutionary-diffusion-search/plan.md",
+      "children": [
+        "EVOL-002",
+        "EVOL-003",
+        "EVOL-004",
+        "EVOL-005",
+        "EVOL-006",
+        "EVOL-007"
+      ]
+    },
+    {
+      "id": "EVOL-002",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "evolutionary-diffusion-search",
+      "parent": "EVOL-001",
+      "dependencies": [
+        "EVOL-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "EVOL-003",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "evolutionary-diffusion-search",
+      "parent": "EVOL-001",
+      "dependencies": [
+        "EVOL-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "EVOL-004",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "evolutionary-diffusion-search",
+      "parent": "EVOL-001",
+      "dependencies": [
+        "EVOL-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "EVOL-005",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "evolutionary-diffusion-search",
+      "parent": "EVOL-001",
+      "dependencies": [
+        "EVOL-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "EVOL-006",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "evolutionary-diffusion-search",
+      "parent": "EVOL-001",
+      "dependencies": [
+        "EVOL-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "EVOL-007",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "evolutionary-diffusion-search",
+      "parent": "EVOL-001",
+      "dependencies": [
+        "EVOL-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "FEDE-001",
+      "type": "Epic",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "federated-learning-system",
+      "spec": "docs/specs/federated-learning-system/spec.md",
+      "feature": "docs/features/federated-learning-system.md",
+      "status": "Planned",
+      "created": "2025-10-14",
+      "dependencies": [
+        "SHAR-001",
+        "EFFI-001",
+        "MLOP-001"
+      ],
+      "plan": "docs/specs/federated-learning-system/plan.md",
+      "children": [
+        "FEDE-002",
+        "FEDE-003",
+        "FEDE-004",
+        "FEDE-005",
+        "FEDE-006",
+        "FEDE-007",
+        "FEDE-008",
+        "FEDE-009",
+        "FEDE-010",
+        "FEDE-011",
+        "FEDE-012",
+        "FEDE-013"
+      ]
+    },
+    {
+      "id": "FEDE-002",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "federated-learning-system",
+      "parent": "FEDE-001",
+      "dependencies": [
+        "FEDE-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "FEDE-003",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "federated-learning-system",
+      "parent": "FEDE-001",
+      "dependencies": [
+        "FEDE-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "FEDE-004",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "federated-learning-system",
+      "parent": "FEDE-001",
+      "dependencies": [
+        "FEDE-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "FEDE-005",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "federated-learning-system",
+      "parent": "FEDE-001",
+      "dependencies": [
+        "FEDE-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "FEDE-006",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "federated-learning-system",
+      "parent": "FEDE-001",
+      "dependencies": [
+        "FEDE-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "FEDE-007",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "federated-learning-system",
+      "parent": "FEDE-001",
+      "dependencies": [
+        "FEDE-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "FEDE-008",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "federated-learning-system",
+      "parent": "FEDE-001",
+      "dependencies": [
+        "FEDE-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "FEDE-009",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "federated-learning-system",
+      "parent": "FEDE-001",
+      "dependencies": [
+        "FEDE-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "FEDE-010",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "federated-learning-system",
+      "parent": "FEDE-001",
+      "dependencies": [
+        "FEDE-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "FEDE-011",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "federated-learning-system",
+      "parent": "FEDE-001",
+      "dependencies": [
+        "FEDE-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "FEDE-012",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "federated-learning-system",
+      "parent": "FEDE-001",
+      "dependencies": [
+        "FEDE-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "FEDE-013",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "federated-learning-system",
+      "parent": "FEDE-001",
+      "dependencies": [
+        "FEDE-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "LORA-001",
+      "type": "Epic",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "lora-finetuning-mlx",
+      "spec": "docs/specs/lora-finetuning-mlx/spec.md",
+      "feature": "docs/features/lora-finetuning-mlx.md",
+      "status": "Implemented",
+      "created": "2025-10-14",
+      "completed": "2025-10-14",
+      "dependencies": [
+        "SHAR-001",
+        "EFFI-001"
+      ],
+      "plan": "docs/specs/lora-finetuning-mlx/plan.md",
+      "children": [
+        "LORA-002",
+        "LORA-003",
+        "LORA-004",
+        "LORA-005",
+        "LORA-006",
+        "LORA-007",
+        "LORA-008",
+        "LORA-009"
+      ]
+    },
+    {
+      "id": "LORA-002",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "lora-finetuning-mlx",
+      "parent": "LORA-001",
+      "dependencies": [
+        "LORA-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "LORA-003",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "lora-finetuning-mlx",
+      "parent": "LORA-001",
+      "dependencies": [
+        "LORA-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "LORA-004",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "lora-finetuning-mlx",
+      "parent": "LORA-001",
+      "dependencies": [
+        "LORA-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "LORA-005",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "lora-finetuning-mlx",
+      "parent": "LORA-001",
+      "dependencies": [
+        "LORA-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "LORA-006",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "lora-finetuning-mlx",
+      "parent": "LORA-001",
+      "dependencies": [
+        "LORA-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "LORA-007",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "lora-finetuning-mlx",
+      "parent": "LORA-001",
+      "dependencies": [
+        "LORA-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "LORA-008",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "lora-finetuning-mlx",
+      "parent": "LORA-001",
+      "dependencies": [
+        "LORA-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "LORA-009",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "lora-finetuning-mlx",
+      "parent": "LORA-001",
+      "dependencies": [
+        "LORA-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "META-001",
+      "type": "Epic",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "meta-learning-peft-system",
+      "spec": "docs/specs/meta-learning-peft-system/spec.md",
+      "feature": "docs/features/meta-learning-peft-system.md",
+      "status": "Future",
+      "created": "2025-10-14",
+      "dependencies": [
+        "SHAR-001",
+        "EFFI-001",
+        "LORA-001",
+        "MLOP-001"
+      ],
+      "plan": "docs/specs/meta-learning-peft-system/plan.md",
+      "children": [
+        "META-002",
+        "META-003",
+        "META-004",
+        "META-005",
+        "META-006",
+        "META-007"
+      ]
+    },
+    {
+      "id": "META-002",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "meta-learning-peft-system",
+      "parent": "META-001",
+      "dependencies": [
+        "META-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "META-003",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "meta-learning-peft-system",
+      "parent": "META-001",
+      "dependencies": [
+        "META-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "META-004",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "meta-learning-peft-system",
+      "parent": "META-001",
+      "dependencies": [
+        "META-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "META-005",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "meta-learning-peft-system",
+      "parent": "META-001",
+      "dependencies": [
+        "META-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "META-006",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "meta-learning-peft-system",
+      "parent": "META-001",
+      "dependencies": [
+        "META-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "META-007",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "meta-learning-peft-system",
+      "parent": "META-001",
+      "dependencies": [
+        "META-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MLOP-001",
+      "type": "Epic",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "mlops-integration",
+      "spec": "docs/specs/mlops-integration/spec.md",
+      "feature": "docs/features/mlops-integration.md",
+      "status": "Planned",
+      "created": "2025-10-14",
+      "dependencies": [
+        "SHAR-001",
+        "EFFI-001"
+      ],
+      "plan": "docs/specs/mlops-integration/plan.md",
+      "children": [
+        "MLOP-002",
+        "MLOP-003",
+        "MLOP-004",
+        "MLOP-005",
+        "MLOP-006",
+        "MLOP-007",
+        "MLOP-008",
+        "MLOP-009",
+        "MLOP-010",
+        "MLOP-011",
+        "MLOP-012",
+        "MLOP-013",
+        "MLOP-014",
+        "MLOP-015"
+      ]
+    },
+    {
+      "id": "MLOP-002",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "mlops-integration",
+      "parent": "MLOP-001",
+      "dependencies": [
+        "MLOP-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MLOP-003",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "mlops-integration",
+      "parent": "MLOP-001",
+      "dependencies": [
+        "MLOP-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MLOP-004",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "mlops-integration",
+      "parent": "MLOP-001",
+      "dependencies": [
+        "MLOP-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MLOP-005",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "mlops-integration",
+      "parent": "MLOP-001",
+      "dependencies": [
+        "MLOP-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MLOP-006",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "mlops-integration",
+      "parent": "MLOP-001",
+      "dependencies": [
+        "MLOP-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MLOP-007",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "mlops-integration",
+      "parent": "MLOP-001",
+      "dependencies": [
+        "MLOP-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MLOP-008",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "mlops-integration",
+      "parent": "MLOP-001",
+      "dependencies": [
+        "MLOP-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MLOP-009",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "mlops-integration",
+      "parent": "MLOP-001",
+      "dependencies": [
+        "MLOP-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MLOP-010",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "mlops-integration",
+      "parent": "MLOP-001",
+      "dependencies": [
+        "MLOP-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MLOP-011",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "mlops-integration",
+      "parent": "MLOP-001",
+      "dependencies": [
+        "MLOP-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MLOP-012",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "mlops-integration",
+      "parent": "MLOP-001",
+      "dependencies": [
+        "MLOP-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MLOP-013",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "mlops-integration",
+      "parent": "MLOP-001",
+      "dependencies": [
+        "MLOP-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MLOP-014",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "mlops-integration",
+      "parent": "MLOP-001",
+      "dependencies": [
+        "MLOP-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MLOP-015",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "mlops-integration",
+      "parent": "MLOP-001",
+      "dependencies": [
+        "MLOP-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MODE-001",
+      "type": "Epic",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "model-compression-pipeline",
+      "spec": "docs/specs/model-compression-pipeline/spec.md",
+      "feature": "docs/features/model-compression-pipeline.md",
+      "status": "Implemented",
+      "created": "2025-10-14",
+      "completed": "2025-10-14",
+      "dependencies": [
+        "SHAR-001",
+        "EFFI-001"
+      ],
+      "plan": "docs/specs/model-compression-pipeline/plan.md",
+      "children": [
+        "MODE-002",
+        "MODE-003",
+        "MODE-004",
+        "MODE-005",
+        "MODE-006",
+        "MODE-007",
+        "MODE-008",
+        "MODE-009"
+      ]
+    },
+    {
+      "id": "MODE-002",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "model-compression-pipeline",
+      "parent": "MODE-001",
+      "dependencies": [
+        "MODE-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "MODE-003",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "model-compression-pipeline",
+      "parent": "MODE-001",
+      "dependencies": [
+        "MODE-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "MODE-004",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "model-compression-pipeline",
+      "parent": "MODE-001",
+      "dependencies": [
+        "MODE-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "MODE-005",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "model-compression-pipeline",
+      "parent": "MODE-001",
+      "dependencies": [
+        "MODE-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "MODE-006",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "model-compression-pipeline",
+      "parent": "MODE-001",
+      "dependencies": [
+        "MODE-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "MODE-007",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "model-compression-pipeline",
+      "parent": "MODE-001",
+      "dependencies": [
+        "MODE-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "MODE-008",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "model-compression-pipeline",
+      "parent": "MODE-001",
+      "dependencies": [
+        "MODE-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "MODE-009",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "model-compression-pipeline",
+      "parent": "MODE-001",
+      "dependencies": [
+        "MODE-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "MULT-001",
+      "type": "Epic",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "multimodal-clip-finetuning",
+      "spec": "docs/specs/multimodal-clip-finetuning/spec.md",
+      "feature": "docs/features/multimodal-clip-finetuning.md",
+      "status": "Planned",
+      "created": "2025-10-14",
+      "dependencies": [
+        "SHAR-001",
+        "EFFI-001",
+        "MLOP-001"
+      ],
+      "plan": "docs/specs/multimodal-clip-finetuning/plan.md",
+      "children": [
+        "MULT-002",
+        "MULT-003",
+        "MULT-004",
+        "MULT-005",
+        "MULT-006",
+        "MULT-007",
+        "MULT-008",
+        "MULT-009",
+        "MULT-010",
+        "MULT-011",
+        "MULT-012",
+        "MULT-013"
+      ]
+    },
+    {
+      "id": "MULT-002",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "multimodal-clip-finetuning",
+      "parent": "MULT-001",
+      "dependencies": [
+        "MULT-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MULT-003",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "multimodal-clip-finetuning",
+      "parent": "MULT-001",
+      "dependencies": [
+        "MULT-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MULT-004",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "multimodal-clip-finetuning",
+      "parent": "MULT-001",
+      "dependencies": [
+        "MULT-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MULT-005",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "multimodal-clip-finetuning",
+      "parent": "MULT-001",
+      "dependencies": [
+        "MULT-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MULT-006",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "multimodal-clip-finetuning",
+      "parent": "MULT-001",
+      "dependencies": [
+        "MULT-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MULT-007",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "multimodal-clip-finetuning",
+      "parent": "MULT-001",
+      "dependencies": [
+        "MULT-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MULT-008",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "multimodal-clip-finetuning",
+      "parent": "MULT-001",
+      "dependencies": [
+        "MULT-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MULT-009",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "multimodal-clip-finetuning",
+      "parent": "MULT-001",
+      "dependencies": [
+        "MULT-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MULT-010",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "multimodal-clip-finetuning",
+      "parent": "MULT-001",
+      "dependencies": [
+        "MULT-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MULT-011",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "multimodal-clip-finetuning",
+      "parent": "MULT-001",
+      "dependencies": [
+        "MULT-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MULT-012",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "multimodal-clip-finetuning",
+      "parent": "MULT-001",
+      "dependencies": [
+        "MULT-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "MULT-013",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "component": "multimodal-clip-finetuning",
+      "parent": "MULT-001",
+      "dependencies": [
+        "MULT-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "QUAN-001",
+      "type": "Epic",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "quantized-model-benchmarks",
+      "spec": "docs/specs/quantized-model-benchmarks/spec.md",
+      "feature": "docs/features/quantized-model-benchmarks.md",
+      "status": "Future",
+      "created": "2025-10-14",
+      "dependencies": [
+        "SHAR-001",
+        "EFFI-001",
+        "MODE-001",
+        "MLOP-001"
+      ],
+      "plan": "docs/specs/quantized-model-benchmarks/plan.md",
+      "children": [
+        "QUAN-002",
+        "QUAN-003",
+        "QUAN-004",
+        "QUAN-005",
+        "QUAN-006",
+        "QUAN-007"
+      ]
+    },
+    {
+      "id": "QUAN-002",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "quantized-model-benchmarks",
+      "parent": "QUAN-001",
+      "dependencies": [
+        "QUAN-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "QUAN-003",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "quantized-model-benchmarks",
+      "parent": "QUAN-001",
+      "dependencies": [
+        "QUAN-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "QUAN-004",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "quantized-model-benchmarks",
+      "parent": "QUAN-001",
+      "dependencies": [
+        "QUAN-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "QUAN-005",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "quantized-model-benchmarks",
+      "parent": "QUAN-001",
+      "dependencies": [
+        "QUAN-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "QUAN-006",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "quantized-model-benchmarks",
+      "parent": "QUAN-001",
+      "dependencies": [
+        "QUAN-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "QUAN-007",
+      "type": "Story",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "component": "quantized-model-benchmarks",
+      "parent": "QUAN-001",
+      "dependencies": [
+        "QUAN-001"
+      ],
+      "created": "2025-10-14"
+    },
+    {
+      "id": "SHAR-001",
+      "type": "Epic",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "shared-utilities",
+      "spec": "docs/specs/shared-utilities/spec.md",
+      "feature": "docs/features/shared-utilities.md",
+      "status": "Implemented",
+      "created": "2025-10-14",
+      "completed": "2025-10-14",
+      "dependencies": [],
+      "plan": "docs/specs/shared-utilities/plan.md",
+      "children": [
+        "SHAR-002",
+        "SHAR-003",
+        "SHAR-004",
+        "SHAR-005",
+        "SHAR-006",
+        "SHAR-007",
+        "SHAR-008",
+        "SHAR-009"
+      ]
+    },
+    {
+      "id": "SHAR-002",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "shared-utilities",
+      "parent": "SHAR-001",
+      "dependencies": [
+        "SHAR-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "SHAR-003",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "shared-utilities",
+      "parent": "SHAR-001",
+      "dependencies": [
+        "SHAR-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "SHAR-004",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "shared-utilities",
+      "parent": "SHAR-001",
+      "dependencies": [
+        "SHAR-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "SHAR-005",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "shared-utilities",
+      "parent": "SHAR-001",
+      "dependencies": [
+        "SHAR-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "SHAR-006",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "shared-utilities",
+      "parent": "SHAR-001",
+      "dependencies": [
+        "SHAR-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "SHAR-007",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "shared-utilities",
+      "parent": "SHAR-001",
+      "dependencies": [
+        "SHAR-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "SHAR-008",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "shared-utilities",
+      "parent": "SHAR-001",
+      "dependencies": [
+        "SHAR-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    },
+    {
+      "id": "SHAR-009",
+      "type": "Story",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "component": "shared-utilities",
+      "parent": "SHAR-001",
+      "dependencies": [
+        "SHAR-001"
+      ],
+      "created": "2025-10-14",
+      "completed": "2025-10-14"
+    }
+  ]
+}

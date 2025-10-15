@@ -34,6 +34,7 @@ wheels/
 *.egg
 .coverage
 htmlcov/
+.ruff_cache/
 
 # Virtual environments
 .env
@@ -84,3 +85,11 @@ checkpoints/
 *.ckpt
 *.pth
 *.pt
+
+# Agentic Systems
+.claude/
+.opencode/
+
+# Developer workspace (Sage-Dev generated files)"
+.sage/
+.docs/
