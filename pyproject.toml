@@ -165,11 +165,13 @@ select = ["E", "F", "I", "N", "W", "UP"]  # Include UP for typing modernization
 
 [dependency-groups]
 dev = [
+    "gymnasium>=1.2.1",
     "pytest>=8.4.1",
     "pytest-asyncio>=1.1.0",
     "pytest-benchmark>=5.1.0",
     "pytest-cov>=6.2.1",
     "ruff>=0.12.9",
+    "stable-baselines3>=2.7.0",
 ]
 visualization = [
     "matplotlib>=3.10.5",
