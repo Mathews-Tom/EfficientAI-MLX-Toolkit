@@ -5,5 +5,6 @@ Provides quality-guided and adaptive sampling strategies for diffusion optimizat
 """
 
 from adaptive_diffusion.sampling.quality_guided import QualityGuidedSampler
+from adaptive_diffusion.sampling.step_reduction import StepReductionStrategy
 
-__all__ = ["QualityGuidedSampler"]
+__all__ = ["QualityGuidedSampler", "StepReductionStrategy"]
