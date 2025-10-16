@@ -252,7 +252,7 @@
     {
       "id": "ADAP-005",
       "type": "Story",
-      "state": "UNPROCESSED",
+      "state": "IN_PROGRESS",
       "priority": "P2",
       "component": "adaptive-diffusion-optimizer",
       "parent": "ADAP-001",
@@ -305,7 +305,8 @@
           "auto_fix": false,
           "max_retries": 1
         }
-      ]
+      ],
+      "updated": "2025-10-16T20:35:20.893525Z"
     },
     {
       "id": "ADAP-006",

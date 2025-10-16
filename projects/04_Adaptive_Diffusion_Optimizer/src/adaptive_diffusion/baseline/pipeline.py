@@ -95,17 +95,23 @@ class SimpleUNet(nn.Module):
 
         self.act = nn.SiLU()
 
-    def __call__(self, x: mx.array, t: mx.array) -> mx.array:
+    def __call__(self, x: mx.array, t: mx.array | int) -> mx.array:
         """
         Forward pass through U-Net.
 
         Args:
             x: Noisy input image [B, H, W, C] (NHWC format for MLX)
-            t: Timestep [B]
+            t: Timestep [B] or scalar int
 
         Returns:
             Predicted noise [B, H, W, C]
         """
+        # Convert timestep to array if scalar
+        if isinstance(t, (int, float)):
+            t = mx.array([float(t)] * x.shape[0])
+        elif not isinstance(t, mx.array):
+            t = mx.array(t)
+
         # Timestep embedding (not used in this simple version)
         t_emb = self.time_mlp(mx.expand_dims(t, axis=-1))
 
