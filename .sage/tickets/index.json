@@ -2649,7 +2649,7 @@
     {
       "id": "MLOP-001",
       "type": "Epic",
-      "state": "UNPROCESSED",
+      "state": "COMPLETED",
       "priority": "P1",
       "component": "mlops-integration",
       "spec": "docs/specs/mlops-integration/spec.md",
@@ -2676,12 +2676,23 @@
         "MLOP-013",
         "MLOP-014",
         "MLOP-015"
+      ],
+      "updated": "2025-10-16T21:54:53Z",
+      "state_history": [
+        {
+          "state": "IN_PROGRESS",
+          "timestamp": "2025-10-16T21:54:53Z"
+        },
+        {
+          "state": "COMPLETED",
+          "timestamp": "2025-10-16T21:54:53Z"
+        }
       ]
     },
     {
       "id": "MLOP-002",
       "type": "Story",
-      "state": "UNPROCESSED",
+      "state": "COMPLETED",
       "priority": "P1",
       "component": "mlops-integration",
       "parent": "MLOP-001",
@@ -2700,7 +2711,8 @@
             "mlops/config/__init__.py"
           ],
           "auto_fix": true,
-          "max_retries": 3
+          "max_retries": 3,
+          "state": "COMPLETED"
         },
         {
           "id": "MLOP-002-2",
@@ -2712,7 +2724,8 @@
             "mlops/client/__init__.py"
           ],
           "auto_fix": true,
-          "max_retries": 3
+          "max_retries": 3,
+          "state": "COMPLETED"
         },
         {
           "id": "MLOP-002-3",
@@ -2723,7 +2736,8 @@
             "mlops/tracking/apple_silicon_metrics.py"
           ],
           "auto_fix": true,
-          "max_retries": 3
+          "max_retries": 3,
+          "state": "COMPLETED"
         },
         {
           "id": "MLOP-002-4",
@@ -2737,7 +2751,8 @@
             "tests/mlops/test_mlflow_integration.py"
           ],
           "auto_fix": true,
-          "max_retries": 3
+          "max_retries": 3,
+          "state": "COMPLETED"
         },
         {
           "id": "MLOP-002-5",
@@ -2749,9 +2764,12 @@
             "mlops/docs/mlflow-setup.md"
           ],
           "auto_fix": false,
-          "max_retries": 1
+          "max_retries": 1,
+          "state": "COMPLETED"
         }
-      ]
+      ],
+      "started": "2025-10-17T04:50:02.073835",
+      "completed": "2025-10-17T05:18:54.316562"
     },
     {
       "id": "MLOP-003",
