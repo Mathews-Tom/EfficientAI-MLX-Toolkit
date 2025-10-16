@@ -1,0 +1,118 @@
+version: '3.8'
+
+services:
+  # PostgreSQL database for MLFlow backend
+  mlflow-db:
+    image: postgres:15-alpine
+    container_name: mlflow-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: mlflow
+      POSTGRES_PASSWORD: mlflow_password
+      POSTGRES_DB: mlflow
+    volumes:
+      - mlflow-db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - mlflow-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mlflow"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # MinIO S3-compatible storage for artifacts
+  mlflow-minio:
+    image: minio/minio:latest
+    container_name: mlflow-minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    volumes:
+      - mlflow-minio-data:/data
+    ports:
+      - "9000:9000"  # API
+      - "9001:9001"  # Console
+    networks:
+      - mlflow-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Create MinIO bucket for MLFlow artifacts
+  mlflow-minio-init:
+    image: minio/mc:latest
+    container_name: mlflow-minio-init
+    depends_on:
+      mlflow-minio:
+        condition: service_healthy
+    networks:
+      - mlflow-network
+    entrypoint: >
+      /bin/sh -c "
+      mc alias set minio http://mlflow-minio:9000 minioadmin minioadmin;
+      mc mb minio/mlflow-artifacts --ignore-existing;
+      mc anonymous set download minio/mlflow-artifacts;
+      exit 0;
+      "
+
+  # MLFlow tracking server
+  mlflow-server:
+    image: python:3.11-slim
+    container_name: mlflow-server
+    restart: unless-stopped
+    depends_on:
+      mlflow-db:
+        condition: service_healthy
+      mlflow-minio:
+        condition: service_healthy
+      mlflow-minio-init:
+        condition: service_completed_successfully
+    environment:
+      # Database configuration
+      MLFLOW_BACKEND_STORE_URI: postgresql://mlflow:mlflow_password@mlflow-db:5432/mlflow
+      # Artifact storage configuration
+      MLFLOW_DEFAULT_ARTIFACT_ROOT: s3://mlflow-artifacts/
+      # S3 (MinIO) configuration
+      AWS_ACCESS_KEY_ID: minioadmin
+      AWS_SECRET_ACCESS_KEY: minioadmin
+      MLFLOW_S3_ENDPOINT_URL: http://mlflow-minio:9000
+      # Server configuration
+      MLFLOW_HOST: 0.0.0.0
+      MLFLOW_PORT: 5000
+    ports:
+      - "5000:5000"
+    networks:
+      - mlflow-network
+    volumes:
+      - ./mlflow-scripts:/scripts
+    command: >
+      /bin/sh -c "
+      pip install --no-cache-dir mlflow psycopg2-binary boto3 &&
+      mlflow server
+        --backend-store-uri postgresql://mlflow:mlflow_password@mlflow-db:5432/mlflow
+        --default-artifact-root s3://mlflow-artifacts/
+        --host 0.0.0.0
+        --port 5000
+      "
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+networks:
+  mlflow-network:
+    driver: bridge
+
+volumes:
+  mlflow-db-data:
+    driver: local
+  mlflow-minio-data:
+    driver: local
