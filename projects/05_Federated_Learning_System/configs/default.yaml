@@ -1,0 +1,45 @@
+# Default configuration for federated learning system
+
+server:
+  num_clients: 10
+  clients_per_round: 5
+  num_rounds: 100
+  server_address: "localhost:8080"
+
+training:
+  local_epochs: 5
+  learning_rate: 0.01
+  batch_size: 32
+
+privacy:
+  enable_differential_privacy: true
+  privacy_budget: 1.0
+  noise_multiplier: 1.0
+  max_grad_norm: 1.0
+  delta: 1.0e-5
+
+communication:
+  compression_ratio: 0.1
+  use_gradient_compression: true
+  use_sparse_gradients: false
+
+aggregation:
+  strategy: "fedavg"  # fedavg, fedprox, weighted
+  byzantine_tolerance: true
+  trim_ratio: 0.1
+
+client_selection:
+  strategy: "random"  # random, performance, adaptive
+  min_clients: 5
+
+fault_tolerance:
+  client_timeout: 300
+  max_retries: 3
+
+checkpointing:
+  save_frequency: 10
+  checkpoint_dir: "checkpoints"
+
+monitoring:
+  log_frequency: 1
+  enable_tensorboard: true
