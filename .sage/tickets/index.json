@@ -364,7 +364,7 @@
     {
       "id": "ADAP-007",
       "type": "Story",
-      "state": "UNPROCESSED",
+      "state": "IN_PROGRESS",
       "priority": "P2",
       "component": "adaptive-diffusion-optimizer",
       "parent": "ADAP-001",
