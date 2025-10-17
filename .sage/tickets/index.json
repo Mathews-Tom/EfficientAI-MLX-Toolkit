@@ -364,7 +364,7 @@
     {
       "id": "ADAP-007",
       "type": "Story",
-      "state": "IN_PROGRESS",
+      "state": "COMPLETED",
       "priority": "P2",
       "component": "adaptive-diffusion-optimizer",
       "parent": "ADAP-001",
@@ -418,7 +418,8 @@
           "auto_fix": false,
           "max_retries": 1
         }
-      ]
+      ],
+      "completed": "2025-10-17"
     },
     {
       "id": "CORE-001",
