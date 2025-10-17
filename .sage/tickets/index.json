@@ -2790,7 +2790,7 @@
     {
       "id": "MLOP-003",
       "type": "Story",
-      "state": "IN_PROGRESS",
+      "state": "COMPLETED",
       "priority": "P1",
       "component": "mlops-integration",
       "parent": "MLOP-001",
@@ -2849,7 +2849,8 @@
           "max_retries": 3
         }
       ],
-      "started": "2025-10-17 05:27:39"
+      "started": "2025-10-17 05:27:39",
+      "completed": "2025-10-17 05:39:24"
     },
     {
       "id": "MLOP-004",
