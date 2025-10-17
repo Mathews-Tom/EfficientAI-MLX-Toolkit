@@ -312,7 +312,7 @@
     {
       "id": "ADAP-006",
       "type": "Story",
-      "state": "UNPROCESSED",
+      "state": "COMPLETED",
       "priority": "P2",
       "component": "adaptive-diffusion-optimizer",
       "parent": "ADAP-001",
@@ -357,7 +357,9 @@
           "auto_fix": false,
           "max_retries": 1
         }
-      ]
+      ],
+      "started": "2025-10-17T04:47:26.660407+00:00",
+      "completed": "2025-10-17T05:06:04.222786+00:00"
     },
     {
       "id": "ADAP-007",
@@ -2809,7 +2811,8 @@
             "mlops/versioning/__init__.py"
           ],
           "auto_fix": true,
-          "max_retries": 3
+          "max_retries": 3,
+          "status": "COMPLETED"
         },
         {
           "id": "MLOP-003-2",
@@ -2821,7 +2824,8 @@
             "mlops/versioning/dvc_operations.py"
           ],
           "auto_fix": true,
-          "max_retries": 3
+          "max_retries": 3,
+          "status": "COMPLETED"
         },
         {
           "id": "MLOP-003-3",
@@ -2832,7 +2836,8 @@
             "mlops/versioning/remote_manager.py"
           ],
           "auto_fix": true,
-          "max_retries": 3
+          "max_retries": 3,
+          "status": "COMPLETED"
         },
         {
           "id": "MLOP-003-4",
@@ -2846,11 +2851,23 @@
             "tests/mlops/test_dvc_integration.py"
           ],
           "auto_fix": true,
-          "max_retries": 3
+          "max_retries": 3,
+          "status": "COMPLETED"
         }
       ],
       "started": "2025-10-17 05:27:39",
-      "completed": "2025-10-17 05:39:24"
+      "completed": "2025-10-17 05:39:24",
+      "updated": "2025-10-17T00:11:24Z",
+      "state_history": [
+        {
+          "state": "IN_PROGRESS",
+          "timestamp": "2025-10-17T00:11:24Z"
+        },
+        {
+          "state": "COMPLETED",
+          "timestamp": "2025-10-17T00:11:24Z"
+        }
+      ]
     },
     {
       "id": "MLOP-004",
