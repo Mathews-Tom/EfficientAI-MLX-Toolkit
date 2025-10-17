@@ -2712,7 +2712,8 @@
           ],
           "auto_fix": true,
           "max_retries": 3,
-          "state": "COMPLETED"
+          "state": "COMPLETED",
+          "status": "COMPLETED"
         },
         {
           "id": "MLOP-002-2",
@@ -2725,7 +2726,8 @@
           ],
           "auto_fix": true,
           "max_retries": 3,
-          "state": "COMPLETED"
+          "state": "COMPLETED",
+          "status": "COMPLETED"
         },
         {
           "id": "MLOP-002-3",
@@ -2737,7 +2739,8 @@
           ],
           "auto_fix": true,
           "max_retries": 3,
-          "state": "COMPLETED"
+          "state": "COMPLETED",
+          "status": "COMPLETED"
         },
         {
           "id": "MLOP-002-4",
@@ -2752,7 +2755,8 @@
           ],
           "auto_fix": true,
           "max_retries": 3,
-          "state": "COMPLETED"
+          "state": "COMPLETED",
+          "status": "COMPLETED"
         },
         {
           "id": "MLOP-002-5",
@@ -2765,16 +2769,28 @@
           ],
           "auto_fix": false,
           "max_retries": 1,
-          "state": "COMPLETED"
+          "state": "COMPLETED",
+          "status": "COMPLETED"
         }
       ],
       "started": "2025-10-17T04:50:02.073835",
-      "completed": "2025-10-17T05:18:54.316562"
+      "completed": "2025-10-17T05:18:54.316562",
+      "updated": "2025-10-16T23:56:08Z",
+      "state_history": [
+        {
+          "state": "IN_PROGRESS",
+          "timestamp": "2025-10-16T23:56:08Z"
+        },
+        {
+          "state": "COMPLETED",
+          "timestamp": "2025-10-16T23:56:08Z"
+        }
+      ]
     },
     {
       "id": "MLOP-003",
       "type": "Story",
-      "state": "UNPROCESSED",
+      "state": "IN_PROGRESS",
       "priority": "P1",
       "component": "mlops-integration",
       "parent": "MLOP-001",
@@ -2832,7 +2848,8 @@
           "auto_fix": true,
           "max_retries": 3
         }
-      ]
+      ],
+      "started": "2025-10-17 05:27:39"
     },
     {
       "id": "MLOP-004",
