@@ -1,6 +1,6 @@
 # FEDE-009: Byzantine Fault Tolerance
 
-**State:** UNPROCESSED
+**State:** COMPLETED
 **Priority:** P1
 **Type:** Story
 **Parent:** FEDE-001

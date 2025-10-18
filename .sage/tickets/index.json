@@ -987,7 +987,7 @@
     {
       "id": "EVOL-002",
       "type": "Story",
-      "state": "UNPROCESSED",
+      "state": "COMPLETED",
       "priority": "P2",
       "component": "evolutionary-diffusion-search",
       "parent": "EVOL-001",
@@ -1055,7 +1055,8 @@
           "auto_fix": false,
           "max_retries": 1
         }
-      ]
+      ],
+      "updated": "2025-10-18T17:02:26.532788Z"
     },
     {
       "id": "EVOL-003",
@@ -1387,7 +1388,7 @@
     {
       "id": "FEDE-002",
       "type": "Story",
-      "state": "UNPROCESSED",
+      "state": "COMPLETED",
       "priority": "P1",
       "component": "federated-learning-system",
       "parent": "FEDE-001",
@@ -1444,12 +1445,13 @@
           "auto_fix": true,
           "max_retries": 3
         }
-      ]
+      ],
+      "updated": "2025-10-18T17:02:26.532980Z"
     },
     {
       "id": "FEDE-003",
       "type": "Story",
-      "state": "UNPROCESSED",
+      "state": "COMPLETED",
       "priority": "P1",
       "component": "federated-learning-system",
       "parent": "FEDE-001",
@@ -1505,12 +1507,13 @@
           "auto_fix": true,
           "max_retries": 3
         }
-      ]
+      ],
+      "updated": "2025-10-18T17:02:26.532982Z"
     },
     {
       "id": "FEDE-004",
       "type": "Story",
-      "state": "UNPROCESSED",
+      "state": "COMPLETED",
       "priority": "P1",
       "component": "federated-learning-system",
       "parent": "FEDE-001",
@@ -1567,12 +1570,13 @@
           "auto_fix": true,
           "max_retries": 3
         }
-      ]
+      ],
+      "updated": "2025-10-18T17:02:26.532984Z"
     },
     {
       "id": "FEDE-005",
       "type": "Story",
-      "state": "UNPROCESSED",
+      "state": "COMPLETED",
       "priority": "P1",
       "component": "federated-learning-system",
       "parent": "FEDE-001",
@@ -1629,12 +1633,13 @@
           "auto_fix": true,
           "max_retries": 3
         }
-      ]
+      ],
+      "updated": "2025-10-18T17:02:26.532986Z"
     },
     {
       "id": "FEDE-006",
       "type": "Story",
-      "state": "UNPROCESSED",
+      "state": "COMPLETED",
       "priority": "P1",
       "component": "federated-learning-system",
       "parent": "FEDE-001",
@@ -1690,12 +1695,13 @@
           "auto_fix": true,
           "max_retries": 3
         }
-      ]
+      ],
+      "updated": "2025-10-18T17:02:26.532987Z"
     },
     {
       "id": "FEDE-007",
       "type": "Story",
-      "state": "UNPROCESSED",
+      "state": "COMPLETED",
       "priority": "P1",
       "component": "federated-learning-system",
       "parent": "FEDE-001",
@@ -1752,12 +1758,13 @@
           "auto_fix": true,
           "max_retries": 3
         }
-      ]
+      ],
+      "updated": "2025-10-18T17:02:26.532988Z"
     },
     {
       "id": "FEDE-008",
       "type": "Story",
-      "state": "UNPROCESSED",
+      "state": "COMPLETED",
       "priority": "P1",
       "component": "federated-learning-system",
       "parent": "FEDE-001",
@@ -1815,12 +1822,13 @@
           "auto_fix": true,
           "max_retries": 3
         }
-      ]
+      ],
+      "updated": "2025-10-18T17:02:26.532989Z"
     },
     {
       "id": "FEDE-009",
       "type": "Story",
-      "state": "UNPROCESSED",
+      "state": "COMPLETED",
       "priority": "P1",
       "component": "federated-learning-system",
       "parent": "FEDE-001",
@@ -1877,12 +1885,13 @@
           "auto_fix": true,
           "max_retries": 3
         }
-      ]
+      ],
+      "updated": "2025-10-18T17:02:26.532990Z"
     },
     {
       "id": "FEDE-010",
       "type": "Story",
-      "state": "UNPROCESSED",
+      "state": "COMPLETED",
       "priority": "P1",
       "component": "federated-learning-system",
       "parent": "FEDE-001",
@@ -1939,12 +1948,13 @@
           "auto_fix": true,
           "max_retries": 3
         }
-      ]
+      ],
+      "updated": "2025-10-18T17:02:26.532991Z"
     },
     {
       "id": "FEDE-011",
       "type": "Story",
-      "state": "UNPROCESSED",
+      "state": "COMPLETED",
       "priority": "P1",
       "component": "federated-learning-system",
       "parent": "FEDE-001",
@@ -2001,12 +2011,13 @@
           "auto_fix": true,
           "max_retries": 3
         }
-      ]
+      ],
+      "updated": "2025-10-18T17:02:26.532992Z"
     },
     {
       "id": "FEDE-012",
       "type": "Story",
-      "state": "UNPROCESSED",
+      "state": "COMPLETED",
       "priority": "P1",
       "component": "federated-learning-system",
       "parent": "FEDE-001",
@@ -2059,12 +2070,13 @@
           "auto_fix": true,
           "max_retries": 3
         }
-      ]
+      ],
+      "updated": "2025-10-18T17:02:26.532993Z"
     },
     {
       "id": "FEDE-013",
       "type": "Story",
-      "state": "UNPROCESSED",
+      "state": "COMPLETED",
       "priority": "P1",
       "component": "federated-learning-system",
       "parent": "FEDE-001",
@@ -2120,7 +2132,8 @@
           "auto_fix": false,
           "max_retries": 1
         }
-      ]
+      ],
+      "updated": "2025-10-18T17:02:26.532994Z"
     },
     {
       "id": "LORA-001",
@@ -4919,5 +4932,6 @@
       "created": "2025-10-14",
       "completed": "2025-10-14"
     }
-  ]
+  ],
+  "generated": "2025-10-18T17:02:26.533001Z"
 }

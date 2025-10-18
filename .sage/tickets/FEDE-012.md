@@ -1,6 +1,6 @@
 # FEDE-012: Integration Testing
 
-**State:** UNPROCESSED
+**State:** COMPLETED
 **Priority:** P1
 **Type:** Story
 **Parent:** FEDE-001

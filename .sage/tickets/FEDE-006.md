@@ -1,6 +1,6 @@
 # FEDE-006: Privacy Budget Tracking
 
-**State:** UNPROCESSED
+**State:** COMPLETED
 **Priority:** P1
 **Type:** Story
 **Parent:** FEDE-001

@@ -1,6 +1,6 @@
 # FEDE-005: Differential Privacy Integration
 
-**State:** UNPROCESSED
+**State:** COMPLETED
 **Priority:** P1
 **Type:** Story
 **Parent:** FEDE-001

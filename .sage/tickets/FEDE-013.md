@@ -1,6 +1,6 @@
 # FEDE-013: Documentation and Examples
 
-**State:** UNPROCESSED
+**State:** COMPLETED
 **Priority:** P1
 **Type:** Story
 **Parent:** FEDE-001
