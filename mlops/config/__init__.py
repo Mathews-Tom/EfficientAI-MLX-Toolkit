@@ -1,15 +1,20 @@
-"""MLFlow configuration module."""
+"""MLOps Configuration Module
 
-from mlops.config.mlflow_config import (
-    MLFlowConfig,
-    MLFlowConfigError,
-    get_default_config,
-    load_config_from_file,
+Provides configuration management for MLOps infrastructure components.
+"""
+
+from mlops.config.airflow_config import (
+    AirflowConfig,
+    AppleSiliconConfig,
+    Environment,
+    ExecutorType,
+    get_airflow_config,
 )
 
 __all__ = [
-    "MLFlowConfig",
-    "MLFlowConfigError",
-    "get_default_config",
-    "load_config_from_file",
+    "AirflowConfig",
+    "AppleSiliconConfig",
+    "Environment",
+    "ExecutorType",
+    "get_airflow_config",
 ]
