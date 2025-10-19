@@ -7,6 +7,9 @@ import pytest
 from unittest.mock import patch, Mock, MagicMock
 from pathlib import Path
 
+# Skip all tests if Ray not available
+pytest.importorskip("ray", reason="Ray not available - install with: uv add 'ray[serve]'")
+
 from mlops.config.ray_config import RayServeConfig, DeploymentMode, ScalingMode
 from mlops.serving.ray_serve import SharedRayCluster
 from mlops.serving.model_wrapper import MLXModelWrapper, create_model_wrapper

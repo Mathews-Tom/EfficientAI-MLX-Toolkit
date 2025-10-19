@@ -6,6 +6,9 @@ This module tests the SharedRayCluster with mocked Ray infrastructure.
 import pytest
 from unittest.mock import patch, MagicMock, Mock
 
+# Skip all tests if Ray not available
+pytest.importorskip("ray", reason="Ray not available - install with: uv add 'ray[serve]'")
+
 from mlops.config.ray_config import RayServeConfig, DeploymentMode
 from mlops.serving.ray_serve import SharedRayCluster, RayServeError, create_shared_cluster
 from mlops.serving.model_wrapper import MLXModelWrapper
@@ -24,9 +27,9 @@ class TestSharedRayCluster:
             assert "Ray not available" in str(exc_info.value)
             assert exc_info.value.operation == "check_ray_available"
 
-    @patch("mlops.serving.ray_serve.ray")
-    @patch("mlops.serving.ray_serve.serve")
-    def test_init_with_ray(self, mock_serve, mock_ray):
+    @patch("ray.serve")
+    @patch("ray.init")
+    def test_init_with_ray(self, mock_ray_init, mock_serve):
         """Test successful initialization with Ray available"""
         config = RayServeConfig()
         cluster = SharedRayCluster(config=config)
@@ -36,19 +39,19 @@ class TestSharedRayCluster:
         assert cluster._ray_initialized is False
         assert cluster._serve_started is False
 
-    @patch("mlops.serving.ray_serve.ray")
-    @patch("mlops.serving.ray_serve.serve")
-    def test_initialize_cluster(self, mock_serve, mock_ray):
+    @patch("ray.serve")
+    @patch("ray.init")
+    def test_initialize_cluster(self, mock_ray_init, mock_serve):
         """Test Ray cluster initialization"""
         cluster = SharedRayCluster()
         cluster.initialize_cluster()
 
         assert cluster._ray_initialized is True
-        mock_ray.init.assert_called_once()
+        mock_ray_init.assert_called_once()
 
-    @patch("mlops.serving.ray_serve.ray")
-    @patch("mlops.serving.ray_serve.serve")
-    def test_initialize_cluster_already_initialized(self, mock_serve, mock_ray):
+    @patch("ray.serve")
+    @patch("ray.init")
+    def test_initialize_cluster_already_initialized(self, mock_ray_init, mock_serve):
         """Test initialization when already initialized"""
         cluster = SharedRayCluster()
         cluster._ray_initialized = True
@@ -56,11 +59,11 @@ class TestSharedRayCluster:
         cluster.initialize_cluster()
 
         # Should not call ray.init again
-        mock_ray.init.assert_not_called()
+        mock_ray_init.assert_not_called()
 
-    @patch("mlops.serving.ray_serve.ray")
-    @patch("mlops.serving.ray_serve.serve")
-    def test_start_serve(self, mock_serve, mock_ray):
+    @patch("ray.serve.start")
+    @patch("ray.init")
+    def test_start_serve(self, mock_ray_init, mock_serve_start):
         """Test starting Ray Serve"""
         cluster = SharedRayCluster()
         cluster._ray_initialized = True
@@ -68,11 +71,11 @@ class TestSharedRayCluster:
         cluster.start_serve()
 
         assert cluster._serve_started is True
-        mock_serve.start.assert_called_once()
+        mock_serve_start.assert_called_once()
 
-    @patch("mlops.serving.ray_serve.ray")
-    @patch("mlops.serving.ray_serve.serve")
-    def test_start_serve_initializes_ray(self, mock_serve, mock_ray):
+    @patch("ray.serve.start")
+    @patch("ray.init")
+    def test_start_serve_initializes_ray(self, mock_ray_init, mock_serve_start):
         """Test starting Serve initializes Ray if needed"""
         cluster = SharedRayCluster()
 
@@ -80,12 +83,13 @@ class TestSharedRayCluster:
 
         assert cluster._ray_initialized is True
         assert cluster._serve_started is True
-        mock_ray.init.assert_called_once()
-        mock_serve.start.assert_called_once()
+        mock_ray_init.assert_called_once()
+        mock_serve_start.assert_called_once()
 
-    @patch("mlops.serving.ray_serve.ray")
-    @patch("mlops.serving.ray_serve.serve")
-    def test_deploy_project_model(self, mock_serve, mock_ray):
+    @patch("ray.serve.deployment")
+    @patch("ray.serve.start")
+    @patch("ray.init")
+    def test_deploy_project_model(self, mock_ray_init, mock_serve_start, mock_deployment):
         """Test deploying a model from a project"""
         cluster = SharedRayCluster()
         cluster._serve_started = True
