@@ -16,21 +16,13 @@ import mlx.core as mx
 import numpy as np
 import pytest
 
-# Import project modules
-import sys
-from pathlib import Path
-project_dir = Path(__file__).parent.parent.parent.parent / "projects/04_Adaptive_Diffusion_Optimizer"
-sys.path.insert(0, str(project_dir / "src"))
-
+# Import project modules (using pythonpath from pyproject.toml)
 from adaptive_diffusion.baseline import DiffusionPipeline, DDIMScheduler
 from adaptive_diffusion.optimization.pipeline import OptimizationPipeline
 from adaptive_diffusion.optimization.domain_adapter import DomainType
 
-# Import benchmarking infrastructure
-benchmarks_dir = Path(__file__).parent.parent.parent / "benchmarks"
-sys.path.insert(0, str(benchmarks_dir))
-
-from adaptive_diffusion.validation_metrics import (
+# Import benchmarking infrastructure (using pythonpath from pyproject.toml)
+from benchmarks.adaptive_diffusion.validation_metrics import (
     MetricsCalculator,
     ValidationMetrics,
     create_validation_report,

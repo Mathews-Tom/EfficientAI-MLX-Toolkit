@@ -10,11 +10,8 @@ import pytest
 import sys
 from pathlib import Path
 
-# Import benchmarking infrastructure
-benchmarks_dir = Path(__file__).parent.parent.parent / "benchmarks"
-sys.path.insert(0, str(benchmarks_dir))
-
-from adaptive_diffusion.validation_metrics import (
+# Import benchmarking infrastructure (using pythonpath from pyproject.toml)
+from benchmarks.adaptive_diffusion.validation_metrics import (
     QualityMetrics,
     PerformanceMetrics,
     ValidationMetrics,

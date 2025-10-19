@@ -15,6 +15,7 @@ from mlops.config.mlflow_config import (
     MLFlowConfig,
     MLFlowConfigError,
     get_default_config,
+    load_config_from_file,
 )
 
 from mlops.config.dvc_config import (
@@ -43,6 +44,7 @@ __all__ = [
     "MLFlowConfig",
     "MLFlowConfigError",
     "get_default_config",
+    "load_config_from_file",
     # DVC
     "DVCConfig",
 ]

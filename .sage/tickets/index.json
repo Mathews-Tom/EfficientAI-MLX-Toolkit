@@ -1612,7 +1612,7 @@
         {
           "id": "FEDE-005-3",
           "type": "implementation",
-          "description": "Add privacy accountant (R\u00e9nyi DP, zCDP)",
+          "description": "Add privacy accountant (Rényi DP, zCDP)",
           "validation_script": "pytest tests/federated/test_privacy_accountant.py -v",
           "files": [
             "federated/privacy/privacy_accountant.py"
@@ -2887,7 +2887,7 @@
     {
       "id": "MLOP-004",
       "type": "Story",
-      "state": "UNPROCESSED",
+      "state": "COMPLETED",
       "priority": "P1",
       "component": "mlops-integration",
       "parent": "MLOP-001",
@@ -2945,12 +2945,13 @@
           "auto_fix": true,
           "max_retries": 3
         }
-      ]
+      ],
+      "updated": "2025-10-18T18:38:33.137147Z"
     },
     {
       "id": "MLOP-005",
       "type": "Story",
-      "state": "UNPROCESSED",
+      "state": "COMPLETED",
       "priority": "P1",
       "component": "mlops-integration",
       "parent": "MLOP-001",
@@ -3007,6 +3008,17 @@
           ],
           "auto_fix": true,
           "max_retries": 3
+        }
+      ],
+      "updated": "2025-10-19T01:30:00Z",
+      "state_history": [
+        {
+          "state": "IN_PROGRESS",
+          "timestamp": "2025-10-19T00:00:00Z"
+        },
+        {
+          "state": "COMPLETED",
+          "timestamp": "2025-10-19T01:30:00Z"
         }
       ]
     },
@@ -4934,5 +4946,5 @@
       "completed": "2025-10-14"
     }
   ],
-  "generated": "2025-10-18T18:05:09.527568Z"
+  "generated": "2025-10-18T18:38:33.137611Z"
 }
