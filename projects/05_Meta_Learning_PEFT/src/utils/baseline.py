@@ -71,7 +71,7 @@ class BaselineEvaluator:
                 loss = loss_fn(logits, support_y)
                 return loss, dict(model.parameters())
 
-            (train_loss, _), grads = mx.value_and_grad(loss_and_grad_fn, has_aux=True)(
+            (train_loss, _), grads = mx.value_and_grad(loss_and_grad_fn)(
                 model
             )
 

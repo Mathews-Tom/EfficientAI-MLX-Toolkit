@@ -7,6 +7,7 @@ import mlx.core as mx
 import mlx.nn as nn
 import mlx.optimizers as optim
 
+from meta_learning.maml import flatten_params, unflatten_params
 from utils.logging import get_logger
 
 logger = get_logger(__name__)
@@ -83,7 +84,7 @@ class ReptileLearner:
                 return loss, dict(model.parameters())
 
             # Compute loss and gradients
-            (loss, _), grads = mx.value_and_grad(loss_and_grad_fn, has_aux=True)(
+            (loss, _), grads = mx.value_and_grad(loss_and_grad_fn)(
                 task_model
             )
 
@@ -104,21 +105,27 @@ class ReptileLearner:
         Args:
             task_params_list: List of task-adapted parameter dictionaries.
         """
+        # Flatten all parameter dicts for easier manipulation
+        flat_meta_params = flatten_params(self.meta_params)
+        flat_task_params_list = [flatten_params(tp) for tp in task_params_list]
+
         # Compute mean of task-adapted parameters
         mean_task_params = {}
-        for key in self.meta_params.keys():
+        for key in flat_meta_params.keys():
             task_param_stack = mx.stack(
-                [task_params[key] for task_params in task_params_list]
+                [task_params[key] for task_params in flat_task_params_list]
             )
             mean_task_params[key] = mx.mean(task_param_stack, axis=0)
 
         # Reptile update: θ_new = θ + β * (mean(θ_task) - θ)
-        for key in self.meta_params.keys():
-            self.meta_params[key] = self.meta_params[key] + self.outer_lr * (
-                mean_task_params[key] - self.meta_params[key]
+        flat_new_params = {}
+        for key in flat_meta_params.keys():
+            flat_new_params[key] = flat_meta_params[key] + self.outer_lr * (
+                mean_task_params[key] - flat_meta_params[key]
             )
 
-        # Update model parameters
+        # Unflatten and update model parameters
+        self.meta_params = unflatten_params(flat_new_params)
         self.model.update(self.meta_params)
         mx.eval(self.model.parameters())
 
@@ -139,6 +146,7 @@ class ReptileLearner:
         task_params_list = []
         inner_losses = []
         query_losses = []
+        query_accuracies = []
 
         # Inner loop for each task
         for support_x, support_y, query_x, query_y in episodes:
@@ -153,6 +161,11 @@ class ReptileLearner:
             query_loss = loss_fn(query_logits, query_y)
             query_losses.append(float(query_loss))
 
+            # Track query accuracy
+            query_preds = mx.argmax(query_logits, axis=-1)
+            query_acc = mx.mean((query_preds == query_y).astype(mx.float32))
+            query_accuracies.append(float(query_acc))
+
             # Track inner loop final loss
             support_logits = task_model(support_x)
             support_loss = loss_fn(support_logits, support_y)
@@ -165,6 +178,7 @@ class ReptileLearner:
         metrics = {
             "inner_loss": sum(inner_losses) / len(inner_losses),
             "query_loss": sum(query_losses) / len(query_losses),
+            "query_accuracy": sum(query_accuracies) / len(query_accuracies),
         }
 
         return metrics
@@ -208,7 +222,7 @@ class ReptileLearner:
                             return loss, dict(model.parameters())
 
                         (_, _), grads = mx.value_and_grad(
-                            loss_and_grad_fn, has_aux=True
+                            loss_and_grad_fn
                         )(task_model)
                         task_optimizer.update(task_model, grads)
                         mx.eval(task_model.parameters())
