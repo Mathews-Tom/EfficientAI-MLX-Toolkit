@@ -1,6 +1,6 @@
 # META-003: Meta-Learning Framework
 
-**State:** UNPROCESSED
+**State:** IN_PROGRESS
 **Priority:** P2
 **Type:** Story
 **Parent:** META-001

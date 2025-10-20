@@ -24,17 +24,13 @@ class SimpleClassifier(nn.Module):
         self.num_classes = num_classes
         self.num_layers = num_layers
 
-        # Build layers
-        layers = []
+        # Build layers as named modules for proper gradient structure
         in_dim = input_dim
-        for _ in range(num_layers):
-            layers.append(nn.Linear(in_dim, hidden_dim))
-            layers.append(nn.ReLU())
+        for i in range(num_layers):
+            setattr(self, f"hidden_{i}", nn.Linear(in_dim, hidden_dim))
             in_dim = hidden_dim
 
-        layers.append(nn.Linear(hidden_dim, num_classes))
-
-        self.layers = layers
+        self.output = nn.Linear(hidden_dim, num_classes)
 
     def __call__(self, x: mx.array) -> mx.array:
         """Forward pass.
@@ -45,8 +41,13 @@ class SimpleClassifier(nn.Module):
         Returns:
             Logits of shape (batch_size, num_classes).
         """
-        for layer in self.layers:
-            x = layer(x)
+        # Apply hidden layers with ReLU activation
+        for i in range(self.num_layers):
+            x = getattr(self, f"hidden_{i}")(x)
+            x = nn.relu(x)
+
+        # Output layer (no activation)
+        x = self.output(x)
         return x
 
 
