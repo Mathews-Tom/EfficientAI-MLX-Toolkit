@@ -14,6 +14,8 @@ from adapter_generation.peft_integration import (
     PEFTConfig,
     SimpleLoRAModel,
 )
+from adapter_generation.adalora import AdaLoRAModel, AdaLoRAMetaLearner
+from adapter_generation.prefix_prompt_tuning import PromptTuningModel, PromptTuningMetaLearner
 from meta_learning.maml import MAMLLearner
 from utils.logging import get_logger
 
@@ -106,6 +108,97 @@ class AdapterFactory:
         return learner
 
     @staticmethod
+    def create_adalora_meta_learner(
+        input_dim: int,
+        hidden_dim: int,
+        output_dim: int,
+        lora_rank: int = 8,
+        lora_alpha: float = 16.0,
+        inner_lr: float = 0.01,
+        outer_lr: float = 0.001,
+        num_inner_steps: int = 5,
+        **kwargs: Any,
+    ) -> AdaLoRAMetaLearner:
+        """Create AdaLoRA meta-learner with adaptive rank allocation.
+
+        Args:
+            input_dim: Input feature dimension
+            hidden_dim: Hidden layer dimension
+            output_dim: Output dimension (number of classes)
+            lora_rank: Maximum rank for AdaLoRA
+            lora_alpha: Scaling factor
+            inner_lr: Inner loop learning rate
+            outer_lr: Outer loop learning rate
+            num_inner_steps: Number of gradient steps per task
+            **kwargs: Additional arguments
+
+        Returns:
+            Configured AdaLoRA meta-learner
+        """
+        model = AdaLoRAModel(
+            input_dim=input_dim,
+            hidden_dim=hidden_dim,
+            output_dim=output_dim,
+            lora_rank=lora_rank,
+            lora_alpha=lora_alpha,
+        )
+
+        learner = AdaLoRAMetaLearner(
+            model=model,
+            inner_lr=inner_lr,
+            outer_lr=outer_lr,
+            num_inner_steps=num_inner_steps,
+        )
+
+        logger.info(f"Created AdaLoRA meta-learner with max rank={lora_rank}")
+
+        return learner
+
+    @staticmethod
+    def create_prompt_tuning_meta_learner(
+        input_dim: int,
+        hidden_dim: int,
+        output_dim: int,
+        num_prompts: int = 10,
+        inner_lr: float = 0.01,
+        outer_lr: float = 0.001,
+        num_inner_steps: int = 5,
+        **kwargs: Any,
+    ) -> PromptTuningMetaLearner:
+        """Create Prompt Tuning meta-learner.
+
+        Args:
+            input_dim: Input feature dimension
+            hidden_dim: Hidden layer dimension
+            output_dim: Output dimension (number of classes)
+            num_prompts: Number of prompt tokens
+            inner_lr: Inner loop learning rate
+            outer_lr: Outer loop learning rate
+            num_inner_steps: Number of gradient steps per task
+            **kwargs: Additional arguments
+
+        Returns:
+            Configured Prompt Tuning meta-learner
+        """
+        model = PromptTuningModel(
+            input_dim=input_dim,
+            hidden_dim=hidden_dim,
+            output_dim=output_dim,
+            num_prompts=num_prompts,
+        )
+
+        learner = PromptTuningMetaLearner(
+            model=model,
+            inner_lr=inner_lr,
+            outer_lr=outer_lr,
+            num_inner_steps=num_inner_steps,
+        )
+
+        logger.info(f"Created Prompt Tuning meta-learner with {num_prompts} prompts")
+
+        return learner
+
+    @staticmethod
     def create_meta_learner(
         method: PEFTMethod | str,
         input_dim: int,
@@ -146,17 +239,35 @@ class AdapterFactory:
                 **kwargs,
             )
         elif method == PEFTMethod.ADALORA:
-            # AdaLoRA not yet implemented
-            raise NotImplementedError("AdaLoRA meta-learning not yet implemented")
+            return AdapterFactory.create_adalora_meta_learner(
+                input_dim=input_dim,
+                hidden_dim=hidden_dim,
+                output_dim=output_dim,
+                **kwargs,
+            )
         elif method == PEFTMethod.PROMPT_TUNING:
-            # Prompt tuning not yet implemented
-            raise NotImplementedError("Prompt tuning meta-learning not yet implemented")
+            return AdapterFactory.create_prompt_tuning_meta_learner(
+                input_dim=input_dim,
+                hidden_dim=hidden_dim,
+                output_dim=output_dim,
+                **kwargs,
+            )
         elif method == PEFTMethod.PREFIX_TUNING:
-            # Prefix tuning not yet implemented
-            raise NotImplementedError("Prefix tuning meta-learning not yet implemented")
+            # Prefix tuning shares implementation with prompt tuning
+            return AdapterFactory.create_prompt_tuning_meta_learner(
+                input_dim=input_dim,
+                hidden_dim=hidden_dim,
+                output_dim=output_dim,
+                **kwargs,
+            )
         elif method == PEFTMethod.P_TUNING:
-            # P-tuning not yet implemented
-            raise NotImplementedError("P-tuning meta-learning not yet implemented")
+            # P-tuning is a variant of prompt tuning
+            return AdapterFactory.create_prompt_tuning_meta_learner(
+                input_dim=input_dim,
+                hidden_dim=hidden_dim,
+                output_dim=output_dim,
+                **kwargs,
+            )
         else:
             raise ValueError(f"Unknown PEFT method: {method}")
 
