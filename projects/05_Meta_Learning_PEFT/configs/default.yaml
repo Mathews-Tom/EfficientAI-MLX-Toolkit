@@ -1,0 +1,89 @@
+# Meta-Learning PEFT Configuration
+# Phase: META-002 Research and Prototyping
+
+# Meta-Learning Settings
+meta_learning:
+  algorithm: "reptile"  # Options: "reptile", "maml", "fomaml"
+  meta_batch_size: 4  # Number of tasks per meta-update
+  num_meta_iterations: 1000  # Total meta-training iterations
+  inner_lr: 0.01  # Task-specific learning rate
+  outer_lr: 0.001  # Meta-learning rate
+  num_inner_steps: 5  # Gradient steps per task
+  first_order: true  # Use first-order approximation
+
+# Task Distribution
+task_distribution:
+  task_families:
+    - linear_classification
+    - nonlinear_classification
+  k_shot: 5  # Support set size
+  query_size: 50  # Query set size
+  num_train_tasks: 100  # Tasks for meta-training
+  num_val_tasks: 20  # Tasks for meta-validation
+  num_test_tasks: 30  # Tasks for meta-testing
+
+# Synthetic Task Configuration
+synthetic_tasks:
+  linear:
+    input_dim: 2
+    num_classes: 2
+    rotation_range: [-3.14, 3.14]
+    translation_range: [-2.0, 2.0]
+    noise_level: 0.1
+  nonlinear:
+    pattern_types: ["xor", "circles", "spiral"]
+    input_dim: 2
+    num_classes: 2
+    noise_level: 0.1
+
+# PEFT Configuration
+peft:
+  method: "lora"  # Options: "lora", "adalora", "prompt_tuning"
+  lora_config:
+    rank: 8
+    alpha: 16
+    dropout: 0.1
+    target_modules: ["q_proj", "v_proj"]
+
+# Model Configuration
+model:
+  backbone: "linear"  # Options: "linear", "mlp", "transformer"
+  hidden_dim: 128
+  num_layers: 2
+  activation: "relu"
+
+# Training Configuration
+training:
+  max_epochs: 100
+  patience: 10  # Early stopping patience
+  eval_interval: 10  # Evaluate every N iterations
+  checkpoint_interval: 50
+  gradient_clip: 1.0
+
+# Evaluation Configuration
+evaluation:
+  few_shot_sizes: [1, 5, 10, 20]
+  num_adaptation_steps: [1, 3, 5, 10]
+  metrics: ["accuracy", "loss", "adaptation_speed"]
+
+# Hardware Configuration
+hardware:
+  device: "auto"  # Options: "auto", "cpu", "mps"
+  use_mlx: true
+  mixed_precision: false
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  log_dir: "outputs/logs"
+  experiment_name: "meta_learning_peft_research"
+  wandb:
+    enabled: false
+    project: "meta-learning-peft"
+    entity: null
+
+# Output Configuration
+output:
+  checkpoint_dir: "outputs/checkpoints"
+  results_dir: "outputs/results"
+  visualization_dir: "outputs/visualizations"

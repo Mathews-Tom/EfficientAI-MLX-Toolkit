@@ -12,18 +12,14 @@ import tempfile
 
 import pytest
 
-# Import benchmarking infrastructure
-import sys
-benchmarks_dir = Path(__file__).parent.parent.parent / "benchmarks"
-sys.path.insert(0, str(benchmarks_dir))
-
-from adaptive_diffusion.benchmark_suite import (
+# Import benchmarking infrastructure (using pythonpath from pyproject.toml)
+from benchmarks.adaptive_diffusion.benchmark_suite import (
     BenchmarkRunner,
     BenchmarkConfig,
     BenchmarkResult,
     run_comprehensive_benchmarks,
 )
-from adaptive_diffusion.validation_metrics import (
+from benchmarks.adaptive_diffusion.validation_metrics import (
     ValidationMetrics,
     QualityMetrics,
     PerformanceMetrics,

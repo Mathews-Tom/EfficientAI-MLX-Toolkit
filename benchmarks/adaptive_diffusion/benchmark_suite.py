@@ -35,7 +35,7 @@ from adaptive_diffusion.baseline import (
 )
 from adaptive_diffusion.schedulers.adaptive import AdaptiveScheduler
 from adaptive_diffusion.sampling.quality_guided import QualityGuidedSampler
-from adaptive_diffusion.sampling.step_reduction import StepReductionSampler
+from adaptive_diffusion.sampling.step_reduction import StepReductionStrategy
 from adaptive_diffusion.optimization.pipeline import OptimizationPipeline
 from adaptive_diffusion.optimization.domain_adapter import DomainType
 
