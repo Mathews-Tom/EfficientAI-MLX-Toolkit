@@ -1,0 +1,2274 @@
+{
+  "version": "1.0",
+  "generated": "2025-10-22T21:21:39.973219+00:00",
+  "total_tickets": 119,
+  "tickets": [
+    {
+      "id": "ADAP-002",
+      "title": "Research and Prototyping",
+      "state": "COMPLETED",
+      "priority": "P2",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/adaptive-diffusion-optimizer/spec.md",
+        "plan": "docs/specs/adaptive-diffusion-optimizer/plan.md",
+        "tasks": "docs/specs/adaptive-diffusion-optimizer/tasks.md"
+      },
+      "created": "2025-10-22T16:57:37.856133",
+      "updated": "2025-10-22T16:57:37.856159",
+      "git": {
+        "commits": [
+          "3e5db6bd9a670392db9e613edcd97722df7014cc",
+          "6daa26493b7deb726af9d1a11a40e91bedb1c87c",
+          "f0b8f24436dc137527975ab6c59963219a039259",
+          "3665d07249534a203bdff9fe3e36e96a02ca8928",
+          "a513cd68eee83296c804554b787e5dcbd3e8df60",
+          "f3c541217196d5f56ffaad696dbefade031a189d"
+        ]
+      }
+    },
+    {
+      "id": "ADAP-003",
+      "title": "Core Algorithm Implementation",
+      "state": "COMPLETED",
+      "priority": "P2",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/adaptive-diffusion-optimizer/spec.md",
+        "plan": "docs/specs/adaptive-diffusion-optimizer/plan.md",
+        "tasks": "docs/specs/adaptive-diffusion-optimizer/tasks.md"
+      },
+      "created": "2025-10-22T16:57:37.869538",
+      "updated": "2025-10-22T16:57:37.869561",
+      "git": {
+        "commits": [
+          "8fe5f4d829341b85efcc205559c81022c594157b",
+          "3e5db6bd9a670392db9e613edcd97722df7014cc",
+          "6daa26493b7deb726af9d1a11a40e91bedb1c87c",
+          "f0b8f24436dc137527975ab6c59963219a039259"
+        ]
+      }
+    },
+    {
+      "id": "ADAP-004",
+      "title": "Optimization Pipeline",
+      "state": "COMPLETED",
+      "priority": "P2",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/adaptive-diffusion-optimizer/spec.md",
+        "plan": "docs/specs/adaptive-diffusion-optimizer/plan.md",
+        "tasks": "docs/specs/adaptive-diffusion-optimizer/tasks.md"
+      },
+      "created": "2025-10-22T16:57:37.882567",
+      "updated": "2025-10-22T16:57:37.882595",
+      "git": {
+        "commits": [
+          "00c0b9a333a75b6f2e7394266723104511476525",
+          "c45b177fc3f192c325e9ce62d41f97cea8160f7e"
+        ]
+      }
+    },
+    {
+      "id": "ADAP-005",
+      "title": "Integration and Testing",
+      "state": "COMPLETED",
+      "priority": "P2",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/adaptive-diffusion-optimizer/spec.md",
+        "plan": "docs/specs/adaptive-diffusion-optimizer/plan.md",
+        "tasks": "docs/specs/adaptive-diffusion-optimizer/tasks.md"
+      },
+      "created": "2025-10-22T16:57:37.896131",
+      "updated": "2025-10-22T16:57:37.896153",
+      "git": {
+        "commits": [
+          "f33d39e4e9e667dad2562688c00419db1ef66a21",
+          "f7005d180fa54a5db0512e0627a6b67988d9e211",
+          "7b8dcaeaacf75444098e9d4f8250a960d2ef6087",
+          "007db0d5d207a64993ccc54adf7f94237179cfbb",
+          "0d8828b29ad0321e237ec03318e2c42d5b833496"
+        ]
+      }
+    },
+    {
+      "id": "ADAP-006",
+      "title": "Documentation",
+      "state": "COMPLETED",
+      "priority": "P2",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/adaptive-diffusion-optimizer/spec.md",
+        "plan": "docs/specs/adaptive-diffusion-optimizer/plan.md",
+        "tasks": "docs/specs/adaptive-diffusion-optimizer/tasks.md"
+      },
+      "created": "2025-10-22T16:57:37.909636",
+      "updated": "2025-10-22T16:57:37.909660",
+      "git": {
+        "commits": [
+          "c3379ff15478936ecdf61fe55c8a4e0860923ee2",
+          "f33d39e4e9e667dad2562688c00419db1ef66a21"
+        ]
+      }
+    },
+    {
+      "id": "ADAP-007",
+      "title": "Validation and Benchmarking",
+      "state": "COMPLETED",
+      "priority": "P2",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/adaptive-diffusion-optimizer/spec.md",
+        "plan": "docs/specs/adaptive-diffusion-optimizer/plan.md",
+        "tasks": "docs/specs/adaptive-diffusion-optimizer/tasks.md"
+      },
+      "created": "2025-10-22T16:57:37.923421",
+      "updated": "2025-10-22T16:57:37.923444",
+      "git": {
+        "commits": [
+          "9541e055cf27b3bce1d23991b56236c563a64263"
+        ]
+      }
+    },
+    {
+      "id": "CORE-002",
+      "title": "CoreML Pipeline Setup",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/core-ml-diffusion/spec.md",
+        "plan": "docs/specs/core-ml-diffusion/plan.md",
+        "tasks": "docs/specs/core-ml-diffusion/tasks.md"
+      },
+      "created": "2025-10-22T16:57:37.937055",
+      "updated": "2025-10-22T16:57:37.937081"
+    },
+    {
+      "id": "CORE-003",
+      "title": "Style Transfer Implementation",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/core-ml-diffusion/spec.md",
+        "plan": "docs/specs/core-ml-diffusion/plan.md",
+        "tasks": "docs/specs/core-ml-diffusion/tasks.md"
+      },
+      "created": "2025-10-22T16:57:37.951407",
+      "updated": "2025-10-22T16:57:37.951435"
+    },
+    {
+      "id": "CORE-004",
+      "title": "ANE Optimization",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/core-ml-diffusion/spec.md",
+        "plan": "docs/specs/core-ml-diffusion/plan.md",
+        "tasks": "docs/specs/core-ml-diffusion/tasks.md"
+      },
+      "created": "2025-10-22T16:57:37.964969",
+      "updated": "2025-10-22T16:57:37.964995"
+    },
+    {
+      "id": "CORE-005",
+      "title": "Image Processing Pipeline",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/core-ml-diffusion/spec.md",
+        "plan": "docs/specs/core-ml-diffusion/plan.md",
+        "tasks": "docs/specs/core-ml-diffusion/tasks.md"
+      },
+      "created": "2025-10-22T16:57:37.979459",
+      "updated": "2025-10-22T16:57:37.979486"
+    },
+    {
+      "id": "CORE-006",
+      "title": "Performance Optimization",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/core-ml-diffusion/spec.md",
+        "plan": "docs/specs/core-ml-diffusion/plan.md",
+        "tasks": "docs/specs/core-ml-diffusion/tasks.md"
+      },
+      "created": "2025-10-22T16:57:37.993135",
+      "updated": "2025-10-22T16:57:37.993158"
+    },
+    {
+      "id": "CORE-007",
+      "title": "CLI and API",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/core-ml-diffusion/spec.md",
+        "plan": "docs/specs/core-ml-diffusion/plan.md",
+        "tasks": "docs/specs/core-ml-diffusion/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.006164",
+      "updated": "2025-10-22T16:57:38.006191"
+    },
+    {
+      "id": "CORE-008",
+      "title": "Integration Testing",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/core-ml-diffusion/spec.md",
+        "plan": "docs/specs/core-ml-diffusion/plan.md",
+        "tasks": "docs/specs/core-ml-diffusion/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.020009",
+      "updated": "2025-10-22T16:57:38.020033"
+    },
+    {
+      "id": "CORE-009",
+      "title": "Documentation and Examples",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/core-ml-diffusion/spec.md",
+        "plan": "docs/specs/core-ml-diffusion/plan.md",
+        "tasks": "docs/specs/core-ml-diffusion/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.032946",
+      "updated": "2025-10-22T16:57:38.032974"
+    },
+    {
+      "id": "DEVE-002",
+      "title": "Knowledge Base Structure",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/development-knowledge-base/spec.md",
+        "plan": "docs/specs/development-knowledge-base/plan.md",
+        "tasks": "docs/specs/development-knowledge-base/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.046190",
+      "updated": "2025-10-22T16:57:38.046222"
+    },
+    {
+      "id": "DEVE-003",
+      "title": "Search and Indexing",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/development-knowledge-base/spec.md",
+        "plan": "docs/specs/development-knowledge-base/plan.md",
+        "tasks": "docs/specs/development-knowledge-base/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.059931",
+      "updated": "2025-10-22T16:57:38.059956"
+    },
+    {
+      "id": "DEVE-004",
+      "title": "Category System",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/development-knowledge-base/spec.md",
+        "plan": "docs/specs/development-knowledge-base/plan.md",
+        "tasks": "docs/specs/development-knowledge-base/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.073922",
+      "updated": "2025-10-22T16:57:38.073946"
+    },
+    {
+      "id": "DEVE-005",
+      "title": "Content Organization",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/development-knowledge-base/spec.md",
+        "plan": "docs/specs/development-knowledge-base/plan.md",
+        "tasks": "docs/specs/development-knowledge-base/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.086612",
+      "updated": "2025-10-22T16:57:38.086641"
+    },
+    {
+      "id": "DEVE-006",
+      "title": "CLI Interface",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/development-knowledge-base/spec.md",
+        "plan": "docs/specs/development-knowledge-base/plan.md",
+        "tasks": "docs/specs/development-knowledge-base/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.099996",
+      "updated": "2025-10-22T16:57:38.100022"
+    },
+    {
+      "id": "DEVE-007",
+      "title": "Integration Testing",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/development-knowledge-base/spec.md",
+        "plan": "docs/specs/development-knowledge-base/plan.md",
+        "tasks": "docs/specs/development-knowledge-base/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.113835",
+      "updated": "2025-10-22T16:57:38.113861"
+    },
+    {
+      "id": "DEVE-008",
+      "title": "Documentation",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/development-knowledge-base/spec.md",
+        "plan": "docs/specs/development-knowledge-base/plan.md",
+        "tasks": "docs/specs/development-knowledge-base/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.127209",
+      "updated": "2025-10-22T16:57:38.127234"
+    },
+    {
+      "id": "DSPY-002",
+      "title": "DSPy Integration Layer",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/dspy-toolkit-framework/spec.md",
+        "plan": "docs/specs/dspy-toolkit-framework/plan.md",
+        "tasks": "docs/specs/dspy-toolkit-framework/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.142150",
+      "updated": "2025-10-22T16:57:38.142176"
+    },
+    {
+      "id": "DSPY-003",
+      "title": "MLX Provider Implementation",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/dspy-toolkit-framework/spec.md",
+        "plan": "docs/specs/dspy-toolkit-framework/plan.md",
+        "tasks": "docs/specs/dspy-toolkit-framework/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.156420",
+      "updated": "2025-10-22T16:57:38.156443"
+    },
+    {
+      "id": "DSPY-004",
+      "title": "Signature Registry System",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/dspy-toolkit-framework/spec.md",
+        "plan": "docs/specs/dspy-toolkit-framework/plan.md",
+        "tasks": "docs/specs/dspy-toolkit-framework/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.170535",
+      "updated": "2025-10-22T16:57:38.170562"
+    },
+    {
+      "id": "DSPY-005",
+      "title": "Circuit Breakers and Fallbacks",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/dspy-toolkit-framework/spec.md",
+        "plan": "docs/specs/dspy-toolkit-framework/plan.md",
+        "tasks": "docs/specs/dspy-toolkit-framework/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.184420",
+      "updated": "2025-10-22T16:57:38.184447"
+    },
+    {
+      "id": "DSPY-006",
+      "title": "Monitoring and Recovery",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/dspy-toolkit-framework/spec.md",
+        "plan": "docs/specs/dspy-toolkit-framework/plan.md",
+        "tasks": "docs/specs/dspy-toolkit-framework/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.198421",
+      "updated": "2025-10-22T16:57:38.198447"
+    },
+    {
+      "id": "DSPY-007",
+      "title": "Deployment System",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/dspy-toolkit-framework/spec.md",
+        "plan": "docs/specs/dspy-toolkit-framework/plan.md",
+        "tasks": "docs/specs/dspy-toolkit-framework/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.212001",
+      "updated": "2025-10-22T16:57:38.212032"
+    },
+    {
+      "id": "DSPY-008",
+      "title": "CLI Integration",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/dspy-toolkit-framework/spec.md",
+        "plan": "docs/specs/dspy-toolkit-framework/plan.md",
+        "tasks": "docs/specs/dspy-toolkit-framework/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.226064",
+      "updated": "2025-10-22T16:57:38.226100"
+    },
+    {
+      "id": "DSPY-009",
+      "title": "Integration Testing",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/dspy-toolkit-framework/spec.md",
+        "plan": "docs/specs/dspy-toolkit-framework/plan.md",
+        "tasks": "docs/specs/dspy-toolkit-framework/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.241116",
+      "updated": "2025-10-22T16:57:38.241139"
+    },
+    {
+      "id": "DSPY-010",
+      "title": "Documentation and Examples",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/dspy-toolkit-framework/spec.md",
+        "plan": "docs/specs/dspy-toolkit-framework/plan.md",
+        "tasks": "docs/specs/dspy-toolkit-framework/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.254590",
+      "updated": "2025-10-22T16:57:38.254622"
+    },
+    {
+      "id": "EFFI-002",
+      "title": "CLI Framework Setup",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/efficientai-mlx-toolkit/spec.md",
+        "plan": "docs/specs/efficientai-mlx-toolkit/plan.md",
+        "tasks": "docs/specs/efficientai-mlx-toolkit/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.267912",
+      "updated": "2025-10-22T16:57:38.267936"
+    },
+    {
+      "id": "EFFI-003",
+      "title": "Hardware Detection System",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/efficientai-mlx-toolkit/spec.md",
+        "plan": "docs/specs/efficientai-mlx-toolkit/plan.md",
+        "tasks": "docs/specs/efficientai-mlx-toolkit/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.280737",
+      "updated": "2025-10-22T16:57:38.280761"
+    },
+    {
+      "id": "EFFI-004",
+      "title": "Environment Management",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/efficientai-mlx-toolkit/spec.md",
+        "plan": "docs/specs/efficientai-mlx-toolkit/plan.md",
+        "tasks": "docs/specs/efficientai-mlx-toolkit/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.293039",
+      "updated": "2025-10-22T16:57:38.293063"
+    },
+    {
+      "id": "EFFI-005",
+      "title": "Namespace System Implementation",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/efficientai-mlx-toolkit/spec.md",
+        "plan": "docs/specs/efficientai-mlx-toolkit/plan.md",
+        "tasks": "docs/specs/efficientai-mlx-toolkit/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.306213",
+      "updated": "2025-10-22T16:57:38.306239"
+    },
+    {
+      "id": "EFFI-006",
+      "title": "Project Registry and Discovery",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/efficientai-mlx-toolkit/spec.md",
+        "plan": "docs/specs/efficientai-mlx-toolkit/plan.md",
+        "tasks": "docs/specs/efficientai-mlx-toolkit/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.319666",
+      "updated": "2025-10-22T16:57:38.319693"
+    },
+    {
+      "id": "EFFI-007",
+      "title": "Command Routing System",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/efficientai-mlx-toolkit/spec.md",
+        "plan": "docs/specs/efficientai-mlx-toolkit/plan.md",
+        "tasks": "docs/specs/efficientai-mlx-toolkit/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.332613",
+      "updated": "2025-10-22T16:57:38.332661"
+    },
+    {
+      "id": "EFFI-008",
+      "title": "Unified Test Command",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/efficientai-mlx-toolkit/spec.md",
+        "plan": "docs/specs/efficientai-mlx-toolkit/plan.md",
+        "tasks": "docs/specs/efficientai-mlx-toolkit/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.346064",
+      "updated": "2025-10-22T16:57:38.346092"
+    },
+    {
+      "id": "EFFI-009",
+      "title": "Integration Testing",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/efficientai-mlx-toolkit/spec.md",
+        "plan": "docs/specs/efficientai-mlx-toolkit/plan.md",
+        "tasks": "docs/specs/efficientai-mlx-toolkit/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.358917",
+      "updated": "2025-10-22T16:57:38.358954"
+    },
+    {
+      "id": "EFFI-010",
+      "title": "Documentation and CLI Examples",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/efficientai-mlx-toolkit/spec.md",
+        "plan": "docs/specs/efficientai-mlx-toolkit/plan.md",
+        "tasks": "docs/specs/efficientai-mlx-toolkit/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.371855",
+      "updated": "2025-10-22T16:57:38.371897"
+    },
+    {
+      "id": "EVOL-002",
+      "title": "Research and Prototyping",
+      "state": "COMPLETED",
+      "priority": "P2",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/evolutionary-diffusion-search/spec.md",
+        "plan": "docs/specs/evolutionary-diffusion-search/plan.md",
+        "tasks": "docs/specs/evolutionary-diffusion-search/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.385085",
+      "updated": "2025-10-22T16:57:38.385108",
+      "git": {
+        "commits": [
+          "af9ae0735efee34424de4f9450d8f517b04abf58",
+          "c5bc224e00db27a8e166174faa486ac62c3e3205"
+        ]
+      }
+    },
+    {
+      "id": "EVOL-003",
+      "title": "Evolutionary Algorithm Implementation",
+      "state": "COMPLETED",
+      "priority": "P2",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/evolutionary-diffusion-search/spec.md",
+        "plan": "docs/specs/evolutionary-diffusion-search/plan.md",
+        "tasks": "docs/specs/evolutionary-diffusion-search/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.398250",
+      "updated": "2025-10-22T16:57:38.398278",
+      "git": {
+        "commits": [
+          "a48db06302cc28ee3959922e1ad646ad7c51c09f"
+        ]
+      }
+    },
+    {
+      "id": "EVOL-004",
+      "title": "Search Space Design",
+      "state": "COMPLETED",
+      "priority": "P2",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/evolutionary-diffusion-search/spec.md",
+        "plan": "docs/specs/evolutionary-diffusion-search/plan.md",
+        "tasks": "docs/specs/evolutionary-diffusion-search/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.410729",
+      "updated": "2025-10-22T16:57:38.410761",
+      "git": {
+        "commits": [
+          "3ac189184a9e7a989f8c7c0a8366d6111fdf336c"
+        ]
+      }
+    },
+    {
+      "id": "EVOL-005",
+      "title": "Integration and Testing",
+      "state": "COMPLETED",
+      "priority": "P2",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/evolutionary-diffusion-search/spec.md",
+        "plan": "docs/specs/evolutionary-diffusion-search/plan.md",
+        "tasks": "docs/specs/evolutionary-diffusion-search/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.423946",
+      "updated": "2025-10-22T16:57:38.423971",
+      "git": {
+        "commits": [
+          "d5e15f5baf5d04fa61536c358367dc250f1e8461"
+        ]
+      }
+    },
+    {
+      "id": "EVOL-006",
+      "title": "Documentation",
+      "state": "COMPLETED",
+      "priority": "P2",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/evolutionary-diffusion-search/spec.md",
+        "plan": "docs/specs/evolutionary-diffusion-search/plan.md",
+        "tasks": "docs/specs/evolutionary-diffusion-search/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.436733",
+      "updated": "2025-10-22T16:57:38.436757",
+      "git": {
+        "commits": [
+          "b0ebb506a99e696ab6c125817151b0780410fed0"
+        ]
+      }
+    },
+    {
+      "id": "EVOL-007",
+      "title": "Validation and Benchmarking",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/evolutionary-diffusion-search/spec.md",
+        "plan": "docs/specs/evolutionary-diffusion-search/plan.md",
+        "tasks": "docs/specs/evolutionary-diffusion-search/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.450676",
+      "updated": "2025-10-22T16:57:38.450703"
+    },
+    {
+      "id": "FEDE-002",
+      "title": "Federated Server Architecture",
+      "state": "COMPLETED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/federated-learning-system/spec.md",
+        "plan": "docs/specs/federated-learning-system/plan.md",
+        "tasks": "docs/specs/federated-learning-system/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.463766",
+      "updated": "2025-10-22T16:57:38.463791",
+      "git": {
+        "commits": [
+          "8119fe01c36684fc3fec77c785c67825de489df1",
+          "af9ae0735efee34424de4f9450d8f517b04abf58",
+          "85dbaa8368094bac845a95efec0016b58ff88a9f"
+        ]
+      }
+    },
+    {
+      "id": "FEDE-003",
+      "title": "Client Manager Implementation",
+      "state": "COMPLETED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/federated-learning-system/spec.md",
+        "plan": "docs/specs/federated-learning-system/plan.md",
+        "tasks": "docs/specs/federated-learning-system/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.477230",
+      "updated": "2025-10-22T16:57:38.477256",
+      "git": {
+        "commits": [
+          "af9ae0735efee34424de4f9450d8f517b04abf58",
+          "e4384e18f4383af4f57f460ab4b88a31c6464934"
+        ]
+      }
+    },
+    {
+      "id": "FEDE-004",
+      "title": "Federated Averaging",
+      "state": "COMPLETED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/federated-learning-system/spec.md",
+        "plan": "docs/specs/federated-learning-system/plan.md",
+        "tasks": "docs/specs/federated-learning-system/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.490074",
+      "updated": "2025-10-22T16:57:38.490105",
+      "git": {
+        "commits": [
+          "af9ae0735efee34424de4f9450d8f517b04abf58",
+          "11486267179be3b2b249cdb09c9865e683d82888"
+        ]
+      }
+    },
+    {
+      "id": "FEDE-005",
+      "title": "Differential Privacy Integration",
+      "state": "COMPLETED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/federated-learning-system/spec.md",
+        "plan": "docs/specs/federated-learning-system/plan.md",
+        "tasks": "docs/specs/federated-learning-system/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.502994",
+      "updated": "2025-10-22T16:57:38.503020",
+      "git": {
+        "commits": [
+          "af9ae0735efee34424de4f9450d8f517b04abf58",
+          "11486267179be3b2b249cdb09c9865e683d82888"
+        ]
+      }
+    },
+    {
+      "id": "FEDE-006",
+      "title": "Privacy Budget Tracking",
+      "state": "COMPLETED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/federated-learning-system/spec.md",
+        "plan": "docs/specs/federated-learning-system/plan.md",
+        "tasks": "docs/specs/federated-learning-system/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.516472",
+      "updated": "2025-10-22T16:57:38.516507",
+      "git": {
+        "commits": [
+          "af9ae0735efee34424de4f9450d8f517b04abf58",
+          "11486267179be3b2b249cdb09c9865e683d82888"
+        ]
+      }
+    },
+    {
+      "id": "FEDE-007",
+      "title": "Gradient Compression",
+      "state": "COMPLETED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/federated-learning-system/spec.md",
+        "plan": "docs/specs/federated-learning-system/plan.md",
+        "tasks": "docs/specs/federated-learning-system/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.529586",
+      "updated": "2025-10-22T16:57:38.529610",
+      "git": {
+        "commits": [
+          "af9ae0735efee34424de4f9450d8f517b04abf58",
+          "11486267179be3b2b249cdb09c9865e683d82888"
+        ]
+      }
+    },
+    {
+      "id": "FEDE-008",
+      "title": "Communication Optimization",
+      "state": "COMPLETED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/federated-learning-system/spec.md",
+        "plan": "docs/specs/federated-learning-system/plan.md",
+        "tasks": "docs/specs/federated-learning-system/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.542860",
+      "updated": "2025-10-22T16:57:38.542888",
+      "git": {
+        "commits": [
+          "af9ae0735efee34424de4f9450d8f517b04abf58",
+          "11486267179be3b2b249cdb09c9865e683d82888"
+        ]
+      }
+    },
+    {
+      "id": "FEDE-009",
+      "title": "Byzantine Fault Tolerance",
+      "state": "COMPLETED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/federated-learning-system/spec.md",
+        "plan": "docs/specs/federated-learning-system/plan.md",
+        "tasks": "docs/specs/federated-learning-system/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.556316",
+      "updated": "2025-10-22T16:57:38.556338",
+      "git": {
+        "commits": [
+          "af9ae0735efee34424de4f9450d8f517b04abf58",
+          "11486267179be3b2b249cdb09c9865e683d82888"
+        ]
+      }
+    },
+    {
+      "id": "FEDE-010",
+      "title": "Lightweight Model Optimization",
+      "state": "COMPLETED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/federated-learning-system/spec.md",
+        "plan": "docs/specs/federated-learning-system/plan.md",
+        "tasks": "docs/specs/federated-learning-system/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.570833",
+      "updated": "2025-10-22T16:57:38.570867",
+      "git": {
+        "commits": [
+          "af9ae0735efee34424de4f9450d8f517b04abf58",
+          "cdcfa9be0b2ff79e063dc68c7a36219a302b80d6"
+        ]
+      }
+    },
+    {
+      "id": "FEDE-011",
+      "title": "CLI and API",
+      "state": "COMPLETED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/federated-learning-system/spec.md",
+        "plan": "docs/specs/federated-learning-system/plan.md",
+        "tasks": "docs/specs/federated-learning-system/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.584002",
+      "updated": "2025-10-22T16:57:38.584024",
+      "git": {
+        "commits": [
+          "af9ae0735efee34424de4f9450d8f517b04abf58",
+          "cdcfa9be0b2ff79e063dc68c7a36219a302b80d6"
+        ]
+      }
+    },
+    {
+      "id": "FEDE-012",
+      "title": "Integration Testing",
+      "state": "COMPLETED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/federated-learning-system/spec.md",
+        "plan": "docs/specs/federated-learning-system/plan.md",
+        "tasks": "docs/specs/federated-learning-system/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.596585",
+      "updated": "2025-10-22T16:57:38.596613",
+      "git": {
+        "commits": [
+          "af9ae0735efee34424de4f9450d8f517b04abf58",
+          "cdcfa9be0b2ff79e063dc68c7a36219a302b80d6"
+        ]
+      }
+    },
+    {
+      "id": "FEDE-013",
+      "title": "Documentation and Examples",
+      "state": "COMPLETED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/federated-learning-system/spec.md",
+        "plan": "docs/specs/federated-learning-system/plan.md",
+        "tasks": "docs/specs/federated-learning-system/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.609851",
+      "updated": "2025-10-22T16:57:38.609870",
+      "git": {
+        "commits": [
+          "8119fe01c36684fc3fec77c785c67825de489df1",
+          "af9ae0735efee34424de4f9450d8f517b04abf58",
+          "cdcfa9be0b2ff79e063dc68c7a36219a302b80d6"
+        ]
+      }
+    },
+    {
+      "id": "LORA-002",
+      "title": "MLX Training Engine",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/lora-finetuning-mlx/spec.md",
+        "plan": "docs/specs/lora-finetuning-mlx/plan.md",
+        "tasks": "docs/specs/lora-finetuning-mlx/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.622806",
+      "updated": "2025-10-22T16:57:38.622835"
+    },
+    {
+      "id": "LORA-003",
+      "title": "LoRA Implementation",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/lora-finetuning-mlx/spec.md",
+        "plan": "docs/specs/lora-finetuning-mlx/plan.md",
+        "tasks": "docs/specs/lora-finetuning-mlx/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.635903",
+      "updated": "2025-10-22T16:57:38.635926"
+    },
+    {
+      "id": "LORA-004",
+      "title": "QLoRA Implementation",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/lora-finetuning-mlx/spec.md",
+        "plan": "docs/specs/lora-finetuning-mlx/plan.md",
+        "tasks": "docs/specs/lora-finetuning-mlx/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.648817",
+      "updated": "2025-10-22T16:57:38.648841"
+    },
+    {
+      "id": "LORA-005",
+      "title": "Hyperparameter Optimization",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/lora-finetuning-mlx/spec.md",
+        "plan": "docs/specs/lora-finetuning-mlx/plan.md",
+        "tasks": "docs/specs/lora-finetuning-mlx/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.661858",
+      "updated": "2025-10-22T16:57:38.661879"
+    },
+    {
+      "id": "LORA-006",
+      "title": "Memory Management",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/lora-finetuning-mlx/spec.md",
+        "plan": "docs/specs/lora-finetuning-mlx/plan.md",
+        "tasks": "docs/specs/lora-finetuning-mlx/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.675238",
+      "updated": "2025-10-22T16:57:38.675269"
+    },
+    {
+      "id": "LORA-007",
+      "title": "Gradio Web Interface",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/lora-finetuning-mlx/spec.md",
+        "plan": "docs/specs/lora-finetuning-mlx/plan.md",
+        "tasks": "docs/specs/lora-finetuning-mlx/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.688119",
+      "updated": "2025-10-22T16:57:38.688139"
+    },
+    {
+      "id": "LORA-008",
+      "title": "Integration Testing",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/lora-finetuning-mlx/spec.md",
+        "plan": "docs/specs/lora-finetuning-mlx/plan.md",
+        "tasks": "docs/specs/lora-finetuning-mlx/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.701243",
+      "updated": "2025-10-22T16:57:38.701261"
+    },
+    {
+      "id": "LORA-009",
+      "title": "Documentation and Examples",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/lora-finetuning-mlx/spec.md",
+        "plan": "docs/specs/lora-finetuning-mlx/plan.md",
+        "tasks": "docs/specs/lora-finetuning-mlx/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.715211",
+      "updated": "2025-10-22T16:57:38.715246"
+    },
+    {
+      "id": "META-002",
+      "title": "Research and Prototyping",
+      "state": "COMPLETED",
+      "priority": "P2",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/meta-learning-peft-system/spec.md",
+        "plan": "docs/specs/meta-learning-peft-system/plan.md",
+        "tasks": "docs/specs/meta-learning-peft-system/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.729307",
+      "updated": "2025-10-22T16:57:38.729332",
+      "git": {
+        "commits": [
+          "47e8c550f896e52333af9e6d7a78504f444649fc"
+        ]
+      }
+    },
+    {
+      "id": "META-003",
+      "title": "Meta-Learning Framework",
+      "state": "COMPLETED",
+      "priority": "P2",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/meta-learning-peft-system/spec.md",
+        "plan": "docs/specs/meta-learning-peft-system/plan.md",
+        "tasks": "docs/specs/meta-learning-peft-system/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.743866",
+      "updated": "2025-10-22T16:57:38.743908",
+      "git": {
+        "commits": [
+          "945e7b26f036720869819488889237f4bdfbbd34",
+          "966f72dc0f4070da993eb396c923ba7f68287c69",
+          "baa3fe8f5c3f741ec06e462329e8ae7507919b72",
+          "47e8c550f896e52333af9e6d7a78504f444649fc"
+        ]
+      }
+    },
+    {
+      "id": "META-004",
+      "title": "PEFT Integration",
+      "state": "COMPLETED",
+      "priority": "P2",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/meta-learning-peft-system/spec.md",
+        "plan": "docs/specs/meta-learning-peft-system/plan.md",
+        "tasks": "docs/specs/meta-learning-peft-system/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.757530",
+      "updated": "2025-10-22T16:57:38.757561",
+      "git": {
+        "commits": [
+          "945e7b26f036720869819488889237f4bdfbbd34",
+          "008de2c049958e9ea5b36315b6c432cb1dceeb79",
+          "551dce54c844c98c418f6e0e7df12ac009532189",
+          "47e8c550f896e52333af9e6d7a78504f444649fc"
+        ]
+      }
+    },
+    {
+      "id": "META-005",
+      "title": "Integration and Testing",
+      "state": "COMPLETED",
+      "priority": "P2",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/meta-learning-peft-system/spec.md",
+        "plan": "docs/specs/meta-learning-peft-system/plan.md",
+        "tasks": "docs/specs/meta-learning-peft-system/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.770395",
+      "updated": "2025-10-22T16:57:38.770419",
+      "git": {
+        "commits": [
+          "945e7b26f036720869819488889237f4bdfbbd34",
+          "f319689cd4c8a02ae942bc5116b0fa8838555d8d"
+        ]
+      }
+    },
+    {
+      "id": "META-006",
+      "title": "Documentation",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/meta-learning-peft-system/spec.md",
+        "plan": "docs/specs/meta-learning-peft-system/plan.md",
+        "tasks": "docs/specs/meta-learning-peft-system/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.783874",
+      "updated": "2025-10-22T16:57:38.783904",
+      "git": {
+        "commits": [
+          "35fc74ca1d964e9c83063f017fcc1f9fd7184703",
+          "f319689cd4c8a02ae942bc5116b0fa8838555d8d",
+          "551dce54c844c98c418f6e0e7df12ac009532189",
+          "baa3fe8f5c3f741ec06e462329e8ae7507919b72"
+        ]
+      }
+    },
+    {
+      "id": "META-007",
+      "title": "Validation and Benchmarking",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/meta-learning-peft-system/spec.md",
+        "plan": "docs/specs/meta-learning-peft-system/plan.md",
+        "tasks": "docs/specs/meta-learning-peft-system/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.796788",
+      "updated": "2025-10-22T16:57:38.796817",
+      "git": {
+        "commits": [
+          "4d7dc8ff992e136a9837f86bcc61718611f4cfc2"
+        ]
+      }
+    },
+    {
+      "id": "MLOP-002",
+      "title": "MLFlow Tracking Server Setup",
+      "state": "COMPLETED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/mlops-integration/spec.md",
+        "plan": "docs/specs/mlops-integration/plan.md",
+        "tasks": "docs/specs/mlops-integration/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.810067",
+      "updated": "2025-10-22T16:57:38.810093",
+      "git": {
+        "commits": [
+          "fe119eb0456fed6ba51d9dc563f006ee1dc0975b",
+          "883ebdabb805d2f181ab8d61583fd477ab0349c2",
+          "4dffe7798a01f11b695057d2a42a75c9a848109d",
+          "9d2229d00158e75abd3d0355db7d9efec17a7852",
+          "fa212a972a61c832529ee6728f82ce4c6bab61e6",
+          "07a99fac65b4e4e25e3854342e5a2104f048d3e9",
+          "adb0b8b0875473d036b0b928ad45fc37506d0423"
+        ]
+      }
+    },
+    {
+      "id": "MLOP-003",
+      "title": "DVC Data Versioning Integration",
+      "state": "COMPLETED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/mlops-integration/spec.md",
+        "plan": "docs/specs/mlops-integration/plan.md",
+        "tasks": "docs/specs/mlops-integration/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.823265",
+      "updated": "2025-10-22T16:57:38.823287",
+      "git": {
+        "commits": [
+          "fe119eb0456fed6ba51d9dc563f006ee1dc0975b",
+          "9e1e530b7a72695041d28ca42ce2a6e1f5f52d0f",
+          "92f1581644f9c7ca10b3e9802f400dfed49ac813",
+          "238fa554ac99d480f962d84e56285537a5725e20",
+          "b18ab11bf516527e3971ecaaa7378ad53fa58a66"
+        ]
+      }
+    },
+    {
+      "id": "MLOP-004",
+      "title": "Airflow Orchestration Setup",
+      "state": "COMPLETED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/mlops-integration/spec.md",
+        "plan": "docs/specs/mlops-integration/plan.md",
+        "tasks": "docs/specs/mlops-integration/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.836199",
+      "updated": "2025-10-22T16:57:38.836221",
+      "git": {
+        "commits": [
+          "86da0deed49151f5cd8e53a32de8a9e15190aa5b",
+          "b626e6ee8ebf53a20bb1202d50e9f982b14ae2fc",
+          "fe119eb0456fed6ba51d9dc563f006ee1dc0975b"
+        ]
+      }
+    },
+    {
+      "id": "MLOP-005",
+      "title": "Ray Serve Model Serving",
+      "state": "COMPLETED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/mlops-integration/spec.md",
+        "plan": "docs/specs/mlops-integration/plan.md",
+        "tasks": "docs/specs/mlops-integration/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.849265",
+      "updated": "2025-10-22T16:57:38.849289",
+      "git": {
+        "commits": [
+          "86da0deed49151f5cd8e53a32de8a9e15190aa5b",
+          "651c3c14df8125f2984d428919fad0870fa9eb27",
+          "5672c5fe6c4e9013ec6101237ae0bdc5f120efec",
+          "884c8cf31c572cf45514f69cbba90cce3ea6995a",
+          "fd8cb9a5ef5cb4f583be47a5682c9eb126645c4a",
+          "fe119eb0456fed6ba51d9dc563f006ee1dc0975b"
+        ]
+      }
+    },
+    {
+      "id": "MLOP-006",
+      "title": "BentoML Model Packaging",
+      "state": "COMPLETED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/mlops-integration/spec.md",
+        "plan": "docs/specs/mlops-integration/plan.md",
+        "tasks": "docs/specs/mlops-integration/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.862214",
+      "updated": "2025-10-22T21:21:39.972658+00:00",
+      "git": {
+        "commits": [
+          "fe119eb0456fed6ba51d9dc563f006ee1dc0975b",
+          "43a7037"
+        ]
+      },
+      "state_history": [
+        {
+          "state": "IN_PROGRESS",
+          "timestamp": "2025-10-22T13:34:07Z"
+        },
+        {
+          "from": "IN_PROGRESS",
+          "to": "COMPLETED",
+          "timestamp": "2025-10-22T21:21:39.973208+00:00",
+          "reason": "BentoML implementation completed with tests"
+        }
+      ]
+    },
+    {
+      "id": "MLOP-007",
+      "title": "Evidently Monitoring Dashboard",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/mlops-integration/spec.md",
+        "plan": "docs/specs/mlops-integration/plan.md",
+        "tasks": "docs/specs/mlops-integration/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.875694",
+      "updated": "2025-10-22T16:57:38.875720"
+    },
+    {
+      "id": "MLOP-008",
+      "title": "MLOps Client Library",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/mlops-integration/spec.md",
+        "plan": "docs/specs/mlops-integration/plan.md",
+        "tasks": "docs/specs/mlops-integration/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.888465",
+      "updated": "2025-10-22T16:57:38.888491"
+    },
+    {
+      "id": "MLOP-009",
+      "title": "Project Workspace Management",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/mlops-integration/spec.md",
+        "plan": "docs/specs/mlops-integration/plan.md",
+        "tasks": "docs/specs/mlops-integration/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.900769",
+      "updated": "2025-10-22T16:57:38.900788"
+    },
+    {
+      "id": "MLOP-010",
+      "title": "Apple Silicon Optimizations",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/mlops-integration/spec.md",
+        "plan": "docs/specs/mlops-integration/plan.md",
+        "tasks": "docs/specs/mlops-integration/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.914289",
+      "updated": "2025-10-22T16:57:38.914313"
+    },
+    {
+      "id": "MLOP-011",
+      "title": "Thermal-Aware Scheduling",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/mlops-integration/spec.md",
+        "plan": "docs/specs/mlops-integration/plan.md",
+        "tasks": "docs/specs/mlops-integration/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.928999",
+      "updated": "2025-10-22T16:57:38.929028"
+    },
+    {
+      "id": "MLOP-012",
+      "title": "Unified Dashboard",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/mlops-integration/spec.md",
+        "plan": "docs/specs/mlops-integration/plan.md",
+        "tasks": "docs/specs/mlops-integration/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.942505",
+      "updated": "2025-10-22T16:57:38.942536"
+    },
+    {
+      "id": "MLOP-013",
+      "title": "P0 Project Integration",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/mlops-integration/spec.md",
+        "plan": "docs/specs/mlops-integration/plan.md",
+        "tasks": "docs/specs/mlops-integration/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.955581",
+      "updated": "2025-10-22T16:57:38.955608"
+    },
+    {
+      "id": "MLOP-014",
+      "title": "Testing and Documentation",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/mlops-integration/spec.md",
+        "plan": "docs/specs/mlops-integration/plan.md",
+        "tasks": "docs/specs/mlops-integration/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.968492",
+      "updated": "2025-10-22T16:57:38.968516"
+    },
+    {
+      "id": "MLOP-015",
+      "title": "Production Deployment",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/mlops-integration/spec.md",
+        "plan": "docs/specs/mlops-integration/plan.md",
+        "tasks": "docs/specs/mlops-integration/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.981734",
+      "updated": "2025-10-22T16:57:38.981762"
+    },
+    {
+      "id": "MODE-002",
+      "title": "Quantization Engine",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/model-compression-pipeline/spec.md",
+        "plan": "docs/specs/model-compression-pipeline/plan.md",
+        "tasks": "docs/specs/model-compression-pipeline/tasks.md"
+      },
+      "created": "2025-10-22T16:57:38.994812",
+      "updated": "2025-10-22T16:57:38.994834"
+    },
+    {
+      "id": "MODE-003",
+      "title": "Pruning Implementation",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/model-compression-pipeline/spec.md",
+        "plan": "docs/specs/model-compression-pipeline/plan.md",
+        "tasks": "docs/specs/model-compression-pipeline/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.008078",
+      "updated": "2025-10-22T16:57:39.008107"
+    },
+    {
+      "id": "MODE-004",
+      "title": "Knowledge Distillation",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/model-compression-pipeline/spec.md",
+        "plan": "docs/specs/model-compression-pipeline/plan.md",
+        "tasks": "docs/specs/model-compression-pipeline/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.020832",
+      "updated": "2025-10-22T16:57:39.020857"
+    },
+    {
+      "id": "MODE-005",
+      "title": "Compression Pipeline",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/model-compression-pipeline/spec.md",
+        "plan": "docs/specs/model-compression-pipeline/plan.md",
+        "tasks": "docs/specs/model-compression-pipeline/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.033438",
+      "updated": "2025-10-22T16:57:39.033458"
+    },
+    {
+      "id": "MODE-006",
+      "title": "Performance Benchmarking",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/model-compression-pipeline/spec.md",
+        "plan": "docs/specs/model-compression-pipeline/plan.md",
+        "tasks": "docs/specs/model-compression-pipeline/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.046765",
+      "updated": "2025-10-22T16:57:39.046792"
+    },
+    {
+      "id": "MODE-007",
+      "title": "CLI Integration",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/model-compression-pipeline/spec.md",
+        "plan": "docs/specs/model-compression-pipeline/plan.md",
+        "tasks": "docs/specs/model-compression-pipeline/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.060380",
+      "updated": "2025-10-22T16:57:39.060405"
+    },
+    {
+      "id": "MODE-008",
+      "title": "Integration Testing",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/model-compression-pipeline/spec.md",
+        "plan": "docs/specs/model-compression-pipeline/plan.md",
+        "tasks": "docs/specs/model-compression-pipeline/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.074217",
+      "updated": "2025-10-22T16:57:39.074248"
+    },
+    {
+      "id": "MODE-009",
+      "title": "Documentation and Examples",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/model-compression-pipeline/spec.md",
+        "plan": "docs/specs/model-compression-pipeline/plan.md",
+        "tasks": "docs/specs/model-compression-pipeline/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.087381",
+      "updated": "2025-10-22T16:57:39.087407"
+    },
+    {
+      "id": "MULT-002",
+      "title": "CLIP Model Integration",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/multimodal-clip-finetuning/spec.md",
+        "plan": "docs/specs/multimodal-clip-finetuning/plan.md",
+        "tasks": "docs/specs/multimodal-clip-finetuning/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.102178",
+      "updated": "2025-10-22T16:57:39.102203"
+    },
+    {
+      "id": "MULT-003",
+      "title": "Multimodal Data Pipeline",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/multimodal-clip-finetuning/spec.md",
+        "plan": "docs/specs/multimodal-clip-finetuning/plan.md",
+        "tasks": "docs/specs/multimodal-clip-finetuning/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.115723",
+      "updated": "2025-10-22T16:57:39.115750"
+    },
+    {
+      "id": "MULT-004",
+      "title": "Contrastive Learning Implementation",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/multimodal-clip-finetuning/spec.md",
+        "plan": "docs/specs/multimodal-clip-finetuning/plan.md",
+        "tasks": "docs/specs/multimodal-clip-finetuning/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.128746",
+      "updated": "2025-10-22T16:57:39.128767"
+    },
+    {
+      "id": "MULT-005",
+      "title": "Image-Text Alignment",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/multimodal-clip-finetuning/spec.md",
+        "plan": "docs/specs/multimodal-clip-finetuning/plan.md",
+        "tasks": "docs/specs/multimodal-clip-finetuning/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.141781",
+      "updated": "2025-10-22T16:57:39.141813"
+    },
+    {
+      "id": "MULT-006",
+      "title": "Fine-tuning Pipeline",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/multimodal-clip-finetuning/spec.md",
+        "plan": "docs/specs/multimodal-clip-finetuning/plan.md",
+        "tasks": "docs/specs/multimodal-clip-finetuning/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.154999",
+      "updated": "2025-10-22T16:57:39.155023"
+    },
+    {
+      "id": "MULT-007",
+      "title": "Zero-Shot Evaluation",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/multimodal-clip-finetuning/spec.md",
+        "plan": "docs/specs/multimodal-clip-finetuning/plan.md",
+        "tasks": "docs/specs/multimodal-clip-finetuning/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.168799",
+      "updated": "2025-10-22T16:57:39.168823"
+    },
+    {
+      "id": "MULT-008",
+      "title": "MLX Optimization",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/multimodal-clip-finetuning/spec.md",
+        "plan": "docs/specs/multimodal-clip-finetuning/plan.md",
+        "tasks": "docs/specs/multimodal-clip-finetuning/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.182002",
+      "updated": "2025-10-22T16:57:39.182034"
+    },
+    {
+      "id": "MULT-009",
+      "title": "Embedding Generation",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/multimodal-clip-finetuning/spec.md",
+        "plan": "docs/specs/multimodal-clip-finetuning/plan.md",
+        "tasks": "docs/specs/multimodal-clip-finetuning/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.194432",
+      "updated": "2025-10-22T16:57:39.194459"
+    },
+    {
+      "id": "MULT-010",
+      "title": "CLI and API",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/multimodal-clip-finetuning/spec.md",
+        "plan": "docs/specs/multimodal-clip-finetuning/plan.md",
+        "tasks": "docs/specs/multimodal-clip-finetuning/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.207663",
+      "updated": "2025-10-22T16:57:39.207683"
+    },
+    {
+      "id": "MULT-011",
+      "title": "Integration Testing",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/multimodal-clip-finetuning/spec.md",
+        "plan": "docs/specs/multimodal-clip-finetuning/plan.md",
+        "tasks": "docs/specs/multimodal-clip-finetuning/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.220912",
+      "updated": "2025-10-22T16:57:39.220937"
+    },
+    {
+      "id": "MULT-012",
+      "title": "Documentation and Examples",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/multimodal-clip-finetuning/spec.md",
+        "plan": "docs/specs/multimodal-clip-finetuning/plan.md",
+        "tasks": "docs/specs/multimodal-clip-finetuning/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.234726",
+      "updated": "2025-10-22T16:57:39.234745"
+    },
+    {
+      "id": "MULT-013",
+      "title": "Benchmarking Suite",
+      "state": "UNPROCESSED",
+      "priority": "P1",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/multimodal-clip-finetuning/spec.md",
+        "plan": "docs/specs/multimodal-clip-finetuning/plan.md",
+        "tasks": "docs/specs/multimodal-clip-finetuning/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.247751",
+      "updated": "2025-10-22T16:57:39.247777"
+    },
+    {
+      "id": "QUAN-002",
+      "title": "Benchmark Framework Design",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/quantized-model-benchmarks/spec.md",
+        "plan": "docs/specs/quantized-model-benchmarks/plan.md",
+        "tasks": "docs/specs/quantized-model-benchmarks/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.259986",
+      "updated": "2025-10-22T16:57:39.260010"
+    },
+    {
+      "id": "QUAN-003",
+      "title": "Quantization Method Integration",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/quantized-model-benchmarks/spec.md",
+        "plan": "docs/specs/quantized-model-benchmarks/plan.md",
+        "tasks": "docs/specs/quantized-model-benchmarks/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.273448",
+      "updated": "2025-10-22T16:57:39.273478"
+    },
+    {
+      "id": "QUAN-004",
+      "title": "Performance Testing Suite",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/quantized-model-benchmarks/spec.md",
+        "plan": "docs/specs/quantized-model-benchmarks/plan.md",
+        "tasks": "docs/specs/quantized-model-benchmarks/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.287380",
+      "updated": "2025-10-22T16:57:39.287411"
+    },
+    {
+      "id": "QUAN-005",
+      "title": "Comparison Dashboard",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/quantized-model-benchmarks/spec.md",
+        "plan": "docs/specs/quantized-model-benchmarks/plan.md",
+        "tasks": "docs/specs/quantized-model-benchmarks/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.301241",
+      "updated": "2025-10-22T16:57:39.301263"
+    },
+    {
+      "id": "QUAN-006",
+      "title": "Documentation",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/quantized-model-benchmarks/spec.md",
+        "plan": "docs/specs/quantized-model-benchmarks/plan.md",
+        "tasks": "docs/specs/quantized-model-benchmarks/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.314450",
+      "updated": "2025-10-22T16:57:39.314477"
+    },
+    {
+      "id": "QUAN-007",
+      "title": "Validation and Analysis",
+      "state": "UNPROCESSED",
+      "priority": "P2",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/quantized-model-benchmarks/spec.md",
+        "plan": "docs/specs/quantized-model-benchmarks/plan.md",
+        "tasks": "docs/specs/quantized-model-benchmarks/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.327688",
+      "updated": "2025-10-22T16:57:39.327712"
+    },
+    {
+      "id": "SHAR-002",
+      "title": "Project Structure Setup",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/shared-utilities/spec.md",
+        "plan": "docs/specs/shared-utilities/plan.md",
+        "tasks": "docs/specs/shared-utilities/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.340824",
+      "updated": "2025-10-22T16:57:39.340852"
+    },
+    {
+      "id": "SHAR-003",
+      "title": "Logging System Implementation",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/shared-utilities/spec.md",
+        "plan": "docs/specs/shared-utilities/plan.md",
+        "tasks": "docs/specs/shared-utilities/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.354342",
+      "updated": "2025-10-22T16:57:39.354366"
+    },
+    {
+      "id": "SHAR-004",
+      "title": "Configuration Management System",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/shared-utilities/spec.md",
+        "plan": "docs/specs/shared-utilities/plan.md",
+        "tasks": "docs/specs/shared-utilities/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.368137",
+      "updated": "2025-10-22T16:57:39.368164"
+    },
+    {
+      "id": "SHAR-005",
+      "title": "Benchmarking Framework",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/shared-utilities/spec.md",
+        "plan": "docs/specs/shared-utilities/plan.md",
+        "tasks": "docs/specs/shared-utilities/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.381470",
+      "updated": "2025-10-22T16:57:39.381499"
+    },
+    {
+      "id": "SHAR-006",
+      "title": "Visualization Tools",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/shared-utilities/spec.md",
+        "plan": "docs/specs/shared-utilities/plan.md",
+        "tasks": "docs/specs/shared-utilities/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.394143",
+      "updated": "2025-10-22T16:57:39.394169"
+    },
+    {
+      "id": "SHAR-007",
+      "title": "Hardware Detection Utilities",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/shared-utilities/spec.md",
+        "plan": "docs/specs/shared-utilities/plan.md",
+        "tasks": "docs/specs/shared-utilities/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.406424",
+      "updated": "2025-10-22T16:57:39.406452"
+    },
+    {
+      "id": "SHAR-008",
+      "title": "Integration Testing",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/shared-utilities/spec.md",
+        "plan": "docs/specs/shared-utilities/plan.md",
+        "tasks": "docs/specs/shared-utilities/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.419376",
+      "updated": "2025-10-22T16:57:39.419397"
+    },
+    {
+      "id": "SHAR-009",
+      "title": "Documentation and Examples",
+      "state": "COMPLETED",
+      "priority": "P0",
+      "type": "story",
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "docs": {
+        "spec": "docs/specs/shared-utilities/spec.md",
+        "plan": "docs/specs/shared-utilities/plan.md",
+        "tasks": "docs/specs/shared-utilities/tasks.md"
+      },
+      "created": "2025-10-22T16:57:39.432557",
+      "updated": "2025-10-22T16:57:39.432574"
+    }
+  ],
+  "summary": {
+    "completed": 88,
+    "unprocessed": 31
+  },
+  "migration_mode": "optimized"
+}
