@@ -1947,7 +1947,7 @@
     {
       "id": "MULT-003",
       "title": "Multimodal Data Pipeline",
-      "state": "UNPROCESSED",
+      "state": "COMPLETED",
       "priority": "P1",
       "type": "story",
       "parent": null,
@@ -1959,7 +1959,17 @@
         "tasks": "docs/specs/multimodal-clip-finetuning/tasks.md"
       },
       "created": "2025-10-22T16:57:39.115723",
-      "updated": "2025-10-22T16:57:39.115750"
+      "updated": "2025-10-24T15:13:41Z",
+      "state_history": [
+        {
+          "state": "IN_PROGRESS",
+          "timestamp": "2025-10-24T14:25:25Z"
+        },
+        {
+          "state": "COMPLETED",
+          "timestamp": "2025-10-24T15:13:41Z"
+        }
+      ]
     },
     {
       "id": "MULT-004",
