@@ -30,6 +30,7 @@ dependencies = [
     "pydantic>=2.11.7",
     "bentoml>=1.4.27",
     "evidently>=0.6.0",
+    "torchvision>=0.23.0",
 ]
 
 [build-system]

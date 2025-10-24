@@ -56,6 +56,16 @@ class CLIPFinetuningConfig:
     # Output and logging
     output_dir: Path = field(default_factory=lambda: Path("outputs"))
 
+    # Data pipeline settings
+    data_path: Path = field(default_factory=lambda: Path("data"))
+    train_split: float = 0.8
+    val_split: float = 0.1
+    test_split: float = 0.1
+    num_workers: int = 4
+    shuffle: bool = True
+    augment_images: bool = True
+    augment_text: bool = False
+
     # Advanced training parameters
     warmup_steps: int = 500
     weight_decay: float = 0.01
@@ -69,6 +79,9 @@ class CLIPFinetuningConfig:
         """Validate configuration after initialization."""
         if isinstance(self.output_dir, str):
             self.output_dir = Path(self.output_dir)
+
+        if isinstance(self.data_path, str):
+            self.data_path = Path(self.data_path)
 
         # Ensure output directory exists
         self.output_dir.mkdir(parents=True, exist_ok=True)
@@ -98,6 +111,17 @@ class CLIPFinetuningConfig:
                 f"Gradient accumulation steps must be positive, got {self.gradient_accumulation_steps}"
             )
 
+        # Validate data split ratios
+        total_split = self.train_split + self.val_split + self.test_split
+        if not (0.99 <= total_split <= 1.01):  # Allow small floating point error
+            raise ValueError(
+                f"Data splits must sum to 1.0, got {total_split} "
+                f"(train={self.train_split}, val={self.val_split}, test={self.test_split})"
+            )
+
+        if self.num_workers < 0:
+            raise ValueError(f"Number of workers must be non-negative, got {self.num_workers}")
+
     def to_dict(self) -> dict[str, object]:
         """Convert configuration to dictionary.
 
@@ -116,6 +140,14 @@ class CLIPFinetuningConfig:
             "mixed_precision": self.mixed_precision,
             "gradient_accumulation_steps": self.gradient_accumulation_steps,
             "output_dir": str(self.output_dir),
+            "data_path": str(self.data_path),
+            "train_split": self.train_split,
+            "val_split": self.val_split,
+            "test_split": self.test_split,
+            "num_workers": self.num_workers,
+            "shuffle": self.shuffle,
+            "augment_images": self.augment_images,
+            "augment_text": self.augment_text,
             "warmup_steps": self.warmup_steps,
             "weight_decay": self.weight_decay,
             "max_grad_norm": self.max_grad_norm,

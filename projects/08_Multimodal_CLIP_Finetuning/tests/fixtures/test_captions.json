@@ -1,0 +1,22 @@
+[
+  {
+    "image": "test_image_0.jpg",
+    "caption": "A cat sitting on a mat"
+  },
+  {
+    "image": "test_image_1.jpg",
+    "caption": "A dog playing in the park"
+  },
+  {
+    "image": "test_image_2.jpg",
+    "caption": "A bird flying in the sky"
+  },
+  {
+    "image": "test_image_3.jpg",
+    "caption": "A fish swimming in water"
+  },
+  {
+    "image": "test_image_4.jpg",
+    "caption": "A tree growing in the forest"
+  }
+]

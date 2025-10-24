@@ -20,6 +20,16 @@ gradient_accumulation_steps: 1  # Number of gradient accumulation steps
 # Output and Logging
 output_dir: "outputs"  # Directory for saving checkpoints and logs
 
+# Data Pipeline Settings
+data_path: "data"  # Path to dataset directory
+train_split: 0.8  # Training data split ratio
+val_split: 0.1  # Validation data split ratio
+test_split: 0.1  # Test data split ratio
+num_workers: 4  # Number of data loading workers
+shuffle: true  # Whether to shuffle training data
+augment_images: true  # Apply image augmentation
+augment_text: false  # Apply text augmentation (experimental)
+
 # Advanced Training Parameters
 warmup_steps: 500  # Number of warmup steps for learning rate scheduler
 weight_decay: 0.01  # Weight decay for optimizer
