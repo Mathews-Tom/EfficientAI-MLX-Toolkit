@@ -79,6 +79,13 @@ class CLIPFinetuningConfig:
     multi_scale_scales: list[float] = field(default_factory=lambda: [1.0, 0.75, 0.5])
     multi_scale_weights: list[float] = field(default_factory=lambda: [1.0, 0.75, 0.5])
 
+    # Alignment settings
+    similarity_metric: str = "cosine"  # cosine, dot, euclidean
+    normalize_embeddings: bool = True
+    retrieval_top_k: int = 5
+    alignment_visualization: bool = False
+    visualization_output_dir: Path = field(default_factory=lambda: Path("outputs/visualizations"))
+
     # Advanced training parameters
     warmup_steps: int = 500
     weight_decay: float = 0.01
@@ -96,8 +103,13 @@ class CLIPFinetuningConfig:
         if isinstance(self.data_path, str):
             self.data_path = Path(self.data_path)
 
-        # Ensure output directory exists
+        if isinstance(self.visualization_output_dir, str):
+            self.visualization_output_dir = Path(self.visualization_output_dir)
+
+        # Ensure output directories exist
         self.output_dir.mkdir(parents=True, exist_ok=True)
+        if self.alignment_visualization:
+            self.visualization_output_dir.mkdir(parents=True, exist_ok=True)
 
         # Validate domain
         valid_domains = {"general", "medical", "industrial", "scientific"}
@@ -184,6 +196,17 @@ class CLIPFinetuningConfig:
                 f"must match number of scales ({len(self.multi_scale_scales)})"
             )
 
+        # Validate alignment settings
+        valid_similarity_metrics = {"cosine", "dot", "euclidean"}
+        if self.similarity_metric not in valid_similarity_metrics:
+            raise ValueError(
+                f"Invalid similarity metric '{self.similarity_metric}'. "
+                f"Must be one of {valid_similarity_metrics}"
+            )
+
+        if self.retrieval_top_k <= 0:
+            raise ValueError(f"retrieval_top_k must be positive, got {self.retrieval_top_k}")
+
     def to_dict(self) -> dict[str, object]:
         """Convert configuration to dictionary.
 
@@ -221,6 +244,11 @@ class CLIPFinetuningConfig:
             "temperature_schedule_type": self.temperature_schedule_type,
             "multi_scale_scales": self.multi_scale_scales,
             "multi_scale_weights": self.multi_scale_weights,
+            "similarity_metric": self.similarity_metric,
+            "normalize_embeddings": self.normalize_embeddings,
+            "retrieval_top_k": self.retrieval_top_k,
+            "alignment_visualization": self.alignment_visualization,
+            "visualization_output_dir": str(self.visualization_output_dir),
             "warmup_steps": self.warmup_steps,
             "weight_decay": self.weight_decay,
             "max_grad_norm": self.max_grad_norm,

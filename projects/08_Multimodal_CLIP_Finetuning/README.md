@@ -48,10 +48,21 @@ This ticket implements custom contrastive loss functions for CLIP fine-tuning:
 - ✅ Temperature scheduling (constant, warmup, cosine, exponential, adaptive)
 - ✅ 88 comprehensive tests (100% pass rate)
 
+**MULT-005: Image-Text Alignment** (Completed)
+
+This ticket implements image-text alignment mechanisms:
+
+- ✅ Similarity computation (cosine, dot product, Euclidean distance)
+- ✅ Bidirectional retrieval (image→text and text→image)
+- ✅ Alignment metrics (Recall@K, MRR, Median Rank)
+- ✅ Visualization utilities (heatmaps, retrieval results, distributions)
+- ✅ Configuration integration (similarity_metric, retrieval_top_k)
+- ✅ 74 comprehensive tests (100% pass rate)
+
 **Next Steps** (Future Tickets):
 
-- MULT-005: Memory Management System
 - MULT-006: Training Loop Implementation
+- MULT-007: Evaluation System
 
 ## Requirements
 
@@ -350,6 +361,175 @@ for step in range(num_steps):
     # ... rest of training ...
 ```
 
+### Alignment and Retrieval Usage
+
+#### Similarity Computation
+
+```python
+from alignment import SimilarityComputer
+
+# Create similarity computer with cosine metric
+similarity_computer = SimilarityComputer(
+    metric="cosine",  # cosine, dot, euclidean
+    normalize=True,
+)
+
+# Compute similarity between embeddings
+image_embeds = controller.encode_image(images)  # [N_images, embed_dim]
+text_embeds = controller.encode_text(texts)      # [N_texts, embed_dim]
+
+similarity_matrix = similarity_computer.compute(
+    image_embeds, text_embeds
+)  # [N_images, N_texts]
+
+# Get top-k most similar items
+top_k_values, top_k_indices = similarity_computer.top_k(
+    similarity_matrix, k=5, dim=1
+)
+```
+
+#### Image-to-Text Retrieval
+
+```python
+from alignment import ImageTextRetrieval, SimilarityComputer
+
+# Create retrieval system
+similarity_computer = SimilarityComputer(metric="cosine")
+retrieval_system = ImageTextRetrieval(controller, similarity_computer)
+
+# Retrieve top-k texts for an image
+from PIL import Image
+query_image = Image.open("query.jpg")
+candidate_texts = [
+    "a medical scan showing healthy tissue",
+    "an industrial inspection image",
+    "a scientific microscopy image",
+]
+
+results = retrieval_system.retrieve_text(
+    query_image, candidate_texts, top_k=3
+)
+# Returns: [("text", similarity_score), ...]
+
+for text, score in results:
+    print(f"{score:.3f}: {text}")
+```
+
+#### Text-to-Image Retrieval
+
+```python
+# Retrieve top-k images for a text query
+query_text = "a medical scan showing healthy tissue"
+candidate_images = [
+    Image.open("image1.jpg"),
+    Image.open("image2.jpg"),
+    Image.open("image3.jpg"),
+]
+
+results = retrieval_system.retrieve_image(
+    query_text, candidate_images, top_k=3
+)
+# Returns: [(image_index, similarity_score), ...]
+
+for image_idx, score in results:
+    print(f"{score:.3f}: {candidate_images[image_idx]}")
+```
+
+#### Batch Retrieval
+
+```python
+# Efficient batch retrieval
+queries = ["query 1", "query 2", "query 3"]
+candidates = ["candidate 1", "candidate 2", "candidate 3", "candidate 4"]
+
+results = retrieval_system.batch_retrieve(
+    queries, candidates, top_k=2
+)
+# Returns: {query_idx: [(candidate_idx, score), ...], ...}
+
+for query_idx, query_results in results.items():
+    print(f"\nQuery {query_idx}: {queries[query_idx]}")
+    for candidate_idx, score in query_results:
+        print(f"  {score:.3f}: {candidates[candidate_idx]}")
+```
+
+#### Alignment Metrics
+
+```python
+from alignment import AlignmentMetrics
+
+# Create metrics computer
+metrics = AlignmentMetrics()
+
+# Compute all metrics (assumes diagonal ground truth)
+all_metrics = metrics.compute_all(
+    similarity_matrix,
+    k_values=[1, 5, 10],
+)
+
+print(f"Image→Text Recall@1: {all_metrics['i2t_R@1']:.3f}")
+print(f"Text→Image Recall@1: {all_metrics['t2i_R@1']:.3f}")
+print(f"Image→Text MRR: {all_metrics['i2t_MRR']:.3f}")
+print(f"Median Rank: {all_metrics['i2t_median_rank']:.1f}")
+
+# Compute individual metrics
+recall_at_5 = metrics.recall_at_k(similarity_matrix, k=5)
+mrr = metrics.mean_reciprocal_rank(similarity_matrix)
+median = metrics.median_rank(similarity_matrix)
+
+# Overall alignment score (average diagonal similarity)
+alignment_score = metrics.compute_alignment_score(similarity_matrix)
+print(f"Alignment Score: {alignment_score:.3f}")
+```
+
+#### Visualization
+
+```python
+from pathlib import Path
+from alignment import AlignmentVisualizer
+
+# Create visualizer
+visualizer = AlignmentVisualizer(output_dir=Path("outputs/visualizations"))
+
+# Plot similarity matrix heatmap
+visualizer.plot_similarity_matrix(
+    similarity_matrix,
+    image_labels=["img1", "img2", "img3"],
+    text_labels=["text1", "text2", "text3"],
+    save_path=Path("outputs/similarity_heatmap.png"),
+)
+
+# Plot retrieval results
+retrieved_texts = [
+    ("best match", 0.95),
+    ("second match", 0.87),
+    ("third match", 0.76),
+]
+visualizer.plot_retrieval_results(
+    query_image,
+    retrieved_texts,
+    save_path=Path("outputs/retrieval_results.png"),
+)
+
+# Plot alignment score distribution
+visualizer.plot_alignment_distribution(
+    similarity_matrix,
+    save_path=Path("outputs/alignment_distribution.png"),
+)
+
+# Plot Recall@K curves
+recall_metrics = {
+    "i2t": [0.5, 0.7, 0.85, 0.92],
+    "t2i": [0.48, 0.68, 0.83, 0.90],
+}
+k_values = [1, 5, 10, 20]
+visualizer.plot_recall_curves(
+    recall_metrics,
+    k_values,
+    save_path=Path("outputs/recall_curves.png"),
+)
+```
+
 ## Configuration
 
 The default configuration is in `configs/default.yaml`. Key parameters:
@@ -397,6 +577,14 @@ The default configuration is in `configs/default.yaml`. Key parameters:
 - `temperature_schedule_type`: Scheduling strategy (constant, warmup, cosine, exponential, adaptive)
 - `multi_scale_scales`: List of temperature scales (default: [1.0, 0.75, 0.5])
 - `multi_scale_weights`: Weights for each scale (default: [1.0, 0.75, 0.5])
+
+### Alignment Settings
+
+- `similarity_metric`: Similarity metric (cosine, dot, euclidean) (default: "cosine")
+- `normalize_embeddings`: Whether to normalize embeddings (default: true)
+- `retrieval_top_k`: Number of top results for retrieval (default: 5)
+- `alignment_visualization`: Enable alignment visualizations (default: false)
+- `visualization_output_dir`: Directory for visualizations (default: "outputs/visualizations")
 
 ### Advanced Parameters
 
@@ -466,13 +654,19 @@ uv run pytest tests/ -v -m "not apple_silicon"
 │   │   ├── transforms.py     # Image and text transforms
 │   │   ├── dataloader.py     # DataLoader utilities and collation
 │   │   └── loaders.py        # Dataset loaders (CSV, JSON, directory, HF)
-│   └── losses/               # Loss functions module
-│       ├── __init__.py       # Loss module exports
-│       ├── contrastive.py    # Standard CLIP contrastive loss
-│       ├── hard_negative.py  # Hard negative mining loss
-│       ├── domain_specific.py # Domain-adapted loss
-│       ├── multi_scale.py    # Multi-scale contrastive loss
-│       └── temperature_scheduler.py # Temperature scheduling
+│   ├── losses/               # Loss functions module
+│   │   ├── __init__.py       # Loss module exports
+│   │   ├── contrastive.py    # Standard CLIP contrastive loss
+│   │   ├── hard_negative.py  # Hard negative mining loss
+│   │   ├── domain_specific.py # Domain-adapted loss
+│   │   ├── multi_scale.py    # Multi-scale contrastive loss
+│   │   └── temperature_scheduler.py # Temperature scheduling
+│   └── alignment/            # Alignment and retrieval module
+│       ├── __init__.py       # Alignment module exports
+│       ├── similarity.py     # Similarity computation
+│       ├── retrieval.py      # Image-text retrieval
+│       ├── metrics.py        # Alignment metrics (Recall@K, MRR)
+│       └── visualization.py  # Alignment visualizations
 ├── tests/
 │   ├── __init__.py
 │   ├── conftest.py           # Pytest fixtures
@@ -492,6 +686,12 @@ uv run pytest tests/ -v -m "not apple_silicon"
 │   │   ├── test_domain_specific.py # Domain-specific tests (16 tests)
 │   │   ├── test_multi_scale.py # Multi-scale tests (19 tests)
 │   │   └── test_temperature_scheduler.py # Scheduler tests (23 tests)
+│   ├── alignment/            # Alignment tests
+│   │   ├── __init__.py
+│   │   ├── test_similarity.py # Similarity tests (14 tests)
+│   │   ├── test_retrieval.py # Retrieval tests (18 tests)
+│   │   ├── test_metrics.py   # Metrics tests (25 tests)
+│   │   └── test_visualization.py # Visualization tests (17 tests)
 │   └── fixtures/             # Test fixtures
 │       ├── test_data.csv     # Sample CSV data
 │       ├── test_captions.json # Sample JSON data
@@ -539,6 +739,12 @@ uv run pytest tests/ -v -m "not apple_silicon"
    - **DomainSpecificLoss**: Domain-adapted loss for specialized tasks
    - **MultiScaleLoss**: Multi-scale contrastive learning
    - **TemperatureScheduler**: Adaptive temperature scheduling
+
+6. **Alignment System**: Image-text alignment and retrieval
+   - **SimilarityComputer**: Multiple similarity metrics (cosine, dot, Euclidean)
+   - **ImageTextRetrieval**: Bidirectional retrieval (image↔text)
+   - **AlignmentMetrics**: Standard retrieval metrics (Recall@K, MRR, Median Rank)
+   - **AlignmentVisualizer**: Visualization tools for alignment analysis
 
 ### Hardware Support
 
@@ -633,7 +839,7 @@ directory/
 ## Limitations (Current Implementation)
 
 - Training loop not yet implemented (future ticket MULT-006)
-- Memory management optimizations not yet implemented (future ticket MULT-005)
+- Evaluation system not yet implemented (future ticket MULT-007)
 - Model serving API not yet implemented (future ticket)
 
 ## Future Work
@@ -641,9 +847,10 @@ directory/
 See the specification document (`docs/specs/multimodal-clip-finetuning/spec.md`) for planned features:
 
 - ✅ Custom contrastive loss functions (MULT-004 completed)
-- Multi-resolution training
-- Memory management optimizations (MULT-005)
+- ✅ Image-text alignment system (MULT-005 completed)
 - Training loop implementation (MULT-006)
+- Evaluation system (MULT-007)
+- Multi-resolution training
 - FastAPI serving endpoints
 - MLOps integration
 
@@ -663,5 +870,5 @@ Part of EfficientAI-MLX-Toolkit. See main repository for license information.
 
 ---
 
-**Implementation Status**: MULT-004 Completed (Contrastive Learning Implementation)
-**Next Ticket**: MULT-005 (Memory Management System)
+**Implementation Status**: MULT-005 Completed (Image-Text Alignment)
+**Next Ticket**: MULT-006 (Training Loop Implementation)
