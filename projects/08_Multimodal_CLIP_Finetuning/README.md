@@ -37,9 +37,19 @@ This ticket implements the complete data loading and preprocessing pipeline:
 - ✅ Prefetch DataLoader for performance
 - ✅ 62 comprehensive tests (100% pass rate)
 
+**MULT-004: Contrastive Learning Implementation** (Completed)
+
+This ticket implements custom contrastive loss functions for CLIP fine-tuning:
+
+- ✅ Standard CLIP contrastive loss with temperature scaling
+- ✅ Hard negative mining loss (semi-hard, hard, weighted strategies)
+- ✅ Domain-specific loss adaptations (medical, industrial, scientific)
+- ✅ Multi-scale contrastive learning
+- ✅ Temperature scheduling (constant, warmup, cosine, exponential, adaptive)
+- ✅ 88 comprehensive tests (100% pass rate)
+
 **Next Steps** (Future Tickets):
 
-- MULT-004: Contrastive Learning Implementation
 - MULT-005: Memory Management System
 - MULT-006: Training Loop Implementation
 
@@ -240,6 +250,106 @@ train_loader, val_loader = create_train_val_dataloaders(
 )
 ```
 
+### Loss Functions Usage
+
+#### Standard Contrastive Loss
+
+```python
+from losses import CLIPContrastiveLoss
+
+# Create loss function
+loss_fn = CLIPContrastiveLoss(temperature=0.07, learnable_temp=False)
+
+# Get embeddings from CLIP model
+image_embeds = model.encode_image(images)  # [batch_size, embed_dim]
+text_embeds = model.encode_text(texts)     # [batch_size, embed_dim]
+
+# Compute loss
+output = loss_fn(image_embeds, text_embeds)
+loss = output["loss"]                       # Total loss
+i2t_loss = output["image_to_text_loss"]    # Image-to-text loss
+t2i_loss = output["text_to_image_loss"]    # Text-to-image loss
+```
+
+#### Hard Negative Mining
+
+```python
+from losses import HardNegativeMiningLoss
+
+# Create loss with hard negative mining
+loss_fn = HardNegativeMiningLoss(
+    temperature=0.07,
+    hard_negative_ratio=0.5,
+    mining_strategy="semi-hard",  # semi-hard, hard, or weighted
+    hard_negative_weight=2.0,
+)
+
+output = loss_fn(image_embeds, text_embeds)
+loss = output["loss"]
+hard_neg_count = output["hard_negative_count"]
+hard_neg_ratio = output["hard_negative_ratio_actual"]
+```
+
+#### Domain-Specific Loss
+
+```python
+from losses import DomainSpecificLoss
+
+# Medical domain
+loss_fn = DomainSpecificLoss(
+    domain="medical",  # medical, industrial, scientific, general
+    temperature=0.07,
+    domain_weight=1.5,
+)
+
+output = loss_fn(image_embeds, text_embeds)
+loss = output["loss"]
+```
+
+#### Multi-Scale Loss
+
+```python
+from losses import MultiScaleLoss
+
+# Multi-scale contrastive learning
+loss_fn = MultiScaleLoss(
+    scales=[1.0, 0.75, 0.5],
+    base_temperature=0.07,
+    scale_weights=[1.0, 0.75, 0.5],
+    normalize_weights=True,
+)
+
+output = loss_fn(image_embeds, text_embeds)
+loss = output["loss"]
+scale_losses = output["scale_losses"]      # Loss at each scale
+temperatures = output["temperatures"]      # Temperature at each scale
+```
+
+#### Temperature Scheduling
+
+```python
+from losses import TemperatureScheduler
+
+# Create scheduler
+scheduler = TemperatureScheduler(
+    initial_temp=0.07,
+    min_temp=0.01,
+    max_temp=0.1,
+    warmup_steps=1000,
+    total_steps=10000,
+    schedule_type="cosine",  # constant, warmup, cosine, exponential, adaptive
+)
+
+# During training loop
+for step in range(num_steps):
+    # Update temperature
+    if config.temperature_scheduling:
+        current_temp = scheduler.step(step, loss=loss.item())
+        loss_fn.temperature = current_temp
+
+    # ... rest of training ...
+```
+
 ## Configuration
 
 The default configuration is in `configs/default.yaml`. Key parameters:
@@ -273,6 +383,20 @@ The default configuration is in `configs/default.yaml`. Key parameters:
 - `shuffle`: Whether to shuffle training data (default: true)
 - `augment_images`: Apply image augmentation (default: true)
 - `augment_text`: Apply text augmentation (default: false)
+
+### Loss Function Settings
+
+- `loss_type`: Type of loss function (contrastive, hard_negative, domain_specific, multi_scale)
+- `temperature`: Temperature for scaling logits (default: 0.07)
+- `learnable_temp`: Whether temperature is learnable (default: false)
+- `hard_negative_ratio`: Ratio of negatives to treat as hard (default: 0.5)
+- `hard_negative_mining_strategy`: Strategy for mining (semi-hard, hard, weighted)
+- `hard_negative_weight`: Weight multiplier for hard negatives (default: 2.0)
+- `domain_weight`: Weight multiplier for domain adjustments (default: 1.0)
+- `temperature_scheduling`: Enable temperature scheduling (default: false)
+- `temperature_schedule_type`: Scheduling strategy (constant, warmup, cosine, exponential, adaptive)
+- `multi_scale_scales`: List of temperature scales (default: [1.0, 0.75, 0.5])
+- `multi_scale_weights`: Weights for each scale (default: [1.0, 0.75, 0.5])
 
 ### Advanced Parameters
 
@@ -336,12 +460,19 @@ uv run pytest tests/ -v -m "not apple_silicon"
 │   ├── config.py             # CLIPFinetuningConfig dataclass
 │   ├── device_manager.py     # MPS device detection and management
 │   ├── model.py              # CLIPFinetuningController class
-│   └── data/                 # Data pipeline module
-│       ├── __init__.py       # Data module exports
-│       ├── dataset.py        # CLIPDataset and MultiCaptionCLIPDataset
-│       ├── transforms.py     # Image and text transforms
-│       ├── dataloader.py     # DataLoader utilities and collation
-│       └── loaders.py        # Dataset loaders (CSV, JSON, directory, HF)
+│   ├── data/                 # Data pipeline module
+│   │   ├── __init__.py       # Data module exports
+│   │   ├── dataset.py        # CLIPDataset and MultiCaptionCLIPDataset
+│   │   ├── transforms.py     # Image and text transforms
+│   │   ├── dataloader.py     # DataLoader utilities and collation
+│   │   └── loaders.py        # Dataset loaders (CSV, JSON, directory, HF)
+│   └── losses/               # Loss functions module
+│       ├── __init__.py       # Loss module exports
+│       ├── contrastive.py    # Standard CLIP contrastive loss
+│       ├── hard_negative.py  # Hard negative mining loss
+│       ├── domain_specific.py # Domain-adapted loss
+│       ├── multi_scale.py    # Multi-scale contrastive loss
+│       └── temperature_scheduler.py # Temperature scheduling
 ├── tests/
 │   ├── __init__.py
 │   ├── conftest.py           # Pytest fixtures
@@ -354,6 +485,13 @@ uv run pytest tests/ -v -m "not apple_silicon"
 │   │   ├── test_transforms.py # Transform tests (15 tests)
 │   │   ├── test_dataloader.py # DataLoader tests (17 tests)
 │   │   └── test_loaders.py   # Loader tests (14 tests)
+│   ├── losses/               # Loss function tests
+│   │   ├── __init__.py
+│   │   ├── test_contrastive.py # Contrastive loss tests (16 tests)
+│   │   ├── test_hard_negative.py # Hard negative tests (14 tests)
+│   │   ├── test_domain_specific.py # Domain-specific tests (16 tests)
+│   │   ├── test_multi_scale.py # Multi-scale tests (19 tests)
+│   │   └── test_temperature_scheduler.py # Scheduler tests (23 tests)
 │   └── fixtures/             # Test fixtures
 │       ├── test_data.csv     # Sample CSV data
 │       ├── test_captions.json # Sample JSON data
@@ -394,6 +532,13 @@ uv run pytest tests/ -v -m "not apple_silicon"
    - **TextTransform**: Text tokenization using CLIP processor
    - **DataLoader utilities**: Collation, batching, prefetching
    - **MultiCaptionCLIPDataset**: Support for multiple captions per image
+
+5. **Loss Functions**: Custom contrastive learning losses
+   - **CLIPContrastiveLoss**: Standard CLIP contrastive loss with temperature
+   - **HardNegativeMiningLoss**: Focus learning on challenging negatives
+   - **DomainSpecificLoss**: Domain-adapted loss for specialized tasks
+   - **MultiScaleLoss**: Multi-scale contrastive learning
+   - **TemperatureScheduler**: Adaptive temperature scheduling
 
 ### Hardware Support
 
@@ -488,16 +633,17 @@ directory/
 ## Limitations (Current Implementation)
 
 - Training loop not yet implemented (future ticket MULT-006)
-- Custom loss functions not yet implemented (future ticket MULT-004)
+- Memory management optimizations not yet implemented (future ticket MULT-005)
 - Model serving API not yet implemented (future ticket)
 
 ## Future Work
 
 See the specification document (`docs/specs/multimodal-clip-finetuning/spec.md`) for planned features:
 
-- Custom contrastive loss functions
+- ✅ Custom contrastive loss functions (MULT-004 completed)
 - Multi-resolution training
-- Memory management optimizations
+- Memory management optimizations (MULT-005)
+- Training loop implementation (MULT-006)
 - FastAPI serving endpoints
 - MLOps integration
 
@@ -517,5 +663,5 @@ Part of EfficientAI-MLX-Toolkit. See main repository for license information.
 
 ---
 
-**Implementation Status**: MULT-003 Completed (Multimodal Data Pipeline)
-**Next Ticket**: MULT-004 (Contrastive Learning Implementation)
+**Implementation Status**: MULT-004 Completed (Contrastive Learning Implementation)
+**Next Ticket**: MULT-005 (Memory Management System)

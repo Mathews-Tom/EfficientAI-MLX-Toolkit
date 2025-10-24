@@ -66,6 +66,19 @@ class CLIPFinetuningConfig:
     augment_images: bool = True
     augment_text: bool = False
 
+    # Loss function settings
+    loss_type: str = "contrastive"  # contrastive, hard_negative, domain_specific, multi_scale
+    temperature: float = 0.07
+    learnable_temp: bool = False
+    hard_negative_ratio: float = 0.5
+    hard_negative_mining_strategy: str = "semi-hard"  # semi-hard, hard, weighted
+    hard_negative_weight: float = 2.0
+    domain_weight: float = 1.0
+    temperature_scheduling: bool = False
+    temperature_schedule_type: str = "warmup"  # constant, warmup, cosine, exponential, adaptive
+    multi_scale_scales: list[float] = field(default_factory=lambda: [1.0, 0.75, 0.5])
+    multi_scale_weights: list[float] = field(default_factory=lambda: [1.0, 0.75, 0.5])
+
     # Advanced training parameters
     warmup_steps: int = 500
     weight_decay: float = 0.01
@@ -122,6 +135,55 @@ class CLIPFinetuningConfig:
         if self.num_workers < 0:
             raise ValueError(f"Number of workers must be non-negative, got {self.num_workers}")
 
+        # Validate loss function settings
+        valid_loss_types = {"contrastive", "hard_negative", "domain_specific", "multi_scale"}
+        if self.loss_type not in valid_loss_types:
+            raise ValueError(
+                f"Invalid loss type '{self.loss_type}'. Must be one of {valid_loss_types}"
+            )
+
+        if self.temperature <= 0:
+            raise ValueError(f"Temperature must be positive, got {self.temperature}")
+
+        if not 0 <= self.hard_negative_ratio <= 1:
+            raise ValueError(
+                f"Hard negative ratio must be in [0, 1], got {self.hard_negative_ratio}"
+            )
+
+        valid_mining_strategies = {"semi-hard", "hard", "weighted"}
+        if self.hard_negative_mining_strategy not in valid_mining_strategies:
+            raise ValueError(
+                f"Invalid mining strategy '{self.hard_negative_mining_strategy}'. "
+                f"Must be one of {valid_mining_strategies}"
+            )
+
+        if self.hard_negative_weight < 1.0:
+            raise ValueError(
+                f"Hard negative weight must be >= 1.0, got {self.hard_negative_weight}"
+            )
+
+        if self.domain_weight < 1.0:
+            raise ValueError(f"Domain weight must be >= 1.0, got {self.domain_weight}")
+
+        valid_schedule_types = {"constant", "warmup", "cosine", "exponential", "adaptive"}
+        if self.temperature_schedule_type not in valid_schedule_types:
+            raise ValueError(
+                f"Invalid schedule type '{self.temperature_schedule_type}'. "
+                f"Must be one of {valid_schedule_types}"
+            )
+
+        if len(self.multi_scale_scales) == 0:
+            raise ValueError("Multi-scale scales cannot be empty")
+
+        if any(s <= 0 for s in self.multi_scale_scales):
+            raise ValueError(f"All multi-scale scales must be positive")
+
+        if len(self.multi_scale_weights) != len(self.multi_scale_scales):
+            raise ValueError(
+                f"Number of multi-scale weights ({len(self.multi_scale_weights)}) "
+                f"must match number of scales ({len(self.multi_scale_scales)})"
+            )
+
     def to_dict(self) -> dict[str, object]:
         """Convert configuration to dictionary.
 
@@ -148,6 +210,17 @@ class CLIPFinetuningConfig:
             "shuffle": self.shuffle,
             "augment_images": self.augment_images,
             "augment_text": self.augment_text,
+            "loss_type": self.loss_type,
+            "temperature": self.temperature,
+            "learnable_temp": self.learnable_temp,
+            "hard_negative_ratio": self.hard_negative_ratio,
+            "hard_negative_mining_strategy": self.hard_negative_mining_strategy,
+            "hard_negative_weight": self.hard_negative_weight,
+            "domain_weight": self.domain_weight,
+            "temperature_scheduling": self.temperature_scheduling,
+            "temperature_schedule_type": self.temperature_schedule_type,
+            "multi_scale_scales": self.multi_scale_scales,
+            "multi_scale_weights": self.multi_scale_weights,
             "warmup_steps": self.warmup_steps,
             "weight_decay": self.weight_decay,
             "max_grad_norm": self.max_grad_norm,
