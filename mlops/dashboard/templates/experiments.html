@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block nav_experiments %}active{% endblock %}
+
+{% block content %}
+<h1>Experiments</h1>
+
+<div class="project-filter">
+    <label for="project-select">Filter by Project:</label>
+    <select id="project-select" onchange="window.location.href='/experiments?project=' + this.value">
+        <option value="">All Projects</option>
+        {% for ws in workspaces %}
+        <option value="{{ ws.project_name }}" {% if selected_project == ws.project_name %}selected{% endif %}>
+            {{ ws.project_name }}
+        </option>
+        {% endfor %}
+    </select>
+</div>
+
+{% for project, exps in experiments.items() %}
+<div class="card">
+    <h2>{{ project }}</h2>
+    {% if exps %}
+    {% for exp in exps %}
+    <div style="margin-bottom: 2rem;">
+        <h3 style="color: #667eea; font-size: 1.1rem;">{{ exp.experiment_name }}</h3>
+        <p><strong>ID:</strong> {{ exp.experiment_id }}</p>
+        <p><strong>Lifecycle:</strong> {{ exp.lifecycle_stage }}</p>
+
+        {% if exp.runs %}
+        <h4 style="margin-top: 1rem; color: #555;">Recent Runs ({{ exp.runs|length }})</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Run ID</th>
+                    <th>Start Time</th>
+                    <th>Status</th>
+                    <th>Duration (s)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for run in exp.runs[:5] %}
+                <tr>
+                    <td>{{ run.run_id[:8] }}...</td>
+                    <td>{{ run.start_time }}</td>
+                    <td><span class="badge success">{{ run.status }}</span></td>
+                    <td>{{ "%.2f"|format(run.end_time - run.start_time) if run.end_time else "Running" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No runs yet.</p>
+        {% endif %}
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="empty-state">
+        <p>No experiments found for this project.</p>
+    </div>
+    {% endif %}
+</div>
+{% endfor %}
+
+{% if not experiments %}
+<div class="empty-state">
+    <p>No experiments found. Start tracking experiments with MLFlow.</p>
+</div>
+{% endif %}
+{% endblock %}

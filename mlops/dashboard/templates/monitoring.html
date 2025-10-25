@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block nav_monitoring %}active{% endblock %}
+
+{% block content %}
+<h1>Monitoring Dashboard</h1>
+
+<div class="project-filter">
+    <label for="project-select">Filter by Project:</label>
+    <select id="project-select" onchange="window.location.href='/monitoring?project=' + this.value">
+        <option value="">All Projects</option>
+        {% for ws in workspaces %}
+        <option value="{{ ws.project_name }}" {% if selected_project == ws.project_name %}selected{% endif %}>
+            {{ ws.project_name }}
+        </option>
+        {% endfor %}
+    </select>
+</div>
+
+{% for project, status in monitoring.items() %}
+<div class="card">
+    <h2>{{ project }}</h2>
+
+    {% if status.enabled %}
+    <table>
+        <tr>
+            <th>Status</th>
+            <td><span class="badge success">Enabled</span></td>
+        </tr>
+        <tr>
+            <th>Drift Detection</th>
+            <td>
+                {% if status.drift_detection_enabled %}
+                <span class="badge success">Enabled</span>
+                {% if status.drift_detector_ready %}
+                <span class="badge success">Ready</span>
+                {% else %}
+                <span class="badge warning">No Reference Data</span>
+                {% endif %}
+                {% else %}
+                <span class="badge warning">Disabled</span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Performance Monitoring</th>
+            <td>
+                {% if status.performance_monitoring_enabled %}
+                <span class="badge success">Enabled</span>
+                {% if status.performance_monitor_ready %}
+                <span class="badge success">Ready</span>
+                {% else %}
+                <span class="badge warning">No Reference Data</span>
+                {% endif %}
+                {% else %}
+                <span class="badge warning">Disabled</span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Apple Silicon Metrics</th>
+            <td>
+                {% if status.apple_silicon_metrics_enabled %}
+                <span class="badge success">Enabled</span>
+                {% if status.apple_silicon_available %}
+                <span class="badge success">Available</span>
+                {% else %}
+                <span class="badge warning">Not Available</span>
+                {% endif %}
+                {% else %}
+                <span class="badge warning">Disabled</span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Alerts</th>
+            <td>
+                {% if status.alert_enabled %}
+                <span class="badge success">Enabled</span>
+                {% else %}
+                <span class="badge warning">Disabled</span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Workspace</th>
+            <td><code>{{ status.workspace_path }}</code></td>
+        </tr>
+    </table>
+    {% else %}
+    <div class="alert warning">
+        Monitoring is not enabled for this project.
+        {% if status.error %}
+        <br>Error: {{ status.error }}
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+{% endfor %}
+
+{% if not monitoring %}
+<div class="empty-state">
+    <p>No monitoring data available. Configure Evidently monitoring for your projects.</p>
+</div>
+{% endif %}
+{% endblock %}

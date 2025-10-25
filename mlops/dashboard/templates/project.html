@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Project: {{ project_name }}</h1>
+
+<div class="card">
+    <h2>Workspace Information</h2>
+    <table>
+        <tr>
+            <th>Project Name</th>
+            <td>{{ workspace.project_name }}</td>
+        </tr>
+        <tr>
+            <th>Root Path</th>
+            <td><code>{{ workspace.root_path }}</code></td>
+        </tr>
+        <tr>
+            <th>MLFlow Experiment ID</th>
+            <td>{{ workspace.mlflow_experiment_id or "N/A" }}</td>
+        </tr>
+        <tr>
+            <th>MLFlow Tracking URI</th>
+            <td>{{ workspace.mlflow_tracking_uri or "N/A" }}</td>
+        </tr>
+        <tr>
+            <th>Created</th>
+            <td>{{ workspace.created_at[:19] }}</td>
+        </tr>
+        <tr>
+            <th>Updated</th>
+            <td>{{ workspace.updated_at[:19] }}</td>
+        </tr>
+    </table>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="value">{{ experiments|length }}</div>
+        <div class="label">Experiments</div>
+    </div>
+    <div class="stat-card">
+        <div class="value">{{ models|length }}</div>
+        <div class="label">Models</div>
+    </div>
+    <div class="stat-card">
+        <div class="value">{{ alerts|length }}</div>
+        <div class="label">Active Alerts</div>
+    </div>
+    <div class="stat-card">
+        <div class="value">
+            {% if monitoring_status.enabled %}
+            <span class="badge success">Enabled</span>
+            {% else %}
+            <span class="badge warning">Disabled</span>
+            {% endif %}
+        </div>
+        <div class="label">Monitoring</div>
+    </div>
+</div>
+
+{% if experiments %}
+<div class="card">
+    <h2>Experiments</h2>
+    {% for exp in experiments %}
+    <h3 style="color: #667eea; font-size: 1.1rem;">{{ exp.experiment_name }}</h3>
+    <p><strong>ID:</strong> {{ exp.experiment_id }}</p>
+    {% if exp.runs %}
+    <p><strong>Recent Runs:</strong> {{ exp.runs|length }}</p>
+    {% endif %}
+    {% endfor %}
+    <a href="/experiments?project={{ project_name }}">View All Experiments</a>
+</div>
+{% endif %}
+
+{% if models %}
+<div class="card">
+    <h2>Models</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Model Name</th>
+                <th>Created</th>
+                <th>Size (MB)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for model in models %}
+            <tr>
+                <td>{{ model.model_name }}</td>
+                <td>{{ model.created_at[:10] }}</td>
+                <td>{{ "%.2f"|format(model.size_mb) }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/models?project={{ project_name }}">View All Models</a>
+</div>
+{% endif %}
+
+{% if alerts %}
+<div class="card">
+    <h2>Active Alerts</h2>
+    {% for alert in alerts[:5] %}
+    <div class="alert {{ alert.severity }}">
+        <strong>{{ alert.title }}</strong><br>
+        {{ alert.message }}<br>
+        <small>{{ alert.timestamp[:19] }}</small>
+    </div>
+    {% endfor %}
+    <a href="/alerts?project={{ project_name }}">View All Alerts</a>
+</div>
+{% endif %}
+
+{% if monitoring_status.enabled %}
+<div class="card">
+    <h2>Monitoring Status</h2>
+    <table>
+        <tr>
+            <th>Drift Detection</th>
+            <td>
+                {% if monitoring_status.drift_detection_enabled %}
+                <span class="badge success">Enabled</span>
+                {% else %}
+                <span class="badge warning">Disabled</span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Performance Monitoring</th>
+            <td>
+                {% if monitoring_status.performance_monitoring_enabled %}
+                <span class="badge success">Enabled</span>
+                {% else %}
+                <span class="badge warning">Disabled</span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Apple Silicon Metrics</th>
+            <td>
+                {% if monitoring_status.apple_silicon_metrics_enabled %}
+                <span class="badge success">Enabled</span>
+                {% else %}
+                <span class="badge warning">Disabled</span>
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+    <a href="/monitoring?project={{ project_name }}">View Monitoring Dashboard</a>
+</div>
+{% endif %}
+
+{% if apple_silicon_metrics %}
+<div class="card">
+    <h2>Apple Silicon Metrics</h2>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="value">{{ apple_silicon_metrics.chip_type }}</div>
+            <div class="label">Chip Type</div>
+        </div>
+        <div class="stat-card">
+            <div class="value">{{ "%.1f"|format(apple_silicon_metrics.memory_utilization_percent) }}%</div>
+            <div class="label">Memory Usage</div>
+        </div>
+        <div class="stat-card">
+            <div class="value">{{ "%.1f"|format(apple_silicon_metrics.cpu_percent) }}%</div>
+            <div class="label">CPU Usage</div>
+        </div>
+        <div class="stat-card">
+            <div class="value">
+                {% if apple_silicon_metrics.thermal_state == 0 %}Nominal
+                {% elif apple_silicon_metrics.thermal_state == 1 %}Fair
+                {% elif apple_silicon_metrics.thermal_state == 2 %}Serious
+                {% else %}Critical{% endif %}
+            </div>
+            <div class="label">Thermal State</div>
+        </div>
+    </div>
+    <a href="/hardware?project={{ project_name }}">View Hardware Dashboard</a>
+</div>
+{% endif %}
+
+<div style="margin-top: 2rem;">
+    <a href="/">← Back to Overview</a>
+</div>
+{% endblock %}
