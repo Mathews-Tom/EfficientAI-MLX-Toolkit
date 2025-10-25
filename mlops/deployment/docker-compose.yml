@@ -1,0 +1,380 @@
+version: '3.8'
+
+# Complete MLOps Stack - Production Ready
+# Services: MLFlow, DVC, Airflow, Ray, Evidently, Dashboard, Monitoring
+
+services:
+  # PostgreSQL - Shared database for MLFlow and Airflow
+  postgres:
+    image: postgres:15-alpine
+    container_name: mlops-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-mlops}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-mlops_secure_pass}
+      POSTGRES_DB: ${POSTGRES_DB:-mlops}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    networks:
+      - mlops-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-mlops}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis - Cache and message broker
+  redis:
+    image: redis:7-alpine
+    container_name: mlops-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-redis_pass}
+    volumes:
+      - redis-data:/data
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    networks:
+      - mlops-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # MinIO - S3-compatible object storage
+  minio:
+    image: minio/minio:latest
+    container_name: mlops-minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin123}
+    volumes:
+      - minio-data:/data
+    ports:
+      - "${MINIO_API_PORT:-9000}:9000"
+      - "${MINIO_CONSOLE_PORT:-9001}:9001"
+    networks:
+      - mlops-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # MinIO initialization - Create buckets
+  minio-init:
+    image: minio/mc:latest
+    container_name: mlops-minio-init
+    depends_on:
+      minio:
+        condition: service_healthy
+    networks:
+      - mlops-network
+    entrypoint: >
+      /bin/sh -c "
+      mc alias set minio http://minio:9000 ${MINIO_ROOT_USER:-minioadmin} ${MINIO_ROOT_PASSWORD:-minioadmin123};
+      mc mb minio/mlflow-artifacts --ignore-existing;
+      mc mb minio/dvc-storage --ignore-existing;
+      mc mb minio/airflow-logs --ignore-existing;
+      mc anonymous set download minio/mlflow-artifacts;
+      echo 'MinIO buckets initialized';
+      exit 0;
+      "
+
+  # MLFlow Tracking Server
+  mlflow:
+    image: python:3.11-slim
+    container_name: mlops-mlflow
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+      minio-init:
+        condition: service_completed_successfully
+    environment:
+      MLFLOW_BACKEND_STORE_URI: postgresql://${POSTGRES_USER:-mlops}:${POSTGRES_PASSWORD:-mlops_secure_pass}@postgres:5432/mlflow
+      MLFLOW_DEFAULT_ARTIFACT_ROOT: s3://mlflow-artifacts/
+      AWS_ACCESS_KEY_ID: ${MINIO_ROOT_USER:-minioadmin}
+      AWS_SECRET_ACCESS_KEY: ${MINIO_ROOT_PASSWORD:-minioadmin123}
+      MLFLOW_S3_ENDPOINT_URL: http://minio:9000
+    ports:
+      - "${MLFLOW_PORT:-5000}:5000"
+    networks:
+      - mlops-network
+    volumes:
+      - mlflow-data:/mlflow
+    command: >
+      /bin/sh -c "
+      pip install --no-cache-dir mlflow[extras]==2.9.0 psycopg2-binary boto3 &&
+      mlflow server
+        --backend-store-uri postgresql://${POSTGRES_USER:-mlops}:${POSTGRES_PASSWORD:-mlops_secure_pass}@postgres:5432/mlflow
+        --default-artifact-root s3://mlflow-artifacts/
+        --host 0.0.0.0
+        --port 5000
+        --workers 4
+      "
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  # Airflow Webserver
+  airflow-webserver:
+    image: apache/airflow:2.7.3-python3.11
+    container_name: mlops-airflow-webserver
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      AIRFLOW__CORE__EXECUTOR: CeleryExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${POSTGRES_USER:-mlops}:${POSTGRES_PASSWORD:-mlops_secure_pass}@postgres:5432/airflow
+      AIRFLOW__CELERY__BROKER_URL: redis://:{REDIS_PASSWORD:-redis_pass}@redis:6379/0
+      AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://${POSTGRES_USER:-mlops}:${POSTGRES_PASSWORD:-mlops_secure_pass}@postgres:5432/airflow
+      AIRFLOW__CORE__FERNET_KEY: ${AIRFLOW_FERNET_KEY:-46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=}
+      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session'
+      AIRFLOW__WEBSERVER__EXPOSE_CONFIG: 'true'
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/plugins:/opt/airflow/plugins
+      - airflow-data:/opt/airflow
+    ports:
+      - "${AIRFLOW_WEBSERVER_PORT:-8080}:8080"
+    networks:
+      - mlops-network
+    command: webserver
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  # Airflow Scheduler
+  airflow-scheduler:
+    image: apache/airflow:2.7.3-python3.11
+    container_name: mlops-airflow-scheduler
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      AIRFLOW__CORE__EXECUTOR: CeleryExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${POSTGRES_USER:-mlops}:${POSTGRES_PASSWORD:-mlops_secure_pass}@postgres:5432/airflow
+      AIRFLOW__CELERY__BROKER_URL: redis://:${REDIS_PASSWORD:-redis_pass}@redis:6379/0
+      AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://${POSTGRES_USER:-mlops}:${POSTGRES_PASSWORD:-mlops_secure_pass}@postgres:5432/airflow
+      AIRFLOW__CORE__FERNET_KEY: ${AIRFLOW_FERNET_KEY:-46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=}
+      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/plugins:/opt/airflow/plugins
+      - airflow-data:/opt/airflow
+    networks:
+      - mlops-network
+    command: scheduler
+    healthcheck:
+      test: ["CMD-SHELL", 'airflow jobs check --job-type SchedulerJob --hostname "$${HOSTNAME}"']
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  # Airflow Worker
+  airflow-worker:
+    image: apache/airflow:2.7.3-python3.11
+    container_name: mlops-airflow-worker
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      AIRFLOW__CORE__EXECUTOR: CeleryExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${POSTGRES_USER:-mlops}:${POSTGRES_PASSWORD:-mlops_secure_pass}@postgres:5432/airflow
+      AIRFLOW__CELERY__BROKER_URL: redis://:${REDIS_PASSWORD:-redis_pass}@redis:6379/0
+      AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://${POSTGRES_USER:-mlops}:${POSTGRES_PASSWORD:-mlops_secure_pass}@postgres:5432/airflow
+      AIRFLOW__CORE__FERNET_KEY: ${AIRFLOW_FERNET_KEY:-46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=}
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/plugins:/opt/airflow/plugins
+      - airflow-data:/opt/airflow
+    networks:
+      - mlops-network
+    command: celery worker
+    healthcheck:
+      test: ["CMD-SHELL", 'celery --app airflow.executors.celery_executor.app inspect ping -d "celery@$${HOSTNAME}"']
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  # Ray Head Node
+  ray-head:
+    image: rayproject/ray:2.8.0-py311
+    container_name: mlops-ray-head
+    restart: unless-stopped
+    command: ray start --head --port=6379 --dashboard-host=0.0.0.0 --dashboard-port=8265 --block
+    ports:
+      - "${RAY_DASHBOARD_PORT:-8265}:8265"
+      - "${RAY_PORT:-10001}:10001"
+    volumes:
+      - ray-data:/tmp/ray
+    networks:
+      - mlops-network
+    healthcheck:
+      test: ["CMD", "ray", "status"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  # MLOps Dashboard
+  dashboard:
+    build:
+      context: ../dashboard
+      dockerfile: Dockerfile
+    container_name: mlops-dashboard
+    restart: unless-stopped
+    depends_on:
+      mlflow:
+        condition: service_healthy
+    environment:
+      MLFLOW_TRACKING_URI: http://mlflow:5000
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_pass}@redis:6379/1
+      ENVIRONMENT: ${ENVIRONMENT:-production}
+    ports:
+      - "${DASHBOARD_PORT:-8000}:8000"
+    networks:
+      - mlops-network
+    volumes:
+      - dashboard-data:/app/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  # Prometheus - Metrics collection
+  prometheus:
+    image: prom/prometheus:v2.48.0
+    container_name: mlops-prometheus
+    restart: unless-stopped
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=30d'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./monitoring/alerts.yml:/etc/prometheus/alerts.yml
+      - prometheus-data:/prometheus
+    ports:
+      - "${PROMETHEUS_PORT:-9090}:9090"
+    networks:
+      - mlops-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:9090/-/healthy"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  # Grafana - Metrics visualization
+  grafana:
+    image: grafana/grafana:10.2.2
+    container_name: mlops-grafana
+    restart: unless-stopped
+    depends_on:
+      prometheus:
+        condition: service_healthy
+    environment:
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER:-admin}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:-admin123}
+      GF_INSTALL_PLUGINS: grafana-piechart-panel
+      GF_SERVER_ROOT_URL: http://localhost:3000
+    volumes:
+      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./monitoring/grafana/datasources:/etc/grafana/provisioning/datasources
+      - grafana-data:/var/lib/grafana
+    ports:
+      - "${GRAFANA_PORT:-3000}:3000"
+    networks:
+      - mlops-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  # Nginx - Reverse proxy
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: mlops-nginx
+    restart: unless-stopped
+    depends_on:
+      - mlflow
+      - airflow-webserver
+      - dashboard
+      - grafana
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/ssl:/etc/nginx/ssl
+    ports:
+      - "${NGINX_HTTP_PORT:-80}:80"
+      - "${NGINX_HTTPS_PORT:-443}:443"
+    networks:
+      - mlops-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+networks:
+  mlops-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+
+volumes:
+  postgres-data:
+    driver: local
+  redis-data:
+    driver: local
+  minio-data:
+    driver: local
+  mlflow-data:
+    driver: local
+  airflow-data:
+    driver: local
+  ray-data:
+    driver: local
+  dashboard-data:
+    driver: local
+  prometheus-data:
+    driver: local
+  grafana-data:
+    driver: local

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mlops-config
+  namespace: mlops
+data:
+  ENVIRONMENT: "production"
+  MLFLOW_PORT: "5000"
+  AIRFLOW_PORT: "8080"
+  DASHBOARD_PORT: "8000"
+  POSTGRES_HOST: "postgres-service"
+  POSTGRES_PORT: "5432"
+  REDIS_HOST: "redis-service"
+  REDIS_PORT: "6379"
+  MINIO_HOST: "minio-service"
+  MINIO_PORT: "9000"
