@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block nav_alerts %}active{% endblock %}
+
+{% block content %}
+<h1>Alerts Management</h1>
+
+<div class="project-filter">
+    <label for="project-select">Filter by Project:</label>
+    <select id="project-select" onchange="window.location.href='/alerts?project=' + this.value">
+        <option value="">All Projects</option>
+        {% for ws in workspaces %}
+        <option value="{{ ws.project_name }}" {% if selected_project == ws.project_name %}selected{% endif %}>
+            {{ ws.project_name }}
+        </option>
+        {% endfor %}
+    </select>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="value">{{ stats.alerts_by_severity.info }}</div>
+        <div class="label">Info</div>
+    </div>
+    <div class="stat-card" style="border-left-color: #ff9800;">
+        <div class="value" style="color: #ff9800;">{{ stats.alerts_by_severity.warning }}</div>
+        <div class="label">Warning</div>
+    </div>
+    <div class="stat-card" style="border-left-color: #f44336;">
+        <div class="value" style="color: #f44336;">{{ stats.alerts_by_severity.error }}</div>
+        <div class="label">Error</div>
+    </div>
+    <div class="stat-card" style="border-left-color: #c2185b;">
+        <div class="value" style="color: #c2185b;">{{ stats.alerts_by_severity.critical }}</div>
+        <div class="label">Critical</div>
+    </div>
+</div>
+
+<div class="card">
+    <h2>Active Alerts</h2>
+    {% if alerts %}
+    {% for alert in alerts %}
+    <div class="alert {{ alert.severity }}">
+        <div style="display: flex; justify-content: space-between; align-items: start;">
+            <div>
+                <strong>{{ alert.title }}</strong><br>
+                <span class="badge {{ 'success' if alert.alert_type == 'drift_detected' else 'warning' }}">
+                    {{ alert.alert_type }}
+                </span>
+                <span class="badge {{ 'success' if alert.project_name else 'warning' }}">
+                    {{ alert.project_name }}
+                </span><br>
+                {{ alert.message }}<br>
+                <small>{{ alert.timestamp[:19] }}</small>
+            </div>
+            <div>
+                {% if alert.acknowledged %}
+                <span class="badge success">Acknowledged</span>
+                {% endif %}
+                {% if alert.resolved %}
+                <span class="badge success">Resolved</span>
+                {% endif %}
+            </div>
+        </div>
+
+        {% if alert.metadata %}
+        <details style="margin-top: 1rem;">
+            <summary style="cursor: pointer; color: #667eea;">View Details</summary>
+            <pre style="background: #f5f7fa; padding: 1rem; border-radius: 4px; margin-top: 0.5rem; overflow-x: auto;">{{ alert.metadata }}</pre>
+        </details>
+        {% endif %}
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="empty-state">
+        <p>No active alerts. All systems operational! 🎉</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

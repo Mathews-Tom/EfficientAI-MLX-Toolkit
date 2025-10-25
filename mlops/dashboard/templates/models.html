@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block nav_models %}active{% endblock %}
+
+{% block content %}
+<h1>Model Registry</h1>
+
+<div class="project-filter">
+    <label for="project-select">Filter by Project:</label>
+    <select id="project-select" onchange="window.location.href='/models?project=' + this.value">
+        <option value="">All Projects</option>
+        {% for ws in workspaces %}
+        <option value="{{ ws.project_name }}" {% if selected_project == ws.project_name %}selected{% endif %}>
+            {{ ws.project_name }}
+        </option>
+        {% endfor %}
+    </select>
+</div>
+
+<div class="card">
+    <h2>Registered Models</h2>
+    {% if models %}
+    <table>
+        <thead>
+            <tr>
+                <th>Model Name</th>
+                <th>Project</th>
+                <th>Created</th>
+                <th>Size (MB)</th>
+                <th>Path</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for model in models %}
+            <tr>
+                <td><strong>{{ model.model_name }}</strong></td>
+                <td><span class="badge success">{{ model.project_name }}</span></td>
+                <td>{{ model.created_at[:10] }}</td>
+                <td>{{ "%.2f"|format(model.size_mb) }}</td>
+                <td><code>{{ model.model_path }}</code></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="empty-state">
+        <p>No models found. Deploy models to see them here.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

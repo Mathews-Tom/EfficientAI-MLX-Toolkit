@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+
+{% block nav_hardware %}active{% endblock %}
+
+{% block content %}
+<h1>Apple Silicon Hardware Metrics</h1>
+
+<div class="project-filter">
+    <label for="project-select">Filter by Project:</label>
+    <select id="project-select" onchange="window.location.href='/hardware?project=' + this.value">
+        <option value="">All Projects</option>
+        {% for ws in workspaces %}
+        <option value="{{ ws.project_name }}" {% if selected_project == ws.project_name %}selected{% endif %}>
+            {{ ws.project_name }}
+        </option>
+        {% endfor %}
+    </select>
+</div>
+
+{% for project, m in metrics.items() %}
+{% if m %}
+<div class="card">
+    <h2>{{ project }}</h2>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="value">{{ m.chip_type }}</div>
+            <div class="label">Chip Type</div>
+        </div>
+        <div class="stat-card">
+            <div class="value">{{ m.chip_variant }}</div>
+            <div class="label">Chip Variant</div>
+        </div>
+        <div class="stat-card">
+            <div class="value">{{ "%.1f"|format(m.memory_total_gb) }} GB</div>
+            <div class="label">Total Memory</div>
+        </div>
+        <div class="stat-card">
+            <div class="value">{{ "%.1f"|format(m.memory_utilization_percent) }}%</div>
+            <div class="label">Memory Usage</div>
+        </div>
+    </div>
+
+    <h3 style="color: #667eea; margin-top: 1.5rem;">CPU Information</h3>
+    <table>
+        <tr>
+            <th>Total Cores</th>
+            <td>{{ m.cpu_count }}</td>
+        </tr>
+        <tr>
+            <th>Performance Cores</th>
+            <td>{{ m.performance_cores }}</td>
+        </tr>
+        <tr>
+            <th>Efficiency Cores</th>
+            <td>{{ m.efficiency_cores }}</td>
+        </tr>
+        <tr>
+            <th>CPU Utilization</th>
+            <td>{{ "%.1f"|format(m.cpu_percent) }}%</td>
+        </tr>
+        <tr>
+            <th>CPU Frequency</th>
+            <td>{{ "%.0f"|format(m.cpu_freq_mhz) }} MHz</td>
+        </tr>
+    </table>
+
+    <h3 style="color: #667eea; margin-top: 1.5rem;">Memory Details</h3>
+    <table>
+        <tr>
+            <th>Total Memory</th>
+            <td>{{ "%.2f"|format(m.memory_total_gb) }} GB</td>
+        </tr>
+        <tr>
+            <th>Used Memory</th>
+            <td>{{ "%.2f"|format(m.memory_used_gb) }} GB</td>
+        </tr>
+        <tr>
+            <th>Available Memory</th>
+            <td>{{ "%.2f"|format(m.memory_available_gb) }} GB</td>
+        </tr>
+        <tr>
+            <th>Utilization</th>
+            <td>
+                <div style="background: #e0e0e0; height: 20px; border-radius: 10px; overflow: hidden;">
+                    <div style="background: {% if m.memory_utilization_percent > 90 %}#f44336{% elif m.memory_utilization_percent > 70 %}#ff9800{% else %}#4caf50{% endif %}; height: 100%; width: {{ m.memory_utilization_percent }}%;"></div>
+                </div>
+                {{ "%.1f"|format(m.memory_utilization_percent) }}%
+            </td>
+        </tr>
+    </table>
+
+    <h3 style="color: #667eea; margin-top: 1.5rem;">Framework Support</h3>
+    <table>
+        <tr>
+            <th>MLX Available</th>
+            <td>
+                {% if m.mlx_available %}
+                <span class="badge success">Yes</span>
+                {% else %}
+                <span class="badge error">No</span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>MPS Available</th>
+            <td>
+                {% if m.mps_available %}
+                <span class="badge success">Yes</span>
+                {% else %}
+                <span class="badge error">No</span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>ANE Available</th>
+            <td>
+                {% if m.ane_available %}
+                <span class="badge success">Yes</span>
+                {% else %}
+                <span class="badge error">No</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% if m.mps_utilization_percent %}
+        <tr>
+            <th>MPS Utilization</th>
+            <td>{{ "%.1f"|format(m.mps_utilization_percent) }}%</td>
+        </tr>
+        {% endif %}
+    </table>
+
+    <h3 style="color: #667eea; margin-top: 1.5rem;">System Status</h3>
+    <table>
+        <tr>
+            <th>Thermal State</th>
+            <td>
+                {% if m.thermal_state == 0 %}
+                <span class="badge success">Nominal</span>
+                {% elif m.thermal_state == 1 %}
+                <span class="badge success">Fair</span>
+                {% elif m.thermal_state == 2 %}
+                <span class="badge warning">Serious</span>
+                {% else %}
+                <span class="badge error">Critical</span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Power Mode</th>
+            <td><span class="badge success">{{ m.power_mode }}</span></td>
+        </tr>
+        <tr>
+            <th>Last Updated</th>
+            <td>{{ m.timestamp[:19] }}</td>
+        </tr>
+    </table>
+</div>
+{% endif %}
+{% endfor %}
+
+{% if not metrics %}
+<div class="empty-state">
+    <p>No Apple Silicon metrics available. System may not be running on Apple Silicon.</p>
+</div>
+{% endif %}
+{% endblock %}

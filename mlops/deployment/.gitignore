@@ -1,0 +1,27 @@
+# Environment files
+.env
+*.env
+!.env.example
+
+# Terraform
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+terraform/tfplan
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
+
+# SSL certificates
+nginx/ssl/*.pem
+nginx/ssl/*.key
+
+# Docker volumes
+**/data/

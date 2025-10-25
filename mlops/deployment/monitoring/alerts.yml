@@ -1,0 +1,211 @@
+groups:
+  - name: mlops_alerts
+    interval: 30s
+    rules:
+      # Service availability alerts
+      - alert: ServiceDown
+        expr: up == 0
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Service {{ $labels.job }} is down"
+          description: "{{ $labels.job }} has been down for more than 5 minutes."
+
+      - alert: MLFlowDown
+        expr: up{job="mlflow"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "MLFlow tracking server is down"
+          description: "MLFlow has been unavailable for 2 minutes."
+
+      - alert: AirflowSchedulerDown
+        expr: up{job="airflow", instance=~".*scheduler.*"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Airflow scheduler is down"
+          description: "Airflow scheduler has been down for 2 minutes. DAGs are not being scheduled."
+
+      # Performance alerts
+      - alert: HighCPUUsage
+        expr: (100 - (avg by (instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)) > 80
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU usage on {{ $labels.instance }}"
+          description: "CPU usage is above 80% for 10 minutes on {{ $labels.instance }}."
+
+      - alert: HighMemoryUsage
+        expr: (node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes * 100 > 85
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High memory usage on {{ $labels.instance }}"
+          description: "Memory usage is above 85% for 10 minutes on {{ $labels.instance }}."
+
+      - alert: DiskSpaceLow
+        expr: (node_filesystem_avail_bytes / node_filesystem_size_bytes) * 100 < 15
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Low disk space on {{ $labels.instance }}"
+          description: "Disk space is below 15% on {{ $labels.instance }} ({{ $labels.mountpoint }})."
+
+      - alert: DiskSpaceCritical
+        expr: (node_filesystem_avail_bytes / node_filesystem_size_bytes) * 100 < 5
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Critical disk space on {{ $labels.instance }}"
+          description: "Disk space is below 5% on {{ $labels.instance }} ({{ $labels.mountpoint }})."
+
+      # Database alerts
+      - alert: PostgreSQLDown
+        expr: up{job="postgres"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "PostgreSQL is down"
+          description: "PostgreSQL database has been down for 2 minutes."
+
+      - alert: PostgreSQLTooManyConnections
+        expr: sum(pg_stat_activity_count) > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "PostgreSQL has too many connections"
+          description: "PostgreSQL has {{ $value }} active connections, which may impact performance."
+
+      - alert: RedisDown
+        expr: up{job="redis"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Redis is down"
+          description: "Redis cache has been down for 2 minutes."
+
+      - alert: RedisMemoryHigh
+        expr: redis_memory_used_bytes / redis_memory_max_bytes * 100 > 90
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Redis memory usage is high"
+          description: "Redis memory usage is above 90% ({{ $value }}%)."
+
+      # Application-specific alerts
+      - alert: MLFlowExperimentCreationFailed
+        expr: rate(mlflow_experiment_creation_errors_total[5m]) > 0
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "MLFlow experiment creation failures detected"
+          description: "MLFlow is experiencing experiment creation errors at {{ $value }} per second."
+
+      - alert: AirflowDAGFailures
+        expr: rate(airflow_dag_processing_import_errors[10m]) > 0
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Airflow DAG failures detected"
+          description: "Airflow DAGs are failing to import/parse at {{ $value }} per second."
+
+      - alert: HighModelInferenceLatency
+        expr: histogram_quantile(0.95, rate(model_inference_duration_seconds_bucket[5m])) > 2
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High model inference latency"
+          description: "95th percentile inference latency is {{ $value }}s, exceeding 2s threshold."
+
+      - alert: ModelDriftDetected
+        expr: model_drift_score > 0.8
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Model drift detected"
+          description: "Model drift score is {{ $value }}, indicating potential data distribution changes."
+
+      # Storage alerts
+      - alert: MinIODown
+        expr: up{job="minio"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "MinIO object storage is down"
+          description: "MinIO has been unavailable for 2 minutes."
+
+      - alert: S3BucketSizeGrowing
+        expr: rate(minio_bucket_usage_total_bytes[1h]) > 10737418240
+        for: 30m
+        labels:
+          severity: info
+        annotations:
+          summary: "S3 bucket size growing rapidly"
+          description: "Bucket {{ $labels.bucket }} is growing at {{ $value | humanize }}B/hour."
+
+      # Ray cluster alerts
+      - alert: RayClusterDown
+        expr: up{job="ray"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Ray cluster is down"
+          description: "Ray distributed computing cluster has been down for 2 minutes."
+
+      - alert: RayNodeDown
+        expr: ray_node_count < 3
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Ray cluster has insufficient nodes"
+          description: "Ray cluster has only {{ $value }} active nodes, expected at least 3."
+
+  - name: sla_alerts
+    interval: 1m
+    rules:
+      # SLA monitoring
+      - alert: HighErrorRate
+        expr: (sum(rate(http_requests_total{status=~"5.."}[5m])) / sum(rate(http_requests_total[5m]))) * 100 > 5
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High error rate detected"
+          description: "HTTP 5xx error rate is {{ $value }}%, exceeding 5% threshold."
+
+      - alert: HighRequestLatency
+        expr: histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[5m])) by (le)) > 3
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High request latency"
+          description: "95th percentile request latency is {{ $value }}s, exceeding 3s SLA."
+
+      - alert: SLAViolation
+        expr: (sum(rate(http_requests_total{status!~"5.."}[5m])) / sum(rate(http_requests_total[5m]))) * 100 < 99.9
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "SLA violation: Availability below 99.9%"
+          description: "Service availability is {{ $value }}%, below 99.9% SLA."

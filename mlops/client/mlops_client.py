@@ -18,6 +18,7 @@ from mlops.client.dvc_client import DVCClient, DVCClientError
 from mlops.client.mlflow_client import MLFlowClient, MLFlowClientError
 from mlops.config.dvc_config import DVCConfig
 from mlops.config.mlflow_config import MLFlowConfig
+from mlops.workspace.manager import WorkspaceManager, WorkspaceError
 
 logger = logging.getLogger(__name__)
 
@@ -57,7 +58,8 @@ class MLOpsClient:
         dvc_client: DVC client instance
         bentoml_available: Whether BentoML is available
         evidently_available: Whether Evidently is available
-        workspace_path: Project-specific workspace path
+        workspace: Project workspace instance
+        workspace_path: Project-specific workspace path (legacy, use workspace.root_path)
     """
 
     def __init__(
@@ -67,6 +69,7 @@ class MLOpsClient:
         dvc_config: DVCConfig | None = None,
         repo_root: str | Path | None = None,
         workspace_path: str | Path | None = None,
+        workspace_manager: WorkspaceManager | None = None,
     ) -> None:
         """Initialize MLOps client for a project
 
@@ -75,17 +78,40 @@ class MLOpsClient:
             mlflow_config: Optional MLFlow configuration
             dvc_config: Optional DVC configuration
             repo_root: Repository root directory
-            workspace_path: Optional workspace path for outputs
+            workspace_path: Optional workspace path for outputs (legacy)
+            workspace_manager: Optional workspace manager instance
         """
         self.project_name = project_name
         self.repo_root = Path(repo_root) if repo_root else Path.cwd()
 
-        # Setup workspace
+        # Setup workspace using WorkspaceManager
+        # If workspace_path is provided explicitly, use legacy behavior
         if workspace_path:
             self.workspace_path = Path(workspace_path)
+            self.workspace_path.mkdir(parents=True, exist_ok=True)
+            self.workspace = None  # type: ignore
+            logger.info("Using custom workspace path (legacy): %s", self.workspace_path)
         else:
-            self.workspace_path = self.repo_root / "mlops" / "workspace" / project_name
-        self.workspace_path.mkdir(parents=True, exist_ok=True)
+            # Use WorkspaceManager for automatic workspace management
+            if workspace_manager is None:
+                workspace_manager = WorkspaceManager(repo_root=self.repo_root)
+
+            # Get or create workspace
+            try:
+                self.workspace = workspace_manager.get_or_create_workspace(
+                    project_name=project_name,
+                    mlflow_tracking_uri=(
+                        mlflow_config.tracking_uri if mlflow_config else None
+                    ),
+                )
+                self.workspace_path = self.workspace.root_path
+                logger.info("Workspace loaded for project: %s", project_name)
+            except WorkspaceError as e:
+                logger.warning("Failed to load workspace: %s", e)
+                # Fallback to default path
+                self.workspace_path = self.repo_root / "mlops" / "workspace" / project_name
+                self.workspace_path.mkdir(parents=True, exist_ok=True)
+                self.workspace = None  # type: ignore
 
         # Initialize MLFlow client
         try:
@@ -97,6 +123,17 @@ class MLOpsClient:
             self.mlflow_client = MLFlowClient(config=mlflow_config)
             self._mlflow_available = True
             logger.info("MLFlow client initialized for project: %s", project_name)
+
+            # Update workspace with experiment ID
+            if self.workspace and hasattr(self.mlflow_client, "_experiment_id"):
+                try:
+                    workspace_manager.update_workspace_metadata(
+                        project_name=project_name,
+                        mlflow_experiment_id=str(self.mlflow_client._experiment_id),
+                    )
+                except Exception as meta_error:
+                    logger.debug("Failed to update workspace with experiment ID: %s", meta_error)
+
         except Exception as e:
             self._mlflow_available = False
             self.mlflow_client = None  # type: ignore
@@ -692,6 +729,10 @@ class MLOpsClient:
             "bentoml_available": self.bentoml_available,
             "evidently_available": self.evidently_available,
         }
+
+        # Add workspace information if available
+        if self.workspace:
+            status["workspace"] = self.workspace.to_dict()
 
         if self._mlflow_available:
             try:

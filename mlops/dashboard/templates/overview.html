@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block nav_overview %}active{% endblock %}
+
+{% block content %}
+<h1>Dashboard Overview</h1>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="value">{{ stats.total_projects }}</div>
+        <div class="label">Total Projects</div>
+    </div>
+    <div class="stat-card">
+        <div class="value">{{ stats.active_projects }}</div>
+        <div class="label">Active Projects</div>
+    </div>
+    <div class="stat-card">
+        <div class="value">{{ stats.total_experiments }}</div>
+        <div class="label">Experiments</div>
+    </div>
+    <div class="stat-card">
+        <div class="value">{{ stats.total_runs }}</div>
+        <div class="label">Total Runs</div>
+    </div>
+    <div class="stat-card">
+        <div class="value">{{ stats.total_models }}</div>
+        <div class="label">Models</div>
+    </div>
+    <div class="stat-card">
+        <div class="value">{{ "%.1f"|format(stats.total_models_size_mb) }} MB</div>
+        <div class="label">Models Size</div>
+    </div>
+    <div class="stat-card">
+        <div class="value">{{ stats.total_alerts }}</div>
+        <div class="label">Active Alerts</div>
+    </div>
+    <div class="stat-card">
+        <div class="value">{{ stats.alerts_by_severity.critical }}</div>
+        <div class="label">Critical Alerts</div>
+    </div>
+</div>
+
+<div class="card">
+    <h2>Projects</h2>
+    {% if workspaces %}
+    <table>
+        <thead>
+            <tr>
+                <th>Project Name</th>
+                <th>Created</th>
+                <th>MLFlow Experiment</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ws in workspaces %}
+            <tr>
+                <td><strong>{{ ws.project_name }}</strong></td>
+                <td>{{ ws.created_at[:10] }}</td>
+                <td>{{ ws.mlflow_experiment_id or "N/A" }}</td>
+                <td><span class="badge success">Active</span></td>
+                <td>
+                    <a href="/project/{{ ws.project_name }}">View Details</a> |
+                    <a href="/experiments?project={{ ws.project_name }}">Experiments</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="empty-state">
+        <p>No projects found. Create a workspace to get started.</p>
+    </div>
+    {% endif %}
+</div>
+
+{% if alerts %}
+<div class="card">
+    <h2>Recent Alerts</h2>
+    {% for alert in alerts[:10] %}
+    <div class="alert {{ alert.severity }}">
+        <strong>{{ alert.title }}</strong> - {{ alert.project_name }}<br>
+        {{ alert.message }}<br>
+        <small>{{ alert.timestamp[:19] }}</small>
+    </div>
+    {% endfor %}
+    <a href="/alerts">View All Alerts</a>
+</div>
+{% endif %}
+{% endblock %}
