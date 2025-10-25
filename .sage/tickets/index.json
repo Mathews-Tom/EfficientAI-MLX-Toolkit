@@ -2001,7 +2001,7 @@
     {
       "id": "MULT-005",
       "title": "Image-Text Alignment",
-      "state": "UNPROCESSED",
+      "state": "COMPLETED",
       "priority": "P1",
       "type": "story",
       "parent": null,
@@ -2013,7 +2013,17 @@
         "tasks": "docs/specs/multimodal-clip-finetuning/tasks.md"
       },
       "created": "2025-10-22T16:57:39.141781",
-      "updated": "2025-10-22T16:57:39.141813"
+      "updated": "2025-10-25T11:44:23Z",
+      "state_history": [
+        {
+          "state": "IN_PROGRESS",
+          "timestamp": "2025-10-24T21:20:27Z"
+        },
+        {
+          "state": "COMPLETED",
+          "timestamp": "2025-10-25T11:44:23Z"
+        }
+      ]
     },
     {
       "id": "MULT-006",
