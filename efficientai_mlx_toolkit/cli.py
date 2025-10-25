@@ -466,6 +466,50 @@ def projects() -> None:
         )
 
 
+@app.command()
+def dashboard(
+    host: str = typer.Option("0.0.0.0", "--host", "-h", help="Server host address"),
+    port: int = typer.Option(8000, "--port", "-p", help="Server port"),
+    reload: bool = typer.Option(
+        False, "--reload", "-r", help="Enable auto-reload for development"
+    ),
+    repo_root: Path | None = typer.Option(
+        None, "--repo-root", help="Repository root directory"
+    ),
+) -> None:
+    """Start the unified MLOps dashboard server."""
+    console.print("[bold blue]EfficientAI MLOps Dashboard[/bold blue]")
+    console.print(f"Starting server at http://{host}:{port}\n")
+
+    try:
+        from mlops.dashboard import DashboardServer
+
+        # Use current directory if repo_root not specified
+        if repo_root is None:
+            repo_root = Path.cwd()
+
+        server = DashboardServer(repo_root=repo_root, host=host, port=port)
+
+        console.print("[green]Dashboard is running![/green]")
+        console.print(f"Access at: [cyan]http://{host}:{port}[/cyan]")
+        console.print("\nPress Ctrl+C to stop the server.\n")
+
+        server.run(reload=reload)
+
+    except ImportError as e:
+        console.print(
+            "[bold red]Error:[/bold red] Dashboard dependencies not installed."
+        )
+        console.print(f"  {str(e)}")
+        console.print("\nInstall dashboard dependencies:")
+        console.print("  [cyan]uv add fastapi uvicorn jinja2 python-multipart[/cyan]")
+        raise typer.Exit(1)
+    except Exception as e:
+        console.print(f"[bold red]Failed to start dashboard:[/bold red] {e}")
+        logger.error("Dashboard startup failed: %s", e)
+        raise typer.Exit(1)
+
+
 def main() -> None:
     """Main CLI entry point."""
     # Check for namespace:command pattern before typer processes arguments
@@ -477,6 +521,7 @@ def main() -> None:
             "benchmark",
             "test",
             "projects",
+            "dashboard",
             "--help",
             "-h",
         ]
